@@ -13,25 +13,25 @@
 <body>
 
     <main class="main">
-        <div class="full-screen">
+        <header class="full-screen__header">
+            <img src="/app/img/UK.svg" alt="" class="logo-img">
+
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__list-item"><a href="#" class="menu__list-link">Клиентам</a></li>
+                    <li class="menu__list-item"><a href="#" class="menu__list-link">Каталог</a></li>
+                    <li class="menu__list-item"><a href="#" class="menu__list-link">О нас</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-ui">
+                <button class="button-search"><img src="/app/img/search-svg.svg" alt=""></button>
+                <a href="#" class="shopping-card__link"><img src="/app/img/shopping-cart-svg.svg" alt=""></a>
+            </div>
+        </header>
+
+        <section class="full-screen">
             <div class="full-screen__body">
-                <header class="full-screen__header">
-                    <img src="/app/img/UK.svg" alt="" class="logo-img">
-
-                    <nav class="menu">
-                        <ul class="menu__list">
-                            <li class="menu__list-item"><a href="#" class="menu__list-link">Клиентам</a></li>
-                            <li class="menu__list-item"><a href="#" class="menu__list-link">Каталог</a></li>
-                            <li class="menu__list-item"><a href="#" class="menu__list-link">О нас</a></li>
-                        </ul>
-                    </nav>
-
-                    <div class="user-ui">
-                        <button class="button-search"><img src="/app/img/search-svg.svg" alt=""></button>
-                        <a href="#" class="shopping-card__link"><img src="/app/img/shopping-cart-svg.svg" alt=""></a>
-                    </div>
-                </header>
-                
                 <div class="full-screen__choose-wrapper">
 
                     <!-- ? LEFT SIDE CHOOSE MARK -->
@@ -69,20 +69,22 @@
                                 </div>
                             </div>
                         </div>
+
+                        <p class="close-screen__left">Нажмите на текст чтобы закрыть блок</p>
                     </div>
 
 
                     <div class="full-screen__choose">
                         <h2 class="full-screen__choose-title">Выберите марку и год</h2>
                       
-                        <div class="full-screen__choose-wrapper__inner">
+                        <div id="markSide" class="full-screen__choose-wrapper__inner">
                             <p class="full-screen__choose-mark">Выберите марку</p>
                             <button class="input-decor-btn">
                                 <img id="arrow-top" src="/app/img/arrow.svg" alt="" class="input-decor">
                             </button>
                         </div>
     
-                        <div class="full-screen__choose-wrapper__inner">
+                        <div id="yearSide" class="full-screen__choose-wrapper__inner">
                             <button class="input-decor-btn">
                                 <img id="arrow-bottom" src="/app/img/arrow.svg" alt="" class="input-decor">
                             </button>
@@ -118,23 +120,27 @@
                             <button id="" data-select="" class="year-select">2020</button>
                             <button id="" data-select="" class="year-select">2021</button>
                         </div>
+                        <p class="close-screen__right">Нажмите на текст чтобы закрыть блок</p>
                     </div>
 
                 </div>
-               
-                </div>
             </div>
-            <video autoplay muted loop  preload="auto" class="full-screen__video">
-                <source type="video/webm" src="/app/img/bg-video.webm">
-            </video>
-            <p class="scroll-down__title">Листай ниже</p>
+        </section>
+
+        <video autoplay muted loop  preload="auto" class="full-screen__video">
+            <source type="video/webm" src="/app/img/bg-video.webm">
+        </video> 
+
+        <p class="scroll-down__title">Листай ниже</p>
+        
+        <!-- !  content-->
      <div class="content">
-       
+        <section class="popular__container"></section>
      </div>
 
     </main>
 
-
+    <script src="/app/js/animation.js"></script>
     <script src="/app/js/index.js" poster = ""></script>
 
 </body>
