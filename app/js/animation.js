@@ -26,6 +26,40 @@ document.addEventListener("DOMContentLoaded" , function(){
             chooseRight.classList.remove("active")
         }
     }
+
+    let menuBtn = document.querySelector('.menu-btn');
+	let menu = document.querySelector('.menu');
+	
+	menuBtn.addEventListener('click', function(){
+		menuBtn.classList.toggle('active');
+		menu.classList.toggle('active');
+		menu.style.display = "flex"
+		if(menuBtn.classList.contains("active")){
+			menuBtn.classList.add("fixed")
+			menuBtn.classList.add("left")
+		}else{
+			menuBtn.classList.remove("fixed")
+			menuBtn.classList.remove("left")
+		}
+	})
+
+	const links = document.querySelectorAll("a[href*='#']")
+	for(let link of links){
+		link.addEventListener("click" , function(event){
+			if(menu.style.display = "none"){
+				menuBtn.classList.remove("fixed")
+				menuBtn.classList.remove("left")
+			}
+			menu.style.display = "none"
+			event.preventDefault();
+			const blockID = link.getAttribute("href")
+			document.querySelector("" + blockID ).scrollIntoView({
+				behavior:"smooth",
+				block:"start"
+			})
+		})
+		
+	}
     
     // Сделать анимку наводе через импорт и експорт
 })

@@ -101,6 +101,13 @@ li{
     
 }
 
+.menu-btn{
+    display: none;
+}
+.menu-burger__wrapper{
+    display: none;
+}
+
 /* ? main part >>>>>>>>>>> */
 
 
@@ -504,6 +511,80 @@ li{
    .close-screen__right{
     margin-top: 30px;
    }
+    .menu-btn{
+        display: block;
+    }
+    .menu-burger__wrapper{
+        display: block;
+    }
+    .menu-btn {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        z-index:2;
+        overflow: hidden;
+        z-index: 999;
+    }
+
+    .menu-btn span {
+        width: 30px;
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        transition: all 0.5s;
+        border-radius: 10px;
+    }
+
+    .menu-btn span:nth-of-type(2) {
+        top: calc(50% - 7px);
+    }
+    .menu-btn span:nth-of-type(3) {
+        top: calc(50% + 7px);
+    }
+
+    /* Меняем гамбургер иконку, когда меню открыто */
+    .menu-btn.active span:nth-of-type(1) {
+    display: none;
+    }
+    .menu-btn.active span:nth-of-type(2) {
+    top: 50%;
+    transform: translate(-50%, 0%) rotate(45deg);  
+    }
+    .menu-btn.active span:nth-of-type(3) {
+    top: 50%;
+    transform: translate(-50%, 0%) rotate(-45deg); 
+    }
+
+    /* Меню, которое будет появляться */
+    .menu-burger__wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 40%;
+        height: 100%;
+        padding: 15px;
+        background: #FFFFFF;;
+        transform: translateX(-150%);
+        transition: transform 0.5s; 
+        z-index: 1;
+    }
+
+    .menu-burger__wrapper.active {
+        transform: translateX(130%);
+    }
+
+    .menu-burger__wrapper li {
+        list-style-type: none;
+    }
+    .menu--burger-list{
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+        gap: 20px 0px;
+    }
 }
 @media (max-width:426px) {
     .full-screen__choose-wrapper{
