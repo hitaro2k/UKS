@@ -32,6 +32,7 @@ h1 , h2, h3, h4, h5, h6{
 }
 button{
     border: none;
+    font-family: "Montserrat";
 }
 li{
     font-family: "Montserrat";
@@ -40,57 +41,54 @@ li{
 
 [class *= "__container"]{
     width: 1200px;
-    padding: 0px 15px;
-    margin: 0 auto;
+    padding: 0px 30px;
 }
-
+@media(max-width:1240px){
+    [class *= "__container"]{
+        width: 1170px;
+        padding: 0px 30px;
+    }
+}
 @media(max-width:1180px){
     [class *= "__container"]{
         width: 1000px;
-        padding: 0px 15px;
-        margin: 0 auto;
+        padding: 0px 30px;
     }
 }
 @media(max-width:1024px){
     [class *= "__container"]{
         width: 850px;
-        padding: 0px 15px;
-        margin: 0 auto;
+        padding: 0px 30px;
     }  
 }
 @media(max-width:980px){
     [class *= "__container"]{
         width: 700px;
-        padding: 0px 15px;
-        margin: 0 auto;
+        padding: 0px 30px;
     } 
 }
 @media(max-width:768.98px){
     [class *= "__container"]{
-        width: 500px;
-        padding: 0px 15px;
-        margin: 0 auto;
+        width: 600px;
+        padding: 0px 30px;
     }
 }
-@media(max-width:550px){
+@media(max-width:630px){
     [class *= "__container"]{
-        width: 400px;
-        padding: 0px 15px;
-        margin: 0 auto;
+        width: 370px;
+        padding: 0px 30px;
     }   
 }
 @media(max-width:426px){
     [class *= "__container"]{
         width: 350px;
         padding: 0px 15px;
-        margin: 0 auto;
     }
 }
 @media(max-width:376px){
     [class *= "__container"]{
-        width: 300px;
+        width: 280px;
         padding: 0px 15px;
-        margin: 0 auto;
     }
 }
 .main{
@@ -100,6 +98,7 @@ li{
     height: 100%;
     
 }
+
 
 .menu-btn{
     display: none;
@@ -134,8 +133,7 @@ li{
     flex-direction: row;
     align-items: center;
     gap: 380px;
-    position: fixed;
-    z-index: 99;
+    /* position: fixed; */
 }
 .full-screen__video{
     position: fixed;
@@ -448,7 +446,7 @@ li{
 }
 @media(max-width:870px){
     .full-screen__header {
-        gap: 150px;
+        gap: 120px;
     }
     .close-screen__left{
         margin-top: 0px;
@@ -498,21 +496,25 @@ li{
 
 @media(max-width:660px){
     .full-screen__header {
-        gap: 50px;
+        gap: 20px;
     }
 }
 @media(max-width:560px){
- .menu{
-    display: none;
-   }
-   .user-ui{
-    display: none;
-   }
-   .close-screen__right{
-    margin-top: 30px;
-   }
+    .full-screen__header{
+        justify-content: space-between;
+    }
+    .menu{
+        display: none;
+    }
+    .user-ui{
+        display: none;
+    }
+    .close-screen__right{
+        margin-top: 30px;
+    }
     .menu-btn{
         display: block;
+        margin-right: 20px;
     }
     .menu-burger__wrapper{
         display: block;
@@ -525,65 +527,59 @@ li{
         overflow: hidden;
         z-index: 999;
     }
-
     .menu-btn span {
         width: 30px;
         height: 2px;
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); 
         background-color: #ffffff;
         transition: all 0.5s;
         border-radius: 10px;
     }
-
     .menu-btn span:nth-of-type(2) {
         top: calc(50% - 7px);
     }
     .menu-btn span:nth-of-type(3) {
         top: calc(50% + 7px);
     }
-
-    /* Меняем гамбургер иконку, когда меню открыто */
     .menu-btn.active span:nth-of-type(1) {
-    display: none;
+        display: none;
     }
+        
     .menu-btn.active span:nth-of-type(2) {
-    top: 50%;
-    transform: translate(-50%, 0%) rotate(45deg);  
+        top: 50%;
+        transform: translate(-50%, 0%) rotate(45deg);  
     }
     .menu-btn.active span:nth-of-type(3) {
-    top: 50%;
-    transform: translate(-50%, 0%) rotate(-45deg); 
+        top: 50%;
+        transform: translate(-50%, 0%) rotate(-45deg); 
     }
-
-    /* Меню, которое будет появляться */
-    .menu-burger__wrapper {
+    .menu--burger-list {
         position: fixed;
         top: 0;
         left: 0;
         width: 40%;
         height: 100%;
         padding: 15px;
-        background: #FFFFFF;;
+        background: #ffffff1f;
         transform: translateX(-150%);
         transition: transform 0.5s; 
-        z-index: 1;
-    }
-
-    .menu-burger__wrapper.active {
-        transform: translateX(130%);
-    }
-
-    .menu-burger__wrapper li {
-        list-style-type: none;
-    }
-    .menu--burger-list{
+        z-index: 99;
+        margin: 0px;
         display: flex;
         flex-direction: column;
-        padding-top: 80px;
+        padding-top: 100px;
         gap: 20px 0px;
+    }
+        
+    .menu--burger-list.active {
+        transform: translateX(130%);
+        
+    }
+    .menu-burger__wrapper li {
+        list-style-type: none;
     }
 }
 @media (max-width:426px) {
@@ -601,15 +597,143 @@ li{
         width: 295px;
     }
 }
-
-@media (max-width:376px) {
-    
+.fixed{
+    position: fixed;
 }
-@media (max-width:326px) {
-    
+.left{
+    margin-left: 505px;
 }
 
 
 .popular__container{
-    padding-top : 1000px;
+   padding-top: 100px;
+
+}
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px 30px;
+    padding-top: 50px;
+}
+.popular__header{
+    color: white;
+    font-weight: 400;
+}
+.product-item{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 350px;
+    border: 1px solid #ffffff52;
+    border-radius: 5px;
+}
+.product-text{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+.item-image{
+    width: 150px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+.item-name{
+    padding-left: 20px;
+}
+.item-articul{
+    padding-left: 20px;
+    font-size: 12px;
+    color: rgba(163, 163, 163, 0.69);
+
+}
+.item-price{
+    padding-left: 20px;
+    font-size: 20px;
+}
+.product__user-ui{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 60px;
+}
+.item-buy{
+    background-color: transparent;
+    color: white;
+    border: 1px solid #ffffff57;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+@media(max-width:768px){
+    .product-item{
+        width: 175px;
+        height: 300px;
+    }
+    .product__user-ui{
+        padding-top: 35px;
+    }
+    .item-image{
+        width: 110px;
+    }
+    .item-buy{
+        background-color: transparent;
+        color: white;
+        border: 1px solid #ffffff57;
+        border-radius: 5px;
+        width: 90px;
+        height: 35px;
+        font-size: 12px;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+}
+@media(max-width:660px){
+    .item-name {
+        padding-left: 10px;
+        font-size: 13px;
+    }
+  
+}
+
+@media(max-width:440px){
+    .product-item {
+        width: 250px;
+    }
+    .item-image {
+        width: 140px;
+    }
+    .item-articul{
+        padding-left: 10px;
+    }
+    .wrapper{
+        justify-content: center;
+    }
+    .left{
+        margin-left: 375px;
+    }
+    .menu--burger-list.active {
+        transform: translateX(115%);
+    }
+}
+
+@media(max-width:375px){
+    .left{
+        margin-left: 325px;
+    }
+    .menu--burger-list.active {
+        transform: translateX(110%);
+    }
+}
+@media(max-width:326px){
+    .left{
+        margin-left: 270px;
+    }
+    .menu--burger-list.active {
+        transform: translateX(103%);
+    }
 }

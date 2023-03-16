@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded" , function(){
     for(let i = 0 ; i < closeLeftSide.length; i++ ){
         closeLeftSide[i].onclick = () =>{
             chooseLeft.classList.remove("active")
+			chooseBody.style.borderRadius = "5px"
         } 
     }
     for(let i = 0 ; i <closeRightSide.length; i++){
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded" , function(){
     }
 
     let menuBtn = document.querySelector('.menu-btn');
-	let menu = document.querySelector('.menu');
+	let menu = document.querySelector(".menu--burger-list");
 	
 	menuBtn.addEventListener('click', function(){
 		menuBtn.classList.toggle('active');
