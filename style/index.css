@@ -714,7 +714,7 @@ li{
         justify-content: center;
     }
     .left{
-        margin-left: 375px;
+        margin-left: 345px;
     }
     .menu--burger-list.active {
         transform: translateX(115%);
