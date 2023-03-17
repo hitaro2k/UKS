@@ -563,7 +563,7 @@ li{
         width: 40%;
         height: 100%;
         padding: 15px;
-        background: #ffffff1f;
+        background: #14141454;
         transform: translateX(-150%);
         transition: transform 0.5s; 
         z-index: 99;
