@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,7 @@
     <title>Uk service</title>
 
     <link rel="stylesheet" href="/style/index.css">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 <body>
 
@@ -20,6 +20,8 @@
                     <li class="menu__list-item"><a href="#" class="menu__list-link">Клиентам</a></li>
                     <li class="menu__list-item"><a href="#" class="menu__list-link">Каталог</a></li>
                     <li class="menu__list-item"><a href="#" class="menu__list-link">О нас</a></li>
+                    <li class="menu__list-item"><a href="#popular" class="menu__list-link">Популярное</a></li>
+                    <li class="menu__list-item"><a href="#actual" class="menu__list-link">Актуальное</a></li>
                 </ul>
             </nav>
 
@@ -41,18 +43,24 @@
               <li class="menu--burger-item">
                 <a class="menu--burger-item" href="#">Каталог</a>
             </li>
-              <li class="menu--burger-item">
+            <li class="menu--burger-item">
                 <a class="menu--burger-item" href="#">Клиентам</a>
             </li>
-              <li class="menu--burger-item">
+            <li class="menu--burger-item">
                 <a class="menu--burger-item" href="#">О Нас</a>
+            </li>
+            <li class="menu--burger-item">
+                <a class="menu--burger-item" href="#popular">Популярное</a>
+            </li>
+            <li class="menu--burger-item">
+                <a class="menu--burger-item" href="#actual">Актуальное</a>
             </li>
              
             </ul>
             </nav>
         </div>
 
-        <section class="full-screen">
+        <section class="full-screen" id="promo">
             <div class="full-screen__body">
                 <div class="full-screen__choose-wrapper">
 
@@ -157,7 +165,7 @@
         
         <!-- !  content-->
      <div class="content">
-        <section class="popular__container">
+        <section class="popular__container" id="popular">
             <h2 class="popular__header">Популярные товары</h2>
             <div class="wrapper">
                 <div class="product-item">
@@ -167,7 +175,10 @@
                         <p class="item-articul">A78D12RR</p>
                     </div>
                     <div class="product__user-ui">
-                        <a href="" class="item-price">$10</a>
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb">В наличии </p>
+                        </div>
                         <button class="item-buy">В корзину</button>
                     </div>
 
@@ -179,7 +190,10 @@
                         <p class="item-articul">A78D12RR</p>
                     </div>
                     <div class="product__user-ui">
-                        <a href="" class="item-price">$10</a>
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb">В наличии </p>
+                        </div>
                         <button class="item-buy">В корзину</button>
                     </div>
 
@@ -191,20 +205,10 @@
                         <p class="item-articul">A78D12RR</p>
                     </div>
                     <div class="product__user-ui">
-                        <a href="" class="item-price">$10</a>
-                        <button class="item-buy">В корзину</button>
-                    </div>
-
-                </div>
-                <div class="product-item">
-                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
-                    <div class="product-text">
-                        <a href="" class="item-name">Chevrolet brakes</a>
-                        <p class="item-articul">A78D12RR</p>
-                    </div>
-                 
-                    <div class="product__user-ui">
-                        <a href="" class="item-price">$10</a>
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="isAvailb" data-avlb="">В наличии </p>
+                        </div>
                         <button class="item-buy">В корзину</button>
                     </div>
 
@@ -216,21 +220,224 @@
                         <p class="item-articul">A78D12RR</p>
                     </div>
                     <div class="product__user-ui">
-                        <a href="" class="item-price">$10</a>
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="isAvailb" data-avlb="">В наличии </p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="soAvailb" data-avlb="">Заканчивается</p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="soAvailb" data-avlb="">Заканчивается</p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="isAvailb" data-avlb="">В наличии </p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="isAvailb" data-avlb="">В наличии </p>
+                        </div>
                         <button class="item-buy">В корзину</button>
                     </div>
 
                 </div>
             </div>
-            
+            <a href="#" class="popular__more">Смотреть все</a>
 
         </section>
+
+        <section class="actual__container" id="actual">
+            <h2 class="actual__header">Актуальные товары</h2>
+            <div class="wrapper">
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb">В наличии </p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb">В наличии </p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="isAvailb" data-avlb="">В наличии </p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="isAvailb" data-avlb="">В наличии </p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="soAvailb" data-avlb="">Заканчивается</p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="soAvailb" data-avlb="">Заканчивается</p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="isAvailb" data-avlb="">В наличии </p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+                <div class="product-item">
+                    <img src="img/15841e3988289d2690dd9e88799e1903-removebg-preview.png" alt="" class="item-image">
+                    <div class="product-text">
+                        <a href="" class="item-name">Chevrolet brakes</a>
+                        <p class="item-articul">A78D12RR</p>
+                    </div>
+                    <div class="product__user-ui">
+                        <div class="user-ui__price-availb">
+                            <p  class="item-price">$10</p>
+                            <p  class="item-availb" id="isAvailb" data-avlb="">В наличии </p>
+                        </div>
+                        <button class="item-buy">В корзину</button>
+                    </div>
+
+                </div>
+            </div>
+            <a href="#" class="actual__more">Смотреть все</a>
+        </section>
      </div>
+
+     <footer class="footer">
+        <a href="#promo" class="logo"> <img src="img/UK.svg" alt="" class="logo-img"></a>
+     </footer>
+     
+     <div id="progress">
+        <span id="progress-value">
+        <span class="material-symbols-outlined">
+            expand_less
+            </span>
+            
+        </span>
+    </div>
 
     </main>
 
     <script src="/js/animation.js"></script>
-    <script src="./dist/main.min.js"></script>
+    <!-- <script src="./dist/main.min.js"></script> -->
 
 </body>
 </html>

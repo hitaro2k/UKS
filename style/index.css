@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@300;400&display=swap');
+html{
+    overflow-x: hidden
+}
 body{
     background-color:black;
     margin: 0;
     padding: 0;
     animation: merge 3s forwards;
-    
+    overflow-x: hidden
 }
 @keyframes merge {
     0% {opacity: 0;}
@@ -75,9 +78,16 @@ li{
 }
 @media(max-width:630px){
     [class *= "__container"]{
-        width: 370px;
+        width: 485px;
         padding: 0px 30px;
     }   
+}
+@media(max-width:535px){
+    [class *= "__container"]{
+        width: 435px;
+        padding: 0px 30px;
+    }  
+   
 }
 @media(max-width:426px){
     [class *= "__container"]{
@@ -98,8 +108,22 @@ li{
     height: 100%;
     
 }
-
-
+.content{
+    position: relative;
+    background-color: black;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px 30px;
+    padding-top: 50px;
+    justify-content: center;
+}
 .menu-btn{
     display: none;
 }
@@ -132,7 +156,7 @@ li{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 380px;
+    gap: 240px;
     /* position: fixed; */
 }
 .full-screen__video{
@@ -368,13 +392,13 @@ li{
 }
 @media(max-width:1230px){
     .full-screen__header{
-        gap: 340px;
+        gap: 230px;
     } 
 }
 
 @media(max-width:1180px){
     .full-screen__header{
-        gap: 280px;
+        gap:165px;
     }
     .scroll-down__title{
         padding-top: 80px;
@@ -383,7 +407,7 @@ li{
 
 @media(max-width:1024px){
     .full-screen__header{
-        gap: 260px;
+        gap: 130px;
     }
     .full-screen__choose-left{
         width: 295px;        
@@ -411,7 +435,7 @@ li{
 }
 @media(max-width:980px){
     .full-screen__header {
-        gap: 200px;
+        gap: 100px;
     }
     .choose-left__wrapper__right-side {
         padding-left:10px;
@@ -446,7 +470,10 @@ li{
 }
 @media(max-width:870px){
     .full-screen__header {
-        gap: 120px;
+        gap: 25px;
+    }
+    .logo-img {
+        padding-left: 25px;
     }
     .close-screen__left{
         margin-top: 0px;
@@ -458,7 +485,13 @@ li{
 }
 @media(max-width:767.98px){
     .full-screen__header {
-        gap: 100px;
+        gap: 40px;
+    }
+    .menu__list {
+        gap: 10px;
+    }
+    .menu__list-link{
+        font-size: 14px;
     }
     .choose-right__title {
         padding-left: 15px;
@@ -497,6 +530,15 @@ li{
 @media(max-width:660px){
     .full-screen__header {
         gap: 20px;
+    }
+    .menu__list {
+        gap: 7px;
+    }
+    .user-ui {
+        gap: 15px;
+    }
+    .menu__list-link {
+        font-size: 13px;
     }
 }
 @media(max-width:560px){
@@ -560,18 +602,18 @@ li{
         position: fixed;
         top: 0;
         left: 0;
-        width: 40%;
-        height: 100%;
-        padding: 15px;
-        background: #14141454;
+        width: 100%;
+        height: 30%;
+        background: #141414;
         transform: translateX(-150%);
         transition: transform 0.5s; 
         z-index: 99;
         margin: 0px;
         display: flex;
         flex-direction: column;
-        padding-top: 100px;
+        padding-top: 45px;
         gap: 20px 0px;
+        align-items: center;
     }
         
     .menu--burger-list.active {
@@ -596,6 +638,7 @@ li{
     .full-screen__choose {
         width: 295px;
     }
+    
 }
 .fixed{
     position: fixed;
@@ -607,13 +650,14 @@ li{
 
 .popular__container{
    padding-top: 100px;
-
+   display: flex;
+   flex-direction: column;
 }
 .wrapper{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 20px 30px;
+    gap: 30px 30px;
     padding-top: 50px;
 }
 .popular__header{
@@ -650,13 +694,23 @@ li{
 .item-price{
     padding-left: 20px;
     font-size: 20px;
+    padding-top: 15px;
 }
 .product__user-ui{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-top: 60px;
+    
+}
+
+#soAvailb{
+    color: rgba(253, 174, 28, 0.945);
+}
+.item-availb{
+    color: rgba(110, 255, 110, 0.938);
+    font-size: 12px;
+    padding-left: 20px;
 }
 .item-buy{
     background-color: transparent;
@@ -671,12 +725,10 @@ li{
 
 @media(max-width:768px){
     .product-item{
-        width: 175px;
-        height: 300px;
+        width: 225px;
+        height: 350px;
     }
-    .product__user-ui{
-        padding-top: 35px;
-    }
+  
     .item-image{
         width: 110px;
     }
@@ -710,14 +762,11 @@ li{
     .item-articul{
         padding-left: 10px;
     }
-    .wrapper{
-        justify-content: center;
-    }
     .left{
         margin-left: 345px;
     }
     .menu--burger-list.active {
-        transform: translateX(115%);
+        transform: translateX(0%);
     }
 }
 
@@ -726,7 +775,7 @@ li{
         margin-left: 325px;
     }
     .menu--burger-list.active {
-        transform: translateX(110%);
+        transform: translateX(0%);
     }
 }
 @media(max-width:326px){
@@ -734,6 +783,73 @@ li{
         margin-left: 270px;
     }
     .menu--burger-list.active {
-        transform: translateX(103%);
+        transform: translateX(0%);
     }
+}
+.menu{
+    z-index: 2;
+}
+.actual__container{
+    display: flex;
+    flex-direction: column;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    border-bottom: 1px solid #888888;
+}
+.actual__header{
+    color: white;
+    font-weight: 400;
+}
+.popular__more{
+    margin:  0 auto;
+    padding-top:100px;
+    animation: opacity;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+}
+.actual__more{
+    margin:  0 auto;
+    padding-top:100px;
+    animation: opacity;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+}
+/* Scroll */
+
+#progress{
+ 
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    height: 70px;
+    width: 70px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 2);
+    cursor: pointer;
+    z-index: 1000;
+}
+#progress-value{
+    display: block;
+    height: calc(55px);
+    width: calc(55px);
+    background-color: white;
+    border-radius: 50%;
+    display: grid;
+    place-items:center;
+    font-size: 35px;
+    color: rgb(255, 0, 221);
+    
+}
+.material-symbols-outlined{
+    color:#ffa600;
+    font-size:35px;
+    z-index: 2;
+    
+}
+.footer{
+    padding-top: 100px;
+    background-color: rgb(0, 0, 0);
+    z-index: 3;
 }
