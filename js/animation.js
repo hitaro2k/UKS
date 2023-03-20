@@ -84,6 +84,14 @@ document.addEventListener("DOMContentLoaded" , function(){
 	
 	window.onscroll = calcScrollValue;
 	window.onload = calcScrollValue;
+
+	// !header animation
+	const btnSearch = document.querySelector(".button-search")
+	btnSearch.onclick = ()=>{
+		
+	}
+
+	// ! footer animation
 	
 	let wrapperIconTg = document.querySelector("#telegram")
 	wrapperIconTg.onmouseenter = () =>{

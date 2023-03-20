@@ -157,6 +157,7 @@ li{
     flex-direction: row;
     align-items: center;
     gap: 240px;
+    z-index: 2;
     /* position: fixed; */
 }
 .full-screen__video{
@@ -959,6 +960,9 @@ li{
     cursor: pointer;
     
 }
+.logo-img__footer{
+    padding-left: 50px;
+}
 @media(max-width:1190px){
     .menu__footer {
         z-index: 2;
@@ -994,7 +998,7 @@ li{
         align-items: center;
         padding-left: 0px;
     }
-    .logo-img{
+    .logo-img__footer{
         padding-left: 0px;
     }
     .form-footer{
