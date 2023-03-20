@@ -84,7 +84,67 @@ document.addEventListener("DOMContentLoaded" , function(){
 	
 	window.onscroll = calcScrollValue;
 	window.onload = calcScrollValue;
-    // Сделать анимку наводе через импорт и експорт
+	
+	let wrapperIconTg = document.querySelector("#telegram")
+	wrapperIconTg.onmouseenter = () =>{
+		wrapperIconTg.style.width = "100px"
+		wrapperIconTg.style.transition = "1s"
+		iconTg.style.fill = "#0085FF"
+	}
+	wrapperIconTg.onmouseleave = () =>{
+		wrapperIconTg.style.width = "40px"
+		wrapperIconTg.style.transition = "1s"
+		iconTg.style.fill = "black"
+	}
+	let wrapperIconFacebook = document.querySelector(".svg-logo__wrapper-facebook")
+	wrapperIconFacebook.onmouseenter = () =>{
+		wrapperIconFacebook.style.width = "100px"
+		wrapperIconFacebook.style.transition = "1s"
+		iconFacebook.style.fill = "#0057FF"
+	}
+	wrapperIconFacebook.onmouseleave = () =>{
+		wrapperIconFacebook.style.width = "40px"
+		wrapperIconFacebook.style.transition = "1s"
+		iconFacebook.style.fill = "black"
+	}
+	let wrapperIconInst = document.querySelector(".svg-logo__wrapper-inst")
+	wrapperIconInst.onmouseenter = () =>{
+		wrapperIconInst.style.width = "100px"
+		wrapperIconInst.style.transition = "1s"
+		for(let i =0; i < iconInst.length; i++){
+			iconInst[i].style.fill = "#3049CA";
+		}
+		
+	}
+	wrapperIconInst.onmouseleave = () =>{
+		wrapperIconInst.style.width = "40px"
+		wrapperIconInst.style.transition = "1s"
+		for(let i =0; i < iconInst.length; i++){
+			iconInst[i].style.fill = "black";
+		}
+	}
+
+	let iconTg = document.querySelector(".tg-logo__path")
+	let iconFacebook = document.querySelector(".facebook-logo__path")
+	let iconInst = document.querySelectorAll(".inst-logo__path")
+
+	// ! FORM
+	
+	
+	let btnSubmit = document.querySelector(".form-footer__submit")
+	btnSubmit.onmouseenter = () =>{
+		btnSubmit.style.color = "white"
+		btnSubmit.style.background = "black"
+		btnSubmit.style.border = "1px solid #ffffff69"
+		btnSubmit.style.transition = "1s"
+	}
+	btnSubmit.onmouseleave = () =>{
+		btnSubmit.style.color = "black"
+		btnSubmit.style.background = "white"
+		btnSubmit.style.border = "none"
+		btnSubmit.style.transition = "1s"
+	}
+
 })
 
 
