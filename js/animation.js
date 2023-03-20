@@ -87,13 +87,13 @@ document.addEventListener("DOMContentLoaded" , function(){
 	
 	let wrapperIconTg = document.querySelector("#telegram")
 	wrapperIconTg.onmouseenter = () =>{
-		wrapperIconTg.style.width = "100px"
 		wrapperIconTg.style.transition = "1s"
+		wrapperIconTg.style.width = "100px"
 		iconTg.style.fill = "#0085FF"
 	}
 	wrapperIconTg.onmouseleave = () =>{
-		wrapperIconTg.style.width = "40px"
 		wrapperIconTg.style.transition = "1s"
+		wrapperIconTg.style.width = "40px"
 		iconTg.style.fill = "black"
 	}
 	let wrapperIconFacebook = document.querySelector(".svg-logo__wrapper-facebook")
