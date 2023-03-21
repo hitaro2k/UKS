@@ -854,7 +854,7 @@ li{
     display: flex;
     flex-direction: column;
     padding-left: 45px;
-    padding-top: 30px;
+    padding-top: 50px;
     gap: 0px 40px;
 }
 
@@ -910,6 +910,7 @@ li{
     color: #d8d8d8cb;
     font-size: 16px;
     padding-top: 30px;
+    width: 250px;
 }
 .footer__header-block{
     display: flex;
@@ -1194,4 +1195,9 @@ li{
     .search-stroke__input {
         width: 140px;
     }
+}
+.just-validate-error-label{
+    position: absolute;
+    font-family: "Montserrat";
+    margin-top: 80px;
 }
