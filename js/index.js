@@ -1,9 +1,10 @@
+"use strict"
 window.JustValidate
-import chooseProduct from "./modules/choose.js"
-import animation from "./modules/animation.js"
+import chooseProduct from "../modules/choose.js"
+import animation from "../modules/animation.js"
+import {views} from "../modules/views.js"
 
-
-document.addEventListener("DOMContentLoaded" , function animation(){
+document.addEventListener("DOMContentLoaded" , function (){
     const validator = new JustValidate('.form-footer',  undefined, [
         {
           key: 'Email is required',
@@ -34,19 +35,19 @@ document.addEventListener("DOMContentLoaded" , function animation(){
     
     validator.setCurrentLocale('English');
 
-	let btnSubmit = document.querySelector(".form-footer__submit")
-	btnSubmit.onmouseenter = () =>{
-		btnSubmit.style.color = "white"
-		btnSubmit.style.background = "black"
-		btnSubmit.style.border = "1px solid #ffffff69"
-		btnSubmit.style.transition = "1s"
-	}
-	btnSubmit.onmouseleave = () =>{
-		btnSubmit.style.color = "black"
-		btnSubmit.style.background = "white"
-		btnSubmit.style.border = "none"
-		btnSubmit.style.transition = "1s"
-	}
-
+    let btnSubmit = document.querySelector(".form-footer__submit")
+    btnSubmit.onmouseenter = () =>{
+      btnSubmit.style.color = "white"
+      btnSubmit.style.background = "black"
+      btnSubmit.style.border = "1px solid #ffffff69"
+      btnSubmit.style.transition = "1s"
+    }
+    btnSubmit.onmouseleave = () =>{
+      btnSubmit.style.color = "black"
+      btnSubmit.style.background = "white"
+      btnSubmit.style.border = "none"
+      btnSubmit.style.transition = "1s"
+    }
+    
 })
 
