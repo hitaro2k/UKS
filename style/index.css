@@ -1156,6 +1156,9 @@ li{
     .search-stroke__input{
         font-size: 13px;
     }
+    .search-stroke__input {
+        width: 230px;
+    }
 }
 @media(max-width:426px){
     .user-ui{
@@ -1177,6 +1180,9 @@ li{
     .search-stroke {
         width: 260px;
     }
+    .search-stroke__input {
+        width: 185px;
+    }
 }
 @media(max-width:320px){
     .search-stroke {
@@ -1184,5 +1190,8 @@ li{
     }
     .user-ui{
         margin-left: 50px;
+    }
+    .search-stroke__input {
+        width: 140px;
     }
 }
