@@ -87,10 +87,25 @@ document.addEventListener("DOMContentLoaded" , function(){
 
 	// !header animation
 	const btnSearch = document.querySelector(".button-search")
+	const closeSearch = document.querySelector(".close-search")
+	const searchStroke = document.querySelector(".search-stroke")
+	const searchStrokeInput = document.querySelector(".search-stroke__input")
+	
 	btnSearch.onclick = ()=>{
+		searchStroke.classList.add("isactive")
 		
 	}
-
+	searchStroke.ondblclick = () =>{
+		searchStroke.classList.remove("isactive")
+	}
+		
+	searchStrokeInput.addEventListener('input', () => {
+		if (searchStrokeInput.value !== '') {
+			closeSearch.style.display = 'none';
+		} else {
+			closeSearch.style.display = 'block'; 
+		}
+	  });
 	// ! footer animation
 	
 	let wrapperIconTg = document.querySelector("#telegram")
