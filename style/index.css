@@ -375,7 +375,7 @@ li{
     margin: 0 auto;
     cursor: pointer;
     font-size: 14px;
-    margin-top: 90px;
+    margin-top: 45px;
     margin-bottom: 40px;
     animation: opacity;
     animation-iteration-count: infinite;
@@ -1170,7 +1170,7 @@ li{
     font-weight: 400;
     font-family: "Montserrat";
     font-size: 15px;
-    height: 0px;
+    height: 10px;
 }
 .product-articul{
     padding-left: 20px;
@@ -1198,5 +1198,15 @@ li{
     padding-left: 20px;
 }
 
+/* Choose  */
+.ischoose{
+    color:  rgb(255, 219, 13);
+}
  
-
+.select-model{
+    display: none;
+    height: 70px;
+    width: 145px;
+    margin: 0 auto;
+    border-radius: 5px;
+}

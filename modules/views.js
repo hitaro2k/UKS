@@ -16,7 +16,7 @@ export function views (){
     <div class="product">
       <img class="product-image" src="${product.image}" alt="${product.name}">
           <div class = "product-description">
-            <h3 class="product-title">${product.name}</h3>
+            <a href = "/product.html" class="product-title">${product.name}</a>
             <p class="product-articul">${product.articul}</p>
           </div>
           <div class ="product-info">
@@ -57,4 +57,5 @@ export function views (){
 
   return views
 }
+
 views()

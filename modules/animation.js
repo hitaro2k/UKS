@@ -1,3 +1,4 @@
+"use strict"
 let menuBtn ;
 let menu;
 const animation = () =>{
@@ -5,36 +6,9 @@ const animation = () =>{
     mediaAnim()
     burgerMenu()
     smoothScroll()
-    countScroll()
 }
 
-export function countScroll (){
-    let calcScrollValue = () =>{
-		let scrollProgress = document.getElementById("progress");
-		let progressValue = document.getElementById("progress-value");
-		let pos = document.documentElement.scrollTop;
-		let calcHeight=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-		let scrollValue = Math.round((pos * 100)/ calcHeight)
-		;
-		if (pos>100){
-			scrollProgress.style.display = "grid";
-		} else{
-			scrollProgress.style.display = "none"; 
-	
-		}
-		scrollProgress.addEventListener("click", () =>{
-			document.documentElement.scrollTop = 0;
-		});
-		scrollProgress.style.background=`conic-gradient(#ffa600 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`
-	}; 
-	
-	window.onscroll = calcScrollValue;
-	window.onload = calcScrollValue;
-    return countScroll
-
-}
-
-function smoothScroll (){
+export function smoothScroll (){
     const links = document.querySelectorAll("a[href*='#']")
 	for(let link of links){
 		link.addEventListener("click" , function(event){
