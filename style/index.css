@@ -1275,3 +1275,6 @@ li{
         width: 100%;
     }
 }
+.logo-link{
+    z-index: 23;
+}
