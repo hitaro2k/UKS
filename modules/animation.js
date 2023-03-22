@@ -1,6 +1,7 @@
 "use strict"
 let menuBtn ;
 let menu;
+let cartMenu;
 const animation = () =>{
     userSearch()
     mediaAnim()
@@ -32,10 +33,16 @@ export function smoothScroll (){
 export function burgerMenu (){
     menuBtn = document.querySelector('.menu-btn');
 	menu = document.querySelector(".menu--burger-list");
+    cartMenu = document.querySelector(".cart-menu");
+    let documentHTML = document.querySelector("html")
+
+
 	menuBtn.addEventListener('click', function(){
 		menuBtn.classList.toggle('active');
 		menu.classList.toggle('active');
 		menu.style.display = "flex"
+        cartMenu.classList.remove("cart-active")
+        documentHTML.style.position = "static"
 		if(menuBtn.classList.contains("active")){
 			menuBtn.classList.add("fixed")
 			menuBtn.classList.add("left")
