@@ -8,14 +8,15 @@ export function cartVisible(){
 
     cartIcon.onclick = () =>{
         cartMenu.classList.add("cart-active")
-        if(window.innerWidth < 560){
-            documentHTML.style.position = "fixed"
-        }else if(window.innerWidth > 560){
-            documentHTMLdocument.style.position = "relative"
-        }
+       if(window.innerWidth < 560){
+        documentHTML.style.position = "fixed"
+       }else if(window.innerWidth < 560){
+        documentHTML.style.position = "relative"
+       }
     }
     cartClose.onclick = () =>{
         cartMenu.classList.remove("cart-active")
+        documentHTML.style.position = "relative"
     }
     
    
