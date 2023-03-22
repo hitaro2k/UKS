@@ -4,8 +4,8 @@ export const productsPopular = [
 
     image: 'img/15841e3988289d2690dd9e88799e1903-removebg-preview.png',
 
-    articul:"A78D12RR" , buy: "Купить", status:"В наличии" , 
+    articul:"A78D12RR" , buy: "Придбати", status:"В наявності" , 
 
-    firstCh: "Вид" , firstChMean:"Дисковые"},
+    firstCh: "Вид" , firstChMean:"Дискові"},
     
 ];

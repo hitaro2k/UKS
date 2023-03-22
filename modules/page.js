@@ -19,7 +19,7 @@ export function views (){
         </div>
       </div>
         <div class="product__bottom-content">
-            <h2 class="product__bottom-content__title">Characteristic</h2>
+            <h2 class="product__bottom-content__title">Характеристики</h2>
             <table class="characteristic-table">
 
                 <tr class = "table-block">

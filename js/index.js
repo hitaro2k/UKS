@@ -4,9 +4,9 @@ import chooseProduct from "../modules/choose.js"
 import animation from "../modules/animation.js"
 import {views} from "../modules/views.js"
 import {countScroll} from "../modules/smooth.js"
-
+import {cartVisible} from "../modules/cart.js"
 document.addEventListener("DOMContentLoaded" , function (){
-  
+
   function validate(){
     const validator = new JustValidate('.form-footer',  undefined, [
       {

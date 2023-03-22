@@ -178,6 +178,7 @@ li{
 .user-ui{
     display: flex;
     gap: 30px;
+    z-index: 2;
 }
 .button-search{
     background-color: transparent;
@@ -298,6 +299,7 @@ li{
 }
 .shopping-card__link{
     cursor: pointer;
+    background-color: transparent;
 }
 .scroll-down__title{
     margin: 0 auto;
@@ -1209,4 +1211,67 @@ li{
     width: 145px;
     margin: 0 auto;
     border-radius: 5px;
+}
+.isclear{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cart-menu{
+    background-color: #1f1f1f;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    transform: translateX(-150%);
+    transition: transform 0.5s; 
+    z-index: 20;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cart-active{
+    transform: translateX(101%);
+}
+.close-item{
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    padding-top: 50px;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    border-radius: 150px;
+    border:1px solid #ffffff96
+}
+.items{
+    margin-top: 100px;
+}
+.items-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.items-title{
+    font-family: "Montserrat";
+}
+.items-subtitle{
+    font-size: 13px;
+    color: #969696;
+}
+@media(max-width:560px){
+    .cart-active {
+        transform: translateX(0%);
+    }
+    .cart-menu{
+        width: 100%;
+    }
 }
