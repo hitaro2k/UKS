@@ -107,4 +107,7 @@
     .product-name{
         font-size: 25px;
     }
+    .product__bottom-content {
+        padding-left: 10px;
+    }
 }
