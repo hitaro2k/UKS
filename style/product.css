@@ -21,10 +21,14 @@
     padding-left: 0px;
 }
 .product-image{
-    width: 275px;
+    width: 285px;
 }
 .product__top-content__info{
     padding-left: 135px;
+}
+.product-status{
+    padding-left: 0px;
+    font-size: 13px;
 }
 .product-buy__btn{
     display: flex;

@@ -11,6 +11,7 @@ export function views (){
         <div class="product__top-content__info">
             <h3 class="product-name">${product.name}</h3>
             <p class="product-articul">${product.articul}</p>
+            <p class="product-status">${product.status}</p>
             <div class="product-buy__btn">
                 <p class="price">${product.price}грн</p>
                 <button class="buy-button">${product.buy}</button>
