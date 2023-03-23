@@ -1,6 +1,6 @@
 "use strict"
 import  { burgerMenu, mediaAnim , userSearch } from "./animation.js"
-import {productsPopular} from "../modules/catalog.js"
+import {productsPopular} from "./pageCatalog.js"
 export function views (){
     let href =1;
 
@@ -14,7 +14,7 @@ export function views (){
             <p class="product-status">${product.status}</p>
             <div class="product-buy__btn">
                 <p class="price">${product.price}грн</p>
-                <button class="buy-button">${product.buy}</button>
+                <button class="buy-button" >${product.buy}</button>
             </div>
         </div>
       </div>

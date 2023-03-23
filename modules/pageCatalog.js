@@ -6,6 +6,6 @@ export const productsPopular = [
 
     articul:"A78D12RR" , buy: "Придбати", status:"В наявності" , 
 
-    firstCh: "Вид" , firstChMean:"Дискові"},
+    firstCh: "Вид" , firstChMean:"Дискові" , id:"fa2fs"},
     
 ];

@@ -19,15 +19,15 @@
 
             <nav class="menu">
                 <ul class="menu__list">
+                    <li class="menu__list-item" id="catalog"><a href="#" class="menu__list-link" >Каталог</a></li>
                     <li class="menu__list-item"><a href="#" class="menu__list-link">Кліентам</a></li>
-                    <li class="menu__list-item"><a href="#" class="menu__list-link">Каталог</a></li>
                     <li class="menu__list-item"><a href="#" class="menu__list-link">Про нас</a></li>
                     <li class="menu__list-item"><a href="#popular" class="menu__list-link">Популярне</a></li>
                     <li class="menu__list-item"><a href="#actual" class="menu__list-link">Актуальне</a></li>
                 </ul>
             </nav>
             <div class="search-stroke">
-                <input type="text" class="search-stroke__input" placeholder="Введите VIN-KOD">
+                <input type="text" class="search-stroke__input" placeholder="Введите товар" id="search-input">
                 <p class="close-search">Нажмите на поле 2 раза чтобы закрыть</p>
             </div>
             <div class="user-ui">
@@ -42,6 +42,51 @@
                 <span></span>
             </div>
         </header>
+
+        <div class="catalog-menu">
+            <div class="close-btn__wrapper">
+                <img src="/img/close-catalog.svg" alt="" class="catalog__close-btn">
+            </div>
+            <div class="catalog__wrapper">
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Lorem</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Lorem</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Lorem</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Lorem</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Lorem</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Lorem</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Lorem</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Lorem</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Lorem</a>
+                </div>
+            </div>
+        </div>
+
         <div class="cart-menu">
             <button class="close-item" id="close-cart">Закрити</button>
             <div class="items">
@@ -54,15 +99,19 @@
                         <p class="items-subtitle">Ви ще не додали жодного товару</p>
                     </div>
                 </div>
-                <!-- <div class="isntclear"></div> -->
+                <div class="isntclear">
+                    <div class="cart-item">
+                        
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="menu-burger__wrapper">
             <nav>
             <ul class="menu--burger-list">
-              <li class="menu--burger-item">
-                <a class="menu--burger-item" href="#">Каталог</a>
+              <li class="menu--burger-item" id="catalog">
+                <a class="menu--burger-item" href="#" >Каталог</a>
             </li>
             <li class="menu--burger-item">
                 <a class="menu--burger-item" href="#">Кліентам</a>
@@ -188,7 +237,7 @@
         
             <!-- !  content-->
         <div class="content">
-            <section class="popular__container" id="popular">
+            <section class="popular__container" id="popular" >
                 <h2 class="popular__header">Популярні товари</h2>
 
                 <div class="products__container"></div>

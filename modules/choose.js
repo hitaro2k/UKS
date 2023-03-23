@@ -14,6 +14,7 @@ const chooseProduct = () =>{
 
   
     function arrCompany (){
+        
         for(let i = 0; i< companyChoose.length; i++){
             companyChoose[i].onclick = () =>{
                 companyChooseName [i].classList.toggle("ischoose")
@@ -26,13 +27,14 @@ const chooseProduct = () =>{
                 
             }
         }
-        
-        for(let i = 0; i< yearChoose.length; i++){
-            yearChoose[i].onclick = () =>{
-                yearChoose[i].classList.toggle("ischoose")
-                yearChoose[i].style.transition = "1s"
+        yearChoose.forEach((item) =>{
+            item.onclick = () =>{
+                item.classList.toggle("ischoose")
+                item.style.transition = "1s"
             }
-        }
+        })
+
+      
 
         return arrCompany
     }
@@ -48,18 +50,18 @@ const chooseProduct = () =>{
             chooseRight.classList.add("active")
             
         }
-    
-        for(let i = 0 ; i < closeLeftSide.length; i++ ){
-            closeLeftSide[i].onclick = () =>{
+        
+        closeLeftSide.forEach((item)=>{
+            item.onclick = () =>{
                 chooseLeft.classList.remove("active")
                 chooseBody.style.borderRadius = "5px"
-            } 
-        }
-        for(let i = 0 ; i <closeRightSide.length; i++){
-            closeRightSide[i].onclick = () =>{
+            }
+        })
+        closeRightSide.forEach((item) =>{
+            item.onclick =() =>{
                 chooseRight.classList.remove("active")
             }
-        }
+        })
 
         return openChoose
     }

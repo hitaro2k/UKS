@@ -5,7 +5,9 @@ export function views (){
     // ? PRODUCT
 
     const productsPopular = [
-        { name: 'Chevrolet brakes', price: 1000, image: 'img/15841e3988289d2690dd9e88799e1903-removebg-preview.png',articul:"A78D12RR" , buy: "В кошик", status:"В наявності"  },
+        { name: 'Chevrolet brakes', price: 1000, image: 'img/15841e3988289d2690dd9e88799e1903-removebg-preview.png',
+        articul:"A78D12RR" , buy: "В кошик", 
+        status:"В наявності", id: "fa2fa"  },
     ];
 
    // ? PRODUCT
@@ -24,7 +26,7 @@ export function views (){
               <p class="product-price">${product.price} грн</p>
               <p class="product-status">${product.status}</p>
             </div>
-          <button class="product-button"> ${product.buy}</button>
+          <button class="product-button" data-id="${product.id}" > ${product.buy}</button>
           
         </div>
     </div>
@@ -42,7 +44,9 @@ export function views (){
   // ? PRODUCT
 
   const productsActual = [
-    { name: 'Chevrolet brakes', price: 1000, image: 'img/15841e3988289d2690dd9e88799e1903-removebg-preview.png',articul:"A78D12RR" , buy: "В кошик", status:"В наявності"  },
+    { name: 'Chevrolet brakes', price: 1000, image: 'img/15841e3988289d2690dd9e88799e1903-removebg-preview.png',
+    articul:"A78D12RR" , buy: "В кошик",
+    status:"В наявності", id: "fa3fS"  },
   ];
 
   // ? PRODUCT

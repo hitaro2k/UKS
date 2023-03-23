@@ -5,6 +5,10 @@ import animation from "../modules/animation.js"
 import {views} from "../modules/views.js"
 import {countScroll} from "../modules/smooth.js"
 import {cartVisible} from "../modules/cart.js"
+import {cartUsible} from "../modules/cart.js"
+import {searchStroke} from "../modules/search.js"
+
+
 document.addEventListener("DOMContentLoaded" , function (){
 
   function validate(){

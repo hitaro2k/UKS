@@ -2,40 +2,21 @@
 let menuBtn ;
 let menu;
 let cartMenu;
+let menuItem;
 const animation = () =>{
     userSearch()
     mediaAnim()
     burgerMenu()
-    smoothScroll()
+    showCatalog()
 }
 
-export function smoothScroll (){
-    const links = document.querySelectorAll("a[href*='#']")
-	for(let link of links){
-		link.addEventListener("click" , function(event){
-			if(menu.style.display = "none"){
-				menuBtn.classList.remove("fixed")
-				menuBtn.classList.remove("left")
-			}
-			menu.style.display = "none"
-			event.preventDefault();
-			const blockID = link.getAttribute("href")
-			document.querySelector("" + blockID ).scrollIntoView({
-				behavior:"smooth",
-				block:"start"
-			})
-		})
-		
-	}
-    return smoothScroll
-}
+
 
 export function burgerMenu (){
     menuBtn = document.querySelector('.menu-btn');
 	menu = document.querySelector(".menu--burger-list");
     cartMenu = document.querySelector(".cart-menu");
     let documentHTML = document.querySelector("html")
-
 
 	menuBtn.addEventListener('click', function(){
 		menuBtn.classList.toggle('active');
@@ -123,7 +104,26 @@ export function userSearch () {
     });
     return userSearch 
 }
-
+export function showCatalog(){
+    menuItem = document.querySelectorAll("#catalog")
+    let catalog = document.querySelector(".catalog-menu")
+    let closeCatalog = document.querySelector(".catalog__close-btn")
+    menuItem.forEach((item)=>{
+        item.onclick = () =>{
+            catalog.classList.add("catalog-menu__active")
+            if(catalog.classList.contains("catalog-menu__active")){
+                menu.classList.remove('active');
+                menuBtn.classList.remove('active');
+                menuBtn.classList.remove("fixed")
+			    menuBtn.classList.remove("left")
+            }
+        }
+    })
+    closeCatalog.onclick = () =>{
+        catalog.classList.remove("catalog-menu__active")
+    }
+    return showCatalog
+}
 animation()
 
 export default animation
