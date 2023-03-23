@@ -67,7 +67,8 @@ export function cartUsible(){
                 </div>
             </div>`
 
-
+           
+        
 
         const cartContainer = document.querySelector('.cart-item'); 
         cartItem.forEach((product) => {

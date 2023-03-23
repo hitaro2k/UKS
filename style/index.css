@@ -1217,8 +1217,7 @@ li{
     cursor: pointer;
 }
 .isclear{
-    /* display: flex; */
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -1314,6 +1313,7 @@ li{
 
 .isntclear{
     width: 100%;
+    display: none;
 }
 .cart-item{
     width: 100%;
