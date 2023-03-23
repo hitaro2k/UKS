@@ -1399,7 +1399,7 @@ li{
 }
 .catalog__close-btn{
     width: 20px;
-    padding-top: 30px;
+    
     cursor: pointer;
     padding-right: 20px;
 }
@@ -1407,18 +1407,32 @@ li{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    padding-top: 15px;
 }
-
+.catalog-title{
+    padding-right: 20px;
+}
+@media(max-width:980px){
+    .catalog-menu{
+        z-index: 25;
+    }
+}
 @media(max-width:550px){
-    
     .catalog-menu{
         width: 35%;
         z-index: 25;
     }
 }
-
 @media(max-width:376px){
     .catalog__item{
         margin-left: 10px;
+    }
+}
+@media(max-width:320px){
+    .catalog-title{
+        padding-right: 10px;
+    }
+    .catalog__close-btn{
+        padding-right: 10px;
     }
 }
