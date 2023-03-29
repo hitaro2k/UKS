@@ -7,7 +7,6 @@ let cartItems = [];
 const cartWrapper = document.querySelector(".isntclear")
 
 export function views (){
-  
     document.addEventListener("DOMContentLoaded",function(){
       function findCartItem(id) {
         return cartItems.find((item) => item.id === id);
@@ -20,7 +19,8 @@ export function views (){
         let errorCount = document.querySelector(".popup__cart-count")
         let isclear = document.querySelector(".isclear")
         let isntclear = document.querySelector(".isntclear")
-       
+        let totalPrice = document.querySelector(".total-price")
+
           if (event.target.hasAttribute("data")) {
             const card = event.target.closest(".product");
             const productId = card.dataset.id;
@@ -28,6 +28,9 @@ export function views (){
             cartMenu.classList.add("cart-active")
             isclear.style.display = 'none'
             isntclear.style.display = 'flex'
+            totalPrice.style.display = "flex"
+
+
 
             //? Если товар уже есть в корзине то увеличиваем его количество
             if (existingItem) {
