@@ -65,32 +65,7 @@ export function views (){
           
             //? >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-            btnPlus.forEach((item) =>{
-              item.onclick = () =>{
-                count.forEach((items)=>{
-                  items.innerHTML++
-                  if (items.textContent == 1){
-                    errorCount.classList.remove("popup-active")
-                  }else if (items.textContent > 0){
-                    errorCount.classList.remove("error-anim")
-                  }else{
-                    errorCount.classList.remove("error-anim")
-                  }
-                })
-              }
-            })
-            btnMinus.forEach((item) =>{
-              item.onclick = () =>{
-                count.forEach((items) =>{
-                  items.innerHTML--
-                  if(items.textContent == 0){
-                    errorCount.classList.add("popup-active")
-                  }else if (items.textContent < 0){
-                    errorCount.classList.add("error-anim")
-                  }
-                })
-              }
-            })
+            
         }
        })
       
