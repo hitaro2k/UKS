@@ -1,63 +1,101 @@
 "use strict"
+import {cartVisible} from "../modules/cart.js"
+let cartMenu = document.querySelector(".cart-menu");
+let menuBtn;
+let menu;
+let cartItems = [];
+const cartWrapper = document.querySelector(".isntclear")
+
 export function views (){
+  
+    document.addEventListener("DOMContentLoaded",function(){
+      function findCartItem(id) {
+        return cartItems.find((item) => item.id === id);
+      }
+      window.addEventListener("click" , function(event){
+        
+        let btnPlus  = document.querySelectorAll(".button-primary__plus")
+        let btnMinus = document.querySelectorAll(".button-primary__minus")
+        let count = document.querySelectorAll(".item-count")
+        let errorCount = document.querySelector(".popup__cart-count")
+        let isclear = document.querySelector(".isclear")
+        let isntclear = document.querySelector(".isntclear")
+       
+          if (event.target.hasAttribute("data")) {
+            const card = event.target.closest(".product");
+            const productId = card.dataset.id;
+            const existingItem = findCartItem(productId);
+            cartMenu.classList.add("cart-active")
+            isclear.style.display = 'none'
+            isntclear.style.display = 'flex'
 
-    // ! POPULAR PRODUCTS
-    // ? PRODUCT
-
-    const productsPopular = [
-        { name: 'Chevrolet brakes', price: 1000, image: 'img/15841e3988289d2690dd9e88799e1903-removebg-preview.png',
-        articul:"A78D12RR" , buy: "В кошик", 
-        status:"В наявності", id: "fa2fa"  },
-    ];
-
-   // ? PRODUCT
-
-
-
-    const productTemplate = (product) => `
-    <div class="product">
-      <img class="product-image" src="${product.image}" alt="${product.name}">
-          <div class = "product-description">
-            <a href = "/product.html" class="product-title">${product.name}</a>
-            <p class="product-articul">${product.articul}</p>
-          </div>
-          <div class ="product-info">
-            <div class ="product-info__price"> 
-              <p class="product-price">${product.price} грн</p>
-              <p class="product-status">${product.status}</p>
-            </div>
-          <button class="product-button" data-id="${product.id}" > ${product.buy}</button>
+            //? Если товар уже есть в корзине то увеличиваем его количество
+            if (existingItem) {
+              const countElem = document.querySelector(
+                `.item-count[data-counter="${productId}"]`
+              );
+              countElem.textContent = Number(countElem.textContent) + 1;
+              return;
+            }
+        
+            //? Если товара еще нет в корзине то добавляем его
+            const productInfo = {
+              id: productId,
+              imgSrc: card.querySelector(".product-image").getAttribute("src"),
+              title: card.querySelector(".product-title").innerText,
+              status: card.querySelector(".product-status").innerText,
+              price: card.querySelector(".product-price").innerText,
+              count: "1",
+            };
+        
+            const itemInCart = `
+              <div class="item">
+                  <img src="${productInfo.imgSrc}" alt="" class="item-image">
+                  <p class="item-name">${productInfo.title}</p>
+                  <p class="item-price">${productInfo.price}</p>
+                  <div class="item__button__add-delete">
+                      <button class="button-primary__plus" data-id="">+</button>
+                      <p class="item-count" data-counter="${productInfo.id}">${productInfo.count}</p>
+                      <button class="button-primary__minus" data-id="" id="minus">-</button>
+                  </div>
+              </div>`;
+            cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
+            cartItems.push(productInfo);
           
-        </div>
-    </div>
-  `;
-  
-  const productsContainer = document.querySelector('.products__container');
-  
-  productsPopular.forEach((product) => {
-    const productHTML = productTemplate(product);
-    productsContainer.insertAdjacentHTML('beforeend', productHTML);
-  });
+          
+            //? >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  // ! ACTUAL PRODUCTS
+            btnPlus.forEach((item) =>{
+              item.onclick = () =>{
+                count.forEach((items)=>{
+                  items.innerHTML++
+                  if (items.textContent == 1){
+                    errorCount.classList.remove("popup-active")
+                  }else if (items.textContent > 0){
+                    errorCount.classList.remove("error-anim")
+                  }else{
+                    errorCount.classList.remove("error-anim")
+                  }
+                })
+              }
+            })
+            btnMinus.forEach((item) =>{
+              item.onclick = () =>{
+                count.forEach((items) =>{
+                  items.innerHTML--
+                  if(items.textContent == 0){
+                    errorCount.classList.add("popup-active")
+                  }else if (items.textContent < 0){
+                    errorCount.classList.add("error-anim")
+                  }
+                })
+              }
+            })
+        }
+       })
+      
 
-  // ? PRODUCT
-
-  const productsActual = [
-    { name: 'Chevrolet brakes', price: 1000, image: 'img/15841e3988289d2690dd9e88799e1903-removebg-preview.png',
-    articul:"A78D12RR" , buy: "В кошик",
-    status:"В наявності", id: "fa3fS"  },
-  ];
-
-  // ? PRODUCT
-
-
-
-  const productsContainerActual = document.querySelector('.products__container__actual');
-  productsActual.forEach((product) => {
-    const productHTML = productTemplate(product);
-    productsContainerActual.insertAdjacentHTML('beforeend', productHTML);
-  });
+    })
 
   return views
 }

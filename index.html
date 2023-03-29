@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uk service</title>
-
+    
+    <link rel="stylesheet" href="/style/normalize.css">
     <link rel="stylesheet" href="/style/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
@@ -31,8 +32,8 @@
                 <p class="close-search">Нажмите на поле 2 раза чтобы закрыть</p>
             </div>
             <div class="user-ui">
-                <button class="button-search"><img src="img/search-svg.svg" alt=""></button>
-                <img class="shopping-card__link" src="/img/shopping-cart-svg.svg" alt="">   
+                <button class="button-search"><img src="img/search-svg.svg" alt="img"></button>
+                <img class="shopping-card__link" src="/img/shopping-cart-svg.svg" alt="img">   
             </div>
 
 
@@ -41,6 +42,11 @@
                 <span></span>
             </div>
         </header>
+
+        <div class="popup__cart-count">
+            <p class="popup__cart-text">Виберіть хочаб 1 товар</p>
+            <div class="popup__cart__bottom-line"></div>
+        </div>
 
         <div class="catalog-menu">
             <div class="close-btn__wrapper">
@@ -104,6 +110,11 @@
                         
                     </div>
                 </div>
+            </div>
+           
+            <div class="total-price">
+                <p class="total-price__text">0 грн</p>
+                <button class="total-price__button-buy">Оформить заказ</button>
             </div>
         </div>
 
@@ -240,7 +251,7 @@
             <section class="popular__container" id="popular" >
                 <h2 class="popular__header">Популярні товари</h2>
 
-                <div class="products__container"></div>
+                <div class="products__container" id="popular__container"></div>
 
                 <a href="#" class="popular__more">Дивитись все</a>
 
@@ -249,7 +260,7 @@
             <section class="actual__container" id="actual">
                 <h2 class="actual__header">Актуальні товари</h2>
 
-                <div class="products__container__actual"></div>
+                <div class="products__container__actual" id="actual__container"></div>
 
                 <a href="#" class="actual__more">Дивитись все</a>
             </section>

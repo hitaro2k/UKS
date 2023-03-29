@@ -1,13 +1,11 @@
 "use strict"
-window.JustValidate
 import chooseProduct from "../modules/choose.js"
 import animation from "../modules/animation.js"
 import {views} from "../modules/views.js"
 import {countScroll} from "../modules/smooth.js"
-import {cartVisible} from "../modules/cart.js"
-import {cartUsible} from "../modules/cart.js"
 import {searchStroke} from "../modules/search.js"
-
+import {getProductsPopular,getProductsActual} from "../modules/renderCatalog.js"
+window.JustValidate
 
 document.addEventListener("DOMContentLoaded" , function (){
 
