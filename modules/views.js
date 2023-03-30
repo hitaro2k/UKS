@@ -8,6 +8,7 @@ const cartWrapper = document.querySelector(".isntclear")
 
 export function views (){
     document.addEventListener("DOMContentLoaded",function(){
+
       $(window).on('load', function() {
         var images = [];
         $('img').each(function() {
@@ -26,6 +27,7 @@ export function views (){
           };
         }
       })
+      
       function findCartItem(id) {
         return cartItems.find((item) => item.id === id);
       }
