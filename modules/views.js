@@ -8,6 +8,24 @@ const cartWrapper = document.querySelector(".isntclear")
 
 export function views (){
     document.addEventListener("DOMContentLoaded",function(){
+      $(window).on('load', function() {
+        var images = [];
+        $('img').each(function() {
+          images.push($(this).attr('src'));
+        });
+      
+        var imagesLoaded = 0;
+        for (var i = 0; i < images.length; i++) {
+          var img = new Image();
+          img.src = images[i];
+          img.onload = function() {
+            imagesLoaded++;
+            if (imagesLoaded == images.length) {
+              $('#preloader').fadeOut();
+            }
+          };
+        }
+      })
       function findCartItem(id) {
         return cartItems.find((item) => item.id === id);
       }
@@ -67,7 +85,6 @@ export function views (){
           
           
             //? >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
             
         }
        })

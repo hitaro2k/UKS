@@ -43,7 +43,7 @@ li{
 }
 
 [class *= "__container"]{
-    width: 1200px;
+    width: 1140px;
     padding: 0px 30px;
 }
 @media(max-width:1240px){
@@ -178,7 +178,7 @@ li{
 .user-ui{
     display: flex;
     gap: 30px;
-    z-index: 2;
+    z-index: 27;
 }
 .button-search{
     background-color: transparent;
@@ -733,7 +733,7 @@ li{
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 2);
     cursor: pointer;
-    z-index: 1000;
+    z-index: 997;
 }
 #progress-value{
     display: block;
@@ -1048,16 +1048,16 @@ li{
     }
     .close-search{
         position: absolute;
-        margin-left: 170px;
+        margin-top: 72px;
     }
     
 }
 @media(max-width:560px){
     .user-ui{
-        margin-left: 230px;
+        margin-left: 75px;
     }
     .search-stroke {
-        width: 410px;
+        width: 325px;
     }
     .isactive {
         transform: translateX(5%);

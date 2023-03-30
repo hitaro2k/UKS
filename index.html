@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uk service</title>
     
+    <link rel="stylesheet" href="/style/preloader.css">
     <link rel="stylesheet" href="/style/normalize.css">
     <link rel="stylesheet" href="/style/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 <body>
 
+    <div id="preloader">
+        <div class="spinner"></div>
+      </div>
+   
     <main class="main">
         <header class="full-screen__header">
             <a class="logo-link" href="/index.html">
@@ -23,8 +28,8 @@
                     <li class="menu__list-item" id="catalog"><a href="#" class="menu__list-link" >Каталог</a></li>
                     <li class="menu__list-item"><a href="#" class="menu__list-link">Кліентам</a></li>
                     <li class="menu__list-item"><a href="#" class="menu__list-link">Про нас</a></li>
-                    <li class="menu__list-item"><a href="#popular" class="menu__list-link">Популярне</a></li>
-                    <li class="menu__list-item"><a href="#actual" class="menu__list-link">Актуальне</a></li>
+                    <li class="menu__list-item"><a href="#popular__container" class="menu__list-link">Популярне</a></li>
+                    <li class="menu__list-item"><a href="#actual__container" class="menu__list-link">Актуальне</a></li>
                 </ul>
             </nav>
             <div class="search-stroke">
@@ -131,10 +136,10 @@
                 <a class="menu--burger-item" href="#">Про нас</a>
             </li>
             <li class="menu--burger-item">
-                <a class="menu--burger-item" href="#popular">Популярне</a>
+                <a class="menu--burger-item" href="#popular__container">Популярне</a>
             </li>
             <li class="menu--burger-item">
-                <a class="menu--burger-item" href="#actual">Актуальне</a>
+                <a class="menu--burger-item" href="#actual__container">Актуальне</a>
             </li>
              
             </ul>
@@ -333,9 +338,11 @@
 
     </main>
 
+
+    <script src="/libs/jQuery.js"></script>
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
     <script type="module" src="/js/index.js"></script>
-    <!-- <script src="./dist/main.min.js"></script> -->
+   
 
 </body>
 </html>

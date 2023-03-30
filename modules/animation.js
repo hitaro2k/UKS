@@ -8,8 +8,9 @@ const animation = () =>{
     mediaAnim()
     burgerMenu()
     showCatalog()
-}
+    smoothScroll()
 
+}
 
 
 export function burgerMenu (){
@@ -34,6 +35,20 @@ export function burgerMenu (){
 	})
 
     return burgerMenu
+}
+export function smoothScroll(){
+    const links = document.querySelectorAll("a[href*='#']")
+    for(let link of links){
+      link.addEventListener("click" , function(event){
+        menu.style.display = "none";
+        event.preventDefault();
+        const blockID = link.getAttribute("href")
+        document.querySelector("" + blockID ).scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        })
+      })
+    }
 }
 
 export function mediaAnim () {
