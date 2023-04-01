@@ -1,20 +1,20 @@
 const popularContainer = document.querySelector("#popular__container");
 const actualContainer = document.querySelector("#actual__container");
 
-getProductsPopular ()
-getProductsActual ()
+getProductsPopular()
+getProductsActual()
 
-export async function getProductsPopular (){
-   const response = await fetch("modules/catalogPopular.json")
-   
-   const productArray = await response.json();
-   renderProductsPopular(productArray)
-}   
+export async function getProductsPopular() {
+  const response = await fetch("modules/catalogPopular.json")
+
+  const productArray = await response.json();
+  renderProductsPopular(productArray)
+}
 
 
-function renderProductsPopular(productArray){
-      productArray.forEach((item) =>{
-         const productHTML = `
+function renderProductsPopular(productArray) {
+  productArray.forEach((item) => {
+    const productHTML = `
          <div class="product" data-id ="${item.id}">
            <img class="product-image" src="${item.image}" alt="img">
                <div class = "product-description">
@@ -30,24 +30,24 @@ function renderProductsPopular(productArray){
                
              </div>
          </div>`
-         popularContainer.insertAdjacentHTML("beforeend" , productHTML)
-       
-   
-      })
+    popularContainer.insertAdjacentHTML("beforeend", productHTML)
+
+
+  })
 }
 
 
-export async function getProductsActual (){
+export async function getProductsActual() {
   const response = await fetch("modules/catalogActual.json")
-  
+
   const productArray = await response.json();
   renderProductsActual(productArray)
-}   
+}
 
 
-function renderProductsActual(productArray){
-     productArray.forEach((item) =>{
-        const productHTML = `
+function renderProductsActual(productArray) {
+  productArray.forEach((item) => {
+    const productHTML = `
         <div class="product" data-id ="${item.id}">
           <img class="product-image" src="${item.image}" alt="img">
               <div class = "product-description">
@@ -63,8 +63,8 @@ function renderProductsActual(productArray){
               
             </div>
         </div>`
-        actualContainer.insertAdjacentHTML("beforeend" , productHTML)
-      
-  
-     })
+    actualContainer.insertAdjacentHTML("beforeend", productHTML)
+
+
+  })
 }

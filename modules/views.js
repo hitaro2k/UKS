@@ -10,6 +10,8 @@ const cartWrapper = document.querySelector(".isntclear")
 
 export function views() {
   document.addEventListener("DOMContentLoaded", function () {
+    // Проверка на тему браузеру
+    //? const currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
     $(window).on('load', function () {
       var images = [];
@@ -109,7 +111,7 @@ export function views() {
       }
     })
 
-    
+
 
   })
 

@@ -1,10 +1,10 @@
 "use strict"
-import  { burgerMenu, mediaAnim , userSearch } from "./animation.js"
+import {burgerMenu,mediaAnim,userSearch} from "./animation.js"
 import {productsPopular} from "./pageCatalog.js"
-export function views (){
-    let href =1;
+export function views() {
+  let href = 1;
 
-    const productTemplate = (product) => `
+  const productTemplate = (product) => `
     <div class="product__content">
       <div class="product__top-content">
         <img class="product-image" src="${product.image}" alt="${product.name}">  
@@ -33,15 +33,14 @@ export function views (){
       </div>
     </div>
   `;
-  
+
   const productsContainer = document.querySelector('.products__container');
-  
+
   productsPopular.forEach((product) => {
     const productHTML = productTemplate(product);
     productsContainer.insertAdjacentHTML('beforeend', productHTML);
   });
-  
+
   return views
 }
 views()
-
