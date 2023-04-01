@@ -56,7 +56,14 @@ function smoothScroll() {
     var _loop = function _loop() {
       var link = _step.value;
       link.addEventListener("click", function (event) {
-        menu.style.display = "none";
+        menu.classList.remove("active");
+        menuBtn.classList.remove("active");
+
+        if (!menu.classList.contains("active")) {
+          menuBtn.classList.remove("fixed");
+          menuBtn.classList.remove("left");
+        }
+
         event.preventDefault();
         var blockID = link.getAttribute("href");
         document.querySelector("" + blockID).scrollIntoView({

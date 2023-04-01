@@ -37,18 +37,24 @@ export function burgerMenu() {
     return burgerMenu
 }
 export function smoothScroll() {
-    const links = document.querySelectorAll("a[href*='#']")
-    for (let link of links) {
-        link.addEventListener("click", function (event) {
-            menu.style.display = "none";
-            event.preventDefault();
-            const blockID = link.getAttribute("href")
-            document.querySelector("" + blockID).scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            })
-        })
-    }
+	const links = document.querySelectorAll("a[href*='#']")
+	for(let link of links){
+		link.addEventListener("click" , function(event){
+            menu.classList.remove("active")
+            menuBtn.classList.remove("active")
+			if(!menu.classList.contains("active")){
+				menuBtn.classList.remove("fixed")
+				menuBtn.classList.remove("left")
+			} 
+			event.preventDefault();
+			const blockID = link.getAttribute("href")
+			document.querySelector("" + blockID ).scrollIntoView({
+				behavior:"smooth",
+				block:"start"
+			})
+		})
+
+	}
 }
 
 export function mediaAnim() {
