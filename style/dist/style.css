@@ -62,6 +62,11 @@ ul {
   list-style: none;
 }
 
+ol {
+  padding: 0px;
+  list-style: none;
+}
+
 a {
   text-decoration: none;
   font-family: "Montserrat";
@@ -613,14 +618,175 @@ li {
   flex-direction: column;
   align-items: center;
 }
-.main .full-screen__container__body {
-  height: 1000px;
+.main .full-screen .full-screen__container .full-screen__body {
+  width: 80%;
+  height: 100%;
   position: relative;
   z-index: 1;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.175) 0%, rgba(255, 255, 255, 0.175) 100%);
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body {
+    width: 100%;
+  }
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items {
+  width: 100%;
+  height: 100%;
+  display: flex;
   flex-direction: column;
   align-items: center;
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .items-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0px 20px;
   justify-content: center;
+}
+@media (max-width: 768px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .items-wrapper {
+    flex-direction: column;
+    transition: 0s;
+  }
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .items-wrapper .item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 215px;
+  height: 140px;
+  border: 2px solid #FFFFFF;
+  border-radius: 3px;
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .items-wrapper .item-wrapper:hover {
+  transform: scale(1.1);
+}
+@media (max-width: 768px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .items-wrapper .item-wrapper:hover {
+    transform: none;
+  }
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .items-wrapper .item-wrapper:not(:hover) {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1);
+}
+@media (max-width: 768px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .items-wrapper .item-wrapper:not(:hover) {
+    transform: none;
+  }
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .items-wrapper .item-wrapper .mark-item {
+  width: 80%;
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .mark-items__markbtn {
+  width: 200px;
+  height: 40px;
+  background-color: #d28711;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 50px;
+  cursor: pointer;
+  transition: background-color 0.5s, color 0.5s;
+  display: none;
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .mark-items__markbtn:hover {
+  background-color: white;
+  color: #d28711;
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  display: none;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+@media (max-width: 768px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items {
+    flex-direction: column;
+    gap: 30px 0px;
+  }
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .back {
+  background-color: transparent;
+  cursor: pointer;
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px 30px;
+  margin: 0 auto;
+}
+@media (max-width: 992px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-list {
+    gap: 4px 15px;
+  }
+}
+@media (max-width: 768px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-list {
+    justify-content: center;
+    gap: 30px 10px;
+  }
+}
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-list {
+    gap: 30px 5px;
+  }
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-list .year-list__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px 0px;
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-list .year-list__column .year-items {
+  cursor: pointer;
+  font-size: 16px;
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__markbtn {
+  width: 200px;
+  height: 40px;
+  background-color: #d28711;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 50px;
+  cursor: pointer;
+  transition: background-color 0.5s, color 0.5s;
+  display: none;
+  margin-right: 30px;
+}
+@media (max-width: 992px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__markbtn {
+    width: 150px;
+    margin-right: 15px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 480px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__markbtn {
+    margin-right: 0px;
+  }
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__markbtn:hover {
+  background-color: white;
+  color: #d28711;
 }
 .main .full-screen__video {
   position: fixed;
@@ -1064,4 +1230,12 @@ li {
   position: absolute;
   font-family: "Montserrat";
   margin-top: 80px;
+}
+
+.selected {
+  border: 2px solid orange !important;
+}
+
+.selected-year {
+  color: #ffa600;
 }

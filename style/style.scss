@@ -75,6 +75,11 @@ ul {
     list-style: none;
 }
 
+ol {
+    padding: 0px;
+    list-style: none;
+}
+
 a {
     text-decoration: none;
     font-family: "Montserrat";
@@ -410,44 +415,53 @@ li {
         flex-direction: column;
         z-index: 10;
         transform: translateX(-150%);
-        transition: transform 0.5s; 
+        transition: transform 0.5s;
         position: fixed;
         border-radius: 0px 0px 5px 0px;
-        @include breakpoint(lg){
+
+        @include breakpoint(lg) {
             z-index: 25;
         }
-        @include breakpoint(sm){
+
+        @include breakpoint(sm) {
             width: 35%;
             z-index: 25;
         }
 
-        .catalog__wrapper{
+        .catalog__wrapper {
             padding-top: 100px;
-            .catalog__item{
+
+            .catalog__item {
                 width: 80%;
                 margin-left: 20px;
                 border-bottom: 1px solid gray;
                 padding-top: 15px;
                 padding-bottom: 15px;
-                @include breakpoint (xs){
+
+                @include breakpoint (xs) {
                     margin-left: 10px;
                 }
-                .catalog__item-image{
+
+                .catalog__item-image {
                     width: 20px;
                 }
-                .catalog__item-link{
+
+                .catalog__item-link {
                     margin-left: 10px;
                 }
             }
         }
+
         .close-btn__wrapper {
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
             padding-top: 15px;
+
             .catalog-title {
                 padding-right: 20px;
-                @include breakpoint(xss){
+
+                @include breakpoint(xss) {
                     padding-right: 10px;
                 }
             }
@@ -456,18 +470,20 @@ li {
                 width: 20px;
                 cursor: pointer;
                 padding-right: 20px;
-                @include breakpoint(xss){
+
+                @include breakpoint(xss) {
                     padding-right: 10px;
                 }
             }
         }
-        
+
     }
-    
-    .catalog-menu__active{
+
+    .catalog-menu__active {
         transform: translateX(0%);
     }
-    .cart-menu{
+
+    .cart-menu {
         background-color: #1f1f1f;
         position: fixed;
         top: 0;
@@ -475,38 +491,45 @@ li {
         width: 50%;
         height: 100%;
         transform: translateX(-150%);
-        transition: transform 0.5s; 
+        transition: transform 0.5s;
         z-index: 30;
         margin: 0px;
         display: flex;
         flex-direction: column;
         align-items: center;
         overflow-y: auto;
-        @include breakpoint (sm){
+
+        @include breakpoint (sm) {
             width: 100%;
         }
-        .close-item{
+
+        .close-item {
             background-color: transparent;
             color: white;
             cursor: pointer;
             font-size: 20px;
             margin-top: 50px;
-            @include breakpoint(xs){
+
+            @include breakpoint(xs) {
                 padding-top: 20px;
                 font-size: 15px;
             }
         }
-        .items{
+
+        .items {
             width: 90%;
-            @include breakpoint(xs){
+
+            @include breakpoint(xs) {
                 margin-top: 25px;
             }
-            .isclear{
+
+            .isclear {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 padding-top: 80px;
-                .icons{
+
+                .icons {
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -514,81 +537,97 @@ li {
                     width: 100px;
                     height: 100px;
                     border-radius: 150px;
-                    border:1px solid #ffffff96;
-                    @include breakpoint (xs){
+                    border: 1px solid #ffffff96;
+
+                    @include breakpoint (xs) {
                         width: 80px;
                         height: 80px;
                     }
                 }
-                .items-text{
+
+                .items-text {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    .items-title{
+
+                    .items-title {
                         font-family: "Montserrat";
                         text-align: center;
-                        @include breakpoint(xs){
+
+                        @include breakpoint(xs) {
                             font-size: 16px;
                         }
                     }
-                    .items-subtitle{
+
+                    .items-subtitle {
                         font-size: 13px;
                         color: #969696;
-                        @include breakpoint(xs){
+
+                        @include breakpoint(xs) {
                             font-size: 10px;
                         }
                     }
                 }
             }
-            .isntclear{
+
+            .isntclear {
                 width: 100%;
                 display: none;
                 flex-direction: column;
                 gap: 30px 0px;
-                @include breakpoint(lg){
+
+                @include breakpoint(lg) {
                     align-items: center;
                 }
-                .item{
+
+                .item {
                     gap: 0px 30px;
                     margin-top: 30px;
-                    @include breakpoint(lg){
+
+                    @include breakpoint(lg) {
                         flex-direction: column;
                         height: 280px;
                         width: 60%;
                         padding-top: 15px;
                     }
-                    @include breakpoint(sm){
+
+                    @include breakpoint(sm) {
                         flex-direction: column;
                         height: 280px;
                         width: 60%;
                         padding-top: 15px;
                     }
                 }
-                .item-image{
+
+                .item-image {
                     width: 70px;
-                    @include breakpoint(lg){
-                        width: 100px; 
+
+                    @include breakpoint(lg) {
+                        width: 100px;
                     }
                 }
             }
         }
-        .total-price{
+
+        .total-price {
             display: none;
             flex-direction: row;
             justify-content: space-between;
-            background-color:  #161616;
+            background-color: #161616;
             width: 100%;
-            bottom:0;
+            bottom: 0;
             height: 100px;
             align-items: center;
             margin-top: 100px;
             position: relative;
-            .total-price__text{
+
+            .total-price__text {
                 margin-left: 30px;
                 padding-top: 30px;
                 padding-bottom: 30px;
             }
-            .total-price__button-buy{
+
+            .total-price__button-buy {
                 width: 200px;
                 height: 50px;
                 color: white;
@@ -596,7 +635,7 @@ li {
                 margin-right: 30px;
                 border-radius: 5px;
                 cursor: pointer;
-               
+
             }
         }
     }
@@ -608,17 +647,171 @@ li {
         flex-direction: column;
         align-items: center;
 
-        &__container {
+        .full-screen__container {
 
-            &__body {
-                height: 1000px;
+            .full-screen__body {
+                width: 80%;
+                height: 100%;
                 position: relative;
                 z-index: 1;
                 display: flex;
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row;
+                flex-wrap: wrap;
                 justify-content: center;
-                
+                align-items: center;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.175) 0%, rgba(255, 255, 255, 0.175) 100%);
+                border-radius: 5px;
+                margin: 0 auto;
+                margin-top: 50px;
+                @include breakpoint(sm){
+                    width: 100%;
+                }
+                .full-screen__body__mark-items {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .items-wrapper {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 0px 20px;
+                        justify-content: center;
+                        @include breakpoint(md){
+                            flex-direction: column;
+                            transition: 0s;
+                        }
+                        .item-wrapper {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 215px;
+                            height: 140px;
+                            border: 2px solid #FFFFFF;
+                            border-radius: 3px;
+                            transition: transform 0.3s ease-in-out;
+                            margin-bottom: 30px;
+                            margin-top: 30px;
+                            cursor: pointer;
+                           
+                            &:hover {
+                                transform: scale(1.1);
+                                @include breakpoint(md){
+                                    transform: none;
+                                }
+                            }
+
+                            &:not(:hover) {
+                                transition: transform 0.3s ease-in-out;
+                                transform: scale(1);
+                                @include breakpoint(md){
+                                    transform: none;
+                                }
+                            }
+
+                            .mark-item {
+                                width: 80%;
+                            }
+                        }
+                    }
+
+                    .mark-items__markbtn {
+                        width: 200px;
+                        height: 40px;
+                        background-color: #d28711;
+                        color: white;
+                        border-radius: 5px;
+                        margin-bottom: 50px;
+                        cursor: pointer;
+                        transition: background-color 0.5s, color 0.5s;
+                        display: none;
+
+                        &:hover {
+                            background-color: white;
+                            color: #d28711;
+                        }
+                    }
+
+                }
+
+                .full-screen__body__year-items {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    display: none;
+                    padding-top: 50px;
+                    padding-bottom: 50px;
+                    @include breakpoint(md){
+                        flex-direction: column;
+                        gap: 30px 0px;
+                    }
+                    .back{
+                        background-color: transparent;
+                        cursor: pointer;
+                    }
+                    .year-list {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        gap: 30px 30px;
+                        margin:  0 auto;
+                        @include breakpoint(lg){
+                            gap: 4px 15px;
+                        }
+                        @include breakpoint(md){
+                            justify-content: center;
+                            gap: 30px 10px;
+                        }
+                        @include breakpoint(sm){
+                            gap: 30px 5px;
+                        }
+                        .year-list__column {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 30px 0px;
+
+                            .year-items {
+                                cursor: pointer;
+                                font-size: 16px;
+                            }
+                        }
+
+                    }
+
+                    .year-items__markbtn {
+                        width: 200px;
+                        height: 40px;
+                        background-color: #d28711;
+                        color: white;
+                        border-radius: 5px;
+                        margin-bottom: 50px;
+                        cursor: pointer;
+                        transition: background-color 0.5s, color 0.5s;
+                        display: none;
+                        margin-right: 30px;
+                        @include breakpoint(lg){
+                            width: 150px;
+                            margin-right: 15px;
+                            font-size:13px;
+                        }
+                        @include breakpoint(xs){
+                            margin-right: 0px;
+                        }
+                        &:hover {
+                            background-color: white;
+                            color: #d28711;
+                        }
+                    }
+                }
+
+
+
             }
         }
     }
@@ -959,7 +1152,8 @@ li {
         z-index: 2;
 
     }
-    @include breakpoint(sm){
+
+    @include breakpoint(sm) {
         .cart-active {
             transform: translateX(0%) !important;
         }
@@ -970,25 +1164,25 @@ li {
         flex-direction: column;
         margin-top: 20px;
     }
-    
+
     .product-info {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
     }
-    
+
     .product-info__price {
         display: flex;
         flex-direction: column;
     }
-    
+
     .product-image {
         width: 60%;
         margin: 0 auto;
         padding-top: 20px;
     }
-    
+
     .product-title {
         padding-left: 20px;
         font-weight: 400;
@@ -996,19 +1190,19 @@ li {
         font-size: 15px;
         height: 10px;
     }
-    
+
     .product-articul {
         padding-left: 20px;
         font-size: 12px;
         color: rgba(163, 163, 163, 0.69);
     }
-    
+
     .product-price {
         padding-left: 20px;
         font-size: 20px;
         padding-top: 20px;
     }
-    
+
     .product-button {
         background-color: transparent;
         color: white;
@@ -1019,17 +1213,18 @@ li {
         cursor: pointer;
         margin-right: 10px;
     }
-    
+
     .product-status {
         color: rgba(110, 255, 110, 0.938);
         font-size: 12px;
         padding-left: 20px;
     }
-    .cart-active{
-        transform: translateX(101%) ;
+
+    .cart-active {
+        transform: translateX(101%);
     }
 
-    .item{
+    .item {
         height: 130px;
         width: 98%;
         display: flex;
@@ -1039,29 +1234,19 @@ li {
         border: 1px solid white;
         border-radius: 10px;
     }
-    .item-image{
+
+    .item-image {
         width: 100px;
         padding-left: 10px;
     }
-    
-    .item__button__add-delete{
+
+    .item__button__add-delete {
         display: flex;
-        gap:  0px 10px;
+        gap: 0px 10px;
         align-items: center;
     }
-    .button-primary__plus{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        background-color: white;
-        border-radius: 10px;
-        font-size: 25px;
-        cursor:pointer;
-    }
-    .button-primary__minus{
+
+    .button-primary__plus {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -1071,9 +1256,22 @@ li {
         background-color: white;
         border-radius: 10px;
         font-size: 25px;
-        cursor:pointer;
+        cursor: pointer;
     }
-    
+
+    .button-primary__minus {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        border-radius: 10px;
+        font-size: 25px;
+        cursor: pointer;
+    }
+
 }
 
 
@@ -1106,4 +1304,11 @@ li {
     position: absolute;
     font-family: "Montserrat";
     margin-top: 80px;
+}
+
+.selected {
+    border: 2px solid orange !important;
+}
+.selected-year{
+    color:#ffa600;
 }

@@ -1,52 +1,16 @@
 "use strict"
 // import chooseProduct from "../modules/choose.js"
 import animation from "../modules/animation.js"
-import {
-  views
-} from "../modules/views.js"
-import {
-  countScroll
-} from "../modules/scrollIcon.js"
-import {
-  searchStroke
-} from "../modules/search.js"
-import {
-  getProductsPopular,
-  getProductsActual
-} from "../modules/renderCatalog.js"
-window.JustValidate
+import {views} from "../modules/views.js"
+import{countScroll} from "../modules/scrollIcon.js"
+import {searchStroke} from "../modules/search.js"
+import {getProductsPopular,getProductsActual} from "../modules/renderCatalog.js"
+import chooseProduct from "../modules/choose.js"
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
   function validate() {
-    const validator = new JustValidate('.form-footer', undefined, [{
-        key: 'Email is required',
-        dict: {
-          Spanish: 'Correo electronico es requerido',
-          French: "L'e-mail est requis",
-        },
-      },
-      {
-        key: 'Email is invalid',
-        dict: {
-          Spanish: 'El correo electrónico es invalido',
-          French: 'Le courriel est invalide',
-        },
-      },
-
-    ]);
-    validator.addField('.form-footer__input', [{
-        rule: 'required',
-        errorMessage: 'Email is required',
-      },
-      {
-        rule: 'email',
-        errorMessage: 'Email is invalid',
-      },
-    ]);
-
-    validator.setCurrentLocale('English');
-
     let btnSubmit = document.querySelector(".form-footer__submit")
     btnSubmit.onmouseenter = () => {
       btnSubmit.style.color = "white"

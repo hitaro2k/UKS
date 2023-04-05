@@ -10,32 +10,12 @@ var _search = require("../modules/search.js");
 
 var _renderCatalog = require("../modules/renderCatalog.js");
 
+var _choose = _interopRequireDefault(require("../modules/choose.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-window.JustValidate;
 document.addEventListener("DOMContentLoaded", function () {
   function validate() {
-    var validator = new JustValidate('.form-footer', undefined, [{
-      key: 'Email is required',
-      dict: {
-        Spanish: 'Correo electronico es requerido',
-        French: "L'e-mail est requis"
-      }
-    }, {
-      key: 'Email is invalid',
-      dict: {
-        Spanish: 'El correo electrónico es invalido',
-        French: 'Le courriel est invalide'
-      }
-    }]);
-    validator.addField('.form-footer__input', [{
-      rule: 'required',
-      errorMessage: 'Email is required'
-    }, {
-      rule: 'email',
-      errorMessage: 'Email is invalid'
-    }]);
-    validator.setCurrentLocale('English');
     var btnSubmit = document.querySelector(".form-footer__submit");
 
     btnSubmit.onmouseenter = function () {

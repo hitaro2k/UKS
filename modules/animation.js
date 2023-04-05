@@ -4,6 +4,7 @@ let menu;
 let cartMenu;
 let menuItem;
 let menuBtnSpan;
+
 const animation = () => {
     userSearch()
     mediaAnim()
