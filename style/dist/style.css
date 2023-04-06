@@ -1,4 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@300;400&display=swap");
+[class*=__container] {
+  width: 1150px;
+  padding: 0px 15px;
+  margin: 0 auto;
+}
+@media (max-width: 1200px) {
+  [class*=__container] {
+    width: 915px;
+    padding: 0px 15px;
+  }
+}
+@media (max-width: 992px) {
+  [class*=__container] {
+    width: 720px;
+    padding: 0px 15px;
+  }
+}
+@media (max-width: 768px) {
+  [class*=__container] {
+    width: 550px;
+    padding: 0px 15px;
+  }
+}
+@media (max-width: 576px) {
+  [class*=__container] {
+    width: 470px;
+    padding: 0px 15px;
+  }
+}
+@media (max-width: 480px) {
+  [class*=__container] {
+    width: 90%;
+    padding: 0px 15px;
+  }
+}
+
 html {
   overflow-x: hidden;
 }
@@ -99,42 +135,6 @@ li {
   color: white;
 }
 
-[class*=__container] {
-  width: 1150px;
-  padding: 0px 15px;
-  margin: 0 auto;
-}
-@media (max-width: 1200px) {
-  [class*=__container] {
-    width: 915px;
-    padding: 0px 15px;
-  }
-}
-@media (max-width: 992px) {
-  [class*=__container] {
-    width: 720px;
-    padding: 0px 15px;
-  }
-}
-@media (max-width: 768px) {
-  [class*=__container] {
-    width: 550px;
-    padding: 0px 15px;
-  }
-}
-@media (max-width: 576px) {
-  [class*=__container] {
-    width: 470px;
-    padding: 0px 15px;
-  }
-}
-@media (max-width: 480px) {
-  [class*=__container] {
-    width: 90%;
-    padding: 0px 15px;
-  }
-}
-
 .wrapper {
   display: flex;
   flex-direction: row;
@@ -179,14 +179,6 @@ li {
 
 .menu-btn {
   display: none;
-}
-
-.fixed {
-  position: fixed;
-}
-
-.left {
-  margin-left: 0px;
 }
 
 .main {
@@ -1238,4 +1230,12 @@ li {
 
 .selected-year {
   color: #ffa600;
+}
+
+.fixed {
+  position: fixed !important;
+}
+
+.left {
+  margin-left: 0px !important;
 }

@@ -8,6 +8,7 @@ exports.smoothScroll = smoothScroll;
 exports.mediaAnim = mediaAnim;
 exports.userSearch = userSearch;
 exports.showCatalog = showCatalog;
+exports.switchTheme = switchTheme;
 exports["default"] = void 0;
 var menuBtn;
 var menu;
@@ -196,6 +197,8 @@ function showCatalog() {
 
   return showCatalog;
 }
+
+function switchTheme() {}
 
 animation();
 var _default = animation;

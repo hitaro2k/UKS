@@ -148,6 +148,9 @@ export function showCatalog() {
     }
     return showCatalog
 }
+export function switchTheme(){
+    
+}
 animation()
 
 export default animation
