@@ -269,6 +269,7 @@ li {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   width: 90%;
   height: 50px;
   border-radius: 5px;
@@ -324,7 +325,8 @@ li {
   }
 }
 .main .full-screen__header__container .search-stroke .close-search {
-  margin-left: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
   font-size: 12px;
   animation: opacity;
   animation-iteration-count: infinite;
