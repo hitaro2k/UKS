@@ -155,12 +155,12 @@ function userSearch() {
   var searchStrokeInput = document.querySelector(".search-stroke__input");
 
   btnSearch.onclick = function () {
-    searchStroke.classList.add("isactive");
+    searchStroke.classList.add("search-stroke__active");
     btnSearch.style.display = "none";
   };
 
   searchStroke.ondblclick = function () {
-    searchStroke.classList.remove("isactive");
+    searchStroke.classList.remove("search-stroke__active");
     btnSearch.style.display = "block";
   };
 

@@ -65,7 +65,7 @@
   }
 }
 .content .deliver__wrapper .content-part .content-part__block {
-  width: 53px;
+  width: 100%;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -113,7 +113,7 @@
   }
 }
 .content .payment__wrapper .content-part .content-part__block {
-  width: 53px;
+  width: 100%;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -161,7 +161,7 @@
   }
 }
 .content .purchase-return__wrapper .content-part .content-part__block {
-  width: 53px;
+  width: 100%;
   padding: 10px;
   display: flex;
   flex-direction: column;

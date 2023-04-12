@@ -112,11 +112,11 @@ export function userSearch() {
     const searchStrokeInput = document.querySelector(".search-stroke__input")
 
     btnSearch.onclick = () => {
-        searchStroke.classList.add("isactive")
+        searchStroke.classList.add("search-stroke__active")
         btnSearch.style.display = "none"
     }
     searchStroke.ondblclick = () => {
-        searchStroke.classList.remove("isactive")
+        searchStroke.classList.remove("search-stroke__active")
         btnSearch.style.display = "block"
     }
     searchStrokeInput.addEventListener('input', () => {
