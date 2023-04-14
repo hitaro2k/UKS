@@ -39,7 +39,7 @@ var chooseProduct = function chooseProduct() {
         });
       });
       markListItems.forEach(function (item) {
-        item.onclick = function () {
+        item.addEventListener("click", function () {
           var year = item.getAttribute("data-year");
           var index = selectedYears.indexOf(year);
 
@@ -56,7 +56,7 @@ var chooseProduct = function chooseProduct() {
           } else {
             yearBtn.style.display = "none";
           }
-        };
+        });
       });
 
       yearBtn.onclick = function () {// ? Отсюда уже идет серверная часть,возврат документа php 
@@ -365,16 +365,14 @@ var chooseProduct = function chooseProduct() {
         //     window.location.href = url;
       };
 
-      markBtn.onclick = function () {
+      markBtn.addEventListener("click", function () {
         yearItems.style.display = "flex";
         markItems.style.display = "none";
-      };
-
-      backToMark.onclick = function () {
+      });
+      backToMark.addEventListener("click", function () {
         yearItems.style.display = "none";
         markItems.style.display = "flex";
-      };
-
+      });
       marksBtn.addEventListener("mouseover", function () {
         this.style.backgroundColor = "white";
         this.style.color = "#ff5e00";

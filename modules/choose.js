@@ -35,7 +35,7 @@ const chooseProduct = () => {
             });
 
             markListItems.forEach((item) => {
-                item.onclick = () => {
+                item.addEventListener("click",() => {
                     const year = item.getAttribute("data-year");
                     const index = selectedYears.indexOf(year);
                     if (index === -1) {
@@ -53,7 +53,7 @@ const chooseProduct = () => {
                     }
 
 
-                }
+                })
             })
 
             yearBtn.onclick = function () {
@@ -412,14 +412,14 @@ const chooseProduct = () => {
             
             };
 
-            markBtn.onclick = () => {
+            markBtn.addEventListener("click", () => {
                 yearItems.style.display = "flex"
                 markItems.style.display = "none"
-            }
-            backToMark.onclick = () => {
+            })
+            backToMark.addEventListener("click", () => {
                 yearItems.style.display = "none"
                 markItems.style.display = "flex"
-            }
+            })
 
             marksBtn.addEventListener("mouseover", function () {
                 this.style.backgroundColor = "white";

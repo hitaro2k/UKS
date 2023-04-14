@@ -153,11 +153,10 @@ function userSearch() {
   var closeSearch = document.querySelector(".close-search");
   var searchStroke = document.querySelector(".search-stroke");
   var searchStrokeInput = document.querySelector(".search-stroke__input");
-
-  btnSearch.onclick = function () {
+  btnSearch.addEventListener("click", function () {
     searchStroke.classList.add("search-stroke__active");
     btnSearch.style.display = "none";
-  };
+  });
 
   searchStroke.ondblclick = function () {
     searchStroke.classList.remove("search-stroke__active");
@@ -179,7 +178,7 @@ function showCatalog() {
   var catalog = document.querySelector(".catalog-menu");
   var closeCatalog = document.querySelector(".catalog__close-btn");
   menuItem.forEach(function (item) {
-    item.onclick = function () {
+    item.addEventListener("click", function () {
       catalog.classList.add("catalog-menu__active");
 
       if (catalog.classList.contains("catalog-menu__active")) {
@@ -188,7 +187,7 @@ function showCatalog() {
         menuBtn.classList.remove("fixed");
         menuBtn.classList.remove("left");
       }
-    };
+    });
   });
 
   closeCatalog.onclick = function () {

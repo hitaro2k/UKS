@@ -35,6 +35,11 @@ export function cartVisible() {
         documentHTML.style.position = "static"
 
     }
+    cartClose.addEventListener("click",() => {
+        cartMenu.classList.remove("cart-active")
+        documentHTML.style.position = "static"
+
+    })
 
 
     return cartVisible
