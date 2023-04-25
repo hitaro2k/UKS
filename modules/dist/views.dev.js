@@ -3,16 +3,20 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-const _views = views;
-export { _views as views };
+exports.views = views;
 
-import _cart from "../modules/cart.js";
+var _cart = require("../modules/cart.js");
 
 var cartMenu = document.querySelector(".cart-menu");
 var menuBtn;
 var menu;
 var cartItems = [];
 var cartWrapper = document.querySelector(".isntclear");
+var errorCount = document.querySelector(".popup__cart-count");
+var isclear = document.querySelector(".isclear");
+var isntclear = document.querySelector(".isntclear");
+var totalPrice = document.querySelector(".total-price__wrapper");
+var formWrap = document.querySelector(".form-order__background");
 
 function views() {
   document.addEventListener("DOMContentLoaded", function () {
@@ -46,11 +50,6 @@ function views() {
     }
 
     window.addEventListener("click", function (event) {
-      var errorCount = document.querySelector(".popup__cart-count");
-      var isclear = document.querySelector(".isclear");
-      var isntclear = document.querySelector(".isntclear");
-      var totalPrice = document.querySelector(".total-price");
-
       if (event.target.hasAttribute("data")) {
         var card = event.target.closest(".product");
         var productId = card.dataset.id;
@@ -101,6 +100,31 @@ function views() {
         });
       }
     });
+
+    function formOrder() {
+      var closeForm = document.querySelector(".close-form");
+      closeForm.addEventListener("click", function () {
+        formWrap.style.display = "none";
+      });
+      totalPrice.addEventListener("click", function () {
+        var documentHTML = document.querySelector("html");
+        formWrap.style.display = "flex";
+        formWrap.style.overflowY = "scroll";
+
+        if (formWrap.style.display = "flex") {
+          documentHTML.style.position = "fixed";
+          documentHTML.style.height = "100vh";
+          documentHTML.style.width = "100%";
+          documentHTML.style.overflowY = "hidden";
+          documentHTML.style.top = "0";
+          documentHTML.style.margin = "0 auto";
+        } else {
+          documentHTML.style.overflowY = "scroll";
+        }
+      });
+    }
+
+    formOrder();
   });
   return views;
 }

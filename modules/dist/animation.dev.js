@@ -8,7 +8,6 @@ exports.smoothScroll = smoothScroll;
 exports.mediaAnim = mediaAnim;
 exports.userSearch = userSearch;
 exports.showCatalog = showCatalog;
-exports.switchTheme = switchTheme;
 exports["default"] = void 0;
 var menuBtn;
 var menu;
@@ -24,6 +23,8 @@ var animation = function animation() {
   smoothScroll();
 };
 
+var catalog = document.querySelector(".catalog-menu");
+
 function burgerMenu() {
   menuBtn = document.querySelector('.menu-btn');
   menu = document.querySelector(".menu--burger-list");
@@ -35,6 +36,7 @@ function burgerMenu() {
     menu.style.display = "flex";
     cartMenu.classList.remove("cart-active");
     documentHTML.style.position = "static";
+    catalog.classList.remove("catalog-menu__active");
 
     if (menuBtn.classList.contains("active")) {
       menuBtn.classList.add("fixed");
@@ -175,7 +177,6 @@ function userSearch() {
 
 function showCatalog() {
   menuItem = document.querySelectorAll("#catalog");
-  var catalog = document.querySelector(".catalog-menu");
   var closeCatalog = document.querySelector(".catalog__close-btn");
   menuItem.forEach(function (item) {
     item.addEventListener("click", function () {
@@ -196,8 +197,6 @@ function showCatalog() {
 
   return showCatalog;
 }
-
-function switchTheme() {}
 
 animation();
 var _default = animation;

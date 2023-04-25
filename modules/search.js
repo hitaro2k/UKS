@@ -11,4 +11,8 @@ export function searchStroke() {
 
     return searchStroke
 }
+export function dynamicStroke(){
+    const api = 
+}
 searchStroke()
+dynamicStroke()

@@ -11,9 +11,10 @@ const animation = () => {
     burgerMenu()
     showCatalog()
     smoothScroll()
+   
 }
 
-
+let catalog = document.querySelector(".catalog-menu")
 export function burgerMenu() {
     menuBtn = document.querySelector('.menu-btn');
     menu = document.querySelector(".menu--burger-list");
@@ -26,6 +27,7 @@ export function burgerMenu() {
         menu.style.display = "flex"
         cartMenu.classList.remove("cart-active")
         documentHTML.style.position = "static"
+        catalog.classList.remove("catalog-menu__active")
         if (menuBtn.classList.contains("active")) {
             menuBtn.classList.add("fixed")
             menuBtn.classList.add("left")
@@ -129,9 +131,9 @@ export function userSearch() {
     });
     return userSearch
 }
+
 export function showCatalog() {
     menuItem = document.querySelectorAll("#catalog")
-    let catalog = document.querySelector(".catalog-menu")
     let closeCatalog = document.querySelector(".catalog__close-btn")
     menuItem.forEach((item) => {
         item.addEventListener("click" ,  () => {
@@ -149,9 +151,7 @@ export function showCatalog() {
     }
     return showCatalog
 }
-export function switchTheme(){
-    
-}
+ 
 animation()
 
 export default animation

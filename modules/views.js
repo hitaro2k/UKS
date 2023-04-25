@@ -7,6 +7,11 @@ let menuBtn;
 let menu;
 let cartItems = [];
 const cartWrapper = document.querySelector(".isntclear")
+let errorCount = document.querySelector(".popup__cart-count")
+let isclear = document.querySelector(".isclear")
+let isntclear = document.querySelector(".isntclear")
+let totalPrice = document.querySelector(".total-price__wrapper")
+let formWrap = document.querySelector(".form-order__background")
 
 export function views() {
   document.addEventListener("DOMContentLoaded", function () {
@@ -37,12 +42,6 @@ export function views() {
     }
 
     window.addEventListener("click", function (event) {
-
-      let errorCount = document.querySelector(".popup__cart-count")
-      let isclear = document.querySelector(".isclear")
-      let isntclear = document.querySelector(".isntclear")
-      let totalPrice = document.querySelector(".total-price")
-
       if (event.target.hasAttribute("data")) {
         const card = event.target.closest(".product");
         const productId = card.dataset.id;
@@ -111,7 +110,30 @@ export function views() {
       }
     })
 
-
+    function formOrder(){
+      let closeForm = document.querySelector(".close-form")
+      closeForm.addEventListener("click", ()=>{
+        formWrap.style.display = "none";
+      })
+      totalPrice.addEventListener("click" , ()=>{
+        let documentHTML = document.querySelector("html")
+        formWrap.style.display = "flex";
+        formWrap.style.overflowY = "scroll"
+        if(formWrap.style.display = "flex"){
+          documentHTML.style.position = "fixed"
+          documentHTML.style.height = "100vh";
+          documentHTML.style.width = "100%";
+          documentHTML.style.overflowY = "hidden"
+          documentHTML.style.top = "0";
+          documentHTML.style.margin = "0 auto";
+  
+        }else{
+          documentHTML.style.overflowY = "scroll"
+        }
+      })
+  
+    }
+   formOrder()
 
   })
 

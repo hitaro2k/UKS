@@ -7,12 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uk service</title>
 
-    <link rel="stylesheet" href="/style/dist/mixin.css">
     <link rel="stylesheet" href="/style/dist/preloader.css">
     <link rel="stylesheet" href="/style/normalize.css">
     <link rel="stylesheet" href="/style/dist/style.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 
 <body>
@@ -52,7 +50,62 @@
             </div>
         </header>
 
-       
+        <div class="form-order__background">
+            <form action="" class="form-order">
+                <div class="close-form__wrapper">
+                    <object data="" type="" class="close-form">
+                        <svg width="20" height="20" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="white" d="M8.25538 6.73346L13.1508 1.83808C13.5692 1.41962 13.5692 0.736539 13.1508 0.315001C12.7323 -0.106537 12.0462 -0.10346 11.6277 0.315001L6.73231 5.21039L1.83692 0.315001C1.41846 -0.10346 0.735385 -0.10346 0.313846 0.315001C-0.104615 0.736539 -0.104615 1.41962 0.313846 1.83808L5.20923 6.73346L0.313846 11.6288C-0.104615 12.0473 -0.104615 12.7304 0.313846 13.1519C0.732308 13.5735 1.41846 13.5704 1.83692 13.1519L6.73231 8.25654L11.6277 13.1519C11.8369 13.3612 12.1138 13.4658 12.3908 13.4658C12.6677 13.4658 12.9415 13.3612 13.1508 13.1519C13.5692 12.7335 13.5692 12.0504 13.1508 11.6288L8.25538 6.73346Z" fill="black"/>
+                        </svg>
+                    </object>
+                </div>
+               
+                <div class="form-content">
+                    <div class="block__product-price">
+                        
+                    </div>
+                    <div class="personal-info">
+                        <div class="info-input__wrapper">
+                            <input placeholder="Імя" type="text" class="info-input">
+                        </div>
+                        <div class="info-input__wrapper">
+                            <input placeholder="Прізвище" type="text" class="info-input">
+                        </div>
+                        <div class="info-input__wrapper">
+                            <input placeholder="Номер телефону" type="text" class="info-input">
+                        </div>
+    
+                        <div class="post-office">
+                            <div class="post-office__office">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="myCheckbox1">
+                                    <label class="checkbox-container" for="myCheckbox1"></label>
+                                </div>
+                                <div class="info-input__wrapper">
+                                    <input placeholder="Номер відділу" type="text" class="info-input">
+                                </div>
+                            </div>
+                            
+                            <div class="post-office__self">
+                                <div class="custom-checkbox">
+                                    <input type="checkbox" id="myCheckbox2">
+                                    <label class="checkbox-container" for="myCheckbox2"></label>
+                                </div>
+                                <div class="info-input__wrapper">
+                                    <input placeholder="Самовивіз" type="text" class="info-input">
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <textarea placeholder="Залиште ваш комментар" name="" id="" cols="30" rows="10" class="user-comm" style="resize: none;"></textarea>
+                        
+                    </div>
+                </div>
+
+            </form>
+           
+        </div>
+        
 
         <div class="catalog-menu">
             <div class="close-btn__wrapper">
@@ -61,8 +114,28 @@
             </div>
             <div class="catalog__wrapper">
                 <div class="catalog__item" id="">
+                    <object data="" type="" class="catalog__item-image">
+                        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                        <svg class="catalog-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-engine" width="24" height="24" viewBox="0 0 24 24"><path d="M7,4V6H10V8H7L5,10V13H3V10H1V18H3V15H5V18H8L10,20H18V16H20V19H23V9H20V12H18V8H12V6H15V4H7Z" />
+                        </svg>
+                    </object>
+                    <a href="/generateCatalog.html" class="catalog__item-link">Двигун</a>
+                </div>
+                <div class="catalog__item" id="">
                     <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
+                    <a href="#" class="catalog__item-link">Підвіска</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">КПП</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Фільтра</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Автомобільної електроніка</a>
                 </div>
                 <div class="catalog__item" id="">
                     <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
@@ -74,27 +147,7 @@
                 </div>
                 <div class="catalog__item" id="">
                     <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
-                </div>
-                <div class="catalog__item" id="">
-                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
-                </div>
-                <div class="catalog__item" id="">
-                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
-                </div>
-                <div class="catalog__item" id="">
-                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
-                </div>
-                <div class="catalog__item" id="">
-                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
-                </div>
-                <div class="catalog__item" id="">
-                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
+                    <a href="#" class="catalog__item-link">Інше</a>
                 </div>
             </div>
         </div>
@@ -115,7 +168,7 @@
                 </div>
             </div>
 
-            <div class="total-price">
+            <div class="total-price__wrapper">
                 <p class="total-price__text">0 грн</p>
                 <button class="total-price__button-buy">Оформить заказ</button>
             </div>
@@ -208,16 +261,11 @@
                     </div>
                    <div class="full-screen__body__year-items">
                     <button class="back" id="back-year">
-                        <svg width="25" height="35" viewBox="0 0 21 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <rect y="30" width="30" height="21" transform="rotate(-90 0 30)" fill="url(#pattern0)"/>
-                            <defs>
-                            <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                            <use xlink:href="#image0_101_2" transform="matrix(0.00390625 0 0 0.00558036 0 -0.214286)"/>
-                            </pattern>
-                            <image id="image0_101_2" width="256" height="256" xlink:href="data:image/png;base64,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"/>
-                            </defs>
-                        </svg>
-                        </button>
+                        <svg style="transform: rotate(90deg);" width="25" height="22" viewBox="0 0 13 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L6.67742 8L12 1" stroke="orange" stroke-linecap="round"/>
+                        </svg> 
+                    </button>
+
                         <ul class="year-list">
                             <ol class="year-list__column">
                                 <li class="year-items" data-year = "1995">1995</li>
@@ -267,7 +315,7 @@
                             </ol>
                         </ul>
 
-                        <button class="year-items__markbtn">Выбрать модель</button>
+                        <a href="" class="year-items__markbtn">Выбрать модель</a>
                    </div>
                     
 
@@ -384,7 +432,7 @@
 
     <!-- <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-    <script type="module" src="/js/index.js"></script>
+    <script type="module" src="/js/main.js"></script>
 
 </body>
 

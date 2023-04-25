@@ -226,7 +226,7 @@ li {
                 height: 30px;
                 position: relative;
                 overflow: hidden;
-                z-index: 999;
+                z-index: 99;
             }
 
             .menu-btn span {
@@ -359,6 +359,270 @@ li {
 
     }
 
+    .form-order__background{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 99;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        
+        .form-order{
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            background-color: rgba(35, 35, 35, 0.5);
+            z-index: 100;
+            gap: 0px 15px;
+            margin-top: 30px;
+            padding: 10px;
+            align-items: center;
+            .close-form__wrapper{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                .close-form{
+                    cursor: pointer;
+                }
+            }
+            .form-content{
+                display: flex;
+                flex-direction: row;
+                width: 80%;
+                gap: 0px 15px;
+                
+                @include breakpoint(lg){
+                    width: 100%;
+                }
+                @include breakpoint(md){
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .block__product-price{
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    
+                   @include breakpoint(md){
+                        width: 80%;
+                        margin-top: 20px;
+                   }
+                   @include breakpoint(xs){
+                    width: 95%;
+                }
+                    .product-block{
+                        border: 2px solid white;
+                        border-radius: 5px;
+    
+                        .product{
+                            width: 90%;
+                            height: 80px;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin: 0 auto;
+                            border: 2px solid white;
+                            padding: 10px;
+                            margin-top: 20px;
+                            margin-bottom: 20px;
+                            @include breakpoint(lg){
+                                height: 60px;
+                            }
+                           
+                            .image{
+                                width: 65px;
+                                height: 60px;
+                            }
+    
+                            .name{
+                                margin: 0px;
+                            }
+                            .articul{
+                                margin: 0px;
+                                color: rgba(255, 255, 255, 0.49)
+                            }
+                            .product-price{
+                                padding: 0px;
+                            }
+                        }
+                        
+                    }
+                    .price-block{
+                        width: 99%;
+                        height: 50px;
+                        border: 2px solid white;
+                        border-radius: 5px;
+                        margin-top: 20px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        .title{
+                            margin-left: 20px;
+                        }
+                        .total-price{
+                            margin-right: 20px;
+                        }
+                    }
+                }
+                .personal-info{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 50%;
+                    border: 2px solid white;
+                    gap: 20px 0px;
+                    height: 550px;
+                    border-radius: 5px;
+                    @include breakpoint(md){
+                       margin-top: 50px;
+                        width: 80%;
+                    }
+                    @include breakpoint(xs){
+                        width: 95%;
+                    }
+                    .info-input__wrapper{
+                        background-color: white;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        width: 90%;
+                        height: 40px;
+                        margin-top: 10px;
+                        border-radius: 5px;
+                        .info-input{
+                            width: 90%;
+                            background-color: transparent;
+                            outline: none;
+                            border: none;
+                            font-family: "Montserrat";
+                            margin-left: 10px;
+                        }
+                    }
+                    .post-office{
+                        width: 90%;
+                        .post-office__office{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            .custom-checkbox input[type="checkbox"] {
+                                opacity: 0;
+                                position: absolute;
+                            }
+                        
+                           
+                            .custom-checkbox .checkbox-container {
+                                position: relative;
+                                cursor: pointer;
+                            }
+                        
+                           
+                            .custom-checkbox .checkbox-container::before {
+                                content: "";
+                                display: block;
+                                width: 20px;
+                                height: 20px;
+                                border: 2px solid orange; 
+                                background-color: #fff; 
+                                border-radius: 5px;
+                            }
+                        
+                          
+                            .custom-checkbox .checkbox-container::after {
+                                content: "\2713"; 
+                                position: absolute;
+                                top: 3px;
+                                left: 7px;
+                                font-size: 18px;
+                                color: #fff; 
+                                opacity: 0;
+        
+                            }
+                        
+                         
+                            .custom-checkbox input[type="checkbox"]:checked + .checkbox-container::before {
+                                background-color: orange; 
+                            }
+                        
+                            .custom-checkbox input[type="checkbox"]:checked + .checkbox-container::after {
+                                opacity: 1;
+                            }
+                            .info-input__wrapper{
+                                margin-left: 20px;
+                                border-radius: 5px;
+                            }
+                        }
+                        .post-office__self{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            .custom-checkbox input[type="checkbox"] {
+                                opacity: 0;
+                                position: absolute;
+                            }
+                        
+                            
+                            .custom-checkbox .checkbox-container {
+                                position: relative;
+                                cursor: pointer;
+                            }
+                        
+    
+                            .custom-checkbox .checkbox-container::before {
+                                content: "";
+                                display: block;
+                                width: 20px;
+                                height: 20px;
+                                border: 2px solid orange; 
+                                background-color: #fff; 
+                                border-radius: 5px;
+                            }
+                        
+                            
+                            .custom-checkbox .checkbox-container::after {
+                                content: "\2713";
+                                position: absolute;
+                                top: 3px;
+                                left: 7px;
+                                font-size: 18px;
+                                color: #fff;
+                                opacity: 0; 
+                            }
+                        
+                           
+                            .custom-checkbox input[type="checkbox"]:checked + .checkbox-container::before {
+                                background-color: orange;
+                            }
+                            .custom-checkbox input[type="checkbox"]:checked + .checkbox-container::after {
+                                opacity: 1;
+                            }
+                            .info-input__wrapper{
+                                margin-left: 20px;
+                                border-radius: 5px;
+                            }
+                        }
+                    }
+                    .user-comm{
+                        outline: none;
+                        font-family: "Montserrat";
+                        width: 90%;
+                        border-radius: 5px;
+                        padding: 5px;
+                    }
+                   
+                }
+            }
+            
+
+        }
+    }
+   
     .scroll-down__title {
         margin: 0 auto;
         animation: opacity;
@@ -408,6 +672,9 @@ li {
 
                 .catalog__item-image {
                     width: 20px;
+                    .catalog-svg{
+                        fill: white;
+                    }
                 }
 
                 .catalog__item-link {
@@ -573,7 +840,7 @@ li {
             }
         }
 
-        .total-price {
+        .total-price__wrapper {
             display: none;
             flex-direction: row;
             justify-content: space-between;
@@ -812,6 +1079,9 @@ li {
                     }
 
                     .year-items__markbtn {
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
                         width: 200px;
                         height: 40px;
                         background-color: #d28711;
@@ -1150,6 +1420,9 @@ li {
         box-shadow: 0 0 10px rgba(0, 0, 0, 2);
         cursor: pointer;
         z-index: 997;
+        @include breakpoint(lg){
+            display: none !important;
+        }
     }
 
     .logo-img__footer {
@@ -1347,4 +1620,7 @@ li {
 
 .left {
     margin-left: 0px !important;
+}
+.form-order__background::-webkit-scrollbar {
+    width: 0px;         
 }
