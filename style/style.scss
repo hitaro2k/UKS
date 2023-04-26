@@ -129,7 +129,7 @@ li {
 
     @include breakpoint(sm) {
         display: block;
-        z-index: 222;
+        z-index: 2;
 
         .menu--burger-list {
             position: fixed;
@@ -140,7 +140,7 @@ li {
             background: #141414;
             transform: translateX(-150%);
             transition: transform 0.5s;
-            z-index: 26;
+            z-index: 2;
             margin: 0px;
             display: flex;
             flex-direction: column;
@@ -226,7 +226,7 @@ li {
                 height: 30px;
                 position: relative;
                 overflow: hidden;
-                z-index: 99;
+                z-index: 3;
             }
 
             .menu-btn span {
@@ -264,7 +264,7 @@ li {
         .user-ui {
             display: flex;
             gap: 30px;
-            z-index: 27;
+            z-index: 2;
             margin-right: 50px;
 
             @include breakpoint (md) {
@@ -358,7 +358,7 @@ li {
         width: 100%;
         height: 100%;
         background-color: black;
-        z-index: 99;
+        z-index: 4;
         overflow-x: hidden;
         overflow-y: scroll;
         
@@ -367,7 +367,7 @@ li {
             flex-direction: column;
             width: 80%;
             background-color: rgba(35, 35, 35, 0.5);
-            z-index: 100;
+            z-index: 5;
             gap: 0px 15px;
             margin-top: 30px;
             padding: 10px;
@@ -632,19 +632,19 @@ li {
         padding-bottom: 50px;
         background-color: #090909;
         flex-direction: column;
-        z-index: 10;
+        z-index: 3;
         transform: translateX(-150%);
         transition: transform 0.5s;
         position: fixed;
         border-radius: 0px 0px 5px 0px;
 
         @include breakpoint(lg) {
-            z-index: 25;
+            z-index: 3;
         }
 
         @include breakpoint(sm) {
             width: 35%;
-            z-index: 25;
+           
         }
 
         .catalog__wrapper {
@@ -714,7 +714,7 @@ li {
         height: 100%;
         transform: translateX(-150%);
         transition: transform 0.5s;
-        z-index: 30;
+        z-index: 3;
         margin: 0px;
         display: flex;
         flex-direction: column;
@@ -876,7 +876,6 @@ li {
         .checkout__product-price{
             width: 55%;
             box-sizing: border-box;
-            
             margin-left: 10px;
             .product-price__product-wrapper{
                 display: flex;
@@ -905,12 +904,7 @@ li {
             .product-price__price-wrapper{
                 display: flex;
                 flex-direction: row;
-                .price-wrapper__text{
-
-                }
-                .price-wrapper__price {
-
-                }
+               
             }
                  
         }
@@ -918,9 +912,7 @@ li {
             width: 40%;
             border: 1px solid white;
             margin-left: 15px;
-            .form-data{
-
-            }
+            
         }
        
     }
@@ -1118,7 +1110,7 @@ li {
     .content {
         position: relative;
         background-color: black;
-        z-index: 5;
+        z-index: 1;
 
         .popular__container {
             padding-top: 100px;
@@ -1212,7 +1204,7 @@ li {
     .footer {
         padding-top: 100px;
         background-color: rgb(0, 0, 0);
-        z-index: 3;
+        z-index: 1;
 
         .footer__header-block {
             display: flex;
@@ -1399,7 +1391,6 @@ li {
 
 
     #progress {
-
         position: fixed;
         bottom: 20px;
         right: 10px;
@@ -1410,7 +1401,7 @@ li {
         border-radius: 50%;
         box-shadow: 0 0 10px rgba(0, 0, 0, 2);
         cursor: pointer;
-        z-index: 997;
+        z-index: 6;
         @include breakpoint(lg){
             display: none !important;
         }
