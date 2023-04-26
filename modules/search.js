@@ -1,18 +1,10 @@
 "use strict"
-
-
-export function searchStroke() {
-
-    document.querySelector("#search-input").oninput = function () {
-        let val = this.value.trim();
-        let elasticItems = 1;
-    }
-
-
-    return searchStroke
+document.querySelector("#search-input").oninput = function () {
+    let val = this.value.trim();
+    let elasticItems = 1;
+    console.log(val)
 }
-export function dynamicStroke(){
-    const api = 
+
+export function search(){
+    
 }
-searchStroke()
-dynamicStroke()

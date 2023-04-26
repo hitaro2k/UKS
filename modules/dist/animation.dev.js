@@ -153,23 +153,30 @@ function mediaAnim() {
 function userSearch() {
   var btnSearch = document.querySelector(".button-search");
   var closeSearch = document.querySelector(".close-search");
-  var searchStroke = document.querySelector(".search-stroke");
-  var searchStrokeInput = document.querySelector(".search-stroke__input");
+  var searchStroke = document.querySelector(".search-stroke__container");
+  var searchStrokeInput = document.querySelector(".search-input");
+  var searchList = document.querySelector(".search-stroke__list");
+  var header = document.querySelector(".full-screen__header__container ");
   btnSearch.addEventListener("click", function () {
     searchStroke.classList.add("search-stroke__active");
     btnSearch.style.display = "none";
+    header.style.display = 'none';
   });
 
   searchStroke.ondblclick = function () {
     searchStroke.classList.remove("search-stroke__active");
     btnSearch.style.display = "block";
+    searchList.style.display = "none";
+    header.style.display = 'flex';
   };
 
   searchStrokeInput.addEventListener('input', function () {
     if (searchStrokeInput.value !== '') {
       closeSearch.style.display = 'none';
+      searchList.style.display = "flex";
     } else {
       closeSearch.style.display = 'block';
+      searchList.style.display = "none";
     }
   });
   return userSearch;

@@ -257,82 +257,9 @@ li {
                 transform: translate(-50%, 0%) rotate(-45deg);
             }
         }
+      
 
-        .search-stroke {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            width: 90%;
-            height: 50px;
-            border-radius: 5px;
-            position: absolute;
-            background: linear-gradient(180deg, rgb(30 30 30) 0%, rgb(35 35 35) 100%);
-            transform: translateX(-150%);
-            z-index: 40;
-            user-select: none;
-
-            @include breakpoint(elg) {
-                width: 87%;
-            }
-
-            @include breakpoint(lg) {
-                width: 88%;
-            }
-
-            @include breakpoint(md) {
-                width: 80%;
-            }
-
-            @include breakpoint(sm) {
-                width: 70%;
-            }
-
-            &__input {
-                width: 500px;
-                border: none;
-                outline: none;
-                color: white;
-                font-family: "Montserrat";
-                background-color: transparent;
-                padding-left: 20px;
-                font-size: 15px;
-
-                @include breakpoint(elg) {
-                    width: 400px;
-                }
-
-                @include breakpoint(lg) {
-                    width: 300px;
-                }
-
-                @include breakpoint(md) {
-                    width: 220px;
-                }
-
-            }
-
-            .close-search {
-                margin-left: 50px;
-                font-size: 12px;
-                animation: opacity;
-                animation-iteration-count: infinite;
-                animation-duration: 4s;
-
-                @include breakpoint(elg) {
-                    margin-left: 5px;
-                }
-
-                @include breakpoint(md) {
-                    font-size: 10px;
-                }
-
-                @include breakpoint(sm) {
-                    margin-top: 75px;
-                    position: absolute;
-                    margin-left: 5px;
-                }
-            }
-        }
+        
 
         .user-ui {
             display: flex;
@@ -357,6 +284,70 @@ li {
             }
         }
 
+    }
+    .search-stroke__container{
+        border-radius: 5px;
+        height: 75px;
+        display: flex;
+        flex-direction: column;
+        background-color: #1f1f1f;
+        z-index: 2;
+        margin-top: 18px;
+        margin-left: 10px;
+        transform: translateX(-180%);
+        .search-stroke__input-close{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: #1b1b1b;
+            justify-content: space-between;
+            height: 50px;
+            border-radius: 5px;
+            margin-top: 10px;
+            .search-input{
+                width: 60%;
+                font-family: "Montserrat";
+                outline: none;
+                background-color: transparent;
+                border: none;
+                color: white;
+                margin-left: 20px;
+                height: 40px;
+                @include breakpoint(sm){
+                    width: 50%;
+                    font-size: 13px;
+                }
+            }
+            .close-search{
+                margin-right: 20px;
+                animation: opacity;
+                animation-iteration-count: infinite;
+                animation-duration: 3s;
+                @include breakpoint(lg){
+                    margin-right: 0px;
+                    font-size: 13px;
+                }
+                @include breakpoint(md){
+                    font-size: 10px;
+                }
+                @include breakpoint(xs){
+                    position: absolute;
+                    margin-top:75px;
+                }
+            }
+        }
+        .search-stroke__list{
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            background-color: #1f1f1f;
+            border-radius: 0px 0px 5px 5px;
+            .list-item{
+                margin-left: 20px;
+                margin-bottom: 15px;
+                margin-top: 15px;
+            }
+        }
     }
 
     .form-order__background{
@@ -1584,19 +1575,18 @@ li {
 }
 
 .search-stroke__active {
-    transform: translateX(9%) !important;
+    transform: translateX(5%) !important;
     transition: transform 0.5s;
 
     @include breakpoint(elg) {
-        transform: translateX(11%) !important;
-    }
-
-    @include breakpoint(lg) {
-        transform: translateX(9%) !important;
+        transform: translateX(4%) !important;
     }
 
     @include breakpoint(md) {
-        transform: translateX(17%) !important;
+        transform: translateX(3%) !important;
+    }
+    @include breakpoint(sm){
+        transform: translateX(0%) !important;
     }
 }
 .checkout__active{

@@ -3,13 +3,12 @@
 import animation from "../modules/animation.js"
 import {views} from "../modules/views.js"
 import{countScroll} from "../modules/scrollIcon.js"
-import {searchStroke} from "../modules/search.js"
+// import {searchStroke} from "../modules/search.js"
 import {getProductsPopular,getProductsActual} from "../modules/renderCatalog.js"
 import chooseProduct from "../modules/choose.js"
 
 
 document.addEventListener("DOMContentLoaded", function () {
-
   function validate() {
     let btnSubmit = document.querySelector(".form-footer__submit")
     btnSubmit.onmouseenter = () => {

@@ -110,23 +110,30 @@ export function mediaAnim() {
 export function userSearch() {
     const btnSearch = document.querySelector(".button-search")
     const closeSearch = document.querySelector(".close-search")
-    const searchStroke = document.querySelector(".search-stroke")
-    const searchStrokeInput = document.querySelector(".search-stroke__input")
-
+    const searchStroke = document.querySelector(".search-stroke__container")
+    const searchStrokeInput = document.querySelector(".search-input")
+    const searchList = document.querySelector(".search-stroke__list")
+    const header = document.querySelector(".full-screen__header__container ")
     btnSearch.addEventListener("click" ,  () => {
         searchStroke.classList.add("search-stroke__active")
         btnSearch.style.display = "none"
+        header.style.display = 'none'
+        
     })
 
     searchStroke.ondblclick = () => {
         searchStroke.classList.remove("search-stroke__active")
         btnSearch.style.display = "block"
+        searchList.style.display = "none"
+        header.style.display = 'flex'
     }
     searchStrokeInput.addEventListener('input', () => {
         if (searchStrokeInput.value !== '') {
             closeSearch.style.display = 'none';
+            searchList.style.display = "flex"
         } else {
             closeSearch.style.display = 'block';
+            searchList.style.display = "none"
         }
     });
     return userSearch
