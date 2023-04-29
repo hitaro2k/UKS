@@ -16,12 +16,13 @@ var chooseProduct = function chooseProduct() {
       var yearItems = document.querySelector(".full-screen__body__year-items");
       var marksBtn = document.querySelector(".mark-items__markbtn");
       var markListItems = document.querySelectorAll(".year-items");
-      var yearBtn = document.querySelector(".year-items__markbtn");
+      var selectModel = document.querySelector(".select-model");
       var backToMark = document.querySelector(".back");
       itemsWrapper.forEach(function (item) {
         item.addEventListener('click', function () {
           var mark = item.getAttribute('data-mark');
           var index = selectedItems.indexOf(mark);
+          console.log(selectedItems);
 
           if (index === -1) {
             selectedItems.push(mark);
@@ -40,6 +41,7 @@ var chooseProduct = function chooseProduct() {
       });
       markListItems.forEach(function (item) {
         item.addEventListener("click", function () {
+          console.log(selectedYears);
           var year = item.getAttribute("data-year");
           var index = selectedYears.indexOf(year);
 
@@ -52,15 +54,15 @@ var chooseProduct = function chooseProduct() {
           }
 
           if (selectedYears.length > 0) {
-            yearBtn.style.display = "flex";
+            selectModel.style.display = "flex";
           } else {
-            yearBtn.style.display = "none";
+            selectModel.style.display = "none";
           }
         });
       });
-
-      yearBtn.onclick = function () {};
-
+      selectModel.addEventListener('click', function (e) {
+        e.preventDefault();
+      });
       markBtn.addEventListener("click", function () {
         yearItems.style.display = "flex";
         markItems.style.display = "none";
@@ -86,8 +88,5 @@ var chooseProduct = function chooseProduct() {
 };
 
 chooseProduct();
-var _default = chooseProduct; // let abc = selectedItems.find(function(item){
-//     return  item === "chevrolet"
-// })
-
+var _default = chooseProduct;
 exports["default"] = _default;

@@ -7,6 +7,57 @@ exports.views = views;
 
 var _cart = require("../modules/cart.js");
 
+var productsPopular = [{
+  name: 'Двигун',
+  price: 20000,
+  image: 'img/dvigatel_alfa_romeo_1600-removebg-preview.png',
+  articul: "A78D12RR",
+  buy: "В кошик",
+  status: "В наявності",
+  id: "2B"
+}, {
+  name: 'Двигун',
+  price: 20000,
+  image: 'img/dvigatel_alfa_romeo_1600-removebg-preview.png',
+  articul: "A78D12RR",
+  buy: "В кошик",
+  status: "В наявності",
+  id: "3B"
+}];
+
+var productTemplate = function productTemplate(product) {
+  return "\n      <div class=\"product\" data-id =\"".concat(product.id, "\">\n        <img class=\"product-image\" src=\"").concat(product.image, "\" alt=\"").concat(product.name, "\">\n            <div class = \"product-description\">\n              <a href = \"/product.html\" class=\"product-title\">").concat(product.name, "</a>\n              <p class=\"product-articul\">").concat(product.articul, "</p>\n            </div>\n            <div class =\"product-info\">\n              <div class =\"product-info__price\"> \n                <p class=\"product-price\">").concat(product.price, " \u0433\u0440\u043D</p>\n                <p class=\"product-status\">").concat(product.status, "</p>\n              </div>\n            <button class=\"product-button\" data > ").concat(product.buy, "</button>\n            \n          </div>\n      </div>\n    ");
+};
+
+productsPopular.forEach(function (product) {
+  var productHTML = productTemplate(product);
+  productsContainer.insertAdjacentHTML('beforeend', productHTML);
+}); //   ? ACTUAL PRODUCTS
+
+var productsActual = [{
+  name: 'Двигун',
+  price: 20000,
+  image: 'img/dvigatel_alfa_romeo_1600-removebg-preview.png',
+  articul: "A78D12RR",
+  buy: "В кошик",
+  status: "В наявності",
+  id: "2B"
+}, {
+  name: 'Двигун',
+  price: 20000,
+  image: 'img/dvigatel_alfa_romeo_1600-removebg-preview.png',
+  articul: "A78D12RR",
+  buy: "В кошик",
+  status: "В наявності",
+  id: "3B"
+}];
+var productsContainerActual = document.querySelector('.products__container__actual');
+productsActual.forEach(function (product) {
+  var productHTML = productTemplate(product);
+  productsContainerActual.insertAdjacentHTML('beforeend', productHTML);
+});
+"use strict";
+
 var cartMenu = document.querySelector(".cart-menu");
 var menuBtn;
 var menu;
@@ -141,3 +192,32 @@ function views() {
 }
 
 views();
+views(); //? Выбор марки 
+
+var companyWrappers = document.querySelectorAll('.choose-company__wrapper');
+var selectModelBtn = document.querySelector('.select-model');
+var selectedModels = [];
+companyWrappers.forEach(function (wrapper) {
+  wrapper.addEventListener('click', function () {
+    var value = wrapper.getAttribute('data-value');
+
+    if (selectedModels.includes(value)) {
+      selectedModels = selectedModels.filter(function (model) {
+        return model !== value;
+      });
+    } else {
+      selectedModels.push(value);
+    }
+
+    if (selectedModels.length > 0) {
+      selectModelBtn.style.display = 'block';
+    } else {
+      selectModelBtn.style.display = 'none';
+    }
+  });
+});
+selectModelBtn.addEventListener('click', function () {
+  var selectedModelsStr = encodeURIComponent(JSON.stringify(selectedModels));
+  window.location.href = "selected-products.html?models=".concat(selectedModelsStr);
+});
+var currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

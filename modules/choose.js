@@ -4,19 +4,19 @@ const chooseProduct = () => {
         function arrCompany() {
             const selectedItems = [];
             const selectedYears = [];
-
             const markItems = document.querySelector(".full-screen__body__mark-items")
             const itemsWrapper = document.querySelectorAll('.item-wrapper');
             const markBtn = document.querySelector('.mark-items__markbtn');
             const yearItems = document.querySelector(".full-screen__body__year-items")
             const marksBtn = document.querySelector(".mark-items__markbtn");
             const markListItems = document.querySelectorAll(".year-items")
-            const yearBtn = document.querySelector(".year-items__markbtn")
+            const selectModel = document.querySelector(".select-model")
             const backToMark = document.querySelector(".back")
             itemsWrapper.forEach((item) => {
                 item.addEventListener('click', () => {
                     const mark = item.getAttribute('data-mark');
                     const index = selectedItems.indexOf(mark);
+                    console.log(selectedItems)
                     if (index === -1) {
                         selectedItems.push(mark);
                         item.classList.add('selected');
@@ -36,6 +36,7 @@ const chooseProduct = () => {
 
             markListItems.forEach((item) => {
                 item.addEventListener("click",() => {
+                    console.log(selectedYears)
                     const year = item.getAttribute("data-year");
                     const index = selectedYears.indexOf(year);
                     if (index === -1) {
@@ -47,20 +48,19 @@ const chooseProduct = () => {
                     }
 
                     if (selectedYears.length > 0) {
-                        yearBtn.style.display = "flex"
+                        selectModel.style.display = "flex"
                     } else {
-                        yearBtn.style.display = "none"
+                        selectModel.style.display = "none"
                     }
 
 
                 })
             })
 
-            yearBtn.onclick = function () {
+          selectModel.addEventListener('click', (e) => {
+                e.preventDefault()
+        });
 
-                
-                 
-            }    
             markBtn.addEventListener("click", () => {
                 yearItems.style.display = "flex"
                 markItems.style.display = "none"
@@ -94,8 +94,3 @@ const chooseProduct = () => {
 
 chooseProduct()
 export default chooseProduct
-
-    // let abc = selectedItems.find(function(item){
-    //     return  item === "chevrolet"
-    // })
-  

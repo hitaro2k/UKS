@@ -342,10 +342,11 @@ li {
             flex-direction: column;
             background-color: #1f1f1f;
             border-radius: 0px 0px 5px 5px;
-            .list-item{
+            li{
                 margin-left: 20px;
                 margin-bottom: 15px;
                 margin-top: 15px;
+                cursor: pointer;
             }
         }
     }
@@ -433,13 +434,18 @@ li {
     
                             .name{
                                 margin: 0px;
+                                color: white;
+                                font-family: "Montserrat";
                             }
                             .articul{
                                 margin: 0px;
-                                color: rgba(255, 255, 255, 0.49)
+                                color: rgba(255, 255, 255, 0.49);
+                                font-family: "Montserrat";
                             }
                             .product-price{
                                 padding: 0px;
+                                color: white;
+                                font-family: "Montserrat";
                             }
                         }
                         
@@ -454,6 +460,7 @@ li {
                         flex-direction: row;
                         align-items: center;
                         justify-content: space-between;
+                        margin-bottom: 50px;
                         .title{
                             margin-left: 20px;
                         }
@@ -1061,7 +1068,7 @@ li {
 
                     }
 
-                    .year-items__markbtn {
+                    .select-model{
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
