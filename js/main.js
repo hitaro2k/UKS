@@ -5,5 +5,5 @@ import{countScroll} from "../modules/scrollIcon.js"
 import {search} from "../modules/search.js"
 import {getProductsPopular,getProductsActual} from "../modules/renderCatalog.js"
 import chooseProduct from "../modules/choose.js"
-
+import {form } from "../modules/form.js"
 

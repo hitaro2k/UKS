@@ -2,18 +2,20 @@
 import {
   cartVisible
 } from "../modules/cart.js"
+
+let documentHTML = document.querySelector("html");
 let cartMenu = document.querySelector(".cart-menu");
 let menuBtn;
 let menu;
 let cartItems = [];
 const cartWrapper = document.querySelector(".isntclear")
-let errorCount = document.querySelector(".popup__cart-count")
 let isclear = document.querySelector(".isclear")
 let isntclear = document.querySelector(".isntclear")
 let totalPrice = document.querySelector(".total-price__wrapper")
 let showForm = document.querySelector(".total-price__button-buy")
 let formWrap = document.querySelector(".form-order__background")
 let formProduct = document.querySelector(".block__product-price")
+
 export function views() {
   document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('load', function () {
@@ -47,7 +49,8 @@ export function views() {
         cartMenu.classList.add("cart-active")
         isclear.style.display = 'none'
         isntclear.style.display = 'flex'
-        totalPrice.style.display = "flex"
+        
+        // ? --------------------------------------------------------------------------------------------
 
         if (existingItem) {
           const countElem = document.querySelector(
@@ -57,8 +60,6 @@ export function views() {
           return;
         }
       
-       
-        
         const productInfo = {
           id: productId,
           imgSrc: card.querySelector(".product-image").getAttribute("src"),
@@ -68,19 +69,20 @@ export function views() {
           count: "1",
         };
         
+        const itemInCart = 
+        `   <div class="item">
+                <img src="${productInfo.imgSrc}" alt="" class="item-image">
+                <p class="item-name">${productInfo.title}</p>
+                <p class="item-price">${productInfo.price}</p>
+                <div class="item__button__add-delete">
+                    <button class="button-primary__plus" data-id="">+</button>
+                    <p class="item-count" data-counter="${productInfo.id}">${productInfo.count}</p>
+                    <button class="button-primary__minus" data-id="" id="minus">-</button>
+                </div>
+            </div>
+        `
+        
 
-        const itemInCart = `
-                    <div class="item">
-                        <img src="${productInfo.imgSrc}" alt="" class="item-image">
-                        <p class="item-name">${productInfo.title}</p>
-                        <p class="item-price">${productInfo.price}</p>
-                        <div class="item__button__add-delete">
-                            <button class="button-primary__plus" data-id="">+</button>
-                            <p class="item-count" data-counter="${productInfo.id}">${productInfo.count}</p>
-                            <button class="button-primary__minus" data-id="" id="minus">-</button>
-                        </div>
-                    </div>`
-                 
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
 
@@ -89,9 +91,9 @@ export function views() {
         itemPrices.forEach(function(item) {
           totalPriceCash += parseFloat(item.textContent);
         });
-        document.querySelector('.total-price__text').innerHTML =totalPriceCash;
+        document.querySelector('.total-price__text').innerHTML =totalPriceCash + " " + "грн";
 
-        //? >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        // ? --------------------------------------------------------------------------------------------
 
         let btnPlus = document.querySelectorAll(".button-primary__plus")
         let btnMinus = document.querySelectorAll(".button-primary__minus")
@@ -108,28 +110,38 @@ export function views() {
             const currentCount = Number(counts[index].textContent);
             if (currentCount > 1) {
               counts[index].textContent = currentCount - 1;
-            } else {
+             
+            }else {
               const item = button.closest(".item");
               item.remove();
               cartItems.splice(index, 1);
+              
             }
           });
         });
-      }
-    })
+  
+       
 
+
+      }
+    });
+
+    // ? --------------------------------------------------------------------------------------------
     function formOrder(){
       let closeForm = document.querySelector(".close-form")
+      let price = function(){
+
+      }
       closeForm.addEventListener("click", ()=>{
         formWrap.style.display = "none";
+        documentHTML.style.overflowY = "scroll"
       })
       showForm.addEventListener("click" , ()=>{
         let buyProduct;
-        let documentHTML = document.querySelector("html")
         let totalProductPrice = ` 
         <div class="price-block">
           <p class="title">Title</p>
-          <p class="total-price">b</p>
+          <p class="total-price">${price}</p>
         </div>
         `
 
@@ -143,7 +155,9 @@ export function views() {
             </div>
           </div>
         `
+         
         formProduct.insertAdjacentHTML("beforeend", buyProduct)
+        formProduct.insertAdjacentHTML("beforeend", totalProductPrice)
         })
   
         formWrap.style.display = "flex";
@@ -162,10 +176,10 @@ export function views() {
         
       })
   
-    }
+    };
    formOrder()
 
-  })
+  });
 
   return views
 }

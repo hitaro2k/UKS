@@ -7,12 +7,12 @@ exports.views = views;
 
 var _cart = require("../modules/cart.js");
 
+var documentHTML = document.querySelector("html");
 var cartMenu = document.querySelector(".cart-menu");
 var menuBtn;
 var menu;
 var cartItems = [];
 var cartWrapper = document.querySelector(".isntclear");
-var errorCount = document.querySelector(".popup__cart-count");
 var isclear = document.querySelector(".isclear");
 var isntclear = document.querySelector(".isntclear");
 var totalPrice = document.querySelector(".total-price__wrapper");
@@ -56,8 +56,7 @@ function views() {
         var existingItem = findCartItem(productId);
         cartMenu.classList.add("cart-active");
         isclear.style.display = 'none';
-        isntclear.style.display = 'flex';
-        totalPrice.style.display = "flex";
+        isntclear.style.display = 'flex'; // ? --------------------------------------------------------------------------------------------
 
         if (existingItem) {
           var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
@@ -73,7 +72,7 @@ function views() {
           price: card.querySelector(".product-price").innerText,
           count: "1"
         };
-        var itemInCart = "\n                    <div class=\"item\">\n                        <img src=\"".concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                        <p class=\"item-name\">").concat(productInfo.title, "</p>\n                        <p class=\"item-price\">").concat(productInfo.price, "</p>\n                        <div class=\"item__button__add-delete\">\n                            <button class=\"button-primary__plus\" data-id=\"\">+</button>\n                            <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                            <button class=\"button-primary__minus\" data-id=\"\" id=\"minus\">-</button>\n                        </div>\n                    </div>");
+        var itemInCart = "   <div class=\"item\">\n                <img src=\"".concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                <p class=\"item-name\">").concat(productInfo.title, "</p>\n                <p class=\"item-price\">").concat(productInfo.price, "</p>\n                <div class=\"item__button__add-delete\">\n                    <button class=\"button-primary__plus\" data-id=\"\">+</button>\n                    <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                    <button class=\"button-primary__minus\" data-id=\"\" id=\"minus\">-</button>\n                </div>\n            </div>\n        ");
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
         var itemPrices = document.querySelectorAll('.item-price');
@@ -81,7 +80,7 @@ function views() {
         itemPrices.forEach(function (item) {
           totalPriceCash += parseFloat(item.textContent);
         });
-        document.querySelector('.total-price__text').innerHTML = totalPriceCash; //? >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        document.querySelector('.total-price__text').innerHTML = totalPriceCash + " " + "грн"; // ? --------------------------------------------------------------------------------------------
 
         var btnPlus = document.querySelectorAll(".button-primary__plus");
         var btnMinus = document.querySelectorAll(".button-primary__minus");
@@ -105,20 +104,24 @@ function views() {
           });
         });
       }
-    });
+    }); // ? --------------------------------------------------------------------------------------------
 
     function formOrder() {
       var closeForm = document.querySelector(".close-form");
+
+      var price = function price() {};
+
       closeForm.addEventListener("click", function () {
         formWrap.style.display = "none";
+        documentHTML.style.overflowY = "scroll";
       });
       showForm.addEventListener("click", function () {
         var buyProduct;
-        var documentHTML = document.querySelector("html");
-        var totalProductPrice = " \n        <div class=\"price-block\">\n          <p class=\"title\">Title</p>\n          <p class=\"total-price\">b</p>\n        </div>\n        ";
+        var totalProductPrice = " \n        <div class=\"price-block\">\n          <p class=\"title\">Title</p>\n          <p class=\"total-price\">".concat(price, "</p>\n        </div>\n        ");
         cartItems.forEach(function (item) {
           buyProduct = "\n          <div class=\"product-block\">\n            <div class=\"product\">\n                <div class=\"image\"><img class=\"image\" src=\"".concat(item.imgSrc, "\" alt=\"\"></div>\n                  <div class=\"name\">").concat(item.title, "</div>\n                  <div class=\"product-price\">").concat(item.price, "</div>\n            </div>\n          </div>\n        ");
           formProduct.insertAdjacentHTML("beforeend", buyProduct);
+          formProduct.insertAdjacentHTML("beforeend", totalProductPrice);
         });
         formWrap.style.display = "flex";
 
@@ -135,6 +138,7 @@ function views() {
       });
     }
 
+    ;
     formOrder();
   });
   return views;

@@ -289,3 +289,13 @@ selectModelBtn.addEventListener('click', () => {
   window.location.href = `selected-products.html?models=${selectedModelsStr}`;
 });
 const currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+// Logics total price
+if(isntclear.style.display = "flex"){
+  totalPrice.classList.add('price-active')
+}
+isntclear.style.display = "none"
+isclear.style.display = "flex"
+if(isntclear.style.display = "none"){
+totalPrice.classList.remove('price-active')
+}
