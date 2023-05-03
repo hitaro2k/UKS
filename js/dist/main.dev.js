@@ -8,7 +8,7 @@ var _scrollIcon = require("../modules/scrollIcon.js");
 
 var _search = require("../modules/search.js");
 
-var _renderCatalog = require("../modules/renderCatalog.js");
+var _render = require("../modules/render.js");
 
 var _choose = _interopRequireDefault(require("../modules/choose.js"));
 

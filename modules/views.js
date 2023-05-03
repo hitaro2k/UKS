@@ -4,19 +4,21 @@ import {
 } from "../modules/cart.js"
 
 let documentHTML = document.querySelector("html");
-let cartMenu = document.querySelector(".cart-menu");
-let menuBtn;
-let menu;
 let cartItems = [];
-const cartWrapper = document.querySelector(".isntclear")
-let isclear = document.querySelector(".isclear")
-let isntclear = document.querySelector(".isntclear")
-let totalPrice = document.querySelector(".total-price__wrapper")
-let showForm = document.querySelector(".total-price__button-buy")
-let formWrap = document.querySelector(".form-order__background")
-let formProduct = document.querySelector(".block__product-price")
+let countCartItems = 0;
 
 export function views() {
+  let cartMenu = document.querySelector(".cart-menu");
+  let menuBtn;
+  let menu;
+  const cartWrapper = document.querySelector(".isntclear")
+  let isclear = document.querySelector(".isclear")
+  let isntclear = document.querySelector(".isntclear")
+  let totalPrice = document.querySelector(".total-price__wrapper")
+  let showForm = document.querySelector(".total-price__button-buy")
+  let formWrap = document.querySelector(".form-order__background")
+  let formProduct = document.querySelector(".block__product-price")
+ 
   document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('load', function () {
       var images = [];
@@ -36,12 +38,13 @@ export function views() {
         };
       }
     });
-
+  
     function findCartItem(id) {
       return cartItems.find((item) => item.id === id);
     }
 
     window.addEventListener("click", function (event) {
+   
       if (event.target.hasAttribute("data")) {
         const card = event.target.closest(".product");
         const productId = card.dataset.id;
@@ -49,8 +52,10 @@ export function views() {
         cartMenu.classList.add("cart-active")
         isclear.style.display = 'none'
         isntclear.style.display = 'flex'
-        
-        // ? --------------------------------------------------------------------------------------------
+        totalPrice.style.display = 'flex'
+        countCartItems++
+
+        // ? CARD ITEM --------------------------------------------------------------------------------------------
 
         if (existingItem) {
           const countElem = document.querySelector(
@@ -85,6 +90,8 @@ export function views() {
 
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
+       
+       
 
         const itemPrices = document.querySelectorAll('.item-price');
         let totalPriceCash = 0;
@@ -93,36 +100,19 @@ export function views() {
         });
         document.querySelector('.total-price__text').innerHTML =totalPriceCash + " " + "грн";
 
-        // ? --------------------------------------------------------------------------------------------
+        // ? BUTTONS --------------------------------------------------------------------------------------------
 
         let btnPlus = document.querySelectorAll(".button-primary__plus")
         let btnMinus = document.querySelectorAll(".button-primary__minus")
         let counts = document.querySelectorAll(".item-count")
-
-        btnPlus.forEach((button, index) => {
-          button.addEventListener("click", () => {
-            counts[index].textContent = Number(counts[index].textContent) + 1;
-          });
-        });
-
-        btnMinus.forEach((button, index) => {
-          button.addEventListener("click", () => {
-            const currentCount = Number(counts[index].textContent);
-            if (currentCount > 1) {
-              counts[index].textContent = currentCount - 1;
-             
-            }else {
-              const item = button.closest(".item");
-              item.remove();
-              cartItems.splice(index, 1);
-              
-            }
-          });
-        });
-  
+     
+        btnPlus.forEach((item,index,arr)=>{
+          item.onclick = ()=>{
+            console.log(index,arr)
+          }
+        })
+   
        
-
-
       }
     });
 
@@ -155,7 +145,6 @@ export function views() {
             </div>
           </div>
         `
-         
         formProduct.insertAdjacentHTML("beforeend", buyProduct)
         formProduct.insertAdjacentHTML("beforeend", totalProductPrice)
         })
@@ -185,3 +174,33 @@ export function views() {
 }
 
 views()
+// btnPlus.forEach((button, index) => {
+//   button.addEventListener("click", () => {
+//     counts[index].textContent = Number(counts[index].textContent) + 1;
+    
+//   });
+// });
+
+// btnMinus.forEach((button, index) => {
+//   button.addEventListener("click", (event) => {
+//     event.stopPropagation()
+//     const currentCount = Number(counts[index].textContent);
+//     if (currentCount > 1) {
+//       counts[index].textContent = currentCount - 1;
+     
+//     }else{
+//       const item = button.closest(".item");
+//       console.log(item)
+//       item.remove();
+//       cartItems.splice(index, 1);
+//     }
+
+//     countCartItems--
+//     console.log(counts[index])
+//     // if(cartItems.length <= 0){
+//     //   isclear.style.display = 'flex'
+//     //   isntclear.style.display = 'none'
+//     //   totalPrice.style.display = 'none'
+//     // }
+//   });
+// });

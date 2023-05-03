@@ -749,7 +749,6 @@ li {
   }
 }
 .main .cart-menu .items .isntclear .item {
-  gap: 0px 30px;
   margin-top: 30px;
 }
 @media (max-width: 992px) {
@@ -1411,7 +1410,7 @@ li {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0px 50px;
+  justify-content: space-between;
   border: 1px solid white;
   border-radius: 10px;
 }
@@ -1423,6 +1422,12 @@ li {
   display: flex;
   gap: 0px 10px;
   align-items: center;
+  margin-right: 20px;
+}
+@media(max-width:992px){
+  .main .item__button__add-delete{
+    margin-right: 0px;
+  }
 }
 .main .button-primary__plus {
   display: flex;

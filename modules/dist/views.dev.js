@@ -8,19 +8,20 @@ exports.views = views;
 var _cart = require("../modules/cart.js");
 
 var documentHTML = document.querySelector("html");
-var cartMenu = document.querySelector(".cart-menu");
-var menuBtn;
-var menu;
 var cartItems = [];
-var cartWrapper = document.querySelector(".isntclear");
-var isclear = document.querySelector(".isclear");
-var isntclear = document.querySelector(".isntclear");
-var totalPrice = document.querySelector(".total-price__wrapper");
-var showForm = document.querySelector(".total-price__button-buy");
-var formWrap = document.querySelector(".form-order__background");
-var formProduct = document.querySelector(".block__product-price");
+var countCartItems = 0;
 
 function views() {
+  var cartMenu = document.querySelector(".cart-menu");
+  var menuBtn;
+  var menu;
+  var cartWrapper = document.querySelector(".isntclear");
+  var isclear = document.querySelector(".isclear");
+  var isntclear = document.querySelector(".isntclear");
+  var totalPrice = document.querySelector(".total-price__wrapper");
+  var showForm = document.querySelector(".total-price__button-buy");
+  var formWrap = document.querySelector(".form-order__background");
+  var formProduct = document.querySelector(".block__product-price");
   document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('load', function () {
       var images = [];
@@ -56,7 +57,9 @@ function views() {
         var existingItem = findCartItem(productId);
         cartMenu.classList.add("cart-active");
         isclear.style.display = 'none';
-        isntclear.style.display = 'flex'; // ? --------------------------------------------------------------------------------------------
+        isntclear.style.display = 'flex';
+        totalPrice.style.display = 'flex';
+        countCartItems++; // ? CARD ITEM --------------------------------------------------------------------------------------------
 
         if (existingItem) {
           var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
@@ -80,28 +83,15 @@ function views() {
         itemPrices.forEach(function (item) {
           totalPriceCash += parseFloat(item.textContent);
         });
-        document.querySelector('.total-price__text').innerHTML = totalPriceCash + " " + "грн"; // ? --------------------------------------------------------------------------------------------
+        document.querySelector('.total-price__text').innerHTML = totalPriceCash + " " + "грн"; // ? BUTTONS --------------------------------------------------------------------------------------------
 
         var btnPlus = document.querySelectorAll(".button-primary__plus");
         var btnMinus = document.querySelectorAll(".button-primary__minus");
         var counts = document.querySelectorAll(".item-count");
-        btnPlus.forEach(function (button, index) {
-          button.addEventListener("click", function () {
-            counts[index].textContent = Number(counts[index].textContent) + 1;
-          });
-        });
-        btnMinus.forEach(function (button, index) {
-          button.addEventListener("click", function () {
-            var currentCount = Number(counts[index].textContent);
-
-            if (currentCount > 1) {
-              counts[index].textContent = currentCount - 1;
-            } else {
-              var item = button.closest(".item");
-              item.remove();
-              cartItems.splice(index, 1);
-            }
-          });
+        btnPlus.forEach(function (item, index, arr) {
+          item.onclick = function () {
+            console.log(index, arr);
+          };
         });
       }
     }); // ? --------------------------------------------------------------------------------------------
@@ -144,4 +134,29 @@ function views() {
   return views;
 }
 
-views();
+views(); // btnPlus.forEach((button, index) => {
+//   button.addEventListener("click", () => {
+//     counts[index].textContent = Number(counts[index].textContent) + 1;
+//   });
+// });
+// btnMinus.forEach((button, index) => {
+//   button.addEventListener("click", (event) => {
+//     event.stopPropagation()
+//     const currentCount = Number(counts[index].textContent);
+//     if (currentCount > 1) {
+//       counts[index].textContent = currentCount - 1;
+//     }else{
+//       const item = button.closest(".item");
+//       console.log(item)
+//       item.remove();
+//       cartItems.splice(index, 1);
+//     }
+//     countCartItems--
+//     console.log(counts[index])
+//     // if(cartItems.length <= 0){
+//     //   isclear.style.display = 'flex'
+//     //   isntclear.style.display = 'none'
+//     //   totalPrice.style.display = 'none'
+//     // }
+//   });
+// });

@@ -1,16 +1,9 @@
 "use strict"
-// document.querySelector("#search-input").oninput = function () {
-//     let val = this.value.trim();
-//     let elasticItems = 1;
-//     console.log(val)
-// }
-
-
 export function search() {
   const searchInput = document.querySelector(".search-input");
   const searchList = document.querySelector(".search-stroke__list");
 
-  fetch('modules/searchItem.json')
+  fetch('../modules/search.json')
     .then(response => response.json())
     .then(data => {
       searchInput.addEventListener('input', () => {

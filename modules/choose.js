@@ -59,7 +59,8 @@ const chooseProduct = () => {
 
           selectModel.addEventListener('click', (e) => {
                 e.preventDefault()
-        });
+                let result = selectedItems.concat(selectedYears);
+            });
 
             markBtn.addEventListener("click", () => {
                 yearItems.style.display = "flex"

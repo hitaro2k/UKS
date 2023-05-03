@@ -1,16 +1,11 @@
 "use strict"
 import {
     views
-} from "./views.js";
-
-let menuBtn;
-let menu;
-let cartMenu = document.querySelector(".cart-menu");
-
-
-
-
+} from "../modules/views.js";
 export function cartVisible() {
+    let cartMenu = document.querySelector(".cart-menu");
+    let menuBtn;
+    let menu;
     let cartIcon = document.querySelector(".shopping-card__link");
     let cartClose = document.getElementById("close-cart")
     let documentHTML = document.querySelector("html")

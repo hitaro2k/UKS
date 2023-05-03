@@ -62,6 +62,7 @@ var chooseProduct = function chooseProduct() {
       });
       selectModel.addEventListener('click', function (e) {
         e.preventDefault();
+        var result = selectedItems.concat(selectedYears);
       });
       markBtn.addEventListener("click", function () {
         yearItems.style.display = "flex";
