@@ -1,7 +1,7 @@
 "use strict"
 import {
     views
-} from "../modules/views.js";
+} from "./views.js";
 export function cartVisible() {
     let cartMenu = document.querySelector(".cart-menu");
     let menuBtn;

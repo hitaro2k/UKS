@@ -5,7 +5,7 @@ getProductsPopular()
 getProductsActual()
 
 export async function getProductsPopular() {
-  const response = await fetch("../modules/popular.json")
+  const response = await fetch("../js/modules/popular.json")
 
   const productArray = await response.json();
   renderProductsPopular(productArray)
@@ -38,7 +38,7 @@ function renderProductsPopular(productArray) {
 
 
 export async function getProductsActual() {
-  const response = await fetch("../modules/actual.json")
+  const response = await fetch("../js/modules/actual.json")
 
   const productArray = await response.json();
   renderProductsActual(productArray)

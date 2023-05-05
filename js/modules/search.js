@@ -3,7 +3,7 @@ export function search() {
   const searchInput = document.querySelector(".search-input");
   const searchList = document.querySelector(".search-stroke__list");
 
-  fetch('../modules/search.json')
+  fetch('../js/modules/search.json')
     .then(response => response.json())
     .then(data => {
       searchInput.addEventListener('input', () => {
