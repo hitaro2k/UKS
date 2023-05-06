@@ -3,7 +3,7 @@ import {cartVisible} from "./cart.js"
 
 let documentHTML = document.querySelector("html");
 let cartItems = [];
-let countCartItems = 0;
+
 
 export function views() {
 
@@ -20,7 +20,8 @@ export function views() {
   let totalPrice = document.querySelector(".total-price__wrapper")
   let showForm = document.querySelector(".total-price__button-buy")
   let formWrap = document.querySelector(".form-order__background")
-  let formProduct = document.querySelector(".block__product-price")
+  let formProductPrice = document.querySelector(".block__product-price")
+  let formProductItem = document.querySelector(".block__product-item")
 
 
     /* -------------------------------------------------------------------------- */
@@ -66,9 +67,9 @@ export function views() {
         const productId = card.dataset.id;
         const existingItem = findCartItem(productId);
         cartMenu.classList.add("cart-active")
-        isclear.style.display = 'none'
-        isntclear.style.display = 'flex'
-        totalPrice.style.display = 'flex'
+        isntclear.style.display = "flex"
+        totalPrice.style.display = "flex"
+        isclear.style.display = "none"
     /* -------------------------------------------------------------------------*/
     /*                                Card Item                                 */
     /* -------------------------------------------------------------------------*/
@@ -114,17 +115,15 @@ export function views() {
 
         let btnPlus = document.querySelectorAll(".button-primary__plus")
         let btnMinus = document.querySelectorAll(".button-primary__minus")
-        let itemCartCount = 0;
-        itemCartCount++
+       
       /* -------------------------------------------------------------------------- */
       /*                                  Btn Plus                                  */
       /* -------------------------------------------------------------------------- */
-      
+     
         btnPlus.forEach(function(button) {
           button.addEventListener("click", function(event) {
             const productId = event.target.dataset.id;
             const item = findCartItem(productId);
-            itemCartCount++
             const countElem = document.querySelector(
               `.item-count[data-counter="${productId}"]`
             );
@@ -132,8 +131,6 @@ export function views() {
             if(countElemAttr == productInfo.data ){
               item.count++
             }
-           
-
             countElem.textContent = item.count;
             updateTotalPrice();
           });
@@ -148,7 +145,6 @@ export function views() {
           button.addEventListener("click", function(event) {
             const productId = event.target.dataset.id;
             const item = findCartItem(productId);
-            itemCartCount--
             const countElem = document.querySelector(
               `.item-count[data-counter="${productId}"]`
             );
@@ -156,14 +152,14 @@ export function views() {
             if(countElemAttr == productInfo.data ){
               item.count--
             }
-           
             if (item.count === 0) {
               removeCartItem(productId);
             } else {
               countElem.textContent = item.count;
               updateTotalPrice();
             }
-            
+         
+       
           });
         });
         
@@ -174,46 +170,41 @@ export function views() {
           item.parentNode.removeChild(item);
           updateTotalPrice();
         }
-        
         function updateTotalPrice() {
           const itemPrices = document.querySelectorAll('.item-price');
           let totalPriceCash = 0;
           itemPrices.forEach(function(item) {
             const productId = item.closest('.item').querySelector('.button-primary__plus').dataset.id;
-            console.log(productId)
             const itemInfo = findCartItem(productId);
-            console.log(itemInfo)
             totalPriceCash += parseFloat(item.textContent) * itemInfo.count;
           });
           document.querySelector('.total-price__text').innerHTML = totalPriceCash + " грн";
         } 
-        
         updateTotalPrice() 
        
       }
+     
     });
 
     /* -----------------------------------------------------------------------*/
     /*                                  FORM                                  */
     /* -----------------------------------------------------------------------*/
-    
     function formOrder(){
       let closeForm = document.querySelector(".close-form")
-      let price = function(){
-
-      }
       closeForm.addEventListener("click", ()=>{
         formWrap.style.display = "none";
         documentHTML.style.overflowY = "scroll"
       })
       showForm.addEventListener("click" , ()=>{
         let buyProduct;
-        let totalProductPrice = ` 
+        let priceToForm =  document.querySelector('.total-price__text').textContent;
+        let buyPrice = ` 
         <div class="price-block">
           <p class="title">Title</p>
-          <p class="total-price">${price}</p>
+          <p class="total-price">${priceToForm}</p>
         </div>
         `
+     
 
         cartItems.forEach(item =>{
          buyProduct = `
@@ -225,8 +216,16 @@ export function views() {
             </div>
           </div>
         `
-        formProduct.insertAdjacentHTML("beforeend", buyProduct)
-        formProduct.insertAdjacentHTML("beforeend", totalProductPrice)
+        
+        
+        // countProduct.forEach(item=>{
+        //  item.forEach(el=>{
+        //   console.log(el)
+        //  })
+        // })
+
+        // formProductPrice.insertAdjacentHTML("beforeend" , buyPrice)
+        // formProductItem.insertAdjacentHTML("beforeend" , buyProduct)
         })
   
         formWrap.style.display = "flex";
@@ -246,7 +245,9 @@ export function views() {
       })
   
     };
-   formOrder()
+    formOrder()
+   
+   
 
   });
 

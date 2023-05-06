@@ -16,35 +16,104 @@
     
     <main class="main">
         <header class="full-screen__header__container">
-            <a href="/index.html">
-                <img src="img/UK.svg" alt="" class="logo-img">
+            <a class="logo-link" href="/index.html">
+                <img src="img/UK.svg" alt="logo" class="logo-img">
             </a>
-    
+
             <nav class="menu">
                 <ul class="menu__list">
                     <li class="menu__list-item" id="catalog"><a href="#" class="menu__list-link">Каталог</a></li>
-                    <li class="menu__list-item"><a href="#" class="menu__list-link">Кліентам</a></li>
-                    <li class="menu__list-item"><a href="#" class="menu__list-link">Про нас</a></li>
-                    <li class="menu__list-item"><a href="/index.html" class="menu__list-link">Популярне</a></li>
-                    <li class="menu__list-item"><a href="/index.html" class="menu__list-link">Актуальне</a></li>
+                    <li class="menu__list-item"><a href="/client.html" class="menu__list-link">Кліентам</a></li>
+                    <li class="menu__list-item"><a href="#popular__container" class="menu__list-link">Популярне</a></li>
+                    <li class="menu__list-item"><a href="#actual__container" class="menu__list-link">Актуальне</a></li>
                 </ul>
             </nav>
-            <div class="search-stroke">
-                <input type="text" class="search-stroke__input" placeholder="Введите VIN-KOD">
-                <p class="close-search">Нажміть на текст щоб закрити блок</p>
-            </div>
+        
+            
             <div class="user-ui">
-                <button class="button-search"><img src="img/search-svg.svg" alt=""></button>
-                <a href="#" class="shopping-card__link"><img src="img/shopping-cart-svg.svg" alt=""></a>
+                <button class="button-search"><img src="img/search-svg.svg" alt="img"></button>
+                <img class="shopping-card__link" src="/img/shopping-cart-svg.svg" alt="img">
             </div>
-    
-    
+
+
             <div class="menu-btn">
-                <span></span>
                 <span></span>
                 <span></span>
             </div>
         </header>
+        
+        <div class="search-stroke__container">
+            <div class="search-stroke__input-close">
+                <input type="text" placeholder="Введіть назву товару" class="search-input">
+                <p class="close-search">Натисніть 2 рази щоб закрити</p>
+            </div>
+            
+
+            <ul class="search-stroke__list">
+            </ul>
+          </div>
+
+        <div class="form-order__background">
+            <form action="" class="form-order">
+                <div class="close-form__wrapper">
+                    <object data="close" type="image/svg+xml" class="close-form">
+                        <svg width="20" height="20" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="white" d="M8.25538 6.73346L13.1508 1.83808C13.5692 1.41962 13.5692 0.736539 13.1508 0.315001C12.7323 -0.106537 12.0462 -0.10346 11.6277 0.315001L6.73231 5.21039L1.83692 0.315001C1.41846 -0.10346 0.735385 -0.10346 0.313846 0.315001C-0.104615 0.736539 -0.104615 1.41962 0.313846 1.83808L5.20923 6.73346L0.313846 11.6288C-0.104615 12.0473 -0.104615 12.7304 0.313846 13.1519C0.732308 13.5735 1.41846 13.5704 1.83692 13.1519L6.73231 8.25654L11.6277 13.1519C11.8369 13.3612 12.1138 13.4658 12.3908 13.4658C12.6677 13.4658 12.9415 13.3612 13.1508 13.1519C13.5692 12.7335 13.5692 12.0504 13.1508 11.6288L8.25538 6.73346Z" fill="black"/>
+                        </svg>
+                    </object>
+                </div>
+               
+                <div class="form-content">
+                    <div class="block__product-price">
+        
+                    </div>
+                    <div class="personal-info">
+                        <div class="info-input__wrapper">
+                            <input placeholder="Імя" type="text" class="info-input">
+                        </div>
+                        <div class="info-input__wrapper">
+                            <input placeholder="Прізвище" type="text" class="info-input">
+                        </div>
+                        <div class="info-input__wrapper">
+                            <input placeholder="Номер телефону" type="text" class="info-input">
+                        </div>
+    
+                        <div class="post-office">
+                            <div class="post-office__office">
+                                <label for="" class="label-form" id="checkbox1">
+                                    <input class="input-form" type="checkbox">
+                                    <object data="" type="" class="form-img__wrapper" id="form-check1">
+                                        <img class="form-img" src="/img/checkmark.svg" alt="">
+                                    </object>
+                                </label>
+                                <div class="info-input__wrapper" id="info-input__post-office">
+                                    <input placeholder="Номер відділу" type="text" class="info-input">
+                                </div>
+                            </div>
+                            
+                            <div class="post-office__self">
+                                <label for="" class="label-form" id="checkbox2">
+                                    <input class="input-form" type="checkbox">
+                                    <object data="" type="" class="form-img__wrapper" id="form-check2">
+                                        <img class="form-img" src="/img/checkmark.svg" alt="">
+                                    </object>
+                                </label>
+                                <div class="info-input__wrapper" id="info-input__post-office-self">
+                                    <input placeholder="Самовивіз" type="text" class="info-input">
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <textarea placeholder="Залиште ваш комментар" name="" id="" cols="30" rows="10" class="user-comm" style="resize: none;"></textarea>
+                        
+                    </div>
+                </div>
+
+            </form>
+           
+        </div>
+        
+
         <div class="catalog-menu">
             <div class="close-btn__wrapper">
                 <p class="catalog-title">Каталог</p>
@@ -52,8 +121,28 @@
             </div>
             <div class="catalog__wrapper">
                 <div class="catalog__item" id="">
+                    <object data="" type="image/svg+xml" class="catalog__item-image">
+                        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                        <svg class="catalog-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mdi-engine" width="24" height="24" viewBox="0 0 24 24"><path d="M7,4V6H10V8H7L5,10V13H3V10H1V18H3V15H5V18H8L10,20H18V16H20V19H23V9H20V12H18V8H12V6H15V4H7Z" />
+                        </svg>
+                    </object>
+                    <a href="/generateCatalog.html" class="catalog__item-link">Двигун</a>
+                </div>
+                <div class="catalog__item" id="">
                     <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
+                    <a href="#" class="catalog__item-link">Підвіска</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">КПП</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Фільтра</a>
+                </div>
+                <div class="catalog__item" id="">
+                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
+                    <a href="#" class="catalog__item-link">Електроніка</a>
                 </div>
                 <div class="catalog__item" id="">
                     <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
@@ -65,54 +154,89 @@
                 </div>
                 <div class="catalog__item" id="">
                     <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
+                    <a href="#" class="catalog__item-link">Інше</a>
                 </div>
-                <div class="catalog__item" id="">
-                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
+            </div>
+        </div>
+
+        <div class="cart-menu">
+            <button class="close-item" id="close-cart">Закрити</button>
+            <div class="items">
+                <div class="isclear">
+                    <div class="icons">
+                        <img class="icons-image" src="/img/shopping-cart-svg.svg" alt="">
+                    </div>
+                    <div class="items-text">
+                        <h2 class="items-title">Ваш кошик порожній</h2>
+                        <p class="items-subtitle">Ви ще не додали жодного товару</p>
+                    </div>
                 </div>
-                <div class="catalog__item" id="">
-                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
+                <div class="isntclear">
                 </div>
-                <div class="catalog__item" id="">
-                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
+            </div>
+
+            <div class="total-price__wrapper">
+                <p class="total-price__text">0 грн</p>
+                <button class="total-price__button-buy">Оформить заказ</button>
+            </div>
+        </div>
+        <div class="checkout-menu">
+            <div class="checkout__product-price">
+                <div class="product-price__product-wrapper">
+                    <div class="product-wrapper">
+                        <img src="/img/d2690dd9e88799e1903.webp" alt="" class="product-wrapper__image">
+                        <p class="product-wrapper__name">Name</p>
+                        <p class="product-wrapper__count">5</p>
+                        <p class="product-wrapper__price">$212</p>
+                    </div>
+                    <div class="product-wrapper">
+                        <img src="/img/d2690dd9e88799e1903.webp" alt="" class="product-wrapper__image">
+                        <p class="product-wrapper__name">Name</p>
+                        <p class="product-wrapper__count">5</p>
+                        <p class="product-wrapper__price">$212</p>
+                    </div>
+                    <div class="product-wrapper">
+                        <img src="/img/d2690dd9e88799e1903.webp" alt="" class="product-wrapper__image">
+                        <p class="product-wrapper__name">Name</p>
+                        <p class="product-wrapper__count">5</p>
+                        <p class="product-wrapper__price">$212</p>
+                    </div>
                 </div>
-                <div class="catalog__item" id="">
-                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
+                <div class="product-price__price-wrapper">
+                    <p class="price-wrapper__text">Total Price</p>
+                    <p class="price-wrapper__price">$10</p>
                 </div>
-                <div class="catalog__item" id="">
-                    <img src="/img/car_13260 1.svg" alt="" class="catalog__item-image">
-                    <a href="#" class="catalog__item-link">Lorem</a>
-                </div>
+            </div>
+            <div class="checkout__data">
+                <form action="" class="form-data">
+                    <input placeholder="Name" type="text" class="form-input__name">
+                    <input placeholder="Name" type="text" class="form-input__name">
+                    <input placeholder="Name" type="text" class="form-input__name">
+                    <input placeholder="Name" type="text" class="form-input__name">
+                    <input placeholder="Name" type="text" class="form-input__name">
+                </form>
             </div>
         </div>
 
         <div class="menu-burger__wrapper">
             <nav>
-            <ul class="menu--burger-list">
-              <li class="menu--burger-item" id="catalog">
-                <a class="menu--burger-item" href="#">Каталог</a>
-            </li>
-            <li class="menu--burger-item">
-                <a class="menu--burger-item" href="#">Кліентам</a>
-            </li>
-            <li class="menu--burger-item">
-                <a class="menu--burger-item" href="#">Про Нас</a>
-            </li>
-            <li class="menu--burger-item">
-                <a class="menu--burger-item" href="#popular">Популярне</a>
-            </li>
-            <li class="menu--burger-item">
-                <a class="menu--burger-item" href="#actual">Актуальне</a>
-            </li>
-             
-            </ul>
+                <ul class="menu--burger-list">
+                    <li class="menu--burger-item" id="catalog">
+                        <a class="menu--burger-item" href="#">Каталог</a>
+                    </li>
+                    <li class="menu--burger-item">
+                        <a class="menu--burger-item" href="#">Кліентам</a>
+                    </li>
+                    <li class="menu--burger-item">
+                        <a class="menu--burger-item" href="#popular__container">Популярне</a>
+                    </li>
+                    <li class="menu--burger-item">
+                        <a class="menu--burger-item" href="#actual__container">Актуальне</a>
+                    </li>
+
+                </ul>
             </nav>
         </div>
-
         <div class="content">
             <div class="products__container"></div>
         </div>
@@ -176,6 +300,6 @@
 
     </main>
    
-    <script type="module" src="/modules/page.js"></script>
+    <script type="module" src="/js/modules/page.js"></script>
 </body>
 </html>
