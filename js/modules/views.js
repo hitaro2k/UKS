@@ -205,7 +205,7 @@ export function views() {
         formWrap.style.display = "none";
         documentHTML.style.overflowY = "scroll"
       })
-
+      
 
       showForm.addEventListener("click" , ()=>{
         let buyProduct;
@@ -257,6 +257,11 @@ export function views() {
        
         
       });
+
+      let showPayment = document.querySelector(".to-response")
+      showPayment.addEventListener("click" , ()=>{
+        console.log('NEGR')
+      })
   
     };
     formOrder()

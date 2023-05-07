@@ -399,6 +399,7 @@ li {
                     width: 50%;
                     display: flex;
                     flex-direction: column;
+                    align-items: center;
                     .block__product-price{
                         width: 100%;
                         display: flex;
@@ -479,7 +480,16 @@ li {
                             
                         }
                     }
+                    .to-response{
+                        border: none;
+                        border-radius: 5px;
+                        width: 200px;
+                        height: 50px;
+                        font-family: "Montserrat";
+                        cursor: pointer;
+                    }
                 }
+               
                
                 .personal-info{
                     display: flex;

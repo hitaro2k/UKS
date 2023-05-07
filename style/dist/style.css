@@ -383,6 +383,7 @@ li {
   width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .main .form-order__background .form-order .form-content .block__product .block__product-price {
   width: 100%;
@@ -463,6 +464,14 @@ li {
   padding: 0px;
   color: white;
   font-family: "Montserrat";
+}
+.main .form-order__background .form-order .form-content .block__product .to-response {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  height: 50px;
+  font-family: "Montserrat";
+  cursor: pointer;
 }
 .main .form-order__background .form-order .form-content .personal-info {
   display: flex;
