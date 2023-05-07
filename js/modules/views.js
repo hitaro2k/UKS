@@ -168,8 +168,6 @@ export function views() {
               countElem.textContent = item.count;
               updateTotalPrice();
             }
-           
-       
           });
         });
        
