@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ua">
 
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
     <main class="main">
         
         <header class="full-screen__header__container">
-            <a class="logo-link" href="/index.html">
+            <a class="logo-link" href="{{ route('index.index') }}">
                 <img src="img/UK.svg" alt="logo" class="logo-img">
             </a>
 
@@ -61,7 +61,7 @@
           </div>
 
         <div class="form-order__background">
-            <form action="" class="form-order">
+            <form action="{{ route('gena') }}" class="form-order">
                 <div class="close-form__wrapper">
                     <object data="close" type="image/svg+xml" class="close-form">
                         <svg width="20" height="20" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,17 +78,20 @@
                         <div class="block__product-price">
                         
                         </div>
+                        <button>
+                            netx GO letsgo GOGOGOG
+                        </button>
                     </div>
                    
                     <div class="personal-info">
                         <div class="info-input__wrapper">
-                            <input placeholder="Імя" type="text" class="info-input">
+                            <input name="name" placeholder="Імя" type="text" class="info-input">
                         </div>
                         <div class="info-input__wrapper">
-                            <input placeholder="Прізвище" type="text" class="info-input">
+                            <input name="surname" placeholder="Прізвище" type="text" class="info-input">
                         </div>
                         <div class="info-input__wrapper">
-                            <input placeholder="Номер телефону" type="text" class="info-input">
+                            <input name="number" placeholder="Номер телефону" type="text" class="info-input">
                         </div>
     
                         <div class="post-office">
@@ -117,7 +120,7 @@
                             </div>
                            
                         </div>
-                        <textarea placeholder="Залиште ваш комментар" name="" id="" cols="30" rows="10" class="user-comm" style="resize: none;"></textarea>
+                        <textarea name="coment" placeholder="Залиште ваш комментар" name="" id="" cols="30" rows="10" class="user-comm" style="resize: none;"></textarea>
                         
                     </div>
                 </div>
