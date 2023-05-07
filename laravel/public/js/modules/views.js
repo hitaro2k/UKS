@@ -8,7 +8,7 @@ let cartItems = [];
 export function views() {
 
   /* -------------------------------------------------------------------------- */
-  /*                                  Variable                                  */
+  /*                                  Variables                                 */
   /* -------------------------------------------------------------------------- */
 
   let cartMenu = document.querySelector(".cart-menu");
@@ -33,6 +33,7 @@ export function views() {
     /* -------------------------------------------------------------------------- */
     /*                                  Preloader                                 */
     /* -------------------------------------------------------------------------- */
+    
     window.addEventListener('load', function () {
       var images = [];
       document.querySelectorAll('img').forEach(function (img) {
@@ -66,13 +67,17 @@ export function views() {
         const card = event.target.closest(".product");
         const productId = card.dataset.id;
         const existingItem = findCartItem(productId);
+  
+
         cartMenu.classList.add("cart-active")
         isntclear.style.display = "flex"
         totalPrice.style.display = "flex"
         isclear.style.display = "none"
-    /* -------------------------------------------------------------------------*/
-    /*                                Card Item                                 */
-    /* -------------------------------------------------------------------------*/
+        let formPrice;
+       
+    /* -----------------------------------------------------------------------*/
+    /*                                Card Item                               */
+    /* -----------------------------------------------------------------------*/
 
         if (existingItem) {
           const countElem = document.querySelector(
@@ -89,11 +94,13 @@ export function views() {
           title: card.querySelector(".product-title").innerText,
           status: card.querySelector(".product-status").innerText,
           price: card.querySelector(".product-price").innerText,
-          count: 1,
+          count: 0,
           data:`${productId}`
         };
+
+        productInfo.count++
         
-      
+       
         const itemInCart = 
         `   <div class="item">
                 <img src="${productInfo.imgSrc}" alt="" class="item-image">
@@ -106,19 +113,20 @@ export function views() {
                 </div>
             </div>
         `
+        
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
-
-      /* --------------------------------------------------------------------------*/
-      /*                                  Buttons                                  */
-      /* --------------------------------------------------------------------------*/
+        
+    /* -------------------------------------------------------------------------*/
+    /*                                  Buttons                                 */
+    /* -------------------------------------------------------------------------*/
 
         let btnPlus = document.querySelectorAll(".button-primary__plus")
         let btnMinus = document.querySelectorAll(".button-primary__minus")
        
-      /* -------------------------------------------------------------------------- */
-      /*                                  Btn Plus                                  */
-      /* -------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------*/
+    /*                                  Btn Plus                                 */
+    /* --------------------------------------------------------------------------*/
      
         btnPlus.forEach(function(button) {
           button.addEventListener("click", function(event) {
@@ -131,14 +139,15 @@ export function views() {
             if(countElemAttr == productInfo.data ){
               item.count++
             }
+       
             countElem.textContent = item.count;
             updateTotalPrice();
           });
         });
      
-      /* -------------------------------------------------------------------------- */
-      /*                                  Btn Minus                                 */
-      /* -------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------*/
+    /*                                  Btn Minus                                */
+    /* --------------------------------------------------------------------------*/
       
 
         btnMinus.forEach(function(button) {
@@ -152,17 +161,19 @@ export function views() {
             if(countElemAttr == productInfo.data ){
               item.count--
             }
+
             if (item.count === 0) {
               removeCartItem(productId);
             } else {
               countElem.textContent = item.count;
               updateTotalPrice();
             }
-         
+           
        
           });
         });
-        
+       
+      
         function removeCartItem(id) {
           const index = cartItems.findIndex(item => item.id === id);
           cartItems.splice(index, 1);
@@ -170,6 +181,7 @@ export function views() {
           item.parentNode.removeChild(item);
           updateTotalPrice();
         }
+
         function updateTotalPrice() {
           const itemPrices = document.querySelectorAll('.item-price');
           let totalPriceCash = 0;
@@ -179,9 +191,9 @@ export function views() {
             totalPriceCash += parseFloat(item.textContent) * itemInfo.count;
           });
           document.querySelector('.total-price__text').innerHTML = totalPriceCash + " грн";
+
         } 
         updateTotalPrice() 
-       
       }
      
     });
@@ -195,17 +207,27 @@ export function views() {
         formWrap.style.display = "none";
         documentHTML.style.overflowY = "scroll"
       })
+
+
       showForm.addEventListener("click" , ()=>{
         let buyProduct;
-        let priceToForm =  document.querySelector('.total-price__text').textContent;
+        let priceToForm = document.querySelector('.total-price__text').textContent;
+
+        /* -------------------------------------------------------------------------- */
+        /*                              Arr for database                              */
+        /* -------------------------------------------------------------------------- */
+        let checkedFormItems = []
+        /* -------------------------------------------------------------------------- */
+        /*                              Arr for database                              */
+        /* -------------------------------------------------------------------------- */
         let buyPrice = ` 
         <div class="price-block">
           <p class="title">Title</p>
           <p class="total-price">${priceToForm}</p>
         </div>
-        `
-     
+        `;
 
+        formProductPrice.insertAdjacentHTML("beforeend" , buyPrice);
         cartItems.forEach(item =>{
          buyProduct = `
           <div class="product-block">
@@ -215,19 +237,13 @@ export function views() {
                   <div class="product-price">${item.price}</div>
             </div>
           </div>
-        `
-        
-        
-        // countProduct.forEach(item=>{
-        //  item.forEach(el=>{
-        //   console.log(el)
-        //  })
-        // })
+        `;
+        checkedFormItems.push(item.id)
 
-        // formProductPrice.insertAdjacentHTML("beforeend" , buyPrice)
-        // formProductItem.insertAdjacentHTML("beforeend" , buyProduct)
-        })
-  
+        console.log(checkedFormItems)
+        formProductItem.insertAdjacentHTML("beforeend" , buyProduct)
+        });
+
         formWrap.style.display = "flex";
         if(formWrap.style.display = "flex"){
           documentHTML.style.position = "fixed"
@@ -242,7 +258,7 @@ export function views() {
         }
        
         
-      })
+      });
   
     };
     formOrder()
@@ -252,6 +268,6 @@ export function views() {
   });
 
   return views
-}
+};
 
 views()
