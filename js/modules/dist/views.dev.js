@@ -13,7 +13,7 @@ var cartItems = [];
 function views() {
   /* -------------------------------------------------------------------------- */
 
-  /*                                  Variable                                  */
+  /*                                  Variables                                 */
 
   /* -------------------------------------------------------------------------- */
   var cartMenu = document.querySelector(".cart-menu");
@@ -101,11 +101,12 @@ function views() {
         isntclear.style.display = "flex";
         totalPrice.style.display = "flex";
         isclear.style.display = "none";
-        /* -------------------------------------------------------------------------*/
+        var formPrice;
+        /* -----------------------------------------------------------------------*/
 
-        /*                                Card Item                                 */
+        /*                                Card Item                               */
 
-        /* -------------------------------------------------------------------------*/
+        /* -----------------------------------------------------------------------*/
 
         if (existingItem) {
           var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
@@ -119,25 +120,26 @@ function views() {
           title: card.querySelector(".product-title").innerText,
           status: card.querySelector(".product-status").innerText,
           price: card.querySelector(".product-price").innerText,
-          count: 1,
+          count: 0,
           data: "".concat(productId)
         };
+        productInfo.count++;
         var itemInCart = "   <div class=\"item\">\n                <img src=\"".concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                <p class=\"item-name\">").concat(productInfo.title, "</p>\n                <p class=\"item-price\">").concat(productInfo.price, "</p>\n                <div class=\"item__button__add-delete\">\n                    <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                    <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                    <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                </div>\n            </div>\n        ");
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
-        /* --------------------------------------------------------------------------*/
+        /* -------------------------------------------------------------------------*/
 
-        /*                                  Buttons                                  */
+        /*                                  Buttons                                 */
 
-        /* --------------------------------------------------------------------------*/
+        /* -------------------------------------------------------------------------*/
 
         var btnPlus = document.querySelectorAll(".button-primary__plus");
         var btnMinus = document.querySelectorAll(".button-primary__minus");
-        /* -------------------------------------------------------------------------- */
+        /* --------------------------------------------------------------------------*/
 
-        /*                                  Btn Plus                                  */
+        /*                                  Btn Plus                                 */
 
-        /* -------------------------------------------------------------------------- */
+        /* --------------------------------------------------------------------------*/
 
         btnPlus.forEach(function (button) {
           button.addEventListener("click", function (event) {
@@ -154,11 +156,11 @@ function views() {
             updateTotalPrice();
           });
         });
-        /* -------------------------------------------------------------------------- */
+        /* --------------------------------------------------------------------------*/
 
-        /*                                  Btn Minus                                 */
+        /*                                  Btn Minus                                */
 
-        /* -------------------------------------------------------------------------- */
+        /* --------------------------------------------------------------------------*/
 
         btnMinus.forEach(function (button) {
           button.addEventListener("click", function (event) {
@@ -197,15 +199,26 @@ function views() {
       showForm.addEventListener("click", function () {
         var buyProduct;
         var priceToForm = document.querySelector('.total-price__text').textContent;
+        /* -------------------------------------------------------------------------- */
+
+        /*                              Arr for database                              */
+
+        /* -------------------------------------------------------------------------- */
+
+        var checkedFormItems = [];
+        /* -------------------------------------------------------------------------- */
+
+        /*                              Arr for database                              */
+
+        /* -------------------------------------------------------------------------- */
+
         var buyPrice = " \n        <div class=\"price-block\">\n          <p class=\"title\">Title</p>\n          <p class=\"total-price\">".concat(priceToForm, "</p>\n        </div>\n        ");
+        formProductPrice.insertAdjacentHTML("beforeend", buyPrice);
         cartItems.forEach(function (item) {
-          buyProduct = "\n          <div class=\"product-block\">\n            <div class=\"product\">\n                <div class=\"image\"><img class=\"image\" src=\"".concat(item.imgSrc, "\" alt=\"\"></div>\n                  <div class=\"name\">").concat(item.title, "</div>\n                  <div class=\"product-price\">").concat(item.price, "</div>\n            </div>\n          </div>\n        "); // countProduct.forEach(item=>{
-          //  item.forEach(el=>{
-          //   console.log(el)
-          //  })
-          // })
-          // formProductPrice.insertAdjacentHTML("beforeend" , buyPrice)
-          // formProductItem.insertAdjacentHTML("beforeend" , buyProduct)
+          buyProduct = "\n          <div class=\"product-block\">\n            <div class=\"product\">\n                <div class=\"image\"><img class=\"image\" src=\"".concat(item.imgSrc, "\" alt=\"\"></div>\n                  <div class=\"name\">").concat(item.title, "</div>\n                  <div class=\"product-price\">").concat(item.price, "</div>\n            </div>\n          </div>\n        ");
+          checkedFormItems.push(item.id);
+          console.log(checkedFormItems);
+          formProductItem.insertAdjacentHTML("beforeend", buyProduct);
         });
         formWrap.style.display = "flex";
 
@@ -228,4 +241,5 @@ function views() {
   return views;
 }
 
+;
 views();

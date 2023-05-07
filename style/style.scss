@@ -497,6 +497,7 @@ li {
                     @include breakpoint(xs){
                         width: 95%;
                     }
+                    
                     .info-input__wrapper{
                         background-color: white;
                         display: flex;
@@ -598,6 +599,87 @@ li {
         }
     }
    
+    .form-response{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 4;
+        .form-response__title{
+            font-weight: 400;
+            font-size: 45px;
+            @include breakpoint(lg){
+                font-size: 28px;
+            }
+            @include breakpoint(xs){
+                font-size: 17px;
+            }
+        }
+        .form-response__text{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+            .form-response__subtitle{
+                text-align: center;
+            }
+            .form-response__link{
+                margin-top: 40px;
+                .form-response__link-image{
+                    width: 75px;
+                }
+            }
+        }
+
+    }
+    .form-payment{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 4;
+        .pay-img{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 75px;
+            width: 60%;
+            height: 500px;
+            border: 2px solid white;
+            .pay-input{
+                font-family: "Montserrat";
+            }
+        }
+        .access{
+            display: none;
+            .access-img{
+                width: 100px;
+                height: 100px;
+            }
+        }
+        .error{
+            display: none;
+            .error-img{
+                width: 100px;
+                height: 100px;
+            }
+        }
+       .accept-btn{
+            margin-top: 100px;
+            margin-bottom: 100px;
+            width: 150px;
+            height: 75px;
+            border-radius: 5px;
+       }
+
+    }
     .scroll-down__title {
         margin: 0 auto;
         animation: opacity;
@@ -789,6 +871,7 @@ li {
                 .item {
                     gap: 0px 30px;
                     margin-top: 30px;
+                    justify-content: space-between;
 
                     @include breakpoint(lg) {
                         flex-direction: column;
@@ -1510,6 +1593,10 @@ li {
         display: flex;
         gap: 0px 10px;
         align-items: center;
+        margin-right: 30px;
+        @include breakpoint(sm){
+            margin-right: 0px;
+        }
     }
 
     .button-primary__plus {

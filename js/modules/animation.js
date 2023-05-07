@@ -11,7 +11,7 @@ const animation = () => {
     burgerMenu()
     showCatalog()
     smoothScroll()
-   
+    showFormResponse()
 }
 
 let catalog = document.querySelector(".catalog-menu")
@@ -158,7 +158,10 @@ export function showCatalog() {
     }
     return showCatalog
 }
- 
+export function showFormResponse(){
+    let formResponse = document.querySelector(".form-response");
+    
+}
 animation()
 
 export default animation
