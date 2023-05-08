@@ -1,2 +1,3 @@
-import {views} from "../js/modules/views.js"
-import {userSearch,mediaAnim,burgerMenu,showCatalog} from "../js/modules/animation.js"
+import {views} from "../modules/views.js"
+import {userSearch,mediaAnim,burgerMenu,showCatalog} from "../modules/animation.js"
+import { search } from "./search.js"

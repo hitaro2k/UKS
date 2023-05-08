@@ -21,7 +21,6 @@ function views() {
   var menu;
   var cartWrapper = document.querySelector(".isntclear");
   var isclear = document.querySelector(".isclear");
-  var isntclear = document.querySelector(".isntclear");
   var totalPrice = document.querySelector(".total-price__wrapper");
   var showForm = document.querySelector(".total-price__button-buy");
   var formWrap = document.querySelector(".form-order__background");
@@ -94,11 +93,95 @@ function views() {
           document.querySelector('.total-price__text').innerHTML = totalPriceCash + " грн";
         };
 
+        /* -----------------------------------------------------------------------*/
+
+        /*                                  FORM                                  */
+
+        /* -----------------------------------------------------------------------*/
+        var formOrder = function formOrder() {
+          var closeForm = document.querySelector(".close-form");
+          closeForm.addEventListener("click", function () {
+            formWrap.style.display = "none";
+            documentHTML.style.overflowY = "scroll";
+          });
+          showForm.addEventListener("click", function () {
+            var buyProduct;
+            var priceToForm = document.querySelector('.total-price__text').textContent;
+            /* -------------------------------------------------------------------------- */
+
+            /*                              Arr for database                              */
+
+            /* -------------------------------------------------------------------------- */
+
+            var checkedFormItems = [];
+            /* -------------------------------------------------------------------------- */
+
+            /*                              Arr for database                              */
+
+            /* -------------------------------------------------------------------------- */
+
+            var buyPrice = " \n            <div class=\"price-block\">\n              <p class=\"title\">Title</p>\n              <p class=\"total-price\">".concat(priceToForm, "</p>\n            </div>\n            ");
+            formProductPrice.insertAdjacentHTML("beforeend", buyPrice);
+            cartItems.forEach(function (item) {
+              buyProduct = "\n              <div class=\"product-block\">\n                <div class=\"product\">\n                    <div class=\"image\"><img class=\"image\" src=\"".concat(item.imgSrc, "\" alt=\"\"></div>\n                      <div class=\"name\">").concat(item.title, "</div>\n                      <div class=\"product-price\">").concat(item.price, "</div>\n                </div>\n              </div>\n            ");
+              checkedFormItems.push(item.id);
+              formProductItem.insertAdjacentHTML("beforeend", buyProduct);
+            });
+            formWrap.style.display = "flex";
+
+            if (formWrap.style.display = "flex") {
+              documentHTML.style.position = "fixed";
+              documentHTML.style.height = "100vh";
+              documentHTML.style.width = "100%";
+              documentHTML.style.overflowY = "hidden";
+              documentHTML.style.top = "0";
+              documentHTML.style.margin = "0 auto";
+            } else {
+              documentHTML.style.overflowY = "scroll";
+            }
+
+            ;
+          });
+          var showPayment = document.querySelector(".to-response");
+          var formPayment = document.querySelector(".form-payment");
+          showPayment.addEventListener("click", function (e) {
+            e.preventDefault();
+            formPayment.style.display = "flex";
+          });
+          var paymentAccept = document.querySelector(".accept-btn");
+          var formAcces = document.querySelector(".form-response");
+          paymentAccept.addEventListener("click", function (e) {
+            e.preventDefault();
+            formAcces.style.display = "flex";
+            setTimeout(function () {
+              formAcces.style.display = "none";
+              formProductPrice.innerHTML = "";
+              formProductItem.innerHTML = "";
+              isclear.style.display = "flex";
+              cartWrapper.style.display = "none";
+              totalPrice.style.display = "none";
+            }, 2000);
+            formPayment.style.display = "none";
+          });
+        };
+
+        var counterReset = function counterReset() {
+          return regeneratorRuntime.async(function counterReset$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          });
+        };
+
         var card = event.target.closest(".product");
         var productId = card.dataset.id;
         var existingItem = findCartItem(productId);
         cartMenu.classList.add("cart-active");
-        isntclear.style.display = "flex";
+        cartWrapper.style.display = "flex";
         totalPrice.style.display = "flex";
         isclear.style.display = "none";
         var formPrice;
@@ -182,73 +265,12 @@ function views() {
           });
         });
         updateTotalPrice();
+        ;
+        formOrder();
       }
+
+      ;
     });
-    /* -----------------------------------------------------------------------*/
-
-    /*                                  FORM                                  */
-
-    /* -----------------------------------------------------------------------*/
-
-    function formOrder() {
-      var closeForm = document.querySelector(".close-form");
-      closeForm.addEventListener("click", function () {
-        formWrap.style.display = "none";
-        documentHTML.style.overflowY = "scroll";
-      });
-      showForm.addEventListener("click", function () {
-        var buyProduct;
-        var priceToForm = document.querySelector('.total-price__text').textContent;
-        /* -------------------------------------------------------------------------- */
-
-        /*                              Arr for database                              */
-
-        /* -------------------------------------------------------------------------- */
-
-        var checkedFormItems = [];
-        /* -------------------------------------------------------------------------- */
-
-        /*                              Arr for database                              */
-
-        /* -------------------------------------------------------------------------- */
-
-        var buyPrice = " \n        <div class=\"price-block\">\n          <p class=\"title\">Title</p>\n          <p class=\"total-price\">".concat(priceToForm, "</p>\n        </div>\n        ");
-        formProductPrice.insertAdjacentHTML("beforeend", buyPrice);
-        cartItems.forEach(function (item) {
-          buyProduct = "\n          <div class=\"product-block\">\n            <div class=\"product\">\n                <div class=\"image\"><img class=\"image\" src=\"".concat(item.imgSrc, "\" alt=\"\"></div>\n                  <div class=\"name\">").concat(item.title, "</div>\n                  <div class=\"product-price\">").concat(item.price, "</div>\n            </div>\n          </div>\n        ");
-          checkedFormItems.push(item.id);
-          console.log(checkedFormItems);
-          formProductItem.insertAdjacentHTML("beforeend", buyProduct);
-        });
-        formWrap.style.display = "flex";
-
-        if (formWrap.style.display = "flex") {
-          documentHTML.style.position = "fixed";
-          documentHTML.style.height = "100vh";
-          documentHTML.style.width = "100%";
-          documentHTML.style.overflowY = "hidden";
-          documentHTML.style.top = "0";
-          documentHTML.style.margin = "0 auto";
-        } else {
-          documentHTML.style.overflowY = "scroll";
-        }
-      });
-      var showPayment = document.querySelector(".to-response");
-      var formPayment = document.querySelector(".form-payment");
-      showPayment.addEventListener("click", function (e) {
-        e.preventDefault();
-        formPayment.style.display = "flex";
-      });
-      var paymentAccept = document.querySelector(".accept-btn");
-      var formAcces = document.querySelector(".form-payment");
-      paymentAccept.addEventListener("click", function (e) {
-        e.preventDefault();
-        formAcces.style.display = "flex";
-      });
-    }
-
-    ;
-    formOrder();
   });
   return views;
 }

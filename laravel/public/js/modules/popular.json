@@ -1,0 +1,23 @@
+[
+    {
+        "id":"1A",
+        "title": "Chevrolet brakes",
+        "price":1000,
+        "image": "img/d2690dd9e88799e1903.webp",
+        "status":"В наявності",
+        "articul":"A78D12RR",
+        "buy": "В кошик",
+        "data":"1A"
+    },
+    {
+        "id":"2A",
+        "title": "Ford brakes",
+        "price":2000,
+        "image": "img/tel-alfa-romeo-1600.webp",
+        "status":"В наявності",
+        "articul":"A78D12ADS",
+        "buy": "В кошик",
+        "data":"2A"
+
+    }
+]

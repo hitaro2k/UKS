@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.views = views;
 
-var _animation = require("/js/modules/animation.js");
+var _animation = require("../modules/animation.js");
 
 var _pageCatalog = require("/js/modules/pageCatalog.js");
 

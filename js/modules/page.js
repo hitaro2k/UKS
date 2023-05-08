@@ -1,5 +1,5 @@
 "use strict"
-import {burgerMenu,mediaAnim,userSearch} from "/js/modules/animation.js"
+import {burgerMenu,mediaAnim,userSearch} from "../modules/animation.js"
 import {productsPopular} from "/js/modules/pageCatalog.js"
 export function views() {
   let href = 1;

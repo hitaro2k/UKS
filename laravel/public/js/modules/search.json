@@ -1,0 +1,32 @@
+[
+    {
+        "id": "uk1",
+        "name":"Підвіска",
+        "redirect":"client.html"
+    },
+    {
+        "id": "uk2",
+        "name":"Двигун",
+        "redirect":"client.html"
+    },
+    {
+        "id": "uk3",
+        "name":"КПП",
+        "redirect":"client.html"
+    },
+    {
+        "id": "uk4",
+        "name":"Електроніка",
+        "redirect":"client.html"
+    },
+    {
+        "id": "uk5",
+        "name":"Фільтри",
+        "redirect":"https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch"
+    },
+    {
+        "id": "uk6",
+        "name":"Фільтри Shell",
+        "redirect":"client.html"
+    }
+]

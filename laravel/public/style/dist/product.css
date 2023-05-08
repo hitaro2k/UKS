@@ -1,0 +1,109 @@
+.main .content {
+  padding-bottom: 200px;
+  padding-top: 100px;
+}
+@media (max-width: 768px) {
+  .main .content .products__container {
+    width: 95%;
+  }
+}
+.main .content .products__container .product__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.main .content .products__container .product__content .product__top-content {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 768px) {
+  .main .content .products__container .product__content .product__top-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.main .content .products__container .product__content .product__top-content .product-image {
+  width: 285px;
+}
+.main .content .products__container .product__content .product__top-content .product__top-content__info {
+  padding-left: 135px;
+}
+@media (max-width: 768px) {
+  .main .content .products__container .product__content .product__top-content .product__top-content__info {
+    padding-left: 30px;
+  }
+}
+.main .content .products__container .product__content .product__top-content .product__top-content__info .product-name {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 30px;
+  color: #FFFFFF;
+}
+@media (max-width: 768px) {
+  .main .content .products__container .product__content .product__top-content .product__top-content__info .product-name {
+    font-size: 25px;
+  }
+}
+.main .content .products__container .product__content .product__top-content .product__top-content__info .product-articul {
+  padding-left: 0px;
+}
+.main .content .products__container .product__content .product__top-content .product__top-content__info .product-status {
+  padding-left: 0px;
+  font-size: 13px;
+}
+.main .content .products__container .product__content .product__top-content .product__top-content__info .product-buy__btn {
+  display: flex;
+  flex-direction: row;
+  margin-top: 115px;
+  margin-left: 385px;
+  border: 2px solid #FFFFFF;
+  border-radius: 5px;
+}
+@media (max-width: 1200px) {
+  .main .content .products__container .product__content .product__top-content .product__top-content__info .product-buy__btn {
+    margin-left: 0px;
+  }
+}
+.main .content .products__container .product__content .product__top-content .product__top-content__info .product-buy__btn .price {
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 18px;
+}
+.main .content .products__container .product__content .product__top-content .product__top-content__info .product-buy__btn .buy-button {
+  width: 140px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+}
+.main .content .products__container .product__content .product__bottom-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 100px;
+}
+@media (max-width: 768px) {
+  .main .content .products__container .product__content .product__bottom-content {
+    padding-left: 10px;
+  }
+}
+.main .content .products__container .product__content .product__bottom-content .product__bottom-content__title {
+  font-family: "Montserrat";
+  font-weight: 400;
+}
+.main .content .products__container .product__content .product__bottom-content .table-block {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: 1px solid gray;
+  padding-bottom: 30px;
+  padding-top: 50px;
+  width: 95%;
+}
+.main .content .products__container .product__content .product__bottom-content .table-item {
+  font-family: "Montserrat";
+  color: white;
+  padding-right: 50px;
+}
