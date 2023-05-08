@@ -233,6 +233,18 @@ function views() {
           documentHTML.style.overflowY = "scroll";
         }
       });
+      var showPayment = document.querySelector(".to-response");
+      var formPayment = document.querySelector(".form-payment");
+      showPayment.addEventListener("click", function (e) {
+        e.preventDefault();
+        formPayment.style.display = "flex";
+      });
+      var paymentAccept = document.querySelector(".accept-btn");
+      var formAcces = document.querySelector(".form-payment");
+      paymentAccept.addEventListener("click", function (e) {
+        e.preventDefault();
+        formAcces.style.display = "flex";
+      });
     }
 
     ;

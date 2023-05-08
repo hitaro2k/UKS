@@ -259,8 +259,18 @@ export function views() {
       });
 
       let showPayment = document.querySelector(".to-response")
-      showPayment.addEventListener("click" , ()=>{
-        console.log('NEGR')
+      let formPayment = document.querySelector(".form-payment")
+      showPayment.addEventListener("click" , (e)=>{
+        e.preventDefault();
+        formPayment.style.display = "flex"
+      })
+
+      let paymentAccept = document.querySelector(".accept-btn")
+      let formAcces = document.querySelector(".form-payment")
+      
+      paymentAccept.addEventListener("click", (e)=>{
+        e.preventDefault();
+        formAcces.style.display = "flex"
       })
   
     };
