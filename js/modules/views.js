@@ -116,6 +116,104 @@ export function views() {
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
         
+        /* -----------------------------------------------------------------------*/
+        /*                                  FORM                                  */
+        /* -----------------------------------------------------------------------*/
+        function formOrder(){
+          let closeForm = document.querySelector(".close-form")
+          closeForm.addEventListener("click", ()=>{
+            formWrap.style.display = "none";
+            documentHTML.style.overflowY = "scroll"
+          });
+          
+
+          showForm.addEventListener("click" , ()=>{
+            let buyProduct;
+            let priceToForm = document.querySelector('.total-price__text').textContent;
+
+            /* -------------------------------------------------------------------------- */
+            /*                              Arr for database                              */
+            /* -------------------------------------------------------------------------- */
+            let checkedFormItems = []
+            /* -------------------------------------------------------------------------- */
+            /*                              Arr for database                              */
+            /* -------------------------------------------------------------------------- */
+            let buyPrice = ` 
+            <div class="price-block">
+              <p class="title">Title</p>
+              <p class="total-price">${priceToForm}</p>
+            </div>
+            `;
+
+            formProductPrice.insertAdjacentHTML("beforeend" , buyPrice);
+            cartItems.forEach(item =>{
+            buyProduct = `
+              <div class="product-block">
+                <div class="product">
+                    <div class="image"><img class="image" src="${item.imgSrc}" alt=""></div>
+                      <div class="name">${item.title}</div>
+                      <div class="product-price">${item.price}</div>
+                </div>
+              </div>
+            `;
+            checkedFormItems.push(item.id)
+            /* -------------------------------------------------------------------------- */
+            /*                                                                    */
+            /* -------------------------------------------------------------------------- */
+
+            formProductItem.insertAdjacentHTML("beforeend" , buyProduct)
+            });
+
+            formWrap.style.display = "flex";
+            if(formWrap.style.display = "flex"){
+              documentHTML.style.position = "fixed"
+              documentHTML.style.height = "100vh";
+              documentHTML.style.width = "100%";
+              documentHTML.style.overflowY = "hidden"
+              documentHTML.style.top = "0";
+              documentHTML.style.margin = "0 auto";
+      
+            }else{
+              documentHTML.style.overflowY = "scroll"
+            };
+          
+            
+          });
+
+          let showPayment = document.querySelector(".to-response")
+          let formPayment = document.querySelector(".form-payment")
+          showPayment.addEventListener("click" , (e)=>{
+            e.preventDefault();
+            formPayment.style.display = "flex"
+          });
+
+          let paymentAccept = document.querySelector(".accept-btn")
+          let formAcces = document.querySelector(".form-response")
+          
+          paymentAccept.addEventListener("click", (e)=>{
+            e.preventDefault();
+            formAcces.style.display = "flex"
+            setTimeout(function(){
+              formAcces.style.display = "none";
+              formProductPrice.innerHTML = "";
+              formProductItem.innerHTML = "";
+              isclear.style.display = "flex"
+              cartWrapper.style.display = "none"
+              totalPrice.style.display = "none"
+              counterReset()
+            },2000)
+            formPayment.style.display = "none"
+          });
+      
+        };
+        
+        function counterReset(){
+          productInfo.count = 0;
+          let itemInCount = document.querySelector(".item-count")
+          itemInCount.innerHTML = productInfo.count
+       }
+        formOrder()
+        
     /* -------------------------------------------------------------------------*/
     /*                                  Buttons                                 */
     /* -------------------------------------------------------------------------*/
@@ -193,96 +291,6 @@ export function views() {
         updateTotalPrice() 
 
 
-        /* -----------------------------------------------------------------------*/
-        /*                                  FORM                                  */
-        /* -----------------------------------------------------------------------*/
-        function formOrder(){
-          let closeForm = document.querySelector(".close-form")
-          closeForm.addEventListener("click", ()=>{
-            formWrap.style.display = "none";
-            documentHTML.style.overflowY = "scroll"
-          });
-          
-
-          showForm.addEventListener("click" , ()=>{
-            let buyProduct;
-            let priceToForm = document.querySelector('.total-price__text').textContent;
-
-            /* -------------------------------------------------------------------------- */
-            /*                              Arr for database                              */
-            /* -------------------------------------------------------------------------- */
-            let checkedFormItems = []
-            /* -------------------------------------------------------------------------- */
-            /*                              Arr for database                              */
-            /* -------------------------------------------------------------------------- */
-            let buyPrice = ` 
-            <div class="price-block">
-              <p class="title">Title</p>
-              <p class="total-price">${priceToForm}</p>
-            </div>
-            `;
-
-            formProductPrice.insertAdjacentHTML("beforeend" , buyPrice);
-            cartItems.forEach(item =>{
-            buyProduct = `
-              <div class="product-block">
-                <div class="product">
-                    <div class="image"><img class="image" src="${item.imgSrc}" alt=""></div>
-                      <div class="name">${item.title}</div>
-                      <div class="product-price">${item.price}</div>
-                </div>
-              </div>
-            `;
-            checkedFormItems.push(item.id)
-
-            formProductItem.insertAdjacentHTML("beforeend" , buyProduct)
-            });
-
-            formWrap.style.display = "flex";
-            if(formWrap.style.display = "flex"){
-              documentHTML.style.position = "fixed"
-              documentHTML.style.height = "100vh";
-              documentHTML.style.width = "100%";
-              documentHTML.style.overflowY = "hidden"
-              documentHTML.style.top = "0";
-              documentHTML.style.margin = "0 auto";
-      
-            }else{
-              documentHTML.style.overflowY = "scroll"
-            };
-          
-            
-          });
-
-          let showPayment = document.querySelector(".to-response")
-          let formPayment = document.querySelector(".form-payment")
-          showPayment.addEventListener("click" , (e)=>{
-            e.preventDefault();
-            formPayment.style.display = "flex"
-          });
-
-          let paymentAccept = document.querySelector(".accept-btn")
-          let formAcces = document.querySelector(".form-response")
-          
-          paymentAccept.addEventListener("click", (e)=>{
-            e.preventDefault();
-            formAcces.style.display = "flex"
-            setTimeout(function(){
-              formAcces.style.display = "none";
-              formProductPrice.innerHTML = "";
-              formProductItem.innerHTML = "";
-              isclear.style.display = "flex"
-              cartWrapper.style.display = "none"
-              totalPrice.style.display = "none"
-            },2000)
-            formPayment.style.display = "none"
-          });
-      
-        };
-       async function counterReset(){
-
-       }
-        formOrder()
       };
      
     });
