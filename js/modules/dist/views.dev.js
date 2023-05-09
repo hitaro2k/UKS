@@ -72,27 +72,6 @@ function views() {
 
     window.addEventListener("click", function (event) {
       if (event.target.hasAttribute("data")) {
-        var removeCartItem = function removeCartItem(id) {
-          var index = cartItems.findIndex(function (item) {
-            return item.id === id;
-          });
-          cartItems.splice(index, 1);
-          var item = document.querySelector("[data-id=\"".concat(id, "\"]")).closest('.item');
-          item.parentNode.removeChild(item);
-          updateTotalPrice();
-        };
-
-        var updateTotalPrice = function updateTotalPrice() {
-          var itemPrices = document.querySelectorAll('.item-price');
-          var totalPriceCash = 0;
-          itemPrices.forEach(function (item) {
-            var productId = item.closest('.item').querySelector('.button-primary__plus').dataset.id;
-            var itemInfo = findCartItem(productId);
-            totalPriceCash += parseFloat(item.textContent) * itemInfo.count;
-          });
-          document.querySelector('.total-price__text').innerHTML = totalPriceCash + " грн";
-        };
-
         /* -----------------------------------------------------------------------*/
 
         /*                                  FORM                                  */
@@ -125,6 +104,12 @@ function views() {
             cartItems.forEach(function (item) {
               buyProduct = "\n              <div class=\"product-block\">\n                <div class=\"product\">\n                    <div class=\"image\"><img class=\"image\" src=\"".concat(item.imgSrc, "\" alt=\"\"></div>\n                      <div class=\"name\">").concat(item.title, "</div>\n                      <div class=\"product-price\">").concat(item.price, "</div>\n                </div>\n              </div>\n            ");
               checkedFormItems.push(item.id);
+              /* -------------------------------------------------------------------------- */
+
+              /*                                                                    */
+
+              /* -------------------------------------------------------------------------- */
+
               formProductItem.insertAdjacentHTML("beforeend", buyProduct);
             });
             formWrap.style.display = "flex";
@@ -160,21 +145,39 @@ function views() {
               isclear.style.display = "flex";
               cartWrapper.style.display = "none";
               totalPrice.style.display = "none";
+              showPayment.style.display = "none";
+              formWrap.style.display = "none";
+              counterReset();
             }, 2000);
             formPayment.style.display = "none";
           });
         };
 
         var counterReset = function counterReset() {
-          return regeneratorRuntime.async(function counterReset$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                case "end":
-                  return _context.stop();
-              }
-            }
+          productInfo.count = 0;
+          var itemInCount = document.querySelector(".item-count");
+          itemInCount.innerHTML = productInfo.count;
+        };
+
+        var removeCartItem = function removeCartItem(id) {
+          var index = cartItems.findIndex(function (item) {
+            return item.id === id;
           });
+          cartItems.splice(index, 1);
+          var item = document.querySelector("[data-id=\"".concat(id, "\"]")).closest('.item');
+          item.parentNode.removeChild(item);
+          updateTotalPrice();
+        };
+
+        var updateTotalPrice = function updateTotalPrice() {
+          var itemPrices = document.querySelectorAll('.item-price');
+          var totalPriceCash = 0;
+          itemPrices.forEach(function (item) {
+            var productId = item.closest('.item').querySelector('.button-primary__plus').dataset.id;
+            var itemInfo = findCartItem(productId);
+            totalPriceCash += parseFloat(item.textContent) * itemInfo.count;
+          });
+          document.querySelector('.total-price__text').innerHTML = totalPriceCash + " грн";
         };
 
         var card = event.target.closest(".product");
@@ -210,6 +213,8 @@ function views() {
         var itemInCart = "   <div class=\"item\">\n                <img src=\"".concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                <p class=\"item-name\">").concat(productInfo.title, "</p>\n                <p class=\"item-price\">").concat(productInfo.price, "</p>\n                <div class=\"item__button__add-delete\">\n                    <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                    <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                    <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                </div>\n            </div>\n        ");
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
+        ;
+        formOrder();
         /* -------------------------------------------------------------------------*/
 
         /*                                  Buttons                                 */
@@ -265,8 +270,6 @@ function views() {
           });
         });
         updateTotalPrice();
-        ;
-        formOrder();
       }
 
       ;

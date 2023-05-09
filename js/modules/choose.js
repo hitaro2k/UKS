@@ -16,7 +16,7 @@ const chooseProduct = () => {
                 item.addEventListener('click', () => {
                     const mark = item.getAttribute('data-mark');
                     const index = selectedItems.indexOf(mark);
-                    console.log(selectedItems)
+                    
                     if (index === -1) {
                         selectedItems.push(mark);
                         item.classList.add('selected');
@@ -36,7 +36,7 @@ const chooseProduct = () => {
 
             markListItems.forEach((item) => {
                 item.addEventListener("click",() => {
-                    console.log(selectedYears)
+                    
                     const year = item.getAttribute("data-year");
                     const index = selectedYears.indexOf(year);
                     if (index === -1) {
@@ -59,7 +59,12 @@ const chooseProduct = () => {
 
           selectModel.addEventListener('click', (e) => {
                 e.preventDefault()
+
+                /* -------------------------------------------------------------------------- */
+                /*      Переменная в которой массив со всеми выбранными машинами и годами     */
+                /* -------------------------------------------------------------------------- */
                 let result = selectedItems.concat(selectedYears);
+               console.log(result)
             });
 
             markBtn.addEventListener("click", () => {
