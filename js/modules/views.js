@@ -66,14 +66,12 @@ export function views() {
         const card = event.target.closest(".product");
         const productId = card.dataset.id;
         const existingItem = findCartItem(productId);
-  
-
-        cartMenu.classList.add("cart-active")
-        cartWrapper.style.display = "flex"
-        totalPrice.style.display = "flex"
-        isclear.style.display = "none"
+        cartMenu.classList.add("cart-active");
+        cartWrapper.style.display = "flex";
+        totalPrice.style.display = "flex";
+        isclear.style.display = "none";
         let formPrice;
-       
+     
     /* -----------------------------------------------------------------------*/
     /*                                Card Item                               */
     /* -----------------------------------------------------------------------*/
@@ -115,7 +113,7 @@ export function views() {
         
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
-        
+
         /* -----------------------------------------------------------------------*/
         /*                                  FORM                                  */
         /* -----------------------------------------------------------------------*/
@@ -134,7 +132,7 @@ export function views() {
             /* -------------------------------------------------------------------------- */
             /*                              Arr for database                              */
             /* -------------------------------------------------------------------------- */
-            let checkedFormItems = []
+            let checkedFormItems = [];
             /* -------------------------------------------------------------------------- */
             /*                              Arr for database                              */
             /* -------------------------------------------------------------------------- */
@@ -156,13 +154,41 @@ export function views() {
                 </div>
               </div>
             `;
-            checkedFormItems.push(item.id)
+            checkedFormItems.push(item.id) 
+            
+
             /* -------------------------------------------------------------------------- */
             /*                                                                    */
             /* -------------------------------------------------------------------------- */
 
             formProductItem.insertAdjacentHTML("beforeend" , buyProduct)
             });
+
+            /* -------------------------------------------------------------------------- */
+            /*                            JSON with id product                            */
+            /* -------------------------------------------------------------------------- */
+            let idJson = {
+              checkedFormItems
+            }
+            let stringifyIdJson = JSON.stringify(idJson);
+            fetch('data.php', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: stringifyIdJson
+            })
+            .then(response => {
+              if (response.ok) {
+                console.log('Successfully');
+              } else {
+                console.error(response.statusText);
+              }
+            })
+            .catch(error => {
+              console.error(error);
+            });
+
 
             formWrap.style.display = "flex";
             if(formWrap.style.display = "flex"){
@@ -292,6 +318,8 @@ export function views() {
         } 
         updateTotalPrice() 
 
+       
+       
 
       };
      

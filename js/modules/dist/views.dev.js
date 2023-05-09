@@ -112,6 +112,31 @@ function views() {
 
               formProductItem.insertAdjacentHTML("beforeend", buyProduct);
             });
+            /* -------------------------------------------------------------------------- */
+
+            /*                            JSON with id product                            */
+
+            /* -------------------------------------------------------------------------- */
+
+            var idJson = {
+              checkedFormItems: checkedFormItems
+            };
+            var stringifyIdJson = JSON.stringify(idJson);
+            fetch('data.php', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: stringifyIdJson
+            }).then(function (response) {
+              if (response.ok) {
+                console.log('Successfully');
+              } else {
+                console.error(response.statusText);
+              }
+            })["catch"](function (error) {
+              console.error(error);
+            });
             formWrap.style.display = "flex";
 
             if (formWrap.style.display = "flex") {
