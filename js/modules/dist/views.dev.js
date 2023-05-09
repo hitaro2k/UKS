@@ -145,6 +145,8 @@ function views() {
               isclear.style.display = "flex";
               cartWrapper.style.display = "none";
               totalPrice.style.display = "none";
+              showPayment.style.display = "none";
+              formWrap.style.display = "none";
               counterReset();
             }, 2000);
             formPayment.style.display = "none";
