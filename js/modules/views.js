@@ -22,7 +22,6 @@ export function views() {
   let formProductPrice = document.querySelector(".block__product-price")
   let formProductItem = document.querySelector(".block__product-item")
 
-
     /* -------------------------------------------------------------------------- */
     /*                                Main scripts                                */
     /* -------------------------------------------------------------------------- */
@@ -51,7 +50,6 @@ export function views() {
         };
       }
     });
-  
 
     /* -------------------------------------------------------------------------- */
     /*                                Functionality                               */
@@ -71,6 +69,7 @@ export function views() {
         totalPrice.style.display = "flex";
         isclear.style.display = "none";
         let formPrice;
+     
      
     /* -----------------------------------------------------------------------*/
     /*                                Card Item                               */
@@ -95,9 +94,7 @@ export function views() {
           data:`${productId}`
         };
 
-        productInfo.count++
-        
-       
+        productInfo.count++; 
         const itemInCart = 
         `   <div class="item">
                 <img src="${productInfo.imgSrc}" alt="" class="item-image">
@@ -113,7 +110,7 @@ export function views() {
         
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
-
+      
         /* -----------------------------------------------------------------------*/
         /*                                  FORM                                  */
         /* -----------------------------------------------------------------------*/
@@ -122,6 +119,7 @@ export function views() {
           closeForm.addEventListener("click", ()=>{
             formWrap.style.display = "none";
             documentHTML.style.overflowY = "scroll"
+            cartMenu.style.overflowY = "scroll"
           });
           
 
@@ -154,12 +152,10 @@ export function views() {
                 </div>
               </div>
             `;
-            checkedFormItems.push(item.id) 
-            
 
-            /* -------------------------------------------------------------------------- */
-            /*                                                                    */
-            /* -------------------------------------------------------------------------- */
+            checkedFormItems.push(item.id) 
+            checkedFormItems.push(item.price)
+            checkedFormItems.push(productInfo.count)
 
             formProductItem.insertAdjacentHTML("beforeend" , buyProduct)
             });
@@ -167,29 +163,40 @@ export function views() {
             /* -------------------------------------------------------------------------- */
             /*                            JSON with id product                            */
             /* -------------------------------------------------------------------------- */
+            // function sendDataToServer(data) {
+            //   const serverURL = 'data.php';
+            
+            //   fetch(serverURL, {
+            //     method: 'POST',
+            //     headers: {
+            //       'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(data),
+            //   })
+            //     .then(response => {
+            //       if (response.ok) {
+            //         return response.json(); 
+            //       } else {
+            //         throw new Error('Ошибка сервера');
+            //       }
+            //     })
+            //     .then(data => {
+            //       console.log(data);
+            //     })
+            //     .catch(error => {
+            //       console.error(error); //Крч эта ошибка будет если ты еблан не будешь принимать запрос через POST
+            //     });
+            // }
+
             let idJson = {
-              checkedFormItems
-            }
-            let stringifyIdJson = JSON.stringify(idJson);
-            fetch('data.php', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: stringifyIdJson
-            })
-            .then(response => {
-              if (response.ok) {
-                console.log('Successfully');
-              } else {
-                console.error(response.statusText);
-              }
-            })
-            .catch(error => {
-              console.error(error);
-            });
+              checkedFormItems: 
+              checkedFormItems.join(','),
 
+            };
+            console.log(idJson)
 
+            // sendDataToServer(idJson);
+           
             formWrap.style.display = "flex";
             if(formWrap.style.display = "flex"){
               documentHTML.style.position = "fixed"
@@ -211,6 +218,47 @@ export function views() {
           showPayment.addEventListener("click" , (e)=>{
             e.preventDefault();
             formPayment.style.display = "flex"
+
+            const fileInput = document.querySelector(".pay-input");
+            fileInput.addEventListener('change', function (event) {
+              const file = event.target.files[0];
+              if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+
+                reader.addEventListener('load', function (loadEvent) {
+                  const image = new Image();
+                  image.src = loadEvent.target.result;
+                  const imageContainer = document.getElementById('image-container');
+                  imageContainer.insertAdjacentHTML('beforeend', `<img class= "user-img" src="${image.src}" alt="Фото">`);
+                 
+                  const formData = new FormData();
+                  formData.append('photo', file);
+                  
+                  // ОТПРАВЛЯЮ ФОТОЧКУ
+                  sendFormData(formData);
+                });
+
+                // ЧИТАЮ ФОТКУ
+                reader.readAsDataURL(file);
+              } else {
+                
+                alert('Выберите файл-изображение');
+              }
+            });
+
+            // ХМЛЬКА
+            function sendFormData(formData) {
+              const xhr = new XMLHttpRequest();
+              xhr.open('POST', 'data.php', true);
+              xhr.addEventListener('load', function () {
+                if (xhr.status === 200) {
+                  console.log('ПРАВИЛЬНО');
+                } else {
+                  console.log('ЧТО-ТО НЕ ТАК');
+                }
+              });
+              xhr.send(formData);
+            }
           });
 
           let paymentAccept = document.querySelector(".accept-btn")
@@ -240,8 +288,7 @@ export function views() {
           let itemInCount = document.querySelector(".item-count")
           itemInCount.innerHTML = productInfo.count
        }
-        formOrder()
-        
+       
     /* -------------------------------------------------------------------------*/
     /*                                  Buttons                                 */
     /* -------------------------------------------------------------------------*/
@@ -263,17 +310,17 @@ export function views() {
             let countElemAttr = countElem.getAttribute("data-counter")
             if(countElemAttr == productInfo.data ){
               item.count++
+ 
             }
-       
+
             countElem.textContent = item.count;
             updateTotalPrice();
           });
-        });
-     
+        });                           
+
     /* --------------------------------------------------------------------------*/
     /*                                  Btn Minus                                */
     /* --------------------------------------------------------------------------*/
-      
 
         btnMinus.forEach(function(button) {
           button.addEventListener("click", function(event) {
@@ -285,8 +332,8 @@ export function views() {
             let countElemAttr = countElem.getAttribute("data-counter")
             if(countElemAttr == productInfo.data ){
               item.count--
+          
             }
-
             if (item.count === 0) {
               removeCartItem(productId);
             } else {
@@ -317,18 +364,10 @@ export function views() {
 
         } 
         updateTotalPrice() 
-
-       
-       
-
+        formOrder()
+        
       };
-     
     });
-
-   
-   
-   
-
   });
 
   return views

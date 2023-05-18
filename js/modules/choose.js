@@ -1,102 +1,287 @@
-"use strict"
+"use strict";
 const chooseProduct = () => {
-    document.addEventListener("DOMContentLoaded", function () {
-        function arrCompany() {
-            const selectedItems = [];
-            const selectedYears = [];
-            const markItems = document.querySelector(".full-screen__body__mark-items")
-            const itemsWrapper = document.querySelectorAll('.item-wrapper');
-            const markBtn = document.querySelector('.mark-items__markbtn');
-            const yearItems = document.querySelector(".full-screen__body__year-items")
-            const marksBtn = document.querySelector(".mark-items__markbtn");
-            const markListItems = document.querySelectorAll(".year-items")
-            const selectModel = document.querySelector(".select-model")
-            const backToMark = document.querySelector(".back")
-            itemsWrapper.forEach((item) => {
-                item.addEventListener('click', () => {
-                    const mark = item.getAttribute('data-mark');
-                    const index = selectedItems.indexOf(mark);
-                    
-                    if (index === -1) {
-                        selectedItems.push(mark);
-                        item.classList.add('selected');
-                    } else {
-                        selectedItems.splice(index, 1);
-                        item.classList.remove('selected');
-                    }
+  document.addEventListener("DOMContentLoaded", function () {
+    const markWrapper = document.querySelector(".mark-wrapper");
+    const itemsWrapper = document.querySelectorAll(".item-wrapper");
+    const selectBlock = document.querySelector(".selected-mark");
 
-                    if (selectedItems.length > 0) {
-                        markBtn.style.display = 'block';
-                    } else {
-                        markBtn.style.display = 'none';
-                    }
+    const markItemsBlock = document.querySelector(
+      ".full-screen__body__mark-items"
+    );
+   
+    const yearItemsBlock = document.querySelector(
+      ".full-screen__body__year-items"
+    );
+    const yearItems = document.querySelectorAll(".year-item");
+    const yearWrapper = document.querySelector(".year-columns");
 
-                });
-            });
+    const modelItemsBlock = document.querySelector(
+      ".full-screen__body__model-items"
+    );
+    const modelItems = document.querySelectorAll(".model-item");
+    const modelWrapper = document.querySelector(".model-wrapper");
 
-            markListItems.forEach((item) => {
-                item.addEventListener("click",() => {
-                    
-                    const year = item.getAttribute("data-year");
-                    const index = selectedYears.indexOf(year);
-                    if (index === -1) {
-                        selectedYears.push(year);
-                        item.classList.add("selected-year")
-                    } else {
-                        selectedYears.splice(index, 1);
-                        item.classList.remove("selected-year")
-                    }
+    const bodyItemsBlock = document.querySelector(
+      ".full-screen__body__body-items"
+    );
+    const bodyItems = document.querySelectorAll(".body-item");
+    const bodyWrapper = document.querySelector(".body-wrapper");
 
-                    if (selectedYears.length > 0) {
-                        selectModel.style.display = "flex"
-                    } else {
-                        selectModel.style.display = "none"
-                    }
+    const engineItemsBlock = document.querySelector(
+      ".full-screen__body__engine-items"
+    );
+    const engineWrapper = document.querySelector(".engine-wrapper")
+    const engineItems = document.querySelectorAll(".engine-item");
 
+    /* -------------------------------------------------------------------------- */
+    /*                                   Buttons                                  */
+    /* -------------------------------------------------------------------------- */
+    const markBtn = document.querySelector(".mark-items__markbtn");
+    const backMarkBtn = document.getElementById("to-mark");
+    const yearBtn = document.querySelector(".mark-items__yearbtn");
+    const backYearBtn = document.getElementById("to-year");
+    const backModelBtn = document.getElementById("to-model");
+    const modelBtn = document.querySelector(".mark-items__autobtn");
+    const bodyBtn = document.querySelector(".mark-items__bodybtn");
+    const backBodyBtn = document.getElementById("to-body");
+    const engineBtn = document.querySelector(".mark-items__enginebtn")
+    const backEngineBtn = document.getElementById("to-engine")
+    const allBtn = [
+      markBtn,
+      yearBtn,
+      modelBtn,
+      bodyBtn,
+      backMarkBtn,
+      backModelBtn,
+      backBodyBtn,
+    ];
 
-                })
-            })
+    /* -------------------------------------------------------------------------- */
+    /*                                    Block                                   */
+    /* -------------------------------------------------------------------------- */
+    
+    const markBlock = document.querySelector(".select-item");
+    const yearBlock = document.querySelector(".selected-item__year");
+    const modelBlock = document.querySelector(".selected-item__model");
+    const bodyBlock = document.querySelector(".selected-item__body");
+    const engineBlock = document.querySelector(".selected-item__engine")
 
-          selectModel.addEventListener('click', (e) => {
-                e.preventDefault()
-
-                /* -------------------------------------------------------------------------- */
-                /*      Переменная в которой массив со всеми выбранными машинами и годами     */
-                /* -------------------------------------------------------------------------- */
-                let result = selectedItems.concat(selectedYears);
-               console.log(result)
-            });
-
-            markBtn.addEventListener("click", () => {
-                yearItems.style.display = "flex"
-                markItems.style.display = "none"
-            })
-            backToMark.addEventListener("click", () => {
-                yearItems.style.display = "none"
-                markItems.style.display = "flex"
-            })
-
-            marksBtn.addEventListener("mouseover", function () {
-                this.style.backgroundColor = "white";
-                this.style.color = "#ff5e00";
-                this.style.fontWeight = "600";
-            });
-
-            marksBtn.addEventListener("mouseout", function () {
-                this.style.backgroundColor = "#d28711";
-                this.style.color = "white";
-                this.style.fontWeight = "400";
-            });
-
-
+    function searchAuto() {
+      function returnAutoJSon(item) {
+        let suitableAuto = {
+          
         }
-        arrCompany()
-    })
+        let itemAttr = null;
+        const res = fetch("../js/auto.json")
+        .then((res) => res.json())
+        .then((data) => {
+          const matchingObject = data.find((item) => item[suitableAuto.mark]);
+          if (matchingObject) {
+            const selectedCar = matchingObject[suitableAuto.mark];
+            console.log(selectedCar);
+            for (const modelName in selectedCar) {
+              console.log("Модель:", modelName);
+              const modelData = selectedCar[modelName];
+            }
+          }
+        })
+        .catch((error) => {
+          console.log("Ошибка при получении данных:", error);
+         
+        });
+    
+   
+        itemsWrapper.forEach((item) => {
+          item.addEventListener("click", () => {
+            itemAttr = item.getAttribute("data-mark");
+            suitableAuto.mark = itemAttr;
+            item.style.border = "2px solid orange";
+            markWrapper.style.display = "none";
+            selectBlock.style.display = "flex";
+           
+            returnAutoJSon(item);
+           
+            const markItemSrc = item
+              .querySelector(".mark-item")
+              .getAttribute("src");
+            let markItem = `  
+                        <div class="item-wrapper" data-mark = "${itemAttr}">
+                                <img class="mark-item" src="${markItemSrc}" alt="">
+                        </div>
+                        `;
+            // roadMarkSrc = roadMapMark.document.querySelector(".map__image").getAttribute("src")
+
+            backMarkBtn.style.display = "block";
+            markBtn.style.display = "block";
+            markBtn.addEventListener("click", () => {
+              yearItemsBlock.style.display = "flex";
+              markItemsBlock.style.display = "none";
+            });
+
+            backMarkBtn.addEventListener("click", () => {
+              item.style.border = "2px solid gray";
+              markWrapper.style.display = "block";
+              selectBlock.style.display = "none";
+              markBlock.innerHTML = "";
+              suitableAuto.mark = "";
+            });
+            markBlock.insertAdjacentHTML("beforeend", markItem);
+          });
+        });
+       
+        yearItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            let yearValue = item.textContent;
+
+            suitableAuto.year = yearValue ;
+            returnAutoJSon(item);
+            
+            yearBtn.style.display = "block";
+            backYearBtn.style.display = "block";
+            let yearItemSrc = `
+                        <p class="year__text-select">${yearValue}</p>
+                        `;
+            yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
+            yearBlock.style.display = "flex";
+
+            yearWrapper.style.display = "none";
+            backYearBtn.addEventListener("click", () => {
+              yearWrapper.style.display = "flex";
+              yearBlock.style.display = "none";
+              yearBlock.innerHTML = "";
+              yearBtn.style.display = "none";
+              backYearBtn.style.display = "none";
+              suitableAuto.year = ""
+            });
+            yearBtn.addEventListener("click", function () {
+              yearItemsBlock.style.display = "none";
+              modelItemsBlock.style.display = "flex";
+             
+            });
+
+            
+          });
+        });
+        
+        modelItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            let modelAttr = item.getAttribute("data-model");
+  
+            suitableAuto.model = modelAttr;
+
+            modelBtn.style.display = "block";
+            backModelBtn.style.display = "block";
+            let modelItemSrc = `
+                        <p class="model-item__selected">${modelAttr}</p>
+            `;
+            modelBlock.insertAdjacentHTML("beforeend", modelItemSrc);
+            modelBlock.style.display = "flex";
+            modelWrapper.style.display = "none";
+            modelBtn.addEventListener("click" , function(){
+              modelItemsBlock.style.display = "none"
+              bodyItemsBlock.style.display = "flex"
+            });
+            backModelBtn.addEventListener("click" , function(){
+              modelWrapper.style.display = "block";
+              modelBlock.style.display = "none";
+              modelBlock.innerHTML = "";
+              suitableAuto.model = ""
+              modelBtn.style.display = "none";
+              backModelBtn.style.display = "none";
+            });
+
+ 
+          });
+        });
+
+        bodyItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            let bodyAttr = item.getAttribute("data-body");
+
+            suitableAuto.body = bodyAttr;
 
 
+            let bodyText = item.textContent;
+            bodyBtn.style.display = "block";
+            backBodyBtn.style.display = "block";
+            bodyWrapper.style.display = "none";
+            bodyBlock.style.display = "flex"
+            let bodyItemSrc = `
+                        <p class="body-item">${bodyText}</p>
+                        `;
+            bodyBlock.insertAdjacentHTML("beforeend", bodyItemSrc);
+            bodyBtn.addEventListener("click" , function(){
+              bodyItemsBlock.style.display = "none"
+              engineItemsBlock.style.display = "flex"
+            })
+            backBodyBtn.addEventListener("click" , function(){
+              bodyWrapper.style.display = "flex";
+              bodyBlock.style.display = "none";
+              bodyBlock.innerHTML = "";
+              suitableAuto.model = ""
+              bodyBtn.style.display = "none";
+              backBodyBtn.style.display = "none";
+            }) 
+          });
+        });
+
+        engineItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            item.addEventListener("click", function () {
+              let engineText = item.textContent;
+             
+              suitableAuto.engine = engineText;
 
 
-}
+              engineBtn.style.display = "block";
+              backEngineBtn.style.display = "block";
+              engineWrapper.style.display = "none";
+              engineBlock.style.display = "flex"
+              let engineItemSrc = `
+                          <p class="engine-item">${engineText}</p>
+                          `;
+              engineBlock.insertAdjacentHTML("beforeend", engineItemSrc);
 
-chooseProduct()
-export default chooseProduct
+              engineBtn.addEventListener("click" , function(){
+                engineItemsBlock.style.display = "none"
+                engineItemsBlock.style.display = "flex"
+              })
+              backEngineBtn.addEventListener("click" , function(){
+                engineWrapper.style.display = "flex";
+                engineBlock.style.display = "none";
+                engineBlock.innerHTML = "";
+                suitableAuto.engine = ""
+                engineBtn.style.display = "none";
+                backEngineBtn.style.display = "none";
+              }) 
+            });
+          });
+        });
+
+        allBtn.forEach((item) => {
+          item.addEventListener("mouseover", function () {
+            this.style.backgroundColor = "white";
+            this.style.color = "#ff5e00";
+            this.style.fontWeight = "600";
+          });
+
+          item.addEventListener("mouseout", function () {
+            this.style.backgroundColor = "#d28711";
+            this.style.color = "white";
+            this.style.fontWeight = "400";
+          });
+        });
+        
+       
+      }
+
+      returnAutoJSon()
+    }
+
+    searchAuto();
+
+  });
+};
+
+chooseProduct();
+export default chooseProduct;

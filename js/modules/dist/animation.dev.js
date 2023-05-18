@@ -4,11 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.burgerMenu = burgerMenu;
-exports.smoothScroll = smoothScroll;
 exports.mediaAnim = mediaAnim;
 exports.userSearch = userSearch;
 exports.showCatalog = showCatalog;
-exports.showFormResponse = showFormResponse;
 exports["default"] = void 0;
 var menuBtn;
 var menu;
@@ -21,8 +19,6 @@ var animation = function animation() {
   mediaAnim();
   burgerMenu();
   showCatalog();
-  smoothScroll();
-  showFormResponse();
 };
 
 var catalog = document.querySelector(".catalog-menu");
@@ -49,52 +45,6 @@ function burgerMenu() {
     }
   });
   return burgerMenu;
-}
-
-function smoothScroll() {
-  var links = document.querySelectorAll("a[href*='#']");
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
-
-  try {
-    var _loop = function _loop() {
-      var link = _step.value;
-      link.addEventListener("click", function (event) {
-        menu.classList.remove("active");
-        menuBtn.classList.remove("active");
-
-        if (!menu.classList.contains("active")) {
-          menuBtn.classList.remove("fixed");
-          menuBtn.classList.remove("left");
-        }
-
-        event.preventDefault();
-        var blockID = link.getAttribute("href");
-        document.querySelector("" + blockID).scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      });
-    };
-
-    for (var _iterator = links[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      _loop();
-    }
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
-        _iterator["return"]();
-      }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
-    }
-  }
 }
 
 function mediaAnim() {
@@ -205,10 +155,6 @@ function showCatalog() {
   };
 
   return showCatalog;
-}
-
-function showFormResponse() {
-  var formResponse = document.querySelector(".form-response");
 }
 
 animation();

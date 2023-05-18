@@ -82,6 +82,7 @@ function views() {
           closeForm.addEventListener("click", function () {
             formWrap.style.display = "none";
             documentHTML.style.overflowY = "scroll";
+            cartMenu.style.overflowY = "scroll";
           });
           showForm.addEventListener("click", function () {
             var buyProduct;
@@ -104,12 +105,8 @@ function views() {
             cartItems.forEach(function (item) {
               buyProduct = "\n              <div class=\"product-block\">\n                <div class=\"product\">\n                    <div class=\"image\"><img class=\"image\" src=\"".concat(item.imgSrc, "\" alt=\"\"></div>\n                      <div class=\"name\">").concat(item.title, "</div>\n                      <div class=\"product-price\">").concat(item.price, "</div>\n                </div>\n              </div>\n            ");
               checkedFormItems.push(item.id);
-              /* -------------------------------------------------------------------------- */
-
-              /*                                                                    */
-
-              /* -------------------------------------------------------------------------- */
-
+              checkedFormItems.push(item.price);
+              checkedFormItems.push(productInfo.count);
               formProductItem.insertAdjacentHTML("beforeend", buyProduct);
             });
             /* -------------------------------------------------------------------------- */
@@ -117,26 +114,35 @@ function views() {
             /*                            JSON with id product                            */
 
             /* -------------------------------------------------------------------------- */
+            // function sendDataToServer(data) {
+            //   const serverURL = 'data.php';
+            //   fetch(serverURL, {
+            //     method: 'POST',
+            //     headers: {
+            //       'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(data),
+            //   })
+            //     .then(response => {
+            //       if (response.ok) {
+            //         return response.json(); 
+            //       } else {
+            //         throw new Error('Ошибка сервера');
+            //       }
+            //     })
+            //     .then(data => {
+            //       console.log(data);
+            //     })
+            //     .catch(error => {
+            //       console.error(error); //Крч эта ошибка будет если ты еблан не будешь принимать запрос через POST
+            //     });
+            // }
 
             var idJson = {
-              checkedFormItems: checkedFormItems
+              checkedFormItems: checkedFormItems.join(',')
             };
-            var stringifyIdJson = JSON.stringify(idJson);
-            fetch('data.php', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: stringifyIdJson
-            }).then(function (response) {
-              if (response.ok) {
-                console.log('Successfully');
-              } else {
-                console.error(response.statusText);
-              }
-            })["catch"](function (error) {
-              console.error(error);
-            });
+            console.log(idJson); // sendDataToServer(idJson);
+
             formWrap.style.display = "flex";
 
             if (formWrap.style.display = "flex") {
@@ -157,6 +163,41 @@ function views() {
           showPayment.addEventListener("click", function (e) {
             e.preventDefault();
             formPayment.style.display = "flex";
+            var fileInput = document.querySelector(".pay-input");
+            fileInput.addEventListener('change', function (event) {
+              var file = event.target.files[0];
+
+              if (file && file.type.startsWith('image/')) {
+                var reader = new FileReader();
+                reader.addEventListener('load', function (loadEvent) {
+                  var image = new Image();
+                  image.src = loadEvent.target.result;
+                  var imageContainer = document.getElementById('image-container');
+                  imageContainer.insertAdjacentHTML('beforeend', "<img class= \"user-img\" src=\"".concat(image.src, "\" alt=\"\u0424\u043E\u0442\u043E\">"));
+                  var formData = new FormData();
+                  formData.append('photo', file); // ОТПРАВЛЯЮ ФОТОЧКУ
+
+                  sendFormData(formData);
+                }); // ЧИТАЮ ФОТКУ
+
+                reader.readAsDataURL(file);
+              } else {
+                alert('Выберите файл-изображение');
+              }
+            }); // ХМЛЬКА
+
+            function sendFormData(formData) {
+              var xhr = new XMLHttpRequest();
+              xhr.open('POST', 'data.php', true);
+              xhr.addEventListener('load', function () {
+                if (xhr.status === 200) {
+                  console.log('ПРАВИЛЬНО');
+                } else {
+                  console.log('ЧТО-ТО НЕ ТАК');
+                }
+              });
+              xhr.send(formData);
+            }
           });
           var paymentAccept = document.querySelector(".accept-btn");
           var formAcces = document.querySelector(".form-response");
@@ -183,6 +224,12 @@ function views() {
           var itemInCount = document.querySelector(".item-count");
           itemInCount.innerHTML = productInfo.count;
         };
+        /* -------------------------------------------------------------------------*/
+
+        /*                                  Buttons                                 */
+
+        /* -------------------------------------------------------------------------*/
+
 
         var removeCartItem = function removeCartItem(id) {
           var index = cartItems.findIndex(function (item) {
@@ -239,13 +286,6 @@ function views() {
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
         ;
-        formOrder();
-        /* -------------------------------------------------------------------------*/
-
-        /*                                  Buttons                                 */
-
-        /* -------------------------------------------------------------------------*/
-
         var btnPlus = document.querySelectorAll(".button-primary__plus");
         var btnMinus = document.querySelectorAll(".button-primary__minus");
         /* --------------------------------------------------------------------------*/
@@ -295,6 +335,7 @@ function views() {
           });
         });
         updateTotalPrice();
+        formOrder();
       }
 
       ;
