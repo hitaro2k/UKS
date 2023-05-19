@@ -69,28 +69,16 @@ const chooseProduct = () => {
     function searchAuto() {
       function returnAutoJSon(item) {
         let suitableAuto = {
-          
-        }
-        let itemAttr = null;
-        const res = fetch("../js/auto.json")
-        .then((res) => res.json())
-        .then((data) => {
-          const matchingObject = data.find((item) => item[suitableAuto.mark]);
-          if (matchingObject) {
-            const selectedCar = matchingObject[suitableAuto.mark];
-            console.log(selectedCar);
-            for (const modelName in selectedCar) {
-              console.log("Модель:", modelName);
-              const modelData = selectedCar[modelName];
-            }
-          }
-        })
-        .catch((error) => {
-          console.log("Ошибка при получении данных:", error);
-         
-        });
+          mark: "",
+          year: "",
+          model: "",
+          body: "",
+          engine: ""
+        };
     
-   
+    
+       
+        let itemAttr = null;
         itemsWrapper.forEach((item) => {
           item.addEventListener("click", () => {
             itemAttr = item.getAttribute("data-mark");
@@ -98,17 +86,16 @@ const chooseProduct = () => {
             item.style.border = "2px solid orange";
             markWrapper.style.display = "none";
             selectBlock.style.display = "flex";
-           
-            returnAutoJSon(item);
-           
+  
+
             const markItemSrc = item
               .querySelector(".mark-item")
               .getAttribute("src");
             let markItem = `  
-                        <div class="item-wrapper" data-mark = "${itemAttr}">
-                                <img class="mark-item" src="${markItemSrc}" alt="">
-                        </div>
-                        `;
+            <div class="item-wrapper" data-mark = "${itemAttr}">
+                <img class="mark-item" src="${markItemSrc}" alt="">
+            </div>
+            `;
             // roadMarkSrc = roadMapMark.document.querySelector(".map__image").getAttribute("src")
 
             backMarkBtn.style.display = "block";
@@ -129,12 +116,11 @@ const chooseProduct = () => {
           });
         });
        
+        
         yearItems.forEach((item) => {
           item.addEventListener("click", () => {
             let yearValue = item.textContent;
-
             suitableAuto.year = yearValue ;
-            returnAutoJSon(item);
             
             yearBtn.style.display = "block";
             backYearBtn.style.display = "block";
@@ -156,12 +142,17 @@ const chooseProduct = () => {
             yearBtn.addEventListener("click", function () {
               yearItemsBlock.style.display = "none";
               modelItemsBlock.style.display = "flex";
-             
+            
             });
 
-            
           });
         });
+        
+        let resAuto = fetch("js/auto.json")
+        .then(res => res.json)
+        .then(data => {
+          console.log(data)
+        })
         
         modelItems.forEach((item) => {
           item.addEventListener("click", () => {
@@ -174,6 +165,10 @@ const chooseProduct = () => {
             let modelItemSrc = `
                         <p class="model-item__selected">${modelAttr}</p>
             `;
+
+
+
+
             modelBlock.insertAdjacentHTML("beforeend", modelItemSrc);
             modelBlock.style.display = "flex";
             modelWrapper.style.display = "none";

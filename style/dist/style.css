@@ -1787,3 +1787,8 @@ li {
 .price-active {
   display: flex !important;
 }
+
+.disabled {
+  cursor: no-drop;
+  pointer-events: none;
+}

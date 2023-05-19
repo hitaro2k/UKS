@@ -69,8 +69,9 @@ export function views() {
         totalPrice.style.display = "flex";
         isclear.style.display = "none";
         let formPrice;
-     
-     
+        const added = card.getAttribute("data-added");
+        card.setAttribute("data-added", "true");
+
     /* -----------------------------------------------------------------------*/
     /*                                Card Item                               */
     /* -----------------------------------------------------------------------*/
@@ -80,10 +81,13 @@ export function views() {
             `.item-count[data-counter="${productId}"]`
           );
           countElem.textContent = Number(countElem.textContent) + 1;
-          
           return;
         }
- 
+
+        if(card.hasAttribute(added)){
+          
+        }
+    
         const productInfo = {
           id: productId,
           imgSrc: card.querySelector(".product-image").getAttribute("src"),
@@ -163,30 +167,30 @@ export function views() {
             /* -------------------------------------------------------------------------- */
             /*                            JSON with id product                            */
             /* -------------------------------------------------------------------------- */
-            // function sendDataToServer(data) {
-            //   const serverURL = 'data.php';
+            function sendDataToServer(data) {
+              const serverURL = 'data.php';
             
-            //   fetch(serverURL, {
-            //     method: 'POST',
-            //     headers: {
-            //       'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(data),
-            //   })
-            //     .then(response => {
-            //       if (response.ok) {
-            //         return response.json(); 
-            //       } else {
-            //         throw new Error('Ошибка сервера');
-            //       }
-            //     })
-            //     .then(data => {
-            //       console.log(data);
-            //     })
-            //     .catch(error => {
-            //       console.error(error); //Крч эта ошибка будет если ты еблан не будешь принимать запрос через POST
-            //     });
-            // }
+              fetch(serverURL, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+              })
+                .then(response => {
+                  if (response.ok) {
+                    return response.json(); 
+                  } else {
+                    throw new Error('Ошибка сервера');
+                  }
+                })
+                .then(data => {
+                  console.log(data);
+                })
+                .catch(error => {
+                  console.error(error); 
+                });
+            }
 
             let idJson = {
               checkedFormItems: 
@@ -195,7 +199,7 @@ export function views() {
             };
             console.log(idJson)
 
-            // sendDataToServer(idJson);
+            sendDataToServer(idJson);
            
             formWrap.style.display = "flex";
             if(formWrap.style.display = "flex"){
@@ -224,7 +228,7 @@ export function views() {
               const file = event.target.files[0];
               if (file && file.type.startsWith('image/')) {
                 const reader = new FileReader();
-
+                fileInput.style.display = "none"
                 reader.addEventListener('load', function (loadEvent) {
                   const image = new Image();
                   image.src = loadEvent.target.result;
@@ -279,6 +283,7 @@ export function views() {
               counterReset()
             },2000)
             formPayment.style.display = "none"
+            documentHTML.style.overflowY = "scroll"
           });
       
         };
@@ -333,9 +338,10 @@ export function views() {
             if(countElemAttr == productInfo.data ){
               item.count--
           
-            }
+            }    
             if (item.count === 0) {
               removeCartItem(productId);
+              card.removeAttribute("data-added");
             } else {
               countElem.textContent = item.count;
               updateTotalPrice();

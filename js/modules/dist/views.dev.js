@@ -114,35 +114,33 @@ function views() {
             /*                            JSON with id product                            */
 
             /* -------------------------------------------------------------------------- */
-            // function sendDataToServer(data) {
-            //   const serverURL = 'data.php';
-            //   fetch(serverURL, {
-            //     method: 'POST',
-            //     headers: {
-            //       'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(data),
-            //   })
-            //     .then(response => {
-            //       if (response.ok) {
-            //         return response.json(); 
-            //       } else {
-            //         throw new Error('Ошибка сервера');
-            //       }
-            //     })
-            //     .then(data => {
-            //       console.log(data);
-            //     })
-            //     .catch(error => {
-            //       console.error(error); //Крч эта ошибка будет если ты еблан не будешь принимать запрос через POST
-            //     });
-            // }
+
+            function sendDataToServer(data) {
+              var serverURL = 'data.php';
+              fetch(serverURL, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+              }).then(function (response) {
+                if (response.ok) {
+                  return response.json();
+                } else {
+                  throw new Error('Ошибка сервера');
+                }
+              }).then(function (data) {
+                console.log(data);
+              })["catch"](function (error) {
+                console.error(error);
+              });
+            }
 
             var idJson = {
               checkedFormItems: checkedFormItems.join(',')
             };
-            console.log(idJson); // sendDataToServer(idJson);
-
+            console.log(idJson);
+            sendDataToServer(idJson);
             formWrap.style.display = "flex";
 
             if (formWrap.style.display = "flex") {
@@ -169,6 +167,7 @@ function views() {
 
               if (file && file.type.startsWith('image/')) {
                 var reader = new FileReader();
+                fileInput.style.display = "none";
                 reader.addEventListener('load', function (loadEvent) {
                   var image = new Image();
                   image.src = loadEvent.target.result;
@@ -216,6 +215,7 @@ function views() {
               counterReset();
             }, 2000);
             formPayment.style.display = "none";
+            documentHTML.style.overflowY = "scroll";
           });
         };
 
@@ -260,6 +260,8 @@ function views() {
         totalPrice.style.display = "flex";
         isclear.style.display = "none";
         var formPrice;
+        var added = card.getAttribute("data-added");
+        card.setAttribute("data-added", "true");
         /* -----------------------------------------------------------------------*/
 
         /*                                Card Item                               */
@@ -271,6 +273,8 @@ function views() {
           countElem.textContent = Number(countElem.textContent) + 1;
           return;
         }
+
+        if (card.hasAttribute(added)) {}
 
         var productInfo = {
           id: productId,
@@ -328,6 +332,7 @@ function views() {
 
             if (item.count === 0) {
               removeCartItem(productId);
+              card.removeAttribute("data-added");
             } else {
               countElem.textContent = item.count;
               updateTotalPrice();

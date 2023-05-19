@@ -54,27 +54,14 @@ var chooseProduct = function chooseProduct() {
 
     function searchAuto() {
       function returnAutoJSon(item) {
-        var suitableAuto = {};
+        var suitableAuto = {
+          mark: "",
+          year: "",
+          model: "",
+          body: "",
+          engine: ""
+        };
         var itemAttr = null;
-        var res = fetch("../js/auto.json").then(function (res) {
-          return res.json();
-        }).then(function (data) {
-          var matchingObject = data.find(function (item) {
-            return item[suitableAuto.mark];
-          });
-
-          if (matchingObject) {
-            var selectedCar = matchingObject[suitableAuto.mark];
-            console.log(selectedCar);
-
-            for (var modelName in selectedCar) {
-              console.log("Модель:", modelName);
-              var modelData = selectedCar[modelName];
-            }
-          }
-        })["catch"](function (error) {
-          console.log("Ошибка при получении данных:", error);
-        });
         itemsWrapper.forEach(function (item) {
           item.addEventListener("click", function () {
             itemAttr = item.getAttribute("data-mark");
@@ -82,9 +69,8 @@ var chooseProduct = function chooseProduct() {
             item.style.border = "2px solid orange";
             markWrapper.style.display = "none";
             selectBlock.style.display = "flex";
-            returnAutoJSon(item);
             var markItemSrc = item.querySelector(".mark-item").getAttribute("src");
-            var markItem = "  \n                        <div class=\"item-wrapper\" data-mark = \"".concat(itemAttr, "\">\n                                <img class=\"mark-item\" src=\"").concat(markItemSrc, "\" alt=\"\">\n                        </div>\n                        "); // roadMarkSrc = roadMapMark.document.querySelector(".map__image").getAttribute("src")
+            var markItem = "  \n            <div class=\"item-wrapper\" data-mark = \"".concat(itemAttr, "\">\n                <img class=\"mark-item\" src=\"").concat(markItemSrc, "\" alt=\"\">\n            </div>\n            "); // roadMarkSrc = roadMapMark.document.querySelector(".map__image").getAttribute("src")
 
             backMarkBtn.style.display = "block";
             markBtn.style.display = "block";
@@ -106,7 +92,6 @@ var chooseProduct = function chooseProduct() {
           item.addEventListener("click", function () {
             var yearValue = item.textContent;
             suitableAuto.year = yearValue;
-            returnAutoJSon(item);
             yearBtn.style.display = "block";
             backYearBtn.style.display = "block";
             var yearItemSrc = "\n                        <p class=\"year__text-select\">".concat(yearValue, "</p>\n                        ");
@@ -126,6 +111,11 @@ var chooseProduct = function chooseProduct() {
               modelItemsBlock.style.display = "flex";
             });
           });
+        });
+        var resAuto = fetch("js/auto.json").then(function (res) {
+          return res.json;
+        }).then(function (data) {
+          console.log(data);
         });
         modelItems.forEach(function (item) {
           item.addEventListener("click", function () {
