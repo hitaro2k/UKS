@@ -72,27 +72,6 @@ function views() {
 
     window.addEventListener("click", function (event) {
       if (event.target.hasAttribute("data")) {
-        var removeCartItem = function removeCartItem(id) {
-          var index = cartItems.findIndex(function (item) {
-            return item.id === id;
-          });
-          cartItems.splice(index, 1);
-          var item = document.querySelector("[data-id=\"".concat(id, "\"]")).closest('.item');
-          item.parentNode.removeChild(item);
-          updateTotalPrice();
-        };
-
-        var updateTotalPrice = function updateTotalPrice() {
-          var itemPrices = document.querySelectorAll('.item-price');
-          var totalPriceCash = 0;
-          itemPrices.forEach(function (item) {
-            var productId = item.closest('.item').querySelector('.button-primary__plus').dataset.id;
-            var itemInfo = findCartItem(productId);
-            totalPriceCash += parseFloat(item.textContent) * itemInfo.count;
-          });
-          document.querySelector('.total-price__text').innerHTML = totalPriceCash + " грн";
-        };
-
         /* -----------------------------------------------------------------------*/
 
         /*                                  FORM                                  */
@@ -103,6 +82,7 @@ function views() {
           closeForm.addEventListener("click", function () {
             formWrap.style.display = "none";
             documentHTML.style.overflowY = "scroll";
+            cartMenu.style.overflowY = "scroll";
           });
           showForm.addEventListener("click", function () {
             var buyProduct;
@@ -125,8 +105,42 @@ function views() {
             cartItems.forEach(function (item) {
               buyProduct = "\n              <div class=\"product-block\">\n                <div class=\"product\">\n                    <div class=\"image\"><img class=\"image\" src=\"".concat(item.imgSrc, "\" alt=\"\"></div>\n                      <div class=\"name\">").concat(item.title, "</div>\n                      <div class=\"product-price\">").concat(item.price, "</div>\n                </div>\n              </div>\n            ");
               checkedFormItems.push(item.id);
+              checkedFormItems.push(item.price);
+              checkedFormItems.push(productInfo.count);
               formProductItem.insertAdjacentHTML("beforeend", buyProduct);
             });
+            /* -------------------------------------------------------------------------- */
+
+            /*                            JSON with id product                            */
+
+            /* -------------------------------------------------------------------------- */
+
+            function sendDataToServer(data) {
+              var serverURL = 'data.php';
+              fetch(serverURL, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+              }).then(function (response) {
+                if (response.ok) {
+                  return response.json();
+                } else {
+                  throw new Error('Ошибка сервера');
+                }
+              }).then(function (data) {
+                console.log(data);
+              })["catch"](function (error) {
+                console.error(error);
+              });
+            }
+
+            var idJson = {
+              checkedFormItems: checkedFormItems.join(',')
+            };
+            console.log(idJson);
+            sendDataToServer(idJson);
             formWrap.style.display = "flex";
 
             if (formWrap.style.display = "flex") {
@@ -147,6 +161,42 @@ function views() {
           showPayment.addEventListener("click", function (e) {
             e.preventDefault();
             formPayment.style.display = "flex";
+            var fileInput = document.querySelector(".pay-input");
+            fileInput.addEventListener('change', function (event) {
+              var file = event.target.files[0];
+
+              if (file && file.type.startsWith('image/')) {
+                var reader = new FileReader();
+                fileInput.style.display = "none";
+                reader.addEventListener('load', function (loadEvent) {
+                  var image = new Image();
+                  image.src = loadEvent.target.result;
+                  var imageContainer = document.getElementById('image-container');
+                  imageContainer.insertAdjacentHTML('beforeend', "<img class= \"user-img\" src=\"".concat(image.src, "\" alt=\"\u0424\u043E\u0442\u043E\">"));
+                  var formData = new FormData();
+                  formData.append('photo', file); // ОТПРАВЛЯЮ ФОТОЧКУ
+
+                  sendFormData(formData);
+                }); // ЧИТАЮ ФОТКУ
+
+                reader.readAsDataURL(file);
+              } else {
+                alert('Выберите файл-изображение');
+              }
+            }); // ХМЛЬКА
+
+            function sendFormData(formData) {
+              var xhr = new XMLHttpRequest();
+              xhr.open('POST', 'data.php', true);
+              xhr.addEventListener('load', function () {
+                if (xhr.status === 200) {
+                  console.log('ПРАВИЛЬНО');
+                } else {
+                  console.log('ЧТО-ТО НЕ ТАК');
+                }
+              });
+              xhr.send(formData);
+            }
           });
           var paymentAccept = document.querySelector(".accept-btn");
           var formAcces = document.querySelector(".form-response");
@@ -160,21 +210,46 @@ function views() {
               isclear.style.display = "flex";
               cartWrapper.style.display = "none";
               totalPrice.style.display = "none";
+              showPayment.style.display = "none";
+              formWrap.style.display = "none";
+              counterReset();
             }, 2000);
             formPayment.style.display = "none";
+            documentHTML.style.overflowY = "scroll";
           });
         };
 
         var counterReset = function counterReset() {
-          return regeneratorRuntime.async(function counterReset$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                case "end":
-                  return _context.stop();
-              }
-            }
+          productInfo.count = 0;
+          var itemInCount = document.querySelector(".item-count");
+          itemInCount.innerHTML = productInfo.count;
+        };
+        /* -------------------------------------------------------------------------*/
+
+        /*                                  Buttons                                 */
+
+        /* -------------------------------------------------------------------------*/
+
+
+        var removeCartItem = function removeCartItem(id) {
+          var index = cartItems.findIndex(function (item) {
+            return item.id === id;
           });
+          cartItems.splice(index, 1);
+          var item = document.querySelector("[data-id=\"".concat(id, "\"]")).closest('.item');
+          item.parentNode.removeChild(item);
+          updateTotalPrice();
+        };
+
+        var updateTotalPrice = function updateTotalPrice() {
+          var itemPrices = document.querySelectorAll('.item-price');
+          var totalPriceCash = 0;
+          itemPrices.forEach(function (item) {
+            var productId = item.closest('.item').querySelector('.button-primary__plus').dataset.id;
+            var itemInfo = findCartItem(productId);
+            totalPriceCash += parseFloat(item.textContent) * itemInfo.count;
+          });
+          document.querySelector('.total-price__text').innerHTML = totalPriceCash + " грн";
         };
 
         var card = event.target.closest(".product");
@@ -185,6 +260,8 @@ function views() {
         totalPrice.style.display = "flex";
         isclear.style.display = "none";
         var formPrice;
+        var added = card.getAttribute("data-added");
+        card.setAttribute("data-added", "true");
         /* -----------------------------------------------------------------------*/
 
         /*                                Card Item                               */
@@ -196,6 +273,8 @@ function views() {
           countElem.textContent = Number(countElem.textContent) + 1;
           return;
         }
+
+        if (card.hasAttribute(added)) {}
 
         var productInfo = {
           id: productId,
@@ -210,12 +289,7 @@ function views() {
         var itemInCart = "   <div class=\"item\">\n                <img src=\"".concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                <p class=\"item-name\">").concat(productInfo.title, "</p>\n                <p class=\"item-price\">").concat(productInfo.price, "</p>\n                <div class=\"item__button__add-delete\">\n                    <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                    <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                    <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                </div>\n            </div>\n        ");
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
-        /* -------------------------------------------------------------------------*/
-
-        /*                                  Buttons                                 */
-
-        /* -------------------------------------------------------------------------*/
-
+        ;
         var btnPlus = document.querySelectorAll(".button-primary__plus");
         var btnMinus = document.querySelectorAll(".button-primary__minus");
         /* --------------------------------------------------------------------------*/
@@ -258,6 +332,7 @@ function views() {
 
             if (item.count === 0) {
               removeCartItem(productId);
+              card.removeAttribute("data-added");
             } else {
               countElem.textContent = item.count;
               updateTotalPrice();
@@ -265,7 +340,6 @@ function views() {
           });
         });
         updateTotalPrice();
-        ;
         formOrder();
       }
 
