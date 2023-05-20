@@ -69,6 +69,7 @@ var chooseProduct = function chooseProduct() {
             item.style.border = "2px solid orange";
             markWrapper.style.display = "none";
             selectBlock.style.display = "flex";
+            returnMark();
             var markItemSrc = item.querySelector(".mark-item").getAttribute("src");
             var markItem = "  \n            <div class=\"item-wrapper\" data-mark = \"".concat(itemAttr, "\">\n                <img class=\"mark-item\" src=\"").concat(markItemSrc, "\" alt=\"\">\n            </div>\n            "); // roadMarkSrc = roadMapMark.document.querySelector(".map__image").getAttribute("src")
 
@@ -109,14 +110,26 @@ var chooseProduct = function chooseProduct() {
             yearBtn.addEventListener("click", function () {
               yearItemsBlock.style.display = "none";
               modelItemsBlock.style.display = "flex";
+              console.log(suitableAuto.year);
             });
           });
         });
-        var resAuto = fetch("js/auto.json").then(function (res) {
-          return res.json;
-        }).then(function (data) {
-          console.log(data);
-        });
+
+        function returnMark() {
+          var resAuto = fetch("js/auto.json").then(function (res) {
+            return res.json();
+          }).then(function (data) {
+            var findEl = data.find(function (item) {
+              return item[suitableAuto.mark];
+            });
+
+            if (findEl) {
+              var selectedCar = findEl[suitableAuto.mark];
+              console.log(selectedCar);
+            }
+          });
+        }
+
         modelItems.forEach(function (item) {
           item.addEventListener("click", function () {
             var modelAttr = item.getAttribute("data-model");

@@ -87,7 +87,7 @@ const chooseProduct = () => {
             markWrapper.style.display = "none";
             selectBlock.style.display = "flex";
   
-
+            returnMark()
             const markItemSrc = item
               .querySelector(".mark-item")
               .getAttribute("src");
@@ -121,7 +121,6 @@ const chooseProduct = () => {
           item.addEventListener("click", () => {
             let yearValue = item.textContent;
             suitableAuto.year = yearValue ;
-            
             yearBtn.style.display = "block";
             backYearBtn.style.display = "block";
             let yearItemSrc = `
@@ -142,17 +141,26 @@ const chooseProduct = () => {
             yearBtn.addEventListener("click", function () {
               yearItemsBlock.style.display = "none";
               modelItemsBlock.style.display = "flex";
-            
+              console.log(suitableAuto.year)
             });
 
           });
         });
         
-        let resAuto = fetch("js/auto.json")
-        .then(res => res.json)
-        .then(data => {
-          console.log(data)
-        })
+        function returnMark(){
+          let resAuto = fetch("js/auto.json")
+          .then((res) => res.json())
+          .then((data) => {
+            const findEl = data.find((item) => item[suitableAuto.mark]);
+            if (findEl) {
+              const selectedCar = findEl[suitableAuto.mark];
+              console.log(selectedCar);
+            }
+          })
+        }
+        
+  
+        
         
         modelItems.forEach((item) => {
           item.addEventListener("click", () => {

@@ -2,98 +2,45 @@
   {
     "Chevrolet": {
       "Cammaro": {
-        "CammaroA": {
-          "model": "CammaroA",
           "year": "1990",
           "body": "cabrio",
           "engine": "Foul"
-        },
-        "CammaroB": {
-          "model": "CammaroB",
-          "year": "1991",
-          "body": "cabrio",
-          "engine": "Foul"
-        }
       }
     },
     "Jeep": {
       "Cherokee": {
-        "CherokeeA": {
-          "model": "CherokeeA",
           "year": "1990",
           "body": "cabrio",
           "engine": "Foul"
-        },
-        "CherokeeB": {
-          "model": "CherokeeB",
-          "year": "1991",
-          "body": "cabrio",
-          "engine": "Foul"
-        }
       }
     },
     "Caddilac": {
       "Escalade": {
-        "EscaladeA": {
-          "model": "EscaladeA",
           "year": "1990",
           "body": "cabrio",
           "engine": "Foul"
-        },
-        "EscaladeB": {
-          "model": "EscaladeB",
-          "year": "1991",
-          "body": "cabrio",
-          "engine": "Foul"
-        }
       }
     },
     "Ford": {
       "Mustang": {
-        "MustangA": {
-          "model": "MustangA",
           "year": "1990",
           "body": "cabrio",
           "engine": "Foul"
-        },
-        "MustangB": {
-          "model": "MustangB",
-          "year": "1991",
-          "body": "cabrio",
-          "engine": "Foul"
-        }
       }
     },
     "Gmc": {
       "Acadia": {
-        "AcadiaA": {
-          "model": "AcadiaA",
           "year": "1990",
           "body": "cabrio",
           "engine": "Foul"
-        },
-        "AcadiaB": {
-          "model": "AcadiaB",
-          "year": "1991",
-          "body": "cabrio",
-          "engine": "Foul"
-        }
+       
       }
     },
     "Buick": {
       "Regal": {
-        "RegalA": {
-          "model": "RegalA",
-          "year": "1990",
+          "year": "1990,1991,1992,1993,1994,1995,1995",
           "body": "cabrio",
           "engine": "Foul"
-        },
-        "RegalB": {
-          "model": "RegalB",
-          "year": "1991",
-          "body": "cabrio",
-          "engine": "Foul"
-        }
       }
     }
   }
