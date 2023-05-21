@@ -7,7 +7,8 @@ if ($data && isset($data['checkedFormItems'])) {
   $response = array(
     'status' => 'success',
     'message' => 'Данные успешно получены',
-    'checkedFormItems' => $checkedFormItems
+    'checkedFormItems' => $checkedFormItems,
+    'receivedData' => $data 
   );
 
   header('Content-Type: application/json');

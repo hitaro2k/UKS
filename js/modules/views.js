@@ -170,25 +170,29 @@ export function views() {
 
             async function sendDataToDataPhp(data) {
               const requestOptions = {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify(data)
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
               };
-
+            
               try {
-                  const response = await fetch('data.php', requestOptions);
-                  if (response.ok) {
-                      console.log('Получено на дату пхп');
-                      return true;
-                  } else {
-                      console.error('Ошибка при получении на дату пхп');
-                      return false;
-                  }
-              } catch (error) {
-                  console.error('Произошла ошибка:', error);
+                const response = await fetch('data.php', requestOptions);
+                const responseData = await response.json(); 
+            
+                if (response.ok) {
+                  console.log('Получено на дату пхп');
+                  console.log(responseData.receivedData);
+                  return true;
+                } else {
+                  console.error('Ошибка при получении на дату пхп');
+                  console.error(responseData.message); 
                   return false;
+                }
+              } catch (error) {
+                console.error('Произошла ошибка:', error);
+                return false;
               }
             }
 
@@ -212,7 +216,7 @@ export function views() {
             sendDataToDataPhp(data)
               .then((result) => {
                   if (result) {
-                      callServPhp();
+                      callServPhp(result.receivedData);
                   }
               });
            

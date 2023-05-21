@@ -116,7 +116,7 @@ function views() {
             /* -------------------------------------------------------------------------- */
 
             function sendDataToDataPhp(data) {
-              var requestOptions, response;
+              var requestOptions, response, responseData;
               return regeneratorRuntime.async(function sendDataToDataPhp$(_context) {
                 while (1) {
                   switch (_context.prev = _context.next) {
@@ -134,35 +134,42 @@ function views() {
 
                     case 4:
                       response = _context.sent;
+                      _context.next = 7;
+                      return regeneratorRuntime.awrap(response.json());
+
+                    case 7:
+                      responseData = _context.sent;
 
                       if (!response.ok) {
-                        _context.next = 10;
+                        _context.next = 14;
                         break;
                       }
 
                       console.log('Получено на дату пхп');
+                      console.log(responseData.receivedData);
                       return _context.abrupt("return", true);
 
-                    case 10:
+                    case 14:
                       console.error('Ошибка при получении на дату пхп');
+                      console.error(responseData.message);
                       return _context.abrupt("return", false);
 
-                    case 12:
-                      _context.next = 18;
+                    case 17:
+                      _context.next = 23;
                       break;
 
-                    case 14:
-                      _context.prev = 14;
+                    case 19:
+                      _context.prev = 19;
                       _context.t0 = _context["catch"](1);
                       console.error('Произошла ошибка:', _context.t0);
                       return _context.abrupt("return", false);
 
-                    case 18:
+                    case 23:
                     case "end":
                       return _context.stop();
                   }
                 }
-              }, null, null, [[1, 14]]);
+              }, null, null, [[1, 19]]);
             }
 
             function callServPhp() {
@@ -205,7 +212,7 @@ function views() {
             };
             sendDataToDataPhp(data).then(function (result) {
               if (result) {
-                callServPhp();
+                callServPhp(result.receivedData);
               }
             });
             formWrap.style.display = "flex";
