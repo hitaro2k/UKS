@@ -115,32 +115,99 @@ function views() {
 
             /* -------------------------------------------------------------------------- */
 
-            function sendDataToServer(data) {
-              var serverURL = 'data.php';
-              fetch(serverURL, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-              }).then(function (response) {
-                if (response.ok) {
-                  return response.json();
-                } else {
-                  throw new Error('Ошибка сервера');
+            function sendDataToDataPhp(data) {
+              var requestOptions, response;
+              return regeneratorRuntime.async(function sendDataToDataPhp$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      requestOptions = {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                      };
+                      _context.prev = 1;
+                      _context.next = 4;
+                      return regeneratorRuntime.awrap(fetch('data.php', requestOptions));
+
+                    case 4:
+                      response = _context.sent;
+
+                      if (!response.ok) {
+                        _context.next = 10;
+                        break;
+                      }
+
+                      console.log('Получено на дату пхп');
+                      return _context.abrupt("return", true);
+
+                    case 10:
+                      console.error('Ошибка при получении на дату пхп');
+                      return _context.abrupt("return", false);
+
+                    case 12:
+                      _context.next = 18;
+                      break;
+
+                    case 14:
+                      _context.prev = 14;
+                      _context.t0 = _context["catch"](1);
+                      console.error('Произошла ошибка:', _context.t0);
+                      return _context.abrupt("return", false);
+
+                    case 18:
+                    case "end":
+                      return _context.stop();
+                  }
                 }
-              }).then(function (data) {
-                console.log(data);
-              })["catch"](function (error) {
-                console.error(error);
-              });
+              }, null, null, [[1, 14]]);
             }
 
-            var idJson = {
-              checkedFormItems: checkedFormItems.join(',')
+            function callServPhp() {
+              var response;
+              return regeneratorRuntime.async(function callServPhp$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.prev = 0;
+                      _context2.next = 3;
+                      return regeneratorRuntime.awrap(fetch('serv.php'));
+
+                    case 3:
+                      response = _context2.sent;
+
+                      if (response.ok) {
+                        console.log('серв пхп вызван');
+                      } else {
+                        console.error("Ошибка при вызове серв пхп");
+                      }
+
+                      _context2.next = 10;
+                      break;
+
+                    case 7:
+                      _context2.prev = 7;
+                      _context2.t0 = _context2["catch"](0);
+                      console.error('Произошла ошибка:', _context2.t0);
+
+                    case 10:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, null, null, [[0, 7]]);
+            }
+
+            var data = {
+              checkedFormItems: checkedFormItems.join(",")
             };
-            console.log(idJson);
-            sendDataToServer(idJson);
+            sendDataToDataPhp(data).then(function (result) {
+              if (result) {
+                callServPhp();
+              }
+            });
             formWrap.style.display = "flex";
 
             if (formWrap.style.display = "flex") {

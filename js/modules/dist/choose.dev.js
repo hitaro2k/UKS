@@ -125,7 +125,6 @@ var chooseProduct = function chooseProduct() {
 
             if (findEl) {
               var selectedCar = findEl[suitableAuto.mark];
-              console.log(selectedCar);
             }
           });
         }

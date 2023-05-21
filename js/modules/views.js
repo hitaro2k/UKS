@@ -167,39 +167,54 @@ export function views() {
             /* -------------------------------------------------------------------------- */
             /*                            JSON with id product                            */
             /* -------------------------------------------------------------------------- */
-            function sendDataToServer(data) {
-              const serverURL = 'data.php';
-            
-              fetch(serverURL, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-              })
-                .then(response => {
+
+            async function sendDataToDataPhp(data) {
+              const requestOptions = {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(data)
+              };
+
+              try {
+                  const response = await fetch('data.php', requestOptions);
                   if (response.ok) {
-                    return response.json(); 
+                      console.log('Получено на дату пхп');
+                      return true;
                   } else {
-                    throw new Error('Ошибка сервера');
+                      console.error('Ошибка при получении на дату пхп');
+                      return false;
                   }
-                })
-                .then(data => {
-                  console.log(data);
-                })
-                .catch(error => {
-                  console.error(error); 
-                });
+              } catch (error) {
+                  console.error('Произошла ошибка:', error);
+                  return false;
+              }
             }
 
-            let idJson = {
-              checkedFormItems: 
-              checkedFormItems.join(','),
+            async function callServPhp() {
+              try {
+                  const response = await fetch('serv.php');
+                  if (response.ok) {
+                      console.log('серв пхп вызван');
+                  } else {
+                      console.error("Ошибка при вызове серв пхп");
+                  }
+              } catch (error) {
+                  console.error('Произошла ошибка:', error);
+              }
+            }
 
+            var data = {
+              checkedFormItems:checkedFormItems.join(",")
             };
-            console.log(idJson)
 
-            sendDataToServer(idJson);
+            sendDataToDataPhp(data)
+              .then((result) => {
+                  if (result) {
+                      callServPhp();
+                  }
+              });
            
             formWrap.style.display = "flex";
             if(formWrap.style.display = "flex"){

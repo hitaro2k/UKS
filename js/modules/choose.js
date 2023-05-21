@@ -154,7 +154,7 @@ const chooseProduct = () => {
             const findEl = data.find((item) => item[suitableAuto.mark]);
             if (findEl) {
               const selectedCar = findEl[suitableAuto.mark];
-              console.log(selectedCar);
+            
             }
           })
         }
