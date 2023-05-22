@@ -17,5 +17,9 @@
     "url": "https://github.com/hitaro2k/UK/issues"
   },
   "homepage": "https://github.com/hitaro2k/UK#readme",
-  "devDependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^5.5.0"
+  }
 }

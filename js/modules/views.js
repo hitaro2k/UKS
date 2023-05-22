@@ -167,59 +167,38 @@ export function views() {
             /* -------------------------------------------------------------------------- */
             /*                            JSON with id product                            */
             /* -------------------------------------------------------------------------- */
-
-            async function sendDataToDataPhp(data) {
-              const requestOptions = {
+            function sendDataToServer(data) {
+              const serverURL = 'data.php';
+            
+              fetch(serverURL, {
                 method: 'POST',
                 headers: {
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data)
-              };
-            
-              try {
-                const response = await fetch('data.php', requestOptions);
-                const responseData = await response.json(); 
-            
-                if (response.ok) {
-                  console.log('Получено на дату пхп');
-                  console.log(responseData.receivedData);
-                  return true;
-                } else {
-                  console.error('Ошибка при получении на дату пхп');
-                  console.error(responseData.message); 
-                  return false;
-                }
-              } catch (error) {
-                console.error('Произошла ошибка:', error);
-                return false;
-              }
-            }
-
-            async function callServPhp() {
-              try {
-                  const response = await fetch('serv.php');
+                body: JSON.stringify(data),
+              })
+                .then(response => {
                   if (response.ok) {
-                      console.log('серв пхп вызван');
+                    return response.json(); 
                   } else {
-                      console.error("Ошибка при вызове серв пхп");
+                    throw new Error('Ошибка сервера');
                   }
-              } catch (error) {
-                  console.error('Произошла ошибка:', error);
-              }
+                })
+                .then(data => {
+                  console.log(data);
+                })
+                .catch(error => {
+                  console.error(error); 
+                });
             }
 
-            var data = {
-              checkedFormItems:checkedFormItems.join(",")
-            };
+            let idJson = {
+              checkedFormItems: 
+              checkedFormItems.join(','),
 
-            sendDataToDataPhp(data)
-              .then((result) => {
-                  if (result) {
-                      callServPhp(result.receivedData);
-                  }
-              });
-           
+            };
+            sendDataToServer(idJson);
+            
             formWrap.style.display = "flex";
             if(formWrap.style.display = "flex"){
               documentHTML.style.position = "fixed"
