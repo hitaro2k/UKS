@@ -7,8 +7,7 @@ if ($data && isset($data['checkedFormItems'])) {
   $response = array(
     'status' => 'success',
     'message' => 'Данные успешно получены',
-    'checkedFormItems' => $checkedFormItems,
-    'receivedData' => $data 
+    'checkedFormItems' => $checkedFormItems
   );
 
   header('Content-Type: application/json');
@@ -22,4 +21,15 @@ if ($data && isset($data['checkedFormItems'])) {
   header('Content-Type: application/json');
   echo json_encode($response);
 }
+
+$part1 = $data['checkedFormItems'];
+$parts = explode(',', $part1); 
+
+$id_product = $parts[0];
+$price = $parts[1];
+$sum = $parts[2];
+
+$mysql = new mysqli('localhost', 'root', 'test', 'uk-bd');
+$mysql->query("INSERT INTO uk (id_product, price, sum) VALUES('$id_product', '$price', '$sum')");
+$mysql->close();
 ?>
