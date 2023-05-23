@@ -7,6 +7,14 @@ exports.views = views;
 
 var _cart = require("./cart.js");
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var documentHTML = document.querySelector("html");
 var cartItems = [];
 
@@ -38,9 +46,9 @@ function views() {
     /*                                  Preloader                                 */
 
     /* -------------------------------------------------------------------------- */
-    window.addEventListener('load', function () {
+    window.addEventListener("load", function () {
       var images = [];
-      document.querySelectorAll('img').forEach(function (img) {
+      document.querySelectorAll("img").forEach(function (img) {
         images.push(img.src);
       });
       var imagesLoaded = 0;
@@ -53,7 +61,7 @@ function views() {
           imagesLoaded++;
 
           if (imagesLoaded == images.length) {
-            document.querySelector('#preloader').style.display = 'none';
+            document.querySelector("#preloader").style.display = "none";
           }
         };
       }
@@ -83,10 +91,11 @@ function views() {
             formWrap.style.display = "none";
             documentHTML.style.overflowY = "scroll";
             cartMenu.style.overflowY = "scroll";
+            formProductItem.innerHTML = "";
+            formProductPrice.innerHTML = "";
           });
           showForm.addEventListener("click", function () {
-            var buyProduct;
-            var priceToForm = document.querySelector('.total-price__text').textContent;
+            var priceToForm = document.querySelector(".total-price__text").textContent;
             /* -------------------------------------------------------------------------- */
 
             /*                              Arr for database                              */
@@ -94,20 +103,28 @@ function views() {
             /* -------------------------------------------------------------------------- */
 
             var checkedFormItems = [];
+            var transferredItems = [];
             /* -------------------------------------------------------------------------- */
 
             /*                              Arr for database                              */
 
             /* -------------------------------------------------------------------------- */
 
-            var buyPrice = " \n            <div class=\"price-block\">\n              <p class=\"title\">Title</p>\n              <p class=\"total-price\">".concat(priceToForm, "</p>\n            </div>\n            ");
-            formProductPrice.insertAdjacentHTML("beforeend", buyPrice);
-            cartItems.forEach(function (item) {
-              buyProduct = "\n              <div class=\"product-block\">\n                <div class=\"product\">\n                    <div class=\"image\"><img class=\"image\" src=\"".concat(item.imgSrc, "\" alt=\"\"></div>\n                      <div class=\"name\">").concat(item.title, "</div>\n                      <div class=\"product-price\">").concat(item.price, "</div>\n                </div>\n              </div>\n            ");
-              checkedFormItems.push(item.id);
-              checkedFormItems.push(item.price);
-              checkedFormItems.push(productInfo.count);
-              formProductItem.insertAdjacentHTML("beforeend", buyProduct);
+            if (formProductPrice.children.length === 0) {
+              var buyPrice = " \n              <div class=\"price-block\">\n                <p class=\"title\">Title</p>\n                <p class=\"total-price\">".concat(priceToForm, "</p>\n              </div>\n              ");
+              formProductPrice.insertAdjacentHTML("beforeend", buyPrice);
+            }
+
+            if (formProductItem.children.length === 0) {
+              cartItems.forEach(function (item) {
+                var inCartProduct = "\n                    <div class=\"product-block\" data=\"".concat(item.id, "\">\n                      <div class=\"product\">\n                        <div class=\"image\"><img class=\"image\" src=\"").concat(item.imgSrc, "\" alt=\"\"></div>\n                        <div class=\"name\">").concat(item.title, "</div>\n                        <div class=\"product-price\">").concat(item.price, "</div>\n                      </div>\n                    </div>\n                  ");
+                formProductItem.insertAdjacentHTML("beforeend", inCartProduct);
+                checkedFormItems.push([item.id, item.price, item.count]);
+              });
+            }
+
+            checkedFormItems.forEach(function (item) {
+              transferredItems.push.apply(transferredItems, _toConsumableArray(item));
             });
             /* -------------------------------------------------------------------------- */
 
@@ -115,105 +132,29 @@ function views() {
 
             /* -------------------------------------------------------------------------- */
 
-            function sendDataToDataPhp(data) {
-              var requestOptions, response, responseData;
-              return regeneratorRuntime.async(function sendDataToDataPhp$(_context) {
-                while (1) {
-                  switch (_context.prev = _context.next) {
-                    case 0:
-                      requestOptions = {
-                        method: 'POST',
-                        headers: {
-                          'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                      };
-                      _context.prev = 1;
-                      _context.next = 4;
-                      return regeneratorRuntime.awrap(fetch('data.php', requestOptions));
-
-                    case 4:
-                      response = _context.sent;
-                      _context.next = 7;
-                      return regeneratorRuntime.awrap(response.json());
-
-                    case 7:
-                      responseData = _context.sent;
-
-                      if (!response.ok) {
-                        _context.next = 14;
-                        break;
-                      }
-
-                      console.log('Получено на дату пхп');
-                      console.log(responseData.receivedData);
-                      return _context.abrupt("return", true);
-
-                    case 14:
-                      console.error('Ошибка при получении на дату пхп');
-                      console.error(responseData.message);
-                      return _context.abrupt("return", false);
-
-                    case 17:
-                      _context.next = 23;
-                      break;
-
-                    case 19:
-                      _context.prev = 19;
-                      _context.t0 = _context["catch"](1);
-                      console.error('Произошла ошибка:', _context.t0);
-                      return _context.abrupt("return", false);
-
-                    case 23:
-                    case "end":
-                      return _context.stop();
-                  }
-                }
-              }, null, null, [[1, 19]]);
+            function sendDataToServer(data) {
+              var url = 'server/data.php';
+              var options = {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+              };
+              fetch(url, options).then(function (response) {
+                return response.json();
+              }).then(function (result) {
+                console.log('Успешно', result);
+              })["catch"](function (error) {
+                console.error('Ошибка', error);
+              });
             }
 
-            function callServPhp() {
-              var response;
-              return regeneratorRuntime.async(function callServPhp$(_context2) {
-                while (1) {
-                  switch (_context2.prev = _context2.next) {
-                    case 0:
-                      _context2.prev = 0;
-                      _context2.next = 3;
-                      return regeneratorRuntime.awrap(fetch('serv.php'));
-
-                    case 3:
-                      response = _context2.sent;
-
-                      if (response.ok) {
-                        console.log('серв пхп вызван');
-                      } else {
-                        console.error("Ошибка при вызове серв пхп");
-                      }
-
-                      _context2.next = 10;
-                      break;
-
-                    case 7:
-                      _context2.prev = 7;
-                      _context2.t0 = _context2["catch"](0);
-                      console.error('Произошла ошибка:', _context2.t0);
-
-                    case 10:
-                    case "end":
-                      return _context2.stop();
-                  }
-                }
-              }, null, null, [[0, 7]]);
-            }
-
-            var data = {
-              checkedFormItems: checkedFormItems.join(",")
-            };
-            sendDataToDataPhp(data).then(function (result) {
-              if (result) {
-                callServPhp(result.receivedData);
-              }
+            console.log({
+              items: transferredItems
+            });
+            sendDataToServer({
+              items: transferredItems
             });
             formWrap.style.display = "flex";
 
@@ -228,7 +169,7 @@ function views() {
               documentHTML.style.overflowY = "scroll";
             }
 
-            ;
+            showForm.removeEventListener;
           });
           var showPayment = document.querySelector(".to-response");
           var formPayment = document.querySelector(".form-payment");
@@ -236,41 +177,29 @@ function views() {
             e.preventDefault();
             formPayment.style.display = "flex";
             var fileInput = document.querySelector(".pay-input");
-            fileInput.addEventListener('change', function (event) {
+            fileInput.addEventListener("change", function (event) {
               var file = event.target.files[0];
 
-              if (file && file.type.startsWith('image/')) {
+              if (file && file.type.startsWith("image/")) {
                 var reader = new FileReader();
                 fileInput.style.display = "none";
-                reader.addEventListener('load', function (loadEvent) {
+                reader.addEventListener("load", function (loadEvent) {
                   var image = new Image();
                   image.src = loadEvent.target.result;
-                  var imageContainer = document.getElementById('image-container');
-                  imageContainer.insertAdjacentHTML('beforeend', "<img class= \"user-img\" src=\"".concat(image.src, "\" alt=\"\u0424\u043E\u0442\u043E\">"));
+                  var imageContainer = document.getElementById("image-container");
+                  imageContainer.insertAdjacentHTML("beforeend", "<img class= \"user-img\" src=\"".concat(image.src, "\" alt=\"\u0424\u043E\u0442\u043E\">"));
                   var formData = new FormData();
-                  formData.append('photo', file); // ОТПРАВЛЯЮ ФОТОЧКУ
+                  formData.append("photo", file);
+                  console.log(image.src); // ОТПРАВЛЯЮ ФОТОЧКУ
 
                   sendFormData(formData);
                 }); // ЧИТАЮ ФОТКУ
 
                 reader.readAsDataURL(file);
               } else {
-                alert('Выберите файл-изображение');
+                alert("Выберите файл-изображение");
               }
             }); // ХМЛЬКА
-
-            function sendFormData(formData) {
-              var xhr = new XMLHttpRequest();
-              xhr.open('POST', 'data.php', true);
-              xhr.addEventListener('load', function () {
-                if (xhr.status === 200) {
-                  console.log('ПРАВИЛЬНО');
-                } else {
-                  console.log('ЧТО-ТО НЕ ТАК');
-                }
-              });
-              xhr.send(formData);
-            }
           });
           var paymentAccept = document.querySelector(".accept-btn");
           var formAcces = document.querySelector(".form-response");
@@ -310,20 +239,20 @@ function views() {
             return item.id === id;
           });
           cartItems.splice(index, 1);
-          var item = document.querySelector("[data-id=\"".concat(id, "\"]")).closest('.item');
+          var item = document.querySelector("[data-id=\"".concat(id, "\"]")).closest(".item");
           item.parentNode.removeChild(item);
           updateTotalPrice();
         };
 
         var updateTotalPrice = function updateTotalPrice() {
-          var itemPrices = document.querySelectorAll('.item-price');
+          var itemPrices = document.querySelectorAll(".item-price");
           var totalPriceCash = 0;
           itemPrices.forEach(function (item) {
-            var productId = item.closest('.item').querySelector('.button-primary__plus').dataset.id;
+            var productId = item.closest(".item").querySelector(".button-primary__plus").dataset.id;
             var itemInfo = findCartItem(productId);
             totalPriceCash += parseFloat(item.textContent) * itemInfo.count;
           });
-          document.querySelector('.total-price__text').innerHTML = totalPriceCash + " грн";
+          document.querySelector(".total-price__text").innerHTML = totalPriceCash + " грн";
         };
 
         var card = event.target.closest(".product");
@@ -335,7 +264,13 @@ function views() {
         isclear.style.display = "none";
         var formPrice;
         var added = card.getAttribute("data-added");
-        card.setAttribute("data-added", "true");
+
+        if (added === "true") {
+          return;
+        }
+
+        added = "true";
+        card.setAttribute("data-added", added);
         /* -----------------------------------------------------------------------*/
 
         /*                                Card Item                               */
@@ -348,8 +283,6 @@ function views() {
           return;
         }
 
-        if (card.hasAttribute(added)) {}
-
         var productInfo = {
           id: productId,
           imgSrc: card.querySelector(".product-image").getAttribute("src"),
@@ -360,10 +293,9 @@ function views() {
           data: "".concat(productId)
         };
         productInfo.count++;
-        var itemInCart = "   <div class=\"item\">\n                <img src=\"".concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                <p class=\"item-name\">").concat(productInfo.title, "</p>\n                <p class=\"item-price\">").concat(productInfo.price, "</p>\n                <div class=\"item__button__add-delete\">\n                    <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                    <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                    <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                </div>\n            </div>\n        ");
+        var itemInCart = "   <div class=\"item\" data-id=\"".concat(productInfo.data, "\" >\n                <img src=\"").concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                <p class=\"item-name\">").concat(productInfo.title, "</p>\n                <p class=\"item-price\">").concat(productInfo.price, "</p>\n                <div class=\"item__button__add-delete\">\n                    <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                    <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                    <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                </div>\n            </div>\n        ");
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
-        ;
         var btnPlus = document.querySelectorAll(".button-primary__plus");
         var btnMinus = document.querySelectorAll(".button-primary__minus");
         /* --------------------------------------------------------------------------*/
@@ -416,12 +348,9 @@ function views() {
         updateTotalPrice();
         formOrder();
       }
-
-      ;
     });
   });
   return views;
 }
 
-;
 views();

@@ -19,5 +19,38 @@
         "buy": "В кошик",
         "data":"2A"
 
+    },
+    {
+        "id":"3A",
+        "title": "Shell brakes",
+        "price":23000,
+        "image": "img/tel-alfa-romeo-1600.webp",
+        "status":"В наявності",
+        "articul":"A78AFAWD12ADS",
+        "buy": "В кошик",
+        "data":"3A"
+
+    },
+    {
+        "id":"4A",
+        "title": "Lamborghini brakes",
+        "price":20000,
+        "image": "img/tel-alfa-romeo-1600.webp",
+        "status":"В наявності",
+        "articul":"A78D1AF2ADS",
+        "buy": "В кошик",
+        "data":"4A"
+
+    },
+    {
+        "id":"5A",
+        "title": "Mazda brakes",
+        "price":1000,
+        "image": "img/tel-alfa-romeo-1600.webp",
+        "status":"В наявності",
+        "articul":"A78D12GAS",
+        "buy": "В кошик",
+        "data":"5A"
+
     }
 ]

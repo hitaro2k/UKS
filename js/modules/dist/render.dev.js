@@ -5,7 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getProductsPopular = getProductsPopular;
 var popularContainer = document.querySelector("#popular__container");
-getProductsPopular();
 
 function getProductsPopular() {
   var response, productArray;
@@ -39,3 +38,5 @@ function renderProductsPopular(productArray) {
     popularContainer.insertAdjacentHTML("beforeend", productHTML);
   });
 }
+
+getProductsPopular();

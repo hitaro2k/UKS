@@ -1,7 +1,5 @@
 const popularContainer = document.querySelector("#popular__container");
 
-getProductsPopular()
-
 export async function getProductsPopular() {
   const response = await fetch("./js/modules/popular.json")
 
@@ -33,7 +31,4 @@ function renderProductsPopular(productArray) {
 
   })
 }
-
-
-
-
+getProductsPopular()
