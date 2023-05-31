@@ -1345,7 +1345,7 @@ li {
   transition: background-color 0.5s, color 0.5s;
   display: none;
 }
-.main .full-screen__video {
+.main .full-screen__bg {
   position: fixed;
   top: 0;
   left: 0;

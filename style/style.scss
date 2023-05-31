@@ -1385,7 +1385,7 @@ li {
     }
   }
 
-  .full-screen__video {
+  .full-screen__bg{
     position: fixed;
     top: 0;
     left: 0;
@@ -1395,7 +1395,6 @@ li {
     opacity: 0.3;
     z-index: -1;
   }
-
   .content {
     position: relative;
     background-color: black;
