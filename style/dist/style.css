@@ -1039,7 +1039,7 @@ li {
   }
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .mark-items__top .selected-mark .item-wrapper .mark-item {
-  width: 80%;
+  width: 150px;
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .mark-items__top .selected-mark .select__buttons {
   display: flex;
@@ -1118,7 +1118,7 @@ li {
   }
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .mark-items__top .mark-wrapper .items-wrapper .item-wrapper .mark-item {
-  width: 80%;
+  width: 150px;
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .mark-items__markbtn {
   width: 200px;
