@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,15 +13,6 @@
     <link rel="icon" type="image/png" href="/img/favicon-32x32.png">
 
 </head>
-    <link rel="stylesheet" href="./style/dist/preloader.css" />
-    <link rel="stylesheet" href="./style/normalize.css" />
-    <link rel="stylesheet" href="./style/dist/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    />
-    <link rel="icon" type="image/png" href="./img/favicon-32x32.png" />
-  </head>
 
   <body>
     <div id="preloader">
@@ -35,11 +26,14 @@
         </a> 
         <nav class="menu">
           <ul class="menu__list">
-            <li class="menu__list-item" id="catalog">
+            <li class="menu__list-item catalog" >
               <a href="#" class="menu__list-link">Каталог</a>
             </li>
             <li class="menu__list-item">
               <a href="./client.html" class="menu__list-link">Кліентам</a>
+            </li>
+            <li class="menu__list-item">
+              <a href="./client.html" class="menu__list-link">Популярне</a>
             </li>
           </ul>
         </nav>
@@ -75,7 +69,7 @@
       </div>
 
       <div class="form-order__background">
-        <form action="" class="form-order">
+        <form action="GET" class="form-order">
           <div class="close-form__wrapper">
             <object data="close" type="image/svg+xml" class="close-form">
               <svg
@@ -88,7 +82,7 @@
                 <path
                   fill="white"
                   d="M8.25538 6.73346L13.1508 1.83808C13.5692 1.41962 13.5692 0.736539 13.1508 0.315001C12.7323 -0.106537 12.0462 -0.10346 11.6277 0.315001L6.73231 5.21039L1.83692 0.315001C1.41846 -0.10346 0.735385 -0.10346 0.313846 0.315001C-0.104615 0.736539 -0.104615 1.41962 0.313846 1.83808L5.20923 6.73346L0.313846 11.6288C-0.104615 12.0473 -0.104615 12.7304 0.313846 13.1519C0.732308 13.5735 1.41846 13.5704 1.83692 13.1519L6.73231 8.25654L11.6277 13.1519C11.8369 13.3612 12.1138 13.4658 12.3908 13.4658C12.6677 13.4658 12.9415 13.3612 13.1508 13.1519C13.5692 12.7335 13.5692 12.0504 13.1508 11.6288L8.25538 6.73346Z"
-                  fill="black"
+                  
                 />
               </svg>
             </object>
@@ -101,7 +95,7 @@
               <button class="to-response">Оплатить</button>
             </div>
 
-            <div action="" class="personal-info">
+            <div class="personal-info">
               <div class="info-input__wrapper">
                 <input placeholder="Імя" type="text" class="info-input" />
               </div>
@@ -118,13 +112,13 @@
 
               <div class="post-office">
                 <div class="post-office__office">
-                  <label for="" class="label-form" id="checkbox1">
-                    <input class="input-form" type="checkbox" />
+                  <label for="inputCheck1" class="label-form" id="checkbox1">
+                    <input class="input-form" type="checkbox" id="inputCheck1" />
                     <object
-                      data=""
-                      type=""
                       class="form-img__wrapper"
                       id="form-check1"
+                      data="img.svg"
+                      type="img/svg"
                     >
                       <img class="form-img" src="./img/checkmark.svg" alt="" />
                     </object>
@@ -139,13 +133,13 @@
                 </div>
 
                 <div class="post-office__self">
-                  <label for="" class="label-form" id="checkbox2">
-                    <input class="input-form" type="checkbox" />
+                  <label for="inputCheck2" class="label-form" id="checkbox2">
+                    <input class="input-form" type="checkbox" id="inputCheck2" />
                     <object
-                      data=""
-                      type=""
                       class="form-img__wrapper"
                       id="form-check2"
+                      data="img.svg"
+                      type="img/svg"
                     >
                       <img class="form-img" src="./img/checkmark.svg" alt="" />
                     </object>
@@ -164,8 +158,6 @@
               </div>
               <textarea
                 placeholder="Залиште ваш комментар"
-                name=""
-                id=""
                 cols="30"
                 rows="10"
                 class="user-comm"
@@ -194,13 +186,13 @@
 
       <div class="form-payment">
         <div class="pay-img" id="image-container">
-          <input class="pay-input" type="file" name="" id="" />
+          <input class="pay-input" type="file" />
         </div>
         <div class="access">
-          <img class="access-img" src="./img/access.png" alt="" />
+          <img class="access-img" src="./img/access.png" alt="acces" />
         </div>
         <div class="error">
-          <img class="error-img" src="./img/error.png" alt="" />
+          <img class="error-img" src="./img/error.png" alt="error" />
         </div>
 
         <button class="accept-btn">Подтвердить</button>
@@ -216,66 +208,66 @@
           />
         </div>
         <div class="catalog__wrapper">
-          <div class="catalog__item" id="">
+          <div class="catalog__item" >
             <img
-              src="./img/car_13260 1.svg"
-              alt=""
+              src="./img/car_13260-1.svg"
+              alt="carcar"
               class="catalog__item-image"
             />
             <a href="#" class="catalog__item-link">Двигун</a>
           </div>
-          <div class="catalog__item" id="">
+          <div class="catalog__item" >
             <img
-              src="./img/car_13260 1.svg"
-              alt=""
+              src="./img/car_13260-1.svg"
+              alt="car"
               class="catalog__item-image"
             />
             <a href="#" class="catalog__item-link">Підвіска</a>
           </div>
-          <div class="catalog__item" id="">
+          <div class="catalog__item" >
             <img
-              src="./img/car_13260 1.svg"
-              alt=""
+              src="./img/car_13260-1.svg"
+              alt="car"
               class="catalog__item-image"
             />
             <a href="#" class="catalog__item-link">КПП</a>
           </div>
-          <div class="catalog__item" id="">
+          <div class="catalog__item" >
             <img
-              src="./img/car_13260 1.svg"
-              alt=""
+              src="./img/car_13260-1.svg"
+              alt="car"
               class="catalog__item-image"
             />
             <a href="#" class="catalog__item-link">Фільтра</a>
           </div>
-          <div class="catalog__item" id="">
+          <div class="catalog__item" >
             <img
-              src="./img/car_13260 1.svg"
-              alt=""
+              src="./img/car_13260-1.svg"
+              alt="car"
               class="catalog__item-image"
             />
             <a href="#" class="catalog__item-link">Електроніка</a>
           </div>
-          <div class="catalog__item" id="">
+          <div class="catalog__item" >
             <img
-              src="./img/car_13260 1.svg"
-              alt=""
+              src="./img/car_13260-1.svg"
+              alt="car"
               class="catalog__item-image"
             />
             <a href="#" class="catalog__item-link">Lorem</a>
           </div>
-          <div class="catalog__item" id="">
+          <div class="catalog__item" >
             <img
-              src="./img/car_13260 1.svg"
-              alt=""
+              src="./img/car_13260-1.svg"
+              alt="car"
               class="catalog__item-image"
             />
             <a href="#" class="catalog__item-link">Lorem</a>
           </div>
-          <div class="catalog__item" id="">
+          <div class="catalog__item" >
             <img
-              src="./img/car_13260 1.svg"
-              alt=""
+              src="./img/car_13260-1.svg"
+              alt="car"
               class="catalog__item-image"
             />
             <a href="#" class="catalog__item-link">Інше</a>
@@ -348,7 +340,7 @@
           </div>
         </div>
         <div class="checkout__data">
-          <form action="" class="form-data">
+          <form action="GET" class="form-data">
             <input placeholder="Name" type="text" class="form-input__name" />
             <input placeholder="Name" type="text" class="form-input__name" />
             <input placeholder="Name" type="text" class="form-input__name" />
@@ -361,12 +353,15 @@
       <div class="menu-burger__wrapper">
         <nav>
           <ul class="menu--burger-list">
-            <li class="menu--burger-item" id="catalog">
+            <li class="menu--burger-item catalog" >
               <a class="menu--burger-item" href="#">Каталог</a>
             </li>
             <li class="menu--burger-item">
               <a class="menu--burger-item" href="#">Кліентам</a>
             </li>
+            <li class="menu--burger-item">
+              <a class="menu--burger-item" href="#">Популярне</a>
+          </li>
           </ul>
         </nav>
       </div>
@@ -536,22 +531,22 @@
                <!-- Сюда будет заноситься динамические елементы в зависимости от выбора -->
 
                 <ul class="type-engine" data-engine="">
-                  Бензин
+                  <li class="type-engine">Бензин</li>
                   <li class="engine-item" data-engine-type="2.3">2.3</li>
                   <li class="engine-item" data-engine-type="3">3</li>
                 </ul>
                 <ul class="type-engine" data-engine="">
-                  Электро
+                  <li class="type-engine">Бензин</li>
                   <li class="engine-item" data-engine-type="2.4">2.4</li>
                   <li class="engine-item" data-engine-type="3.1">3.1</li>
                 </ul>
                 <ul class="type-engine" data-engine="">
-                  Дизель
+                  <li class="type-engine">Бензин</li>
                   <li class="engine-item" data-engine-type="2.3">2.3</li>
                   <li class="engine-item" data-engine-type="3">3</li>
                 </ul>
                 <ul class="type-engine" data-engine="">
-                  Бензил/Этанол
+                  <li class="type-engine">Бензин</li>
                   <li class="engine-item" data-engine-type="2.3">2.3</li>
                   <li class="engine-item" data-engine-type="3">3</li>
                 </ul>
@@ -626,6 +621,7 @@
               type="image/svg+xml"
               class="svg-logo__wrapper-tg"
               id="telegram"
+             
             >
               <svg
                 class="telegram-logo__svg"
@@ -650,8 +646,8 @@
             >
               <svg
                 class="facebook-logo__svg"
-                data-name="Layer 1"
-                id="Layer_1"
+                data-name="Layer 2"
+                id="Layer_2"
                 viewBox="0 0 512 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -718,4 +714,5 @@
 
     <script type="module" src="./js/main.js"></script>
   </body>
+
 </html>

@@ -8,7 +8,7 @@ export function search() {
     .then(data => {
       searchInput.addEventListener('input', () => {
         const searchTerm = searchInput.value.toLowerCase();
-        const filteredData = data.filter(item => item.name.toLowerCase().includes(searchTerm));
+        const filteredData = data.filter(item => item.id.toLowerCase().includes(searchTerm));
         renderList(filteredData);
       });
     })

@@ -14,7 +14,7 @@ function search() {
     searchInput.addEventListener('input', function () {
       var searchTerm = searchInput.value.toLowerCase();
       var filteredData = data.filter(function (item) {
-        return item.name.toLowerCase().includes(searchTerm);
+        return item.id.toLowerCase().includes(searchTerm);
       });
       renderList(filteredData);
     });

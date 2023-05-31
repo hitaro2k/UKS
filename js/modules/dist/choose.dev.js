@@ -98,6 +98,7 @@ var chooseProduct = function chooseProduct() {
             var yearItemSrc = "\n                        <p class=\"year__text-select\">".concat(yearValue, "</p>\n                        ");
             yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
             yearBlock.style.display = "flex";
+            returnMark();
             yearWrapper.style.display = "none";
             backYearBtn.addEventListener("click", function () {
               yearWrapper.style.display = "flex";
@@ -110,7 +111,6 @@ var chooseProduct = function chooseProduct() {
             yearBtn.addEventListener("click", function () {
               yearItemsBlock.style.display = "none";
               modelItemsBlock.style.display = "flex";
-              console.log(suitableAuto.year);
             });
           });
         });
@@ -125,6 +125,11 @@ var chooseProduct = function chooseProduct() {
 
             if (findEl) {
               var selectedCar = findEl[suitableAuto.mark];
+              console.log(selectedCar);
+
+              for (var car in selectedCar) {
+                console.log(selectedCar[car]);
+              }
             }
           });
         }

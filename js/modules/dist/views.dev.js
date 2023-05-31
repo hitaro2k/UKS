@@ -150,12 +150,10 @@ function views() {
               });
             }
 
-            console.log({
+            var itemJson = {
               items: transferredItems
-            });
-            sendDataToServer({
-              items: transferredItems
-            });
+            };
+            sendDataToServer(itemJson);
             formWrap.style.display = "flex";
 
             if (formWrap.style.display = "flex") {
@@ -168,8 +166,6 @@ function views() {
             } else {
               documentHTML.style.overflowY = "scroll";
             }
-
-            showForm.removeEventListener;
           });
           var showPayment = document.querySelector(".to-response");
           var formPayment = document.querySelector(".form-payment");
@@ -192,14 +188,14 @@ function views() {
                   formData.append("photo", file);
                   console.log(image.src); // ОТПРАВЛЯЮ ФОТОЧКУ
 
-                  sendFormData(formData);
+                  sendDataToServer(formData);
                 }); // ЧИТАЮ ФОТКУ
 
                 reader.readAsDataURL(file);
               } else {
                 alert("Выберите файл-изображение");
               }
-            }); // ХМЛЬКА
+            });
           });
           var paymentAccept = document.querySelector(".accept-btn");
           var formAcces = document.querySelector(".form-response");

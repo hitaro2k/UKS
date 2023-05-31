@@ -192,9 +192,13 @@ export function views() {
                   console.error('Ошибка', error);
                 });
             }
-            console.log({ items: transferredItems })
-
-            sendDataToServer({ items: transferredItems });
+            
+            let itemJson = {
+              items: transferredItems
+            }
+          
+            console.log(itemJson)
+            sendDataToServer(itemJson);
 
             formWrap.style.display = "flex";
             if ((formWrap.style.display = "flex")) {
@@ -207,8 +211,6 @@ export function views() {
             } else {
               documentHTML.style.overflowY = "scroll";
             }
-
-            showForm.removeEventListener;
           });
 
           let showPayment = document.querySelector(".to-response");
@@ -237,7 +239,7 @@ export function views() {
                   formData.append("photo", file);
                   console.log(image.src);
                   // ОТПРАВЛЯЮ ФОТОЧКУ
-                  sendFormData(formData);
+                  console.log(formData)
                 });
 
                 // ЧИТАЮ ФОТКУ
@@ -246,8 +248,7 @@ export function views() {
                 alert("Выберите файл-изображение");
               }
             });
-
-            // ХМЛЬКА
+            
           });
 
           let paymentAccept = document.querySelector(".accept-btn");

@@ -87,7 +87,7 @@ const chooseProduct = () => {
             markWrapper.style.display = "none";
             selectBlock.style.display = "flex";
   
-            returnMark()
+           
             const markItemSrc = item
               .querySelector(".mark-item")
               .getAttribute("src");
@@ -103,6 +103,7 @@ const chooseProduct = () => {
             markBtn.addEventListener("click", () => {
               yearItemsBlock.style.display = "flex";
               markItemsBlock.style.display = "none";
+              
             });
 
             backMarkBtn.addEventListener("click", () => {
@@ -128,7 +129,7 @@ const chooseProduct = () => {
                         `;
             yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
             yearBlock.style.display = "flex";
-
+            
             yearWrapper.style.display = "none";
             backYearBtn.addEventListener("click", () => {
               yearWrapper.style.display = "flex";
@@ -141,26 +142,37 @@ const chooseProduct = () => {
             yearBtn.addEventListener("click", function () {
               yearItemsBlock.style.display = "none";
               modelItemsBlock.style.display = "flex";
-              console.log(suitableAuto.year)
+              returnMark()
             });
 
           });
         });
         
-        function returnMark(){
+        function returnModel(){
           let resAuto = fetch("js/auto.json")
           .then((res) => res.json())
           .then((data) => {
-            const findEl = data.find((item) => item[suitableAuto.mark]);
-            if (findEl) {
-              const selectedCar = findEl[suitableAuto.mark];
-            
+            const findYear = data.find((item) => {
+              for (const key in item) {
+                if (data.hasOwnProperty(key)) {
+                  const array = data[key];
+                  const foundItem = array.find(item => item.year === suitableAuto.year);
+                  
+                }
+              }
+          });
+            const findMark = data.find((item) => item[suitableAuto.mark]);
+            if (findMark) {
+              const selectedCar = findMark[suitableAuto.mark];
+              console.log(selectedCar)
+              for(let car in selectedCar){
+                console.log(selectedCar[car])
+              }
             }
           })
         }
         
-  
-        
+              
         
         modelItems.forEach((item) => {
           item.addEventListener("click", () => {
@@ -173,10 +185,6 @@ const chooseProduct = () => {
             let modelItemSrc = `
                         <p class="model-item__selected">${modelAttr}</p>
             `;
-
-
-
-
             modelBlock.insertAdjacentHTML("beforeend", modelItemSrc);
             modelBlock.style.display = "flex";
             modelWrapper.style.display = "none";

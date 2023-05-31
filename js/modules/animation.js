@@ -118,7 +118,7 @@ export function userSearch() {
 }
 
 export function showCatalog() {
-    menuItem = document.querySelectorAll("#catalog")
+    menuItem = document.querySelectorAll('.catalog')
     let closeCatalog = document.querySelector(".catalog__close-btn")
     menuItem.forEach((item) => {
         item.addEventListener("click" ,  () => {

@@ -1,47 +1,129 @@
 [
   {
     "Chevrolet": {
-      "Cammaro": {
+      "Cammaro": [
+        {
           "year": "1990",
           "body": "cabrio",
-          "engine": "Foul"
+          "fuel":"Gasoline",
+          "engine": "3.6L V6"
+        },
+        {
+          "year": "1991",
+          "body": "sedan",
+          "fuel":"Gasoline",
+          "engine": "6.5L V8"
+        }
+    ],
+    "Corvette": [
+      {
+        "year": "1990",
+        "body": "cabrio",
+        "fuel":"Gasoline",
+        "engine": "3.6L V6"
+      },
+      {
+        "year": "1991",
+        "body": "sedan",
+        "fuel":"Gasoline",
+        "engine": "6.5L V8"
       }
+    ]
     },
     "Jeep": {
-      "Cherokee": {
+      "Cherokee": [
+        {
           "year": "1990",
           "body": "cabrio",
-          "engine": "Foul"
+          "fuel":"Gasoline",
+          "engine": "3.6L V6"
+        },
+        {
+          "year": "1991",
+          "body": "sedan",
+          "fuel":"Gasoline",
+          "engine": "6.2L V8"
+        }
+    ],
+    "Corvette": [
+      {
+        "year": "1990",
+        "body": "cabrio",
+        "fuel":"Gasoline",
+        "engine": "3.6L V6"
+      },
+      {
+        "year": "1991",
+        "body": "sedan",
+        "fuel":"Gasoline",
+        "engine": "6.5L V8"
       }
+    ]
     },
     "Caddilac": {
-      "Escalade": {
-          "year": "1990",
-          "body": "cabrio",
-          "engine": "Foul"
-      }
+      "Escalade": 
+          [
+            {
+              "year": "1990",
+              "body": "cabrio",
+              "fuel":"Gasoline",
+              "engine": "3.6L V6"
+            },
+            {
+              "year": "1991",
+              "body": "sedan",
+              "fuel":"Gasoline",
+              "engine": "6.2L V8"
+            }
+        ]
     },
     "Ford": {
-      "Mustang": {
+      "Mustang": [
+        {
           "year": "1990",
           "body": "cabrio",
-          "engine": "Foul"
-      }
+          "fuel":"Gasoline",
+          "engine": "3.6L V6"
+        },
+        {
+          "year": "1991",
+          "body": "sedan",
+          "fuel":"Gasoline",
+          "engine": "6.2L V8"
+        }
+    ]
     },
     "Gmc": {
-      "Acadia": {
+      "Acadia": [
+        {
           "year": "1990",
           "body": "cabrio",
-          "engine": "Foul"
-       
-      }
+          "fuel":"Gasoline",
+          "engine": "3.6L V6"
+        },
+        {
+          "year": "1991",
+          "body": "sedan",
+          "fuel":"Gasoline",
+          "engine": "6.2L V8"
+        }
+    ]
     },
     "Buick": {
-      "Regal": {
-          "year": "1990,1991,1992,1993,1994,1995,1995",
+      "Regal": [
+        {
+          "year": "1990",
           "body": "cabrio",
-          "engine": "Foul"
-      }
+          "fuel":"Gasoline",
+          "engine": "3.6L V6"
+        },
+        {
+          "year": "1991",
+          "body": "sedan",
+          "fuel":"Gasoline",
+          "engine": "6.2L V8"
+        }
+    ]
     }
   }
 ]
