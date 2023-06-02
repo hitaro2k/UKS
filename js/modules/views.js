@@ -134,8 +134,8 @@ export function views() {
             /* -------------------------------------------------------------------------- */
             /*                              Arr for database                              */
             /* -------------------------------------------------------------------------- */
-            let checkedFormItems = [];
-            let transferredItems = []
+            let checkedFormItems = [] ;
+            let transferredItems = [];
             /* -------------------------------------------------------------------------- */
             /*                              Arr for database                              */
             /* -------------------------------------------------------------------------- */
@@ -193,12 +193,13 @@ export function views() {
                 });
             }
             
-            let itemJson = {
-              items: transferredItems
+            if (transferredItems.length > 0) {
+              let itemJson = {
+                items: transferredItems
+              };
+              console.log(itemJson);
+              sendDataToServer(itemJson);
             }
-          
-            console.log(itemJson)
-            sendDataToServer(itemJson);
 
             formWrap.style.display = "flex";
             if ((formWrap.style.display = "flex")) {
