@@ -12,6 +12,7 @@ var chooseProduct = function chooseProduct() {
     var selectBlock = document.querySelector(".selected-mark");
     var markItemsBlock = document.querySelector(".full-screen__body__mark-items");
     var yearItemsBlock = document.querySelector(".full-screen__body__year-items");
+    var selectYear = document.querySelector(".selected-year");
     var yearItems = document.querySelectorAll(".year-item");
     var yearWrapper = document.querySelector(".year-columns");
     var modelItemsBlock = document.querySelector(".full-screen__body__model-items");
@@ -69,7 +70,6 @@ var chooseProduct = function chooseProduct() {
             item.style.border = "2px solid orange";
             markWrapper.style.display = "none";
             selectBlock.style.display = "flex";
-            returnMark();
             var markItemSrc = item.querySelector(".mark-item").getAttribute("src");
             var markItem = "  \n            <div class=\"item-wrapper\" data-mark = \"".concat(itemAttr, "\">\n                <img class=\"mark-item\" src=\"").concat(markItemSrc, "\" alt=\"\">\n            </div>\n            "); // roadMarkSrc = roadMapMark.document.querySelector(".map__image").getAttribute("src")
 
@@ -98,7 +98,7 @@ var chooseProduct = function chooseProduct() {
             var yearItemSrc = "\n                        <p class=\"year__text-select\">".concat(yearValue, "</p>\n                        ");
             yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
             yearBlock.style.display = "flex";
-            returnMark();
+            selectYear.style.display = "flex";
             yearWrapper.style.display = "none";
             backYearBtn.addEventListener("click", function () {
               yearWrapper.style.display = "flex";
@@ -107,24 +107,37 @@ var chooseProduct = function chooseProduct() {
               yearBtn.style.display = "none";
               backYearBtn.style.display = "none";
               suitableAuto.year = "";
+              selectYear.style.display = "none";
             });
             yearBtn.addEventListener("click", function () {
               yearItemsBlock.style.display = "none";
               modelItemsBlock.style.display = "flex";
+              returnModel();
             });
           });
         });
 
-        function returnMark() {
+        function returnModel() {
           var resAuto = fetch("js/auto.json").then(function (res) {
             return res.json();
           }).then(function (data) {
-            var findEl = data.find(function (item) {
+            var findYear = data.find(function (item) {
+              for (var key in item) {
+                if (data.hasOwnProperty(key)) {
+                  var array = data[key];
+                  var foundItem = array.find(function (item) {
+                    return item.year === suitableAuto.year;
+                  });
+                  console.log(array);
+                }
+              }
+            });
+            var findMark = data.find(function (item) {
               return item[suitableAuto.mark];
             });
 
-            if (findEl) {
-              var selectedCar = findEl[suitableAuto.mark];
+            if (findMark) {
+              var selectedCar = findMark[suitableAuto.mark];
               console.log(selectedCar);
 
               for (var car in selectedCar) {

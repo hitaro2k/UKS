@@ -50,13 +50,13 @@
         "year": "1990",
         "body": "cabrio",
         "fuel":"Gasoline",
-        "engine": "3.6L V6"
+        "engine": "3.4L V6"
       },
       {
         "year": "1991",
         "body": "sedan",
         "fuel":"Gasoline",
-        "engine": "6.5L V8"
+        "engine": "6.1L V8"
       }
     ]
     },

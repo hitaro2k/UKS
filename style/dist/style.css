@@ -1046,6 +1046,11 @@ li {
   flex-direction: row;
   gap: 0px 30px;
 }
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .mark-items__top .selected-mark .select__buttons {
+    flex-direction: column;
+  }
+}
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__mark-items .mark-items__top .selected-mark .select__buttons .back__select {
   width: 200px;
   height: 40px;
@@ -1142,11 +1147,23 @@ li {
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__top {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: center;
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__top .year-columns {
   display: flex;
   flex-direction: row;
   gap: 0px 30px;
+}
+@media (max-width: 768px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__top .year-columns {
+    gap: 0px 20px;
+  }
+}
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__top .year-columns {
+    gap: 0px 10px;
+  }
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__top .year-columns .year-column {
   display: flex;
@@ -1156,20 +1173,37 @@ li {
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__top .year-columns .year-column .year-item {
   cursor: pointer;
 }
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__top .year-columns .year-column .year-item {
+    font-size: 12px;
+  }
+}
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .year-items__top .year__text-select {
   font-size: 30px;
 }
-.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .selected-item__year {
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .selected-year {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .selected-year .selected-item__year {
   justify-content: center;
 }
-.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .select__buttons {
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .selected-year .select__buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 0px 30px;
   margin-bottom: 40px;
+  justify-content: space-between;
 }
-.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .select__buttons .back__select {
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .selected-year .select__buttons {
+    width: 80%;
+  }
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .selected-year .select__buttons .back__select {
   width: 200px;
   height: 40px;
   background-color: #d28711;
@@ -1179,7 +1213,12 @@ li {
   transition: background-color 0.5s, color 0.5s;
   display: none;
 }
-.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .select__buttons .mark-items__yearbtn {
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .selected-year .select__buttons .back__select {
+    width: 40%;
+  }
+}
+.main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .selected-year .select__buttons .mark-items__yearbtn {
   width: 200px;
   height: 40px;
   background-color: #d28711;
@@ -1188,10 +1227,17 @@ li {
   cursor: pointer;
   transition: background-color 0.5s, color 0.5s;
   display: none;
+}
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__year-items .selected-year .select__buttons .mark-items__yearbtn {
+    width: 40%;
+    font-size: 11px;
+  }
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__model-items {
   display: none;
   justify-content: center;
+  width: 100%;
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__model-items .model-wrapper {
   display: flex;
@@ -1207,6 +1253,7 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__model-items .selected-model .selected-item__model .model-item__selected {
   font-size: 23px;
@@ -1217,6 +1264,8 @@ li {
   align-items: center;
   gap: 0px 30px;
   margin-bottom: 40px;
+  width: 100%;
+  justify-content: center;
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__model-items .selected-model .select__buttons .back__select {
   width: 200px;
@@ -1228,6 +1277,11 @@ li {
   transition: background-color 0.5s, color 0.5s;
   display: none;
 }
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__model-items .selected-model .select__buttons .back__select {
+    width: 40%;
+  }
+}
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__model-items .selected-model .select__buttons .mark-items__autobtn {
   width: 200px;
   height: 40px;
@@ -1237,6 +1291,11 @@ li {
   cursor: pointer;
   transition: background-color 0.5s, color 0.5s;
   display: none;
+}
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__model-items .selected-model .select__buttons .mark-items__autobtn {
+    width: 40%;
+  }
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__body-items {
   width: 90%;
@@ -1260,6 +1319,7 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__body-items .selected-body .selected-item__body .body-item {
   font-size: 20px;
@@ -1270,6 +1330,8 @@ li {
   align-items: center;
   gap: 0px 30px;
   margin-bottom: 40px;
+  width: 100%;
+  justify-content: center;
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__body-items .selected-body .select__buttons .back__select {
   width: 200px;
@@ -1281,6 +1343,11 @@ li {
   transition: background-color 0.5s, color 0.5s;
   display: none;
 }
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__body-items .selected-body .select__buttons .back__select {
+    width: 40%;
+  }
+}
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__body-items .selected-body .select__buttons .mark-items__bodybtn {
   width: 200px;
   height: 40px;
@@ -1290,6 +1357,12 @@ li {
   cursor: pointer;
   transition: background-color 0.5s, color 0.5s;
   display: none;
+}
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__body-items .selected-body .select__buttons .mark-items__bodybtn {
+    width: 40%;
+    font-size: 11px;
+  }
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__engine-items {
   display: none;
@@ -1323,7 +1396,9 @@ li {
   flex-direction: row;
   align-items: center;
   gap: 0px 30px;
+  width: 100%;
   margin-bottom: 40px;
+  justify-content: center;
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__engine-items .select__buttons .back__select {
   width: 200px;
@@ -1335,6 +1410,11 @@ li {
   transition: background-color 0.5s, color 0.5s;
   display: none;
 }
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__engine-items .select__buttons .back__select {
+    width: 40%;
+  }
+}
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__engine-items .select__buttons .mark-items__enginebtn {
   width: 200px;
   height: 40px;
@@ -1344,6 +1424,12 @@ li {
   cursor: pointer;
   transition: background-color 0.5s, color 0.5s;
   display: none;
+}
+@media (max-width: 576px) {
+  .main .full-screen .full-screen__container .full-screen__body .full-screen__body__engine-items .select__buttons .mark-items__enginebtn {
+    width: 40%;
+    font-size: 11px;
+  }
 }
 .main .full-screen__bg {
   position: fixed;

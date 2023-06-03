@@ -12,6 +12,7 @@ const chooseProduct = () => {
     const yearItemsBlock = document.querySelector(
       ".full-screen__body__year-items"
     );
+    const selectYear = document.querySelector(".selected-year")
     const yearItems = document.querySelectorAll(".year-item");
     const yearWrapper = document.querySelector(".year-columns");
 
@@ -46,6 +47,7 @@ const chooseProduct = () => {
     const backBodyBtn = document.getElementById("to-body");
     const engineBtn = document.querySelector(".mark-items__enginebtn")
     const backEngineBtn = document.getElementById("to-engine")
+    
     const allBtn = [
       markBtn,
       yearBtn,
@@ -130,6 +132,7 @@ const chooseProduct = () => {
             yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
             yearBlock.style.display = "flex";
             
+            selectYear.style.display = "flex"
             yearWrapper.style.display = "none";
             backYearBtn.addEventListener("click", () => {
               yearWrapper.style.display = "flex";
@@ -138,11 +141,12 @@ const chooseProduct = () => {
               yearBtn.style.display = "none";
               backYearBtn.style.display = "none";
               suitableAuto.year = ""
+              selectYear.style.display = "none"
             });
             yearBtn.addEventListener("click", function () {
               yearItemsBlock.style.display = "none";
               modelItemsBlock.style.display = "flex";
-              returnMark()
+              returnModel()
             });
 
           });
@@ -157,7 +161,7 @@ const chooseProduct = () => {
                 if (data.hasOwnProperty(key)) {
                   const array = data[key];
                   const foundItem = array.find(item => item.year === suitableAuto.year);
-                  
+                  console.log(array)
                 }
               }
           });

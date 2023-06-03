@@ -1058,6 +1058,9 @@ li {
                 display: flex;
                 flex-direction: row;
                 gap: 0px 30px;
+                @include breakpoint(sm){
+                  flex-direction: column;
+                }
                 .back__select {
                   width: 200px;
                   height: 40px;
@@ -1154,19 +1157,31 @@ li {
           gap: 0px 20px;
           width: 100%;
           height: 100%;
+          
           .year-items__top {
             display: flex;
             flex-direction: row;
+            width: 100%;
+            justify-content: center;
             .year-columns {
               display: flex;
               flex-direction: row;
               gap: 0px 30px;
+              @include breakpoint(md){
+                gap: 0px 20px;
+              }
+              @include breakpoint(sm){
+                gap: 0px 10px;
+              }
               .year-column {
                 display: flex;
                 flex-direction: column;
                 gap: 20px 0px;
                 .year-item {
                   cursor: pointer;
+                  @include breakpoint(sm){
+                    font-size: 12px;
+                  }
                 }
               }
             }
@@ -1174,44 +1189,63 @@ li {
               font-size: 30px;
             }
           }
-          .selected-item__year {
-            justify-content: center;
-          }
-          .select__buttons {
-            display: flex;
-            flex-direction: row;
+          .selected-year{
+            width: 100%;
+            display: none;
+            flex-direction: column;
             align-items: center;
-            gap: 0px 30px;
-            margin-bottom: 40px;
-            .back__select {
-              width: 200px;
-              height: 40px;
-              background-color: #d28711;
-              color: white;
-              border-radius: 5px;
-
-              cursor: pointer;
-              transition: background-color 0.5s, color 0.5s;
-              display: none;
+            .selected-item__year {
+              justify-content: center;
             }
-
-            .mark-items__yearbtn {
-              width: 200px;
-              height: 40px;
-              background-color: #d28711;
-              color: white;
-              border-radius: 5px;
-
-              cursor: pointer;
-              transition: background-color 0.5s, color 0.5s;
-              display: none;
+            .select__buttons {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 0px 30px;
+              margin-bottom: 40px;
+              justify-content: space-between;
+              @include breakpoint(sm){
+                width: 80%;
+              }
+              .back__select {
+                width: 200px;
+                height: 40px;
+                background-color: #d28711;
+                color: white;
+                border-radius: 5px;
+                @include breakpoint(sm){
+                  width: 40%;
+                }
+  
+                cursor: pointer;
+                transition: background-color 0.5s, color 0.5s;
+                display: none;
+              }
+  
+              .mark-items__yearbtn {
+                width: 200px;
+                height: 40px;
+                background-color: #d28711;
+                color: white;
+                border-radius: 5px;
+  
+                cursor: pointer;
+                transition: background-color 0.5s, color 0.5s;
+                display: none;
+                @include breakpoint(sm){
+                  width: 40%;
+                  font-size: 11px;
+                }
+              }
             }
           }
+          
         }
 
         .full-screen__body__model-items {
           display: none;
           justify-content: center;
+          width: 100%;
           .model-wrapper {
             display: flex;
             width: 80%;
@@ -1226,6 +1260,7 @@ li {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
             .selected-item__model{
               .model-item__selected{
                 font-size: 23px;
@@ -1237,6 +1272,8 @@ li {
               align-items: center;
               gap: 0px 30px;
               margin-bottom: 40px;
+              width: 100%;
+              justify-content: center;
               .back__select {
                 width: 200px;
                 height: 40px;
@@ -1247,6 +1284,9 @@ li {
                 cursor: pointer;
                 transition: background-color 0.5s, color 0.5s;
                 display: none;
+                @include breakpoint(sm){
+                  width: 40%;
+                }
               }
   
               .mark-items__autobtn {
@@ -1259,6 +1299,9 @@ li {
                 cursor: pointer;
                 transition: background-color 0.5s, color 0.5s;
                 display: none;
+                @include breakpoint(sm){
+                  width: 40%;
+                }
               }
             }
           }
@@ -1285,6 +1328,7 @@ li {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
             .selected-item__body{
               .body-item{
                 font-size: 20px;
@@ -1296,6 +1340,8 @@ li {
               align-items: center;
               gap: 0px 30px;
               margin-bottom: 40px;
+              width: 100%;
+              justify-content: center;
               .back__select {
                 width: 200px;
                 height: 40px;
@@ -1304,7 +1350,10 @@ li {
                 border-radius: 5px;
                 cursor: pointer;
                 transition: background-color 0.5s, color 0.5s;
-                display: none;            
+                display: none;    
+                @include breakpoint(sm){
+                  width: 40%;
+                }        
               }
   
               .mark-items__bodybtn {
@@ -1315,7 +1364,11 @@ li {
                 border-radius: 5px;
                 cursor: pointer;
                 transition: background-color 0.5s, color 0.5s;
-                display: none;             
+                display: none;   
+                @include breakpoint(sm){
+                  width: 40%;
+                  font-size: 11px;
+                }          
                }
             }
           }
@@ -1357,7 +1410,9 @@ li {
             flex-direction: row;
             align-items: center;
             gap: 0px 30px;
+            width: 100%;
             margin-bottom: 40px;
+            justify-content: center;
             .back__select {
               width: 200px;
               height: 40px;
@@ -1366,7 +1421,10 @@ li {
               border-radius: 5px;
               cursor: pointer;
               transition: background-color 0.5s, color 0.5s;
-              display: none;            
+              display: none; 
+              @include breakpoint(sm){
+                width: 40%;
+              }            
             }
 
             .mark-items__enginebtn {
@@ -1377,7 +1435,11 @@ li {
               border-radius: 5px;
               cursor: pointer;
               transition: background-color 0.5s, color 0.5s;
-              display: none;             
+              display: none;  
+              @include breakpoint(sm){
+                width: 40%;
+                font-size: 11px;
+              }             
              }
           }
         }
