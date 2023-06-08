@@ -19,13 +19,12 @@ const chooseProduct = () => {
     const modelItemsBlock = document.querySelector(
       ".full-screen__body__model-items"
     );
-    const modelItems = document.querySelectorAll(".model-item");
+    
     const modelWrapper = document.querySelector(".model-wrapper");
 
     const bodyItemsBlock = document.querySelector(
       ".full-screen__body__body-items"
     );
-    const bodyItems = document.querySelectorAll(".body-item");
     const bodyWrapper = document.querySelector(".body-wrapper");
 
     const engineItemsBlock = document.querySelector(
@@ -67,7 +66,7 @@ const chooseProduct = () => {
     const modelBlock = document.querySelector(".selected-item__model");
     const bodyBlock = document.querySelector(".selected-item__body");
     const engineBlock = document.querySelector(".selected-item__engine")
-
+    const selectModelBlock = document.querySelector(".selected-model")
     function searchAuto() {
       function returnAutoJSon(item) {
         let suitableAuto = {
@@ -118,127 +117,153 @@ const chooseProduct = () => {
             markBlock.insertAdjacentHTML("beforeend", markItem);
           });
         });
-       
+    
         
         yearItems.forEach((item) => {
-          item.addEventListener("click", () => {
-            let yearValue = item.textContent;
-            suitableAuto.year = yearValue ;
-            yearBtn.style.display = "block";
-            backYearBtn.style.display = "block";
-            let yearItemSrc = `
-                        <p class="year__text-select">${yearValue}</p>
-                        `;
-            yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
-            yearBlock.style.display = "flex";
+            item.addEventListener("click", () => {
+              let yearValue = item.textContent;
+              suitableAuto.year = yearValue ;
+              yearBtn.style.display = "block";
+              backYearBtn.style.display = "block";
+              let yearItemSrc = `
+                          <p class="year__text-select">${yearValue}</p>
+                          `;
+              yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
+              yearBlock.style.display = "flex";
+              
+              selectYear.style.display = "flex"
+              yearWrapper.style.display = "none";
+              backYearBtn.addEventListener("click", () => {
+                yearWrapper.style.display = "flex";
+                yearBlock.style.display = "none";
+                yearBlock.innerHTML = "";
+                yearBtn.style.display = "none";
+                backYearBtn.style.display = "none";
+                suitableAuto.year = ""
+                selectYear.style.display = "none"
+               
+              });
+              yearBtn.addEventListener("click", async function () {
+                yearItemsBlock.style.display = "none";
+                modelItemsBlock.style.display = "flex";
+                
+                returnModel()
             
-            selectYear.style.display = "flex"
-            yearWrapper.style.display = "none";
-            backYearBtn.addEventListener("click", () => {
-              yearWrapper.style.display = "flex";
-              yearBlock.style.display = "none";
-              yearBlock.innerHTML = "";
-              yearBtn.style.display = "none";
-              backYearBtn.style.display = "none";
-              suitableAuto.year = ""
-              selectYear.style.display = "none"
-            });
-            yearBtn.addEventListener("click", function () {
-              yearItemsBlock.style.display = "none";
-              modelItemsBlock.style.display = "flex";
-              returnModel()
-            });
+              });
 
+            });
           });
-        });
-        
-        function returnModel(){
-          let resAuto = fetch("js/auto.json")
+          
+       
+        async function returnModel(){
+          let resAuto = await fetch("js/auto.json")
           .then((res) => res.json())
           .then((data) => {
-            const findYear = data.find((item) => {
-              for (const key in item) {
-                if (data.hasOwnProperty(key)) {
-                  const array = data[key];
-                  const foundItem = array.find(item => item.year === suitableAuto.year);
-                  console.log(array)
-                }
-              }
-          });
             const findMark = data.find((item) => item[suitableAuto.mark]);
             if (findMark) {
               const selectedCar = findMark[suitableAuto.mark];
-              console.log(selectedCar)
               for(let car in selectedCar){
-                console.log(selectedCar[car])
+                selectedCar[car].forEach(item =>{
+                  if(item.year == suitableAuto.year){
+                    let modelItem = `<p class = "model-item"> ${car}</p>`
+                    modelWrapper.insertAdjacentHTML("beforeend",  modelItem )
+                  }
+                })
               }
             }
           })
+          selectModel()
+        }
+
+        function selectModel(){
+          const modelItems = document.querySelectorAll(".model-item");         
+          modelItems.forEach((item) => {
+            item.addEventListener("click", () => {
+              let userSelectedModel =  `<p class = "model-item__selected"> ${item.textContent}</p>`;
+              suitableAuto.model = item.textContent;
+              modelBtn.style.display = "block";
+              backModelBtn.style.display = "block";
+              modelBlock.insertAdjacentHTML("beforeend",  userSelectedModel );
+
+              modelBlock.style.display = "flex";
+              modelWrapper.style.display = "none";
+              selectModelBlock.style.display = 'flex'
+              modelBtn.addEventListener("click" , function(){
+                modelItemsBlock.style.display = "none"
+                bodyItemsBlock.style.display = "flex"
+                returnBody()
+                
+              });
+              backModelBtn.addEventListener("click" , function(){
+                modelWrapper.style.display = "flex";
+                modelBlock.style.display = "none";
+                modelBlock.innerHTML = "";
+                suitableAuto.model = ""
+                modelBtn.style.display = "none";
+                backModelBtn.style.display = "none";
+                selectModelBlock.style.display = 'none'
+              });
+
+              
+            });
+          });
+        }
+
+        function returnBody(){
+          let resAuto = fetch("js/auto.json")
+          .then((res) => res.json())
+          .then((data) => {
+            const findMark = data.find((item) => item[suitableAuto.mark]);
+            if (findMark) {
+              const selectedCar = findMark[suitableAuto.mark];
+              for(let car in selectedCar){
+                selectedCar[car].forEach(item =>{
+                  if(item.body == suitableAuto.body){
+                    let bodyItem = `<p class="body-item">${item.body}</p>`
+                    console.log(bodyItem)
+                    bodyWrapper.insertAdjacentHTML("beforeend",  bodyItem )
+                  }
+                })
+              }
+            }
+          })
+          selectBody()
         }
         
+        function selectBody(){
+          const bodyItem = document.querySelectorAll(".body-item");
+          console.log(bodyItem)
+          bodyItem.forEach((item) => {
+            item.addEventListener("click", function () {
               
-        
-        modelItems.forEach((item) => {
-          item.addEventListener("click", () => {
-            let modelAttr = item.getAttribute("data-model");
-  
-            suitableAuto.model = modelAttr;
 
-            modelBtn.style.display = "block";
-            backModelBtn.style.display = "block";
-            let modelItemSrc = `
-                        <p class="model-item__selected">${modelAttr}</p>
-            `;
-            modelBlock.insertAdjacentHTML("beforeend", modelItemSrc);
-            modelBlock.style.display = "flex";
-            modelWrapper.style.display = "none";
-            modelBtn.addEventListener("click" , function(){
-              modelItemsBlock.style.display = "none"
-              bodyItemsBlock.style.display = "flex"
+              suitableAuto.body = 2;
+
+
+              let bodyText = item.textContent;
+              bodyBtn.style.display = "block";
+              backBodyBtn.style.display = "block";
+              bodyWrapper.style.display = "none";
+              bodyBlock.style.display = "flex"
+              let bodyItemSrc = `
+                          <p class="body-item">${bodyText}</p>
+                          `;
+              bodyBlock.insertAdjacentHTML("beforeend", bodyItemSrc);
+              bodyBtn.addEventListener("click" , function(){
+                bodyItemsBlock.style.display = "none"
+                engineItemsBlock.style.display = "flex"
+              })
+              backBodyBtn.addEventListener("click" , function(){
+                bodyWrapper.style.display = "flex";
+                bodyBlock.style.display = "none";
+                bodyBlock.innerHTML = "";
+                suitableAuto.model = ""
+                bodyBtn.style.display = "none";
+                backBodyBtn.style.display = "none";
+              }) 
             });
-            backModelBtn.addEventListener("click" , function(){
-              modelWrapper.style.display = "block";
-              modelBlock.style.display = "none";
-              modelBlock.innerHTML = "";
-              suitableAuto.model = ""
-              modelBtn.style.display = "none";
-              backModelBtn.style.display = "none";
-            });
-
- 
           });
-        });
-
-        bodyItems.forEach((item) => {
-          item.addEventListener("click", function () {
-            let bodyAttr = item.getAttribute("data-body");
-
-            suitableAuto.body = bodyAttr;
-
-
-            let bodyText = item.textContent;
-            bodyBtn.style.display = "block";
-            backBodyBtn.style.display = "block";
-            bodyWrapper.style.display = "none";
-            bodyBlock.style.display = "flex"
-            let bodyItemSrc = `
-                        <p class="body-item">${bodyText}</p>
-                        `;
-            bodyBlock.insertAdjacentHTML("beforeend", bodyItemSrc);
-            bodyBtn.addEventListener("click" , function(){
-              bodyItemsBlock.style.display = "none"
-              engineItemsBlock.style.display = "flex"
-            })
-            backBodyBtn.addEventListener("click" , function(){
-              bodyWrapper.style.display = "flex";
-              bodyBlock.style.display = "none";
-              bodyBlock.innerHTML = "";
-              suitableAuto.model = ""
-              bodyBtn.style.display = "none";
-              backBodyBtn.style.display = "none";
-            }) 
-          });
-        });
+        }
 
         engineItems.forEach((item) => {
           item.addEventListener("click", () => {
@@ -292,7 +317,7 @@ const chooseProduct = () => {
 
       returnAutoJSon()
     }
-
+  
     searchAuto();
 
   });

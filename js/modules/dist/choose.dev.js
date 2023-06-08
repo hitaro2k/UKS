@@ -16,7 +16,6 @@ var chooseProduct = function chooseProduct() {
     var yearItems = document.querySelectorAll(".year-item");
     var yearWrapper = document.querySelector(".year-columns");
     var modelItemsBlock = document.querySelector(".full-screen__body__model-items");
-    var modelItems = document.querySelectorAll(".model-item");
     var modelWrapper = document.querySelector(".model-wrapper");
     var bodyItemsBlock = document.querySelector(".full-screen__body__body-items");
     var bodyItems = document.querySelectorAll(".body-item");
@@ -52,6 +51,7 @@ var chooseProduct = function chooseProduct() {
     var modelBlock = document.querySelector(".selected-item__model");
     var bodyBlock = document.querySelector(".selected-item__body");
     var engineBlock = document.querySelector(".selected-item__engine");
+    var selectModelBlock = document.querySelector(".selected-model");
 
     function searchAuto() {
       function returnAutoJSon(item) {
@@ -95,7 +95,7 @@ var chooseProduct = function chooseProduct() {
             suitableAuto.year = yearValue;
             yearBtn.style.display = "block";
             backYearBtn.style.display = "block";
-            var yearItemSrc = "\n                        <p class=\"year__text-select\">".concat(yearValue, "</p>\n                        ");
+            var yearItemSrc = "\n                          <p class=\"year__text-select\">".concat(yearValue, "</p>\n                          ");
             yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
             yearBlock.style.display = "flex";
             selectYear.style.display = "flex";
@@ -109,68 +109,99 @@ var chooseProduct = function chooseProduct() {
               suitableAuto.year = "";
               selectYear.style.display = "none";
             });
-            yearBtn.addEventListener("click", function () {
-              yearItemsBlock.style.display = "none";
-              modelItemsBlock.style.display = "flex";
-              returnModel();
+            yearBtn.addEventListener("click", function _callee() {
+              return regeneratorRuntime.async(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      yearItemsBlock.style.display = "none";
+                      modelItemsBlock.style.display = "flex";
+                      returnModel();
+
+                    case 3:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              });
             });
           });
         });
 
         function returnModel() {
-          var resAuto = fetch("js/auto.json").then(function (res) {
-            return res.json();
-          }).then(function (data) {
-            var findYear = data.find(function (item) {
-              for (var key in item) {
-                if (data.hasOwnProperty(key)) {
-                  var array = data[key];
-                  var foundItem = array.find(function (item) {
-                    return item.year === suitableAuto.year;
-                  });
-                  console.log(array);
-                }
-              }
-            });
-            var findMark = data.find(function (item) {
-              return item[suitableAuto.mark];
-            });
+          var resAuto;
+          return regeneratorRuntime.async(function returnModel$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return regeneratorRuntime.awrap(fetch("js/auto.json").then(function (res) {
+                    return res.json();
+                  }).then(function (data) {
+                    var findMark = data.find(function (item) {
+                      return item[suitableAuto.mark];
+                    });
 
-            if (findMark) {
-              var selectedCar = findMark[suitableAuto.mark];
-              console.log(selectedCar);
+                    if (findMark) {
+                      var selectedCar = findMark[suitableAuto.mark];
 
-              for (var car in selectedCar) {
-                console.log(selectedCar[car]);
+                      var _loop = function _loop(car) {
+                        selectedCar[car].forEach(function (item) {
+                          if (item.year == suitableAuto.year) {
+                            var modelItem = "<p class = \"model-item\"> ".concat(car, "</p>");
+                            modelWrapper.insertAdjacentHTML("beforeend", modelItem);
+                          }
+                        });
+                      };
+
+                      for (var car in selectedCar) {
+                        _loop(car);
+                      }
+                    }
+                  }));
+
+                case 2:
+                  resAuto = _context2.sent;
+                  selectModel();
+
+                case 4:
+                case "end":
+                  return _context2.stop();
               }
             }
           });
         }
 
-        modelItems.forEach(function (item) {
-          item.addEventListener("click", function () {
-            var modelAttr = item.getAttribute("data-model");
-            suitableAuto.model = modelAttr;
-            modelBtn.style.display = "block";
-            backModelBtn.style.display = "block";
-            var modelItemSrc = "\n                        <p class=\"model-item__selected\">".concat(modelAttr, "</p>\n            ");
-            modelBlock.insertAdjacentHTML("beforeend", modelItemSrc);
-            modelBlock.style.display = "flex";
-            modelWrapper.style.display = "none";
-            modelBtn.addEventListener("click", function () {
-              modelItemsBlock.style.display = "none";
-              bodyItemsBlock.style.display = "flex";
-            });
-            backModelBtn.addEventListener("click", function () {
-              modelWrapper.style.display = "block";
-              modelBlock.style.display = "none";
-              modelBlock.innerHTML = "";
-              suitableAuto.model = "";
-              modelBtn.style.display = "none";
-              backModelBtn.style.display = "none";
+        function selectModel() {
+          var modelItems = document.querySelectorAll(".model-item");
+          console.log(modelItems);
+          modelItems.forEach(function (item) {
+            item.addEventListener("click", function () {
+              var userSelectedModel = "<p class = \"model-item__selected\"> ".concat(item.textContent, "</p>");
+              suitableAuto.model = item.textContent;
+              modelBtn.style.display = "block";
+              backModelBtn.style.display = "block";
+              modelBlock.insertAdjacentHTML("beforeend", userSelectedModel);
+              modelBlock.style.display = "flex";
+              modelWrapper.style.display = "none";
+              selectModelBlock.style.display = 'flex';
+              modelBtn.addEventListener("click", function () {
+                modelItemsBlock.style.display = "none";
+                bodyItemsBlock.style.display = "flex";
+              });
+              backModelBtn.addEventListener("click", function () {
+                modelWrapper.style.display = "flex";
+                modelBlock.style.display = "none";
+                modelBlock.innerHTML = "";
+                suitableAuto.model = "";
+                modelBtn.style.display = "none";
+                backModelBtn.style.display = "none";
+                selectModelBlock.style.display = 'none';
+              });
             });
           });
-        });
+        }
+
         bodyItems.forEach(function (item) {
           item.addEventListener("click", function () {
             var bodyAttr = item.getAttribute("data-body");

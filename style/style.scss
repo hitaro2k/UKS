@@ -1253,12 +1253,13 @@ li {
             flex-direction: row;
             gap: 0px 20px;
             flex-wrap: wrap;
+            justify-content: center;
             .model-item{
               cursor: pointer;
             }
           }
           .selected-model{
-            display: flex;
+            display: none;
             flex-direction: column;
             align-items: center;
             width: 100%;

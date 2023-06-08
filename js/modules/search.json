@@ -1,24 +1,24 @@
 [
     {
-        "id": "0986494528",
+        "id": "FAFKKl8KF",
         "name":"Гальмівні колодки BOSCH",
-        "redirect":"client.html"
+        "redirect":"auto.html"
     },
     {
         "id": "CMX1331",
         "name":"Friction Master",
-        "redirect":"client.html"
+        "redirect":"auto.html"
 
     },
     {
         "id": "LLFWWJA34",
         "name":"КПП",
-        "redirect":"client.html"
+        "redirect":"auto.html"
     },
     {
         "id": "LLCASA34",
         "name":"Електроніка",
-        "redirect":"client.html"
+        "redirect":"auto.html"
     },
     {
         "id": "LWUAWJA34",
@@ -28,6 +28,6 @@
     {
         "id": "LLFLWA345",
         "name":"Фільтри Shell",
-        "redirect":"client.html"
+        "redirect":"auto.html"
     }
 ]
