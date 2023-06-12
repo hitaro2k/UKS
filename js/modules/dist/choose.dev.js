@@ -18,11 +18,9 @@ var chooseProduct = function chooseProduct() {
     var modelItemsBlock = document.querySelector(".full-screen__body__model-items");
     var modelWrapper = document.querySelector(".model-wrapper");
     var bodyItemsBlock = document.querySelector(".full-screen__body__body-items");
-    var bodyItems = document.querySelectorAll(".body-item");
     var bodyWrapper = document.querySelector(".body-wrapper");
     var engineItemsBlock = document.querySelector(".full-screen__body__engine-items");
     var engineWrapper = document.querySelector(".engine-wrapper");
-    var engineItems = document.querySelectorAll(".engine-item");
     /* -------------------------------------------------------------------------- */
 
     /*                                   Buttons                                  */
@@ -95,42 +93,113 @@ var chooseProduct = function chooseProduct() {
             suitableAuto.year = yearValue;
             yearBtn.style.display = "block";
             backYearBtn.style.display = "block";
-            var yearItemSrc = "\n                          <p class=\"year__text-select\">".concat(yearValue, "</p>\n                          ");
+            var yearItemSrc = "<p class=\"year__text-select\">".concat(yearValue, "</p>");
             yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
             yearBlock.style.display = "flex";
             selectYear.style.display = "flex";
             yearWrapper.style.display = "none";
-            backYearBtn.addEventListener("click", function () {
-              yearWrapper.style.display = "flex";
-              yearBlock.style.display = "none";
-              yearBlock.innerHTML = "";
-              yearBtn.style.display = "none";
-              backYearBtn.style.display = "none";
-              suitableAuto.year = "";
-              selectYear.style.display = "none";
-            });
-            yearBtn.addEventListener("click", function _callee() {
-              return regeneratorRuntime.async(function _callee$(_context) {
-                while (1) {
-                  switch (_context.prev = _context.next) {
-                    case 0:
-                      yearItemsBlock.style.display = "none";
-                      modelItemsBlock.style.display = "flex";
-                      returnModel();
-
-                    case 3:
-                    case "end":
-                      return _context.stop();
-                  }
-                }
-              });
-            });
+            backYearBtn.addEventListener("click", handleBackYearBtnClick);
           });
         });
+        yearBtn.addEventListener("click", handleYearBtnClick);
+
+        function handleBackYearBtnClick() {
+          yearWrapper.style.display = "flex";
+          yearBlock.style.display = "none";
+          yearBlock.innerHTML = "";
+          yearBtn.style.display = "none";
+          backYearBtn.style.display = "none";
+          suitableAuto.year = "";
+          selectYear.style.display = "none";
+        }
+
+        function handleYearBtnClick() {
+          yearItemsBlock.style.display = "none";
+          modelItemsBlock.style.display = "flex";
+          returnModel();
+        }
 
         function returnModel() {
-          var resAuto;
-          return regeneratorRuntime.async(function returnModel$(_context2) {
+          return regeneratorRuntime.async(function returnModel$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.next = 2;
+                  return regeneratorRuntime.awrap(fetch("js/auto.json").then(function (res) {
+                    return res.json();
+                  }).then(function (data) {
+                    var findMark = data.find(function (item) {
+                      return item[suitableAuto.mark];
+                    });
+
+                    if (findMark) {
+                      var selectedCar = findMark[suitableAuto.mark];
+
+                      var _loop = function _loop(car) {
+                        selectedCar[car].forEach(function (item) {
+                          if (item.year == suitableAuto.year) {
+                            var modelItem = "<p class=\"model-item\">".concat(car, "</p>");
+                            modelWrapper.insertAdjacentHTML("beforeend", modelItem);
+                          }
+                        });
+                      };
+
+                      for (var car in selectedCar) {
+                        _loop(car);
+                      }
+                    }
+                  }));
+
+                case 2:
+                  selectModel();
+
+                case 3:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          });
+        }
+
+        function selectModel() {
+          var modelItems = document.querySelectorAll(".model-item");
+          modelItems.forEach(function (item) {
+            item.removeEventListener("click", handleModelItemClick);
+            item.addEventListener("click", handleModelItemClick);
+          });
+        }
+
+        function handleModelItemClick() {
+          var userSelectedModel = "<p class=\"model-item__selected\">".concat(this.textContent, "</p>");
+          suitableAuto.model = this.textContent;
+          modelBtn.style.display = "block";
+          backModelBtn.style.display = "block";
+          modelBlock.insertAdjacentHTML("beforeend", userSelectedModel);
+          modelBlock.style.display = "flex";
+          modelWrapper.style.display = "none";
+          selectModelBlock.style.display = "flex";
+          modelBtn.addEventListener("click", handleModelBtnClick);
+          backModelBtn.addEventListener("click", handleBackModelBtnClick);
+        }
+
+        function handleModelBtnClick() {
+          modelItemsBlock.style.display = "none";
+          bodyItemsBlock.style.display = "flex";
+          returnBody();
+        }
+
+        function handleBackModelBtnClick() {
+          modelWrapper.style.display = "flex";
+          modelBlock.style.display = "none";
+          modelBlock.innerHTML = "";
+          suitableAuto.model = "";
+          modelBtn.style.display = "none";
+          backModelBtn.style.display = "none";
+          selectModelBlock.style.display = "none";
+        }
+
+        function returnBody() {
+          return regeneratorRuntime.async(function returnBody$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
@@ -145,26 +214,20 @@ var chooseProduct = function chooseProduct() {
                     if (findMark) {
                       var selectedCar = findMark[suitableAuto.mark];
 
-                      var _loop = function _loop(car) {
-                        selectedCar[car].forEach(function (item) {
-                          if (item.year == suitableAuto.year) {
-                            var modelItem = "<p class = \"model-item\"> ".concat(car, "</p>");
-                            modelWrapper.insertAdjacentHTML("beforeend", modelItem);
-                          }
+                      if (suitableAuto.model in selectedCar) {
+                        var result = selectedCar[suitableAuto.model];
+                        result.forEach(function (item) {
+                          var bodyItem = "<p class=\"body-item\">".concat(item.body, "</p>");
+                          bodyWrapper.insertAdjacentHTML("beforeend", bodyItem);
                         });
-                      };
-
-                      for (var car in selectedCar) {
-                        _loop(car);
                       }
                     }
                   }));
 
                 case 2:
-                  resAuto = _context2.sent;
-                  selectModel();
+                  selectBody();
 
-                case 4:
+                case 3:
                 case "end":
                   return _context2.stop();
               }
@@ -172,87 +235,131 @@ var chooseProduct = function chooseProduct() {
           });
         }
 
-        function selectModel() {
-          var modelItems = document.querySelectorAll(".model-item");
-          console.log(modelItems);
-          modelItems.forEach(function (item) {
-            item.addEventListener("click", function () {
-              var userSelectedModel = "<p class = \"model-item__selected\"> ".concat(item.textContent, "</p>");
-              suitableAuto.model = item.textContent;
-              modelBtn.style.display = "block";
-              backModelBtn.style.display = "block";
-              modelBlock.insertAdjacentHTML("beforeend", userSelectedModel);
-              modelBlock.style.display = "flex";
-              modelWrapper.style.display = "none";
-              selectModelBlock.style.display = 'flex';
-              modelBtn.addEventListener("click", function () {
-                modelItemsBlock.style.display = "none";
-                bodyItemsBlock.style.display = "flex";
-              });
-              backModelBtn.addEventListener("click", function () {
-                modelWrapper.style.display = "flex";
-                modelBlock.style.display = "none";
-                modelBlock.innerHTML = "";
-                suitableAuto.model = "";
-                modelBtn.style.display = "none";
-                backModelBtn.style.display = "none";
-                selectModelBlock.style.display = 'none';
-              });
-            });
+        function selectBody() {
+          var bodyItem = document.querySelectorAll(".body-item");
+          bodyItem.forEach(function (item) {
+            item.removeEventListener("click", handleBodyItemClick);
+            item.addEventListener("click", handleBodyItemClick);
           });
         }
 
-        bodyItems.forEach(function (item) {
-          item.addEventListener("click", function () {
-            var bodyAttr = item.getAttribute("data-body");
-            suitableAuto.body = bodyAttr;
-            var bodyText = item.textContent;
-            bodyBtn.style.display = "block";
-            backBodyBtn.style.display = "block";
-            bodyWrapper.style.display = "none";
-            bodyBlock.style.display = "flex";
-            var bodyItemSrc = "\n                        <p class=\"body-item\">".concat(bodyText, "</p>\n                        ");
-            bodyBlock.insertAdjacentHTML("beforeend", bodyItemSrc);
-            bodyBtn.addEventListener("click", function () {
-              bodyItemsBlock.style.display = "none";
-              engineItemsBlock.style.display = "flex";
-            });
-            backBodyBtn.addEventListener("click", function () {
-              bodyWrapper.style.display = "flex";
-              bodyBlock.style.display = "none";
-              bodyBlock.innerHTML = "";
-              suitableAuto.model = "";
-              bodyBtn.style.display = "none";
-              backBodyBtn.style.display = "none";
-            });
+        function handleBodyItemClick() {
+          var bodyText = this.textContent;
+          suitableAuto.body = bodyText;
+          bodyBtn.style.display = "block";
+          backBodyBtn.style.display = "block";
+          bodyWrapper.style.display = "none";
+          bodyBlock.style.display = "flex";
+          var bodyItemSrc = "\n                      <p class=\"body-item\">".concat(bodyText, "</p>\n                      ");
+          bodyBlock.insertAdjacentHTML("beforeend", bodyItemSrc);
+          bodyBtn.addEventListener("click", handleBodyBtnClick);
+          backBodyBtn.addEventListener("click", handleBackBodyBtnClick);
+        }
+
+        function handleBodyBtnClick() {
+          bodyItemsBlock.style.display = "none";
+          engineItemsBlock.style.display = "flex";
+          returnEngine();
+        }
+
+        function handleBackBodyBtnClick() {
+          bodyWrapper.style.display = "flex";
+          bodyBlock.style.display = "none";
+          bodyBlock.innerHTML = "";
+          suitableAuto.model = "";
+          bodyBtn.style.display = "none";
+          backBodyBtn.style.display = "none";
+        }
+
+        function returnEngine() {
+          return regeneratorRuntime.async(function returnEngine$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  _context3.next = 2;
+                  return regeneratorRuntime.awrap(fetch("js/auto.json").then(function (res) {
+                    return res.json();
+                  }).then(function (data) {
+                    var findMark = data.find(function (item) {
+                      return item[suitableAuto.mark];
+                    });
+
+                    if (findMark) {
+                      var selectedCar = findMark[suitableAuto.mark];
+
+                      if (suitableAuto.model in selectedCar) {
+                        var result = selectedCar[suitableAuto.model];
+                        console.log(result);
+                        result.forEach(function (item) {
+                          var engineType = "\n                    <ul class=\"type-engine\">\n                      <li class=\"type-engine\">".concat(item.fuel, ":</li>\n                      <li class=\"engine-item\">").concat(item.engine, "</li>\n                    </ul>\n              \n                    ");
+                          engineWrapper.insertAdjacentHTML("beforeend", engineType);
+                        });
+                      }
+                    }
+                  }));
+
+                case 2:
+                  selectEngine();
+
+                case 3:
+                case "end":
+                  return _context3.stop();
+              }
+            }
           });
-        });
-        engineItems.forEach(function (item) {
-          item.addEventListener("click", function () {
-            item.addEventListener("click", function () {
-              var engineText = item.textContent;
-              suitableAuto.engine = engineText;
-              engineBtn.style.display = "block";
-              backEngineBtn.style.display = "block";
-              engineWrapper.style.display = "none";
-              engineBlock.style.display = "flex";
-              var engineItemSrc = "\n                          <p class=\"engine-item\">".concat(engineText, "</p>\n                          ");
-              engineBlock.insertAdjacentHTML("beforeend", engineItemSrc);
-              engineBtn.addEventListener("click", function () {
-                engineItemsBlock.style.display = "none";
-                engineItemsBlock.style.display = "flex";
-              });
-              backEngineBtn.addEventListener("click", function () {
-                engineWrapper.style.display = "flex";
-                engineBlock.style.display = "none";
-                engineBlock.innerHTML = "";
-                suitableAuto.engine = "";
-                engineBtn.style.display = "none";
-                backEngineBtn.style.display = "none";
-              });
-            });
+        }
+
+        function selectEngine() {
+          var engineItems = document.querySelectorAll(".engine-item");
+          engineItems.forEach(function (item) {
+            item.removeEventListener("click", handleEngineItemClick);
+            item.addEventListener("click", handleEngineItemClick);
           });
-        });
+        }
+
+        function handleEngineItemClick() {
+          var engineText = this.textContent;
+          suitableAuto.engine = engineText;
+          engineBtn.style.display = "block";
+          backEngineBtn.style.display = "block";
+          engineWrapper.style.display = "none";
+          engineBlock.style.display = "flex";
+          var engineItemSrc = "\n                      <p class=\"engine-item\">".concat(engineText, "</p>\n                      ");
+          engineBlock.insertAdjacentHTML("beforeend", engineItemSrc);
+          engineBtn.addEventListener("click", handleEngineBtnClick);
+          backEngineBtn.addEventListener("click", handleBackEngineBtnClick);
+        }
+
+        function handleEngineBtnClick() {
+          console.log(suitableAuto);
+          returnCar();
+        }
+
+        function handleBackEngineBtnClick() {
+          engineWrapper.style.display = "flex";
+          engineBlock.style.display = "none";
+          engineBlock.innerHTML = "";
+          suitableAuto.engine = "";
+          engineBtn.style.display = "none";
+          backEngineBtn.style.display = "none";
+          console.log(suitableAuto);
+        }
+
+        function returnCar() {
+          return regeneratorRuntime.async(function returnCar$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  console.log("Машина в поиске");
+
+                case 1:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          });
+        }
+
         allBtn.forEach(function (item) {
           item.addEventListener("mouseover", function () {
             this.style.backgroundColor = "white";

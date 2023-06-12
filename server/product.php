@@ -14,9 +14,7 @@
 </head>
 
   <body>
-    <div id="preloader">
-      <div class="spinner"></div>
-    </div>
+    
 
     <main class="main">
       <header class="full-screen__header__container">
@@ -365,196 +363,9 @@
         </nav>
       </div>
 
-      <section class="full-screen" id="promo">
-        <div class="full-screen__container">
-          <div class="full-screen__body">
-            <div class="full-screen__body__mark-items">
-              <div class="mark-items__top">
-                <div class="mark-wrapper">
-                  <div class="items-wrapper">
-                    <div class="item-wrapper" data-mark="Chevrolet">
-                      <img
-                        class="mark-item"
-                        src="./img/chevrolet-logo.webp"
-                        alt=""
-                      />
-                    </div>
-                    <div class="item-wrapper" data-mark="Jeep">
-                      <img
-                        class="mark-item"
-                        src="./img/jeep-logo.webp"
-                        alt=""
-                      />
-                    </div>
-                    <div class="item-wrapper" data-mark="Caddilac">
-                      <img
-                        class="mark-item"
-                        src="./img/cadillac-logo.webp"
-                        alt=""
-                      />
-                    </div>
-                  </div>
+     
 
-                  <div class="items-wrapper">
-                    <div class="item-wrapper" data-mark="Ford">
-                      <img
-                        class="mark-item"
-                        src="./img/ford-logo.webp"
-                        alt=""
-                      />
-                    </div>
-                    <div class="item-wrapper" data-mark="Gmc">
-                      <img
-                        class="mark-item"
-                        src="./img/gmc-logo-2.webp"
-                        alt=""
-                      />
-                    </div>
-                    <div class="item-wrapper" data-mark="Buick">
-                      <img
-                        class="mark-item"
-                        src="./img/buick-logo.webp"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="selected-mark">
-                  <div class="select-item"></div>
-                  <div class="select__buttons">
-                    <button class="back__select" id="to-mark">Назад</button>
-                    <button class="mark-items__markbtn">Выбрать год</button>
-                  </div>
-                </div>
-              </div>
-              <div class="mark-items__bottom"></div>
-            </div>
-
-            <div class="full-screen__body__year-items">
-              <div class="year-items__top">
-                <div class="year-columns">
-                  <ul class="year-column">
-                    <li class="year-item">1990</li>
-                    <li class="year-item">1991</li>
-                    <li class="year-item">1992</li>
-                    <li class="year-item">1993</li>
-                    <li class="year-item">1994</li>
-                  </ul>
-                  <ul class="year-column">
-                    <li class="year-item">1995</li>
-                    <li class="year-item">1996</li>
-                    <li class="year-item">1997</li>
-                    <li class="year-item">1998</li>
-                    <li class="year-item">1999</li>
-                  </ul>
-                  <ul class="year-column">
-                    <li class="year-item">2000</li>
-                    <li class="year-item">2001</li>
-                    <li class="year-item">2002</li>
-                    <li class="year-item">2003</li>
-                    <li class="year-item">2004</li>
-                  </ul>
-                  <ul class="year-column">
-                    <li class="year-item">2005</li>
-                    <li class="year-item">2006</li>
-                    <li class="year-item">2007</li>
-                    <li class="year-item">2008</li>
-                    <li class="year-item">2009</li>
-                  </ul>
-                  <ul class="year-column">
-                    <li class="year-item">2010</li>
-                    <li class="year-item">2011</li>
-                    <li class="year-item">2012</li>
-                    <li class="year-item">2013</li>
-                    <li class="year-item">2014</li>
-                  </ul>
-                  <ul class="year-column">
-                    <li class="year-item">2015</li>
-                    <li class="year-item">2016</li>
-                    <li class="year-item">2017</li>
-                    <li class="year-item">2018</li>
-                    <li class="year-item">2019</li>
-                  </ul>
-                  <ul class="year-column">
-                    <li class="year-item">2020</li>
-                    <li class="year-item">2021</li>
-                    <li class="year-item">2022</li>
-                    <li class="year-item">2023</li>
-                  </ul>
-                </div>
-
-                <div class="selected-year">
-                  <div class="selected-item__year"></div>
-                  <div class="select__buttons">
-                    <button class="back__select" id="to-year">Назад</button>
-                    <button class="mark-items__yearbtn">Выбрать модель</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="full-screen__body__model-items">
-              <div class="model-wrapper">
-                <!-- Сюда будет заноситься динамические елементы в зависимости от выбора -->
-             
-              </div>
-              <div class="selected-model">
-                <div class="selected-item__model"></div>
-
-                <div class="select__buttons">
-                  <button class="back__select" id="to-model">Назад</button>
-                  <button class="mark-items__autobtn">Выбрать кузов</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="full-screen__body__body-items">
-              <div class="body-wrapper">
-                <!-- Сюда будет заноситься динамические елементы в зависимости от выбора -->
-             
-              </div>
-
-              <div class="selected-body">
-                <div class="selected-item__body"></div>
-                <div class="select__buttons">
-                  <button class="back__select" id="to-body">Назад</button>
-                  <button class="mark-items__bodybtn">Выбрать двигатель</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="full-screen__body__engine-items">
-              <div class="engine-wrapper">
-               <!-- Сюда будет заноситься динамические елементы в зависимости от выбора -->
-
-               <!-- ! <li class="engine-item" data-engine-type="2.3">2.3</li> -->
-              </div>
-
-              <div class="selected-engine">
-                <div class="selected-item__engine">
-
-                </div>
-                <div class="select__buttons">
-                  <button class="back__select" id="to-engine">Назад</button>
-                  <button class="mark-items__enginebtn">Поиск</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-     <img class="full-screen__bg" src="/img/bgWithLogo.webp" alt="">
-
-      <p class="scroll-down__title">Листай нижче</p>
-
-      <div class="content">
-        <section class="popular__container" id="popular">
-          <h2 class="popular__header">Популярні товари</h2>
-
-          <div class="products__container" id="popular__container"></div>
-        </section>
-      </div>
+      
 
       <footer class="footer">
         <div class="footer__header-block">
@@ -678,18 +489,7 @@
         </div>
       </footer>
 
-      <div id="progress">
-        <span id="progress-value">
-          <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <title>Iconly/Curved/Arrow - Up 2</title>
-              <g  stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-                  <g id="Arrow---Up-2" transform="translate(12.000000, 12.000000) rotate(-180.000000) translate(-12.000000, -12.000000) translate(5.000000, 8.500000)" stroke="#000000" stroke-width="1.5">
-                      <path d="M14,0 C14,0 9.856,7 7,7 C4.145,7 0,0 0,0" id="Stroke-1"></path>
-                  </g>
-              </g>
-          </svg>
-        </span>
-      </div>
+      
     </main>
 
     <script type="module" src="./js/main.js"></script>

@@ -2,32 +2,50 @@
     {
         "id": "FAFKKl8KF",
         "name":"Гальмівні колодки BOSCH",
-        "redirect":"auto.html"
+        "image":"img/tel-alfa-romeo-1600.webp",
+        "price":"1000",
+        "count":"2",
+        "redirect":""
     },
     {
         "id": "CMX1331",
         "name":"Friction Master",
-        "redirect":"auto.html"
+        "image":"img/tel-alfa-romeo-1600.webp",
+        "price":"1000",
+        "count":"2",
+        "redirect":""
 
     },
     {
         "id": "LLFWWJA34",
         "name":"КПП",
-        "redirect":"auto.html"
+        "image":"img/tel-alfa-romeo-1600.webp",
+        "price":"1000",
+        "count":"2",
+        "redirect":""
     },
     {
         "id": "LLCASA34",
         "name":"Електроніка",
-        "redirect":"auto.html"
+        "image":"img/tel-alfa-romeo-1600.webp",
+        "price":"1000",
+        "count":"2",
+        "redirect":""
     },
     {
         "id": "LWUAWJA34",
         "name":"Фільтри",
-        "redirect":"https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch"
+        "image":"img/tel-alfa-romeo-1600.webp",
+        "price":"1000",
+        "count":"2",
+        "redirect":""
     },
     {
         "id": "LLFLWA345",
         "name":"Фільтри Shell",
-        "redirect":"auto.html"
+        "image":"img/tel-alfa-romeo-1600.webp",
+        "price":"1000",
+        "count":"2",
+        "redirect":""
     }
 ]

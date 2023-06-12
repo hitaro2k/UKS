@@ -12,7 +12,7 @@
         {
           "year": "1991",
           "body": "sedan",
-          "fuel":"Gasoline",
+          "fuel":"Etanol",
           "engine": "6.5L V8"
         }
     ],
@@ -20,7 +20,7 @@
       {
         "year": "1990",
         "body": "cabrio",
-        "fuel":"Gasoline",
+        "fuel":"Gas",
         "engine": "3.6L V6"
       },
       {
@@ -36,7 +36,7 @@
         {
           "year": "1990",
           "body": "cabrio",
-          "fuel":"Gasoline",
+          "fuel":"Gas",
           "engine": "3.6L V6"
         },
         {
