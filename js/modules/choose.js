@@ -66,6 +66,11 @@ const chooseProduct = () => {
     const bodyBlock = document.querySelector(".selected-item__body");
     const engineBlock = document.querySelector(".selected-item__engine")
     const selectModelBlock = document.querySelector(".selected-model")
+    const markSelected = document.querySelector(".mark-selected")
+    const yearSelected = document.querySelector(".year-selected")
+    const modelSelected = document.querySelector(".model-selected")
+    const bodySelected = document.querySelector(".body-selected")
+    const engineSelected = document.querySelector(".engine-selected")
     function searchAuto() {
       function returnAutoJSon(item) {
         let suitableAuto = {
@@ -79,46 +84,65 @@ const chooseProduct = () => {
     
        
         let itemAttr = null;
+
         itemsWrapper.forEach( (item) => {
-          item.addEventListener("click",()=>{
-            itemAttr = item.getAttribute("data-mark");
-            suitableAuto.mark = itemAttr;
-            item.style.border = "2px solid orange";
-            markWrapper.style.display = "none";
-            selectBlock.style.display = "flex";
-
-          
-            const markItemSrc = item
-              .querySelector(".mark-item")
-              .getAttribute("src");
-            let markItem = `  
-            <div class="item-wrapper" data-mark = "${itemAttr}">
-                <img class="mark-item" src="${markItemSrc}" alt="">
-            </div>
-            `;
-            // roadMarkSrc = roadMapMark.document.querySelector(".map__image").getAttribute("src")
-
-            backMarkBtn.style.display = "block";
-            markBtn.style.display = "block";
-            markBtn.addEventListener("click", () => {
-              yearItemsBlock.style.display = "flex";
-              markItemsBlock.style.display = "none";
-              
-            });
-
-            backMarkBtn.addEventListener("click", () => {
-              item.style.border = "2px solid gray";
-              markWrapper.style.display = "block";
-              selectBlock.style.display = "none";
-              markBlock.innerHTML = "";
-              suitableAuto.mark = "";
-            });
-            markBlock.insertAdjacentHTML("beforeend", markItem);
-          }); 
+          item.removeEventListener("click",handleMark); 
+          item.addEventListener("click",handleMark); 
         });
+        function handleMark(){
+          itemAttr = this.getAttribute("data-mark");
+          suitableAuto.mark = itemAttr;
+          markWrapper.style.display = "none";
+          selectBlock.style.display = "flex";            
+          const markItemSrc = this
+            .querySelector(".mark-item")
+            .getAttribute("src");
+          let markItem = `  
+          <div class="item-wrapper" data-mark = "${itemAttr}">
+              <img class="mark-item" src="${markItemSrc}" alt="">
+          </div>
+          `;
+          backMarkBtn.style.display = "block";
+          markBtn.style.display = "block";
+          markSelected.addEventListener("click" , () =>{
+            markItemsBlock.style.display = "flex";
+            markBlock.style.display = "flex"
+            suitableAuto.mark = ""
+            yearItemsBlock.style.display = "none"
+            modelItemsBlock.style.display = "none"
+            bodyItemsBlock.style.display = "none"
+            engineItemsBlock.style.display = "none"
+            yearBlock.style.display = "none" 
+            modelBlock.style.display = "none"
+            bodyBlock.style.display = "none"
+            engineBlock.style.display = "none"
+          })
 
-      
+          markSelected.insertAdjacentHTML("beforeend", markItem);
+          markBlock.insertAdjacentHTML("beforeend", markItem);
+          markBtn.addEventListener("click" , handleMarkBtnClick)
+          backMarkBtn.addEventListener("click" , handleBackMarkBtnClick)
+        }
+        function handleBackMarkBtnClick() {
+          console.log(suitableAuto)
+         
+          markWrapper.style.display = "block";
+          selectBlock.style.display = "none";
+          markBlock.innerHTML = "";
+          suitableAuto.mark = "";
+          markSelected.innerHTML = "";
+        }
         
+        function handleMarkBtnClick() {
+          yearItemsBlock.style.display = "flex";
+          markItemsBlock.style.display = "none";
+          yearBlock.style.display = "flex";
+          console.log(suitableAuto)
+         
+        }
+        
+      
+     
         yearItems.forEach((item) => {
           item.addEventListener("click", () => {
             let yearValue = item.textContent;
@@ -126,9 +150,25 @@ const chooseProduct = () => {
             yearBtn.style.display = "block";
             backYearBtn.style.display = "block";
             let yearItemSrc = `<p class="year__text-select">${yearValue}</p>`;
+            yearSelected.insertAdjacentHTML("beforeend", yearItemSrc);
+            
             yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
             yearBlock.style.display = "flex";
-        
+           
+            yearSelected.addEventListener("click" , () =>{
+              yearItemsBlock.style.display = "flex";
+              yearBlock.style.display = "flex"
+              suitableAuto.year= ""
+              markItemsBlock.style.display = "none"
+              modelItemsBlock.style.display = "none"
+              bodyItemsBlock.style.display = "none"
+              engineItemsBlock.style.display = "none"
+              markBlock.style.display = "none"
+              modelBlock.style.display = "none"
+              bodyBlock.style.display = "none"
+              engineBlock.style.display = "none"
+              console.log(suitableAuto)
+            })
             selectYear.style.display = "flex";
             yearWrapper.style.display = "none";
             backYearBtn.addEventListener("click", handleBackYearBtnClick);
@@ -145,13 +185,15 @@ const chooseProduct = () => {
           backYearBtn.style.display = "none";
           suitableAuto.year = "";
           selectYear.style.display = "none";
-          
+          yearSelected.innerHTML = "" 
+          console.log(suitableAuto)
         }
         
         function handleYearBtnClick() {
           yearItemsBlock.style.display = "none";
           modelItemsBlock.style.display = "flex";
-        
+          modelBlock.style.display = "flex";
+          console.log(suitableAuto)
           returnModel();
         }
         
@@ -187,8 +229,21 @@ const chooseProduct = () => {
           suitableAuto.model = this.textContent;
           modelBtn.style.display = "block";
           backModelBtn.style.display = "block";
+          modelSelected.insertAdjacentHTML("beforeend", userSelectedModel);
           modelBlock.insertAdjacentHTML("beforeend", userSelectedModel);
-        
+          modelSelected.addEventListener("click" , () =>{
+            modelItemsBlock.style.display = "flex";
+            modelBlock.style.display = "flex"
+            suitableAuto.model = ""
+            yearItemsBlock.style.display = "none"
+            bodyItemsBlock.style.display = "none"
+            engineItemsBlock.style.display = "none"
+            yearBlock.style.display = "none" 
+            bodyBlock.style.display = "none"
+            engineBlock.style.display = "none"
+
+            console.log(suitableAuto)
+          })
           modelBlock.style.display = "flex";
           modelWrapper.style.display = "none";
           selectModelBlock.style.display = "flex";
@@ -199,6 +254,8 @@ const chooseProduct = () => {
         function handleModelBtnClick() {
           modelItemsBlock.style.display = "none";
           bodyItemsBlock.style.display = "flex";
+          bodyBlock.style.display = "flex"
+          console.log(suitableAuto)
           returnBody();
         }
         
@@ -210,7 +267,7 @@ const chooseProduct = () => {
           modelBtn.style.display = "none";
           backModelBtn.style.display = "none";
           selectModelBlock.style.display = "none";
-         
+          modelSelected.innerHTML = "";
         }
         
         async function returnBody() {
@@ -248,9 +305,25 @@ const chooseProduct = () => {
           backBodyBtn.style.display = "block";
           bodyWrapper.style.display = "none";
           bodyBlock.style.display = "flex"
+          bodySelected.addEventListener("click" , () =>{
+            bodyItemsBlock.style.display = "flex";
+            bodyBlock.style.display = "flex"
+            suitableAuto.body = ""
+            markItemsBlock.style.display = "none"
+            modelItemsBlock.style.display = "none";
+            yearItemsBlock.style.display = "none"
+            engineItemsBlock.style.display = "none"
+            markBlock.style.display = "none"
+            yearBlock.style.display = "none" 
+            modelBlock.style.display = "none"
+            engineBlock.style.display = "none"
+           
+          })
+          console.log(suitableAuto)
           let bodyItemSrc = `
                       <p class="body-item">${bodyText}</p>
                       `;
+          bodySelected.insertAdjacentHTML("beforeend", bodyItemSrc);
           bodyBlock.insertAdjacentHTML("beforeend", bodyItemSrc);
           bodyBtn.addEventListener("click", handleBodyBtnClick);
           backBodyBtn.addEventListener("click", handleBackBodyBtnClick);
@@ -258,6 +331,7 @@ const chooseProduct = () => {
         function handleBodyBtnClick() {
           bodyItemsBlock.style.display = "none"
           engineItemsBlock.style.display = "flex"
+          console.log(suitableAuto)
           returnEngine()
         }
         function handleBackBodyBtnClick() {
@@ -267,7 +341,7 @@ const chooseProduct = () => {
           suitableAuto.model = ""
           bodyBtn.style.display = "none";
           backBodyBtn.style.display = "none";
-          
+          bodySelected.innerHTML = ""
          
         }
        
@@ -281,7 +355,6 @@ const chooseProduct = () => {
                 const selectedCar = findMark[suitableAuto.mark];
                 if (suitableAuto.model in selectedCar) {
                   const result = selectedCar[suitableAuto.model];
-                  console.log(result)
                   result.forEach((item)=>{
                     let engineType = `
                     <ul class="type-engine">
@@ -314,17 +387,31 @@ const chooseProduct = () => {
           engineBtn.style.display = "block";
           backEngineBtn.style.display = "block";
           engineWrapper.style.display = "none";
+  
           engineBlock.style.display = "flex"
+          engineSelected.addEventListener("click" , () =>{
+            engineItemsBlock.style.display = "flex";
+            engineBlock.style.display = "flex"
+            suitableAuto.engine = ""
+            markItemsBlock.style.display = "none"
+            modelItemsBlock.style.display = "none";
+            yearItemsBlock.style.display = "none"
+            bodyItemsBlock.style.display = "none"
+            markBlock.style.display = "none"
+            yearBlock.style.display = "none" 
+            bodyBlock.style.display = "none"
+            modelBlock.style.display = "none"
+          })
           let engineItemSrc = `
                       <p class="engine-item">${engineText}</p>
                       `;
+          engineSelected.insertAdjacentHTML("beforeend", engineItemSrc);
           engineBlock.insertAdjacentHTML("beforeend", engineItemSrc);
           engineBtn.addEventListener("click", handleEngineBtnClick);
           backEngineBtn.addEventListener("click", handleBackEngineBtnClick);
         }
      
         function handleEngineBtnClick() {
-          console.log(suitableAuto)
           returnCar()
         }
         function handleBackEngineBtnClick() {
@@ -334,14 +421,29 @@ const chooseProduct = () => {
           suitableAuto.engine= ""
           engineBtn.style.display = "none";
           backEngineBtn.style.display = "none";
-          console.log(suitableAuto)
+          engineSelected.innerHTML = "";
          
         }
-        async function returnCar(){
-          console.log("Машина в поиске")
+        
+        async function returnCar() {
+          await fetch("js/auto.json")
+            .then((res) => res.json())
+            .then((data) => {
+              const findMark = data.find((item) => item[suitableAuto.mark]);
+              if (findMark) {
+                const selectedCar = findMark[suitableAuto.mark];
+                if (suitableAuto.model in selectedCar) {
+                  const result = selectedCar[suitableAuto.model];
+                  result.forEach(item => {
+                    if(item.year == suitableAuto.year){
+                      window.location.href = item.redirect
+                    }
+                  })
+                }
+              }
+            });
+            
         }
-
-
         allBtn.forEach((item) => {
           item.addEventListener("mouseover", function () {
             this.style.backgroundColor = "white";

@@ -50,6 +50,11 @@ var chooseProduct = function chooseProduct() {
     var bodyBlock = document.querySelector(".selected-item__body");
     var engineBlock = document.querySelector(".selected-item__engine");
     var selectModelBlock = document.querySelector(".selected-model");
+    var markSelected = document.querySelector(".mark-selected");
+    var yearSelected = document.querySelector(".year-selected");
+    var modelSelected = document.querySelector(".model-selected");
+    var bodySelected = document.querySelector(".body-selected");
+    var engineSelected = document.querySelector(".engine-selected");
 
     function searchAuto() {
       function returnAutoJSon(item) {
@@ -62,31 +67,54 @@ var chooseProduct = function chooseProduct() {
         };
         var itemAttr = null;
         itemsWrapper.forEach(function (item) {
-          item.addEventListener("click", function () {
-            itemAttr = item.getAttribute("data-mark");
-            suitableAuto.mark = itemAttr;
-            item.style.border = "2px solid orange";
-            markWrapper.style.display = "none";
-            selectBlock.style.display = "flex";
-            var markItemSrc = item.querySelector(".mark-item").getAttribute("src");
-            var markItem = "  \n            <div class=\"item-wrapper\" data-mark = \"".concat(itemAttr, "\">\n                <img class=\"mark-item\" src=\"").concat(markItemSrc, "\" alt=\"\">\n            </div>\n            "); // roadMarkSrc = roadMapMark.document.querySelector(".map__image").getAttribute("src")
-
-            backMarkBtn.style.display = "block";
-            markBtn.style.display = "block";
-            markBtn.addEventListener("click", function () {
-              yearItemsBlock.style.display = "flex";
-              markItemsBlock.style.display = "none";
-            });
-            backMarkBtn.addEventListener("click", function () {
-              item.style.border = "2px solid gray";
-              markWrapper.style.display = "block";
-              selectBlock.style.display = "none";
-              markBlock.innerHTML = "";
-              suitableAuto.mark = "";
-            });
-            markBlock.insertAdjacentHTML("beforeend", markItem);
-          });
+          item.removeEventListener("click", handleMark);
+          item.addEventListener("click", handleMark);
         });
+
+        function handleMark() {
+          itemAttr = this.getAttribute("data-mark");
+          suitableAuto.mark = itemAttr;
+          markWrapper.style.display = "none";
+          selectBlock.style.display = "flex";
+          var markItemSrc = this.querySelector(".mark-item").getAttribute("src");
+          var markItem = "  \n          <div class=\"item-wrapper\" data-mark = \"".concat(itemAttr, "\">\n              <img class=\"mark-item\" src=\"").concat(markItemSrc, "\" alt=\"\">\n          </div>\n          ");
+          backMarkBtn.style.display = "block";
+          markBtn.style.display = "block";
+          markSelected.addEventListener("click", function () {
+            markItemsBlock.style.display = "flex";
+            markBlock.style.display = "flex";
+            suitableAuto.mark = "";
+            yearItemsBlock.style.display = "none";
+            modelItemsBlock.style.display = "none";
+            bodyItemsBlock.style.display = "none";
+            engineItemsBlock.style.display = "none";
+            yearBlock.style.display = "none";
+            modelBlock.style.display = "none";
+            bodyBlock.style.display = "none";
+            engineBlock.style.display = "none";
+          });
+          markSelected.insertAdjacentHTML("beforeend", markItem);
+          markBlock.insertAdjacentHTML("beforeend", markItem);
+          markBtn.addEventListener("click", handleMarkBtnClick);
+          backMarkBtn.addEventListener("click", handleBackMarkBtnClick);
+        }
+
+        function handleBackMarkBtnClick() {
+          console.log(suitableAuto);
+          markWrapper.style.display = "block";
+          selectBlock.style.display = "none";
+          markBlock.innerHTML = "";
+          suitableAuto.mark = "";
+          markSelected.innerHTML = "";
+        }
+
+        function handleMarkBtnClick() {
+          yearItemsBlock.style.display = "flex";
+          markItemsBlock.style.display = "none";
+          yearBlock.style.display = "flex";
+          console.log(suitableAuto);
+        }
+
         yearItems.forEach(function (item) {
           item.addEventListener("click", function () {
             var yearValue = item.textContent;
@@ -94,8 +122,23 @@ var chooseProduct = function chooseProduct() {
             yearBtn.style.display = "block";
             backYearBtn.style.display = "block";
             var yearItemSrc = "<p class=\"year__text-select\">".concat(yearValue, "</p>");
+            yearSelected.insertAdjacentHTML("beforeend", yearItemSrc);
             yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
             yearBlock.style.display = "flex";
+            yearSelected.addEventListener("click", function () {
+              yearItemsBlock.style.display = "flex";
+              yearBlock.style.display = "flex";
+              suitableAuto.year = "";
+              markItemsBlock.style.display = "none";
+              modelItemsBlock.style.display = "none";
+              bodyItemsBlock.style.display = "none";
+              engineItemsBlock.style.display = "none";
+              markBlock.style.display = "none";
+              modelBlock.style.display = "none";
+              bodyBlock.style.display = "none";
+              engineBlock.style.display = "none";
+              console.log(suitableAuto);
+            });
             selectYear.style.display = "flex";
             yearWrapper.style.display = "none";
             backYearBtn.addEventListener("click", handleBackYearBtnClick);
@@ -111,11 +154,15 @@ var chooseProduct = function chooseProduct() {
           backYearBtn.style.display = "none";
           suitableAuto.year = "";
           selectYear.style.display = "none";
+          yearSelected.innerHTML = "";
+          console.log(suitableAuto);
         }
 
         function handleYearBtnClick() {
           yearItemsBlock.style.display = "none";
           modelItemsBlock.style.display = "flex";
+          modelBlock.style.display = "flex";
+          console.log(suitableAuto);
           returnModel();
         }
 
@@ -174,7 +221,20 @@ var chooseProduct = function chooseProduct() {
           suitableAuto.model = this.textContent;
           modelBtn.style.display = "block";
           backModelBtn.style.display = "block";
+          modelSelected.insertAdjacentHTML("beforeend", userSelectedModel);
           modelBlock.insertAdjacentHTML("beforeend", userSelectedModel);
+          modelSelected.addEventListener("click", function () {
+            modelItemsBlock.style.display = "flex";
+            modelBlock.style.display = "flex";
+            suitableAuto.model = "";
+            yearItemsBlock.style.display = "none";
+            bodyItemsBlock.style.display = "none";
+            engineItemsBlock.style.display = "none";
+            yearBlock.style.display = "none";
+            bodyBlock.style.display = "none";
+            engineBlock.style.display = "none";
+            console.log(suitableAuto);
+          });
           modelBlock.style.display = "flex";
           modelWrapper.style.display = "none";
           selectModelBlock.style.display = "flex";
@@ -185,6 +245,8 @@ var chooseProduct = function chooseProduct() {
         function handleModelBtnClick() {
           modelItemsBlock.style.display = "none";
           bodyItemsBlock.style.display = "flex";
+          bodyBlock.style.display = "flex";
+          console.log(suitableAuto);
           returnBody();
         }
 
@@ -196,6 +258,7 @@ var chooseProduct = function chooseProduct() {
           modelBtn.style.display = "none";
           backModelBtn.style.display = "none";
           selectModelBlock.style.display = "none";
+          modelSelected.innerHTML = "";
         }
 
         function returnBody() {
@@ -250,7 +313,22 @@ var chooseProduct = function chooseProduct() {
           backBodyBtn.style.display = "block";
           bodyWrapper.style.display = "none";
           bodyBlock.style.display = "flex";
+          bodySelected.addEventListener("click", function () {
+            bodyItemsBlock.style.display = "flex";
+            bodyBlock.style.display = "flex";
+            suitableAuto.body = "";
+            markItemsBlock.style.display = "none";
+            modelItemsBlock.style.display = "none";
+            yearItemsBlock.style.display = "none";
+            engineItemsBlock.style.display = "none";
+            markBlock.style.display = "none";
+            yearBlock.style.display = "none";
+            modelBlock.style.display = "none";
+            engineBlock.style.display = "none";
+          });
+          console.log(suitableAuto);
           var bodyItemSrc = "\n                      <p class=\"body-item\">".concat(bodyText, "</p>\n                      ");
+          bodySelected.insertAdjacentHTML("beforeend", bodyItemSrc);
           bodyBlock.insertAdjacentHTML("beforeend", bodyItemSrc);
           bodyBtn.addEventListener("click", handleBodyBtnClick);
           backBodyBtn.addEventListener("click", handleBackBodyBtnClick);
@@ -259,6 +337,7 @@ var chooseProduct = function chooseProduct() {
         function handleBodyBtnClick() {
           bodyItemsBlock.style.display = "none";
           engineItemsBlock.style.display = "flex";
+          console.log(suitableAuto);
           returnEngine();
         }
 
@@ -269,6 +348,7 @@ var chooseProduct = function chooseProduct() {
           suitableAuto.model = "";
           bodyBtn.style.display = "none";
           backBodyBtn.style.display = "none";
+          bodySelected.innerHTML = "";
         }
 
         function returnEngine() {
@@ -289,7 +369,6 @@ var chooseProduct = function chooseProduct() {
 
                       if (suitableAuto.model in selectedCar) {
                         var result = selectedCar[suitableAuto.model];
-                        console.log(result);
                         result.forEach(function (item) {
                           var engineType = "\n                    <ul class=\"type-engine\">\n                      <li class=\"type-engine\">".concat(item.fuel, ":</li>\n                      <li class=\"engine-item\">").concat(item.engine, "</li>\n                    </ul>\n              \n                    ");
                           engineWrapper.insertAdjacentHTML("beforeend", engineType);
@@ -324,14 +403,27 @@ var chooseProduct = function chooseProduct() {
           backEngineBtn.style.display = "block";
           engineWrapper.style.display = "none";
           engineBlock.style.display = "flex";
+          engineSelected.addEventListener("click", function () {
+            engineItemsBlock.style.display = "flex";
+            engineBlock.style.display = "flex";
+            suitableAuto.engine = "";
+            markItemsBlock.style.display = "none";
+            modelItemsBlock.style.display = "none";
+            yearItemsBlock.style.display = "none";
+            bodyItemsBlock.style.display = "none";
+            markBlock.style.display = "none";
+            yearBlock.style.display = "none";
+            bodyBlock.style.display = "none";
+            modelBlock.style.display = "none";
+          });
           var engineItemSrc = "\n                      <p class=\"engine-item\">".concat(engineText, "</p>\n                      ");
+          engineSelected.insertAdjacentHTML("beforeend", engineItemSrc);
           engineBlock.insertAdjacentHTML("beforeend", engineItemSrc);
           engineBtn.addEventListener("click", handleEngineBtnClick);
           backEngineBtn.addEventListener("click", handleBackEngineBtnClick);
         }
 
         function handleEngineBtnClick() {
-          console.log(suitableAuto);
           returnCar();
         }
 
@@ -342,7 +434,7 @@ var chooseProduct = function chooseProduct() {
           suitableAuto.engine = "";
           engineBtn.style.display = "none";
           backEngineBtn.style.display = "none";
-          console.log(suitableAuto);
+          engineSelected.innerHTML = "";
         }
 
         function returnCar() {
@@ -350,9 +442,29 @@ var chooseProduct = function chooseProduct() {
             while (1) {
               switch (_context4.prev = _context4.next) {
                 case 0:
-                  console.log("Машина в поиске");
+                  _context4.next = 2;
+                  return regeneratorRuntime.awrap(fetch("js/auto.json").then(function (res) {
+                    return res.json();
+                  }).then(function (data) {
+                    var findMark = data.find(function (item) {
+                      return item[suitableAuto.mark];
+                    });
 
-                case 1:
+                    if (findMark) {
+                      var selectedCar = findMark[suitableAuto.mark];
+
+                      if (suitableAuto.model in selectedCar) {
+                        var result = selectedCar[suitableAuto.model];
+                        result.forEach(function (item) {
+                          if (item.year == suitableAuto.year) {
+                            window.location.href = item.redirect;
+                          }
+                        });
+                      }
+                    }
+                  }));
+
+                case 2:
                 case "end":
                   return _context4.stop();
               }
