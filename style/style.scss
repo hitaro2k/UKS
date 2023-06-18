@@ -1438,6 +1438,7 @@ li {
 
           }
           .selected-engine{
+         
             .selected-item__engine{
               display: flex;
               flex-direction: column;
@@ -1458,7 +1459,7 @@ li {
             margin-bottom: 40px;
             justify-content: center;
             .back__select {
-              width: 200px;
+              width: 60%;
               height: 40px;
               background-color: #d28711;
               color: white;
@@ -1468,11 +1469,12 @@ li {
               display: none; 
               @include breakpoint(sm){
                 width: 40%;
+                font-size: 12px;
               }            
             }
 
             .mark-items__enginebtn {
-              width: 200px;
+              width: 60%;
               height: 40px;
               background-color: #d28711;
               color: white;

@@ -1448,7 +1448,7 @@ li {
   justify-content: center;
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__engine-items .select__buttons .back__select {
-  width: 200px;
+  width: 60%;
   height: 40px;
   background-color: #d28711;
   color: white;
@@ -1460,10 +1460,11 @@ li {
 @media (max-width: 576px) {
   .main .full-screen .full-screen__container .full-screen__body .full-screen__body__engine-items .select__buttons .back__select {
     width: 40%;
+    font-size: 12px;
   }
 }
 .main .full-screen .full-screen__container .full-screen__body .full-screen__body__engine-items .select__buttons .mark-items__enginebtn {
-  width: 200px;
+  width: 60%;
   height: 40px;
   background-color: #d28711;
   color: white;
