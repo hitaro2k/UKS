@@ -150,10 +150,14 @@ function views() {
               });
             }
 
-            var itemJson = {
-              items: transferredItems
-            };
-            sendDataToServer(itemJson);
+            if (transferredItems.length > 0) {
+              var itemJson = {
+                items: transferredItems
+              };
+              console.log(itemJson);
+              sendDataToServer(itemJson);
+            }
+
             formWrap.style.display = "flex";
 
             if (formWrap.style.display = "flex") {
@@ -188,7 +192,7 @@ function views() {
                   formData.append("photo", file);
                   console.log(image.src); // ОТПРАВЛЯЮ ФОТОЧКУ
 
-                  sendDataToServer(formData);
+                  console.log(formData);
                 }); // ЧИТАЮ ФОТКУ
 
                 reader.readAsDataURL(file);

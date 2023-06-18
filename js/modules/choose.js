@@ -72,7 +72,7 @@ const chooseProduct = () => {
     const bodySelected = document.querySelector(".body-selected")
     const engineSelected = document.querySelector(".engine-selected")
     function searchAuto() {
-      function returnAutoJSon(item) {
+      function returnAutoJson(item) {
         let suitableAuto = {
           mark: "",
           year: "",
@@ -116,6 +116,7 @@ const chooseProduct = () => {
             modelBlock.style.display = "none"
             bodyBlock.style.display = "none"
             engineBlock.style.display = "none"
+            markSelected.classList.add("active")
           })
 
           markSelected.insertAdjacentHTML("beforeend", markItem);
@@ -186,6 +187,7 @@ const chooseProduct = () => {
           suitableAuto.year = "";
           selectYear.style.display = "none";
           yearSelected.innerHTML = "" 
+          modelWrapper.innerHTML = ""
           console.log(suitableAuto)
         }
         
@@ -261,6 +263,7 @@ const chooseProduct = () => {
         
         function handleBackModelBtnClick() {
           modelWrapper.style.display = "flex";
+          bodyWrapper.innerHTML = ""
           modelBlock.style.display = "none";
           modelBlock.innerHTML = "";
           suitableAuto.model = "";
@@ -331,6 +334,7 @@ const chooseProduct = () => {
         function handleBodyBtnClick() {
           bodyItemsBlock.style.display = "none"
           engineItemsBlock.style.display = "flex"
+          engineBlock.style.display = "flex"
           console.log(suitableAuto)
           returnEngine()
         }
@@ -338,11 +342,10 @@ const chooseProduct = () => {
           bodyWrapper.style.display = "flex";
           bodyBlock.style.display = "none";
           bodyBlock.innerHTML = "";
-          suitableAuto.model = ""
           bodyBtn.style.display = "none";
           backBodyBtn.style.display = "none";
           bodySelected.innerHTML = ""
-         
+          engineWrapper.innerHTML = ""
         }
        
  
@@ -412,6 +415,7 @@ const chooseProduct = () => {
         }
      
         function handleEngineBtnClick() {
+          
           returnCar()
         }
         function handleBackEngineBtnClick() {
@@ -460,10 +464,15 @@ const chooseProduct = () => {
         
        
       }
+      function returnAuto(){
+        
+      }
 
-      returnAutoJSon()
+      returnAutoJson()
+      returnAuto()
     }
-  
+    
+   
     searchAuto();
 
   });

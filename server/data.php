@@ -1,35 +1,44 @@
 <?php
-$data = json_decode(file_get_contents('php://input'), true);
 
-if ($data && isset($data['checkedFormItems'])) {
-  $checkedFormItems = $data['checkedFormItems'];
+require 'vendor/autoload.php';
 
+use Intervention\Image\ImageManagerStatic as Image;
+if (file_get_contents('php://input')) {
+  $data = json_decode(file_get_contents('php://input'), true);
+  $items = $data['items'];
+  $mysql = new mysqli('localhost', 'root', 'test', 'uk-bd');
+  for ($i = 0; $i < count($items); $i += 3) {
+    if (isset($items[$i]) && isset($items[$i+1]) && isset($items[$i+2])) {
+      $id_product = $items[$i];
+      $price = $items[$i+1];
+      $sum = $items[$i+2];
+
+      $mysql->query("INSERT INTO product (id_product, price, sum) VALUES ('$id_product', '$price', '$sum')");
+    }
+  }
   $response = array(
     'status' => 'success',
     'message' => 'Данные успешно получены',
-    'checkedFormItems' => $checkedFormItems
+    'items' => $items
   );
-
-  header('Content-Type: application/json');
-  echo json_encode($response);
-} else {
-  $response = array(
-    'status' => 'error',
-    'message' => 'Некорректные данные'
-  );
-
-  header('Content-Type: application/json');
   echo json_encode($response);
 }
 
-$part1 = $data['checkedFormItems'];
-$parts = explode(',', $part1); 
 
-$id_product = $parts[0];
-$price = $parts[1];
-$sum = $parts[2];
 
-$mysql = new mysqli('localhost', 'root', 'test', 'uk-bd');
-$mysql->query("INSERT INTO uk (id_product, price, sum) VALUES('$id_product', '$price', '$sum')");
-$mysql->close();
+
+if(isset($_FILES['image'])){
+  $tmpName = $_FILES['image']['tmp_name'];
+
+  $imgRandName = rand(111111, 999999);
+  $filename = "img/$imgRandName.jpg";
+
+  $image = Image::make($tmpName);
+  $image->save($filename);
+  $pathImg = "C:/xampp/htdocs/dashboard/test/$filename";
+
+  $mysql = new mysqli('localhost', 'root', 'test', 'uk-bd');
+  $mysql->query("INSERT INTO photo_path (path) VALUES ('$pathImg')");
+  $mysql->close();
+}
 ?>

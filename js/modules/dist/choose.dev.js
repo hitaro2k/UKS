@@ -57,7 +57,7 @@ var chooseProduct = function chooseProduct() {
     var engineSelected = document.querySelector(".engine-selected");
 
     function searchAuto() {
-      function returnAutoJSon(item) {
+      function returnAutoJson(item) {
         var suitableAuto = {
           mark: "",
           year: "",
@@ -92,6 +92,7 @@ var chooseProduct = function chooseProduct() {
             modelBlock.style.display = "none";
             bodyBlock.style.display = "none";
             engineBlock.style.display = "none";
+            markSelected.classList.add("active");
           });
           markSelected.insertAdjacentHTML("beforeend", markItem);
           markBlock.insertAdjacentHTML("beforeend", markItem);
@@ -155,6 +156,7 @@ var chooseProduct = function chooseProduct() {
           suitableAuto.year = "";
           selectYear.style.display = "none";
           yearSelected.innerHTML = "";
+          modelWrapper.innerHTML = "";
           console.log(suitableAuto);
         }
 
@@ -252,6 +254,7 @@ var chooseProduct = function chooseProduct() {
 
         function handleBackModelBtnClick() {
           modelWrapper.style.display = "flex";
+          bodyWrapper.innerHTML = "";
           modelBlock.style.display = "none";
           modelBlock.innerHTML = "";
           suitableAuto.model = "";
@@ -337,6 +340,7 @@ var chooseProduct = function chooseProduct() {
         function handleBodyBtnClick() {
           bodyItemsBlock.style.display = "none";
           engineItemsBlock.style.display = "flex";
+          engineBlock.style.display = "flex";
           console.log(suitableAuto);
           returnEngine();
         }
@@ -345,10 +349,10 @@ var chooseProduct = function chooseProduct() {
           bodyWrapper.style.display = "flex";
           bodyBlock.style.display = "none";
           bodyBlock.innerHTML = "";
-          suitableAuto.model = "";
           bodyBtn.style.display = "none";
           backBodyBtn.style.display = "none";
           bodySelected.innerHTML = "";
+          engineWrapper.innerHTML = "";
         }
 
         function returnEngine() {
@@ -486,7 +490,10 @@ var chooseProduct = function chooseProduct() {
         });
       }
 
-      returnAutoJSon();
+      function returnAuto() {}
+
+      returnAutoJson();
+      returnAuto();
     }
 
     searchAuto();
