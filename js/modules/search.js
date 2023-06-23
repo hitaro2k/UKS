@@ -8,24 +8,44 @@ export function search() {
     .then(data => {
       searchInput.addEventListener('input', () => {
         const searchTerm = searchInput.value.toLowerCase();
+        console.log(searchTerm)
         const filteredData = data.filter(item => item.id.toLowerCase().includes(searchTerm));
         renderList(filteredData);
+        console.log(filteredData)
+
       });
+
     })
     .catch(error => console.error(error));
 
-  function renderList(data) {
-    searchList.innerHTML = '';
-    data.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item.name;
-      li.addEventListener('click', () => {
-        const redirectUrl = `server/product.php?id=${encodeURIComponent(item.id)}&name=${encodeURIComponent(item.name)}`;
-        window.location.href = redirectUrl;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'serv.php', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var products = JSON.parse(xhr.responseText);
+            console.log(products);
+           
+        } else {
+            console.log('Ошибка: ' + xhr.status);
+        }
+    };
+    xhr.send();
+    
+  
+
+    function renderList(data) {
+      searchList.innerHTML = '';
+      data.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.name;
+        li.addEventListener('click', () => {
+          const redirectUrl = `server/product.php?id=${encodeURIComponent(item.id)}&name=${encodeURIComponent(item.name)}`;
+          window.location.href = redirectUrl;
+          
+        });
+        searchList.appendChild(li);
       });
-      searchList.appendChild(li);
-    });
-  }
+    }
 }
 
 search();

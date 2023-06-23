@@ -415,8 +415,7 @@ const chooseProduct = () => {
         }
      
         function handleEngineBtnClick() {
-          
-          returnCar()
+          console.log("Search")
         }
         function handleBackEngineBtnClick() {
           engineWrapper.style.display = "flex";
@@ -428,26 +427,7 @@ const chooseProduct = () => {
           engineSelected.innerHTML = "";
          
         }
-        
-        async function returnCar() {
-          await fetch("js/auto.json")
-            .then((res) => res.json())
-            .then((data) => {
-              const findMark = data.find((item) => item[suitableAuto.mark]);
-              if (findMark) {
-                const selectedCar = findMark[suitableAuto.mark];
-                if (suitableAuto.model in selectedCar) {
-                  const result = selectedCar[suitableAuto.model];
-                  result.forEach(item => {
-                    if(item.year == suitableAuto.year){
-                      window.location.href = item.redirect
-                    }
-                  })
-                }
-              }
-            });
-            
-        }
+       
         allBtn.forEach((item) => {
           item.addEventListener("mouseover", function () {
             this.style.backgroundColor = "white";
@@ -464,12 +444,8 @@ const chooseProduct = () => {
         
        
       }
-      function returnAuto(){
-        
-      }
-
+      
       returnAutoJson()
-      returnAuto()
     }
     
    

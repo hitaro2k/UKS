@@ -428,7 +428,7 @@ var chooseProduct = function chooseProduct() {
         }
 
         function handleEngineBtnClick() {
-          returnCar();
+          console.log("Search");
         }
 
         function handleBackEngineBtnClick() {
@@ -439,41 +439,6 @@ var chooseProduct = function chooseProduct() {
           engineBtn.style.display = "none";
           backEngineBtn.style.display = "none";
           engineSelected.innerHTML = "";
-        }
-
-        function returnCar() {
-          return regeneratorRuntime.async(function returnCar$(_context4) {
-            while (1) {
-              switch (_context4.prev = _context4.next) {
-                case 0:
-                  _context4.next = 2;
-                  return regeneratorRuntime.awrap(fetch("js/auto.json").then(function (res) {
-                    return res.json();
-                  }).then(function (data) {
-                    var findMark = data.find(function (item) {
-                      return item[suitableAuto.mark];
-                    });
-
-                    if (findMark) {
-                      var selectedCar = findMark[suitableAuto.mark];
-
-                      if (suitableAuto.model in selectedCar) {
-                        var result = selectedCar[suitableAuto.model];
-                        result.forEach(function (item) {
-                          if (item.year == suitableAuto.year) {
-                            window.location.href = item.redirect;
-                          }
-                        });
-                      }
-                    }
-                  }));
-
-                case 2:
-                case "end":
-                  return _context4.stop();
-              }
-            }
-          });
         }
 
         allBtn.forEach(function (item) {
@@ -490,10 +455,7 @@ var chooseProduct = function chooseProduct() {
         });
       }
 
-      function returnAuto() {}
-
       returnAutoJson();
-      returnAuto();
     }
 
     searchAuto();
