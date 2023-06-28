@@ -6,46 +6,41 @@ export function search() {
   fetch('./js/modules/search.json')
     .then(response => response.json())
     .then(data => {
+    const transformedData = data.map(item => ({
+      name: item["Производитель"],
+      id: item["Код"],
+      description: item["Описание"],
+      price: item["Цена у.е."],
+      count: item["Наличие"],
+    }));
+
       searchInput.addEventListener('input', () => {
         const searchTerm = searchInput.value.toLowerCase();
-        console.log(searchTerm)
-        const filteredData = data.filter(item => item.id.toLowerCase().includes(searchTerm));
-        renderList(filteredData);
-        console.log(filteredData)
-
+        const filteredId = transformedData.filter(item => item.id.toLowerCase().includes(searchTerm));
+        renderList(filteredId);
       });
-
     })
     .catch(error => console.error(error));
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'serv.php', true);
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            var products = JSON.parse(xhr.responseText);
-            console.log(products);
-           
-        } else {
-            console.log('Ошибка: ' + xhr.status);
-        }
-    };
-    xhr.send();
-    
-  
-
     function renderList(data) {
       searchList.innerHTML = '';
       data.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item.name;
-        li.addEventListener('click', () => {
+        const ul = document.createElement('ul');
+        const liDescription = document.createElement("li")
+        const liName = document.createElement("li")
+        liName.textContent = item.name
+        liName.style.color = "orange"
+        liDescription.textContent = item.description;
+        liDescription.addEventListener('click', () => {
           const redirectUrl = `server/product.php?id=${encodeURIComponent(item.id)}&name=${encodeURIComponent(item.name)}`;
           window.location.href = redirectUrl;
           
         });
-        searchList.appendChild(li);
+        searchList.appendChild(ul);
+        ul.appendChild(liDescription)
+        ul.appendChild(liName)
       });
     }
+   
 }
 
 search();

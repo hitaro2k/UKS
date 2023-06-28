@@ -11,42 +11,42 @@ function search() {
   fetch('./js/modules/search.json').then(function (response) {
     return response.json();
   }).then(function (data) {
+    var transformedData = data.map(function (item) {
+      return {
+        name: item["Производитель"],
+        id: item["Код"],
+        description: item["Описание"],
+        price: item["Цена у.е."],
+        count: item["Наличие"]
+      };
+    });
     searchInput.addEventListener('input', function () {
       var searchTerm = searchInput.value.toLowerCase();
-      console.log(searchTerm);
-      var filteredData = data.filter(function (item) {
+      var filteredId = transformedData.filter(function (item) {
         return item.id.toLowerCase().includes(searchTerm);
       });
-      renderList(filteredData);
-      console.log(filteredData);
+      renderList(filteredId);
     });
   })["catch"](function (error) {
     return console.error(error);
   });
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'serv.php', true);
-
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      var products = JSON.parse(xhr.responseText);
-      console.log(products);
-    } else {
-      console.log('Ошибка: ' + xhr.status);
-    }
-  };
-
-  xhr.send();
 
   function renderList(data) {
     searchList.innerHTML = '';
     data.forEach(function (item) {
-      var li = document.createElement('li');
-      li.textContent = item.name;
-      li.addEventListener('click', function () {
+      var ul = document.createElement('ul');
+      var liDescription = document.createElement("li");
+      var liName = document.createElement("li");
+      liName.textContent = item.name;
+      liName.style.color = "orange";
+      liDescription.textContent = item.description;
+      liDescription.addEventListener('click', function () {
         var redirectUrl = "server/product.php?id=".concat(encodeURIComponent(item.id), "&name=").concat(encodeURIComponent(item.name));
         window.location.href = redirectUrl;
       });
-      searchList.appendChild(li);
+      searchList.appendChild(ul);
+      ul.appendChild(liDescription);
+      ul.appendChild(liName);
     });
   }
 }
