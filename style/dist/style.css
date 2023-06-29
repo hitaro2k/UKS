@@ -1783,6 +1783,7 @@ li {
   font-family: "Montserrat";
   font-size: 15px;
   height: 10px;
+  cursor: pointer;
 }
 .main .product-articul {
   padding-left: 20px;

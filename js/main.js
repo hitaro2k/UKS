@@ -7,3 +7,4 @@ import {getProductsPopular} from "./modules/render.js"
 import chooseProduct from "./modules/choose.js"
 import {form} from "./modules/form.js"
 
+getProductsPopular()

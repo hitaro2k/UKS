@@ -15,3 +15,5 @@ var _choose = _interopRequireDefault(require("./modules/choose.js"));
 var _form = require("./modules/form.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+(0, _render.getProductsPopular)();

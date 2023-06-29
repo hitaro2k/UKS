@@ -1,3 +1,9 @@
+[class*=__container] {
+  width: 90%;
+  padding: 0px 15px;
+  margin: 0 auto;
+}
+
 .main .content {
   padding-bottom: 200px;
   padding-top: 100px;
@@ -7,103 +13,39 @@
     width: 95%;
   }
 }
-.main .content .products__container .product__content {
-  width: 100%;
+.main .content .products__container .product {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
 }
-.main .content .products__container .product__content .product__top-content {
-  display: flex;
-  flex-direction: row;
+.main .content .products__container .product .product-img {
+  width: 25%;
 }
-@media (max-width: 768px) {
-  .main .content .products__container .product__content .product__top-content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-.main .content .products__container .product__content .product__top-content .product-image {
-  width: 285px;
-}
-.main .content .products__container .product__content .product__top-content .product__top-content__info {
-  padding-left: 135px;
-}
-@media (max-width: 768px) {
-  .main .content .products__container .product__content .product__top-content .product__top-content__info {
-    padding-left: 30px;
-  }
-}
-.main .content .products__container .product__content .product__top-content .product__top-content__info .product-name {
-  font-family: "Roboto";
-  font-weight: 400;
-  font-size: 30px;
-  color: #FFFFFF;
-}
-@media (max-width: 768px) {
-  .main .content .products__container .product__content .product__top-content .product__top-content__info .product-name {
-    font-size: 25px;
-  }
-}
-.main .content .products__container .product__content .product__top-content .product__top-content__info .product-articul {
-  padding-left: 0px;
-}
-.main .content .products__container .product__content .product__top-content .product__top-content__info .product-status {
-  padding-left: 0px;
-  font-size: 13px;
-}
-.main .content .products__container .product__content .product__top-content .product__top-content__info .product-buy__btn {
-  display: flex;
-  flex-direction: row;
-  margin-top: 115px;
-  margin-left: 385px;
-  border: 2px solid #FFFFFF;
-  border-radius: 5px;
-}
-@media (max-width: 1200px) {
-  .main .content .products__container .product__content .product__top-content .product__top-content__info .product-buy__btn {
-    margin-left: 0px;
-  }
-}
-.main .content .products__container .product__content .product__top-content .product__top-content__info .product-buy__btn .price {
-  padding-right: 20px;
-  padding-left: 20px;
-  font-size: 18px;
-}
-.main .content .products__container .product__content .product__top-content .product__top-content__info .product-buy__btn .buy-button {
-  width: 140px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 18px;
-}
-.main .content .products__container .product__content .product__bottom-content {
+.main .content .products__container .product .product-content {
+  width: 70%;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding-top: 100px;
+  margin-left: 80px;
 }
-@media (max-width: 768px) {
-  .main .content .products__container .product__content .product__bottom-content {
-    padding-left: 10px;
-  }
-}
-.main .content .products__container .product__content .product__bottom-content .product__bottom-content__title {
-  font-family: "Montserrat";
-  font-weight: 400;
-}
-.main .content .products__container .product__content .product__bottom-content .table-block {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  border-bottom: 1px solid gray;
-  padding-bottom: 30px;
-  padding-top: 50px;
-  width: 95%;
-}
-.main .content .products__container .product__content .product__bottom-content .table-item {
-  font-family: "Montserrat";
+.main .content .products__container .product .product-content .product-name {
+  font-size: 20px;
   color: white;
-  padding-right: 50px;
+}
+.main .content .products__container .product .product-content .product__articul {
+  font-size: 15px;
+  color: #535353;
+}
+.main .content .products__container .product .product-content .product-buy {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.main .content .products__container .product .product-content .product-buy .product__price {
+  font-size: 20px;
+}
+.main .content .products__container .product .product-content .product-buy .product-btn {
+  width: 30%;
+  border-radius: 3px;
 }

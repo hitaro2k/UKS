@@ -4,10 +4,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getProductsPopular = getProductsPopular;
+exports.renderData = renderData;
 var popularContainer = document.querySelector("#popular__container");
 
 function getProductsPopular() {
-  var response, productArray;
+  var response, productArray, productTitle;
   return regeneratorRuntime.async(function getProductsPopular$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -22,9 +23,14 @@ function getProductsPopular() {
 
         case 5:
           productArray = _context.sent;
-          renderProductsPopular(productArray);
+          productArray.forEach(function (item) {
+            var productHTML = "\n        <div class=\"product\" data-id =\"".concat(item.id, "\">\n          <img class=\"product-image\" src=\"").concat(item.image, "\" alt=\"img\">\n              <div class = \"product-description\">\n                <a class=\"product-title\">").concat(item.title, "</a>\n                <p class=\"product-articul\">").concat(item.articul, "</p>\n              </div>\n              <div class =\"product-info\">\n                <div class =\"product-info__price\"> \n                  <p class=\"product-price\">").concat(item.price, " \u0433\u0440\u043D</p>\n                  <p class=\"product-status\">").concat(item.status, "</p>\n                </div>\n              <button class=\"product-button\" data > ").concat(item.buy, "</button>\n            </div>\n        </div>");
+            popularContainer.insertAdjacentHTML("beforeend", productHTML);
+          });
+          productTitle = document.querySelectorAll(".product-title");
+          renderData(productTitle);
 
-        case 7:
+        case 9:
         case "end":
           return _context.stop();
       }
@@ -32,11 +38,19 @@ function getProductsPopular() {
   });
 }
 
-function renderProductsPopular(productArray) {
-  productArray.forEach(function (item) {
-    var productHTML = "\n         <div class=\"product\" data-id =\"".concat(item.id, "\">\n           <img class=\"product-image\" src=\"").concat(item.image, "\" alt=\"img\">\n               <div class = \"product-description\">\n                 <a href = \"/product.html\" class=\"product-title\">").concat(item.title, "</a>\n                 <p class=\"product-articul\">").concat(item.articul, "</p>\n               </div>\n               <div class =\"product-info\">\n                 <div class =\"product-info__price\"> \n                   <p class=\"product-price\">").concat(item.price, " \u0433\u0440\u043D</p>\n                   <p class=\"product-status\">").concat(item.status, "</p>\n                 </div>\n               <button class=\"product-button\" data > ").concat(item.buy, "</button>\n               \n             </div>\n         </div>");
-    popularContainer.insertAdjacentHTML("beforeend", productHTML);
+function renderData(data) {
+  data.forEach(function (item) {
+    item.addEventListener("click", function (e) {
+      var closestCard = e.target.closest(".product");
+      var cartAlready = {
+        "image": closestCard.querySelector(".product-image").src,
+        "name": closestCard.querySelector(".product-title").textContent,
+        "button": closestCard.querySelector(".product-button").textContent,
+        "articul": closestCard.querySelector(".product-articul").textContent,
+        "price": closestCard.querySelector(".product-price").textContent
+      };
+      var url = "product.html?cartData=".concat(encodeURIComponent(JSON.stringify(cartAlready)));
+      window.location.href = url;
+    });
   });
 }
-
-getProductsPopular();
