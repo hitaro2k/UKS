@@ -9,7 +9,7 @@ const animation = () => {
     userSearch()
     mediaAnim()
     burgerMenu()
-    showCatalog()
+
 }
 
 let catalog = document.querySelector(".catalog-menu")
@@ -117,25 +117,25 @@ export function userSearch() {
     return userSearch
 }
 
-export function showCatalog() {
-    menuItem = document.querySelectorAll('.catalog')
-    let closeCatalog = document.querySelector(".catalog__close-btn")
-    menuItem.forEach((item) => {
-        item.addEventListener("click" ,  () => {
-            catalog.classList.add("catalog-menu__active")
-            if (catalog.classList.contains("catalog-menu__active")) {
-                menu.classList.remove('active');
-                menuBtn.classList.remove('active');
-                menuBtn.classList.remove("fixed")
-                menuBtn.classList.remove("left")
-            }
-        })
-    })
-    closeCatalog.onclick = () => {
-        catalog.classList.remove("catalog-menu__active")
-    }
-    return showCatalog
-}
+// export function showCatalog() {
+//     menuItem = document.querySelectorAll('.catalog')
+//     let closeCatalog = document.querySelector(".catalog__close-btn")
+//     menuItem.forEach((item) => {
+//         item.addEventListener("click" ,  () => {
+//             catalog.classList.add("catalog-menu__active")
+//             if (catalog.classList.contains("catalog-menu__active")) {
+//                 menu.classList.remove('active');
+//                 menuBtn.classList.remove('active');
+//                 menuBtn.classList.remove("fixed")
+//                 menuBtn.classList.remove("left")
+//             }
+//         })
+//     })
+//     closeCatalog.onclick = () => {
+//         catalog.classList.remove("catalog-menu__active")
+//     }
+//     return showCatalog
+// }
 
 animation()
 

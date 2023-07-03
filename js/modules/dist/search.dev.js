@@ -17,7 +17,8 @@ function search() {
         id: item["Код"],
         description: item["Описание"],
         price: item["Цена у.е."],
-        count: item["Наличие"]
+        count: item["Наличие"],
+        image: item["Фото"]
       };
     });
     searchInput.addEventListener('input', function () {
@@ -41,7 +42,14 @@ function search() {
       liName.style.color = "orange";
       liDescription.textContent = item.description;
       liDescription.addEventListener('click', function () {
-        var redirectUrl = "server/product.php?id=".concat(encodeURIComponent(item.id), "&name=").concat(encodeURIComponent(item.name));
+        var cartAlready = {
+          "name": item.description,
+          "articul": item.name,
+          "price": item.price,
+          "id": item.id,
+          "image": item.image
+        };
+        var redirectUrl = "product.html?cartData=".concat(encodeURIComponent(JSON.stringify(cartAlready)));
         window.location.href = redirectUrl;
       });
       searchList.appendChild(ul);

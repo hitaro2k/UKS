@@ -45,9 +45,9 @@ function renderData(data) {
       var cartAlready = {
         "image": closestCard.querySelector(".product-image").src,
         "name": closestCard.querySelector(".product-title").textContent,
-        "button": closestCard.querySelector(".product-button").textContent,
         "articul": closestCard.querySelector(".product-articul").textContent,
-        "price": closestCard.querySelector(".product-price").textContent
+        "price": closestCard.querySelector(".product-price").textContent,
+        "id": closestCard.getAttribute("data-id")
       };
       var url = "product.html?cartData=".concat(encodeURIComponent(JSON.stringify(cartAlready)));
       window.location.href = url;

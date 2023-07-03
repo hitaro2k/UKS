@@ -33,9 +33,9 @@ export function renderData(data) {
       const cartAlready = {
         "image": closestCard.querySelector(".product-image").src,
         "name": closestCard.querySelector(".product-title").textContent,
-        "button": closestCard.querySelector(".product-button").textContent,
         "articul": closestCard.querySelector(".product-articul").textContent,
-        "price": closestCard.querySelector(".product-price").textContent
+        "price": closestCard.querySelector(".product-price").textContent,
+        "id":closestCard.getAttribute("data-id")
       };
 
       const url = `product.html?cartData=${encodeURIComponent(JSON.stringify(cartAlready))}`;

@@ -41,16 +41,6 @@
         "buy": "В кошик",
         "data":"4A"
 
-    },
-    {
-        "id":"5A",
-        "title": "Mazda brakes",
-        "price":1000,
-        "image": "img/tel-alfa-romeo-1600.webp",
-        "status":"В наявності",
-        "articul":"A78D12GAS",
-        "buy": "В кошик",
-        "data":"5A"
-
     }
+
 ]

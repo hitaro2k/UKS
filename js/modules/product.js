@@ -12,14 +12,15 @@ function getProductData() {
       const parsedCartData = JSON.parse(decodeURIComponent(cartData));
 
       const product = `
-        <div class="product">
-        <img src="${parsedCartData.image}" alt="" class="product-img">
+        <div class="product" data-id ="${parsedCartData.id}">
+        <img src="${parsedCartData.image}" alt="" class="product-image">
         <div class="product-content">
-            <p class="product-name">${parsedCartData.name}</p>
+            <p class="product-title">${parsedCartData.name}</p>
             <p class="product__articul">${parsedCartData.articul}</p>
+            <p class= "product-status"> </p>
             <div class="product-buy">
-                <p class="product__price">${parsedCartData.price}</p>
-                <button class="product-btn">${parsedCartData.button}</button>
+                <p class="product-price">${parsedCartData.price}</p>
+                <button class="product-btn" data>Купить </button>
             </div>
         </div>
     </div>

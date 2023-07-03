@@ -12,6 +12,7 @@ export function search() {
       description: item["Описание"],
       price: item["Цена у.е."],
       count: item["Наличие"],
+      image:item["Фото"]
     }));
 
       searchInput.addEventListener('input', () => {
@@ -24,14 +25,23 @@ export function search() {
     function renderList(data) {
       searchList.innerHTML = '';
       data.forEach(item => {
+       
         const ul = document.createElement('ul');
         const liDescription = document.createElement("li")
         const liName = document.createElement("li")
         liName.textContent = item.name
         liName.style.color = "orange"
         liDescription.textContent = item.description;
+        
         liDescription.addEventListener('click', () => {
-          const redirectUrl = `server/product.php?id=${encodeURIComponent(item.id)}&name=${encodeURIComponent(item.name)}`;
+          const cartAlready  = {
+            "name": item.description,
+            "articul": item.name,
+            "price": item.price,
+            "id":item.id,
+            "image":item.image,
+          }
+          const redirectUrl = `product.html?cartData=${encodeURIComponent(JSON.stringify(cartAlready))}`;
           window.location.href = redirectUrl;
           
         });

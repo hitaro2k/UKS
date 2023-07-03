@@ -1,51 +1,57 @@
 @import "../style/mixin.scss";
-
 .main{
-    .content{
-        padding-bottom: 200px;
-        padding-top: 100px;
-        .products__container{
+    .product{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        @include breakpoint(elg){
+            align-items: center;
+        }
+        @include breakpoint(md){
+            flex-direction: column;
+        }
+        .product-image{
+            width: 20%;
             @include breakpoint(md){
-                width: 95%;
+                width: 50%;
             }
-            .product{
+        }
+        .product-content{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            margin-left: 100px;
+            @include breakpoint(md){
+                margin-left: 0px;
+            }
+            .product-title{
+                font-size: 25px;
+            }
+            .product__articul{
+                font-size: 12px;
+                color: gray;
+            }
+            .product-buy{
+                width: 100%;
                 display: flex;
                 flex-direction: row;
-                align-items: flex-start;
-                .product-img{
-                    width: 25%;
-                }
-                .product-content{
-                    width: 70%;
-                    display: flex;
+                align-items: center;
+                justify-content: space-between;
+                @include breakpoint(xs){
                     flex-direction: column;
-                    margin-left: 80px;
-                    .product-name{
-                        font-size: 20px;
-                        color: white;
-                    }
-                    .product__articul{
-                        font-size: 15px;
-                        color: rgb(83, 83, 83);
-                    }
-                    .product-buy{
-                        width: 90%;
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: space-between;
-                        margin-top: 30px;
-                        .product__price{
-                            font-size: 20px;
-                        }
-                        .product-btn{
-                            width: 30%;
-                            border-radius: 3px;
-
-                        }
-                    }
-                  
+                    align-items: flex-start;
+                }
+                .product-price{
+                    font-size: 25px;
+                }
+                .product-btn{
+                    width: 200px;
+                    height: 50px;
+                    border-radius: 5px;
+                    cursor: pointer;
                 }
             }
+
         }
     }
 }

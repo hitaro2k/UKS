@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.burgerMenu = burgerMenu;
 exports.mediaAnim = mediaAnim;
 exports.userSearch = userSearch;
-exports.showCatalog = showCatalog;
 exports["default"] = void 0;
 var menuBtn;
 var menu;
@@ -18,7 +17,6 @@ var animation = function animation() {
   userSearch();
   mediaAnim();
   burgerMenu();
-  showCatalog();
 };
 
 var catalog = document.querySelector(".catalog-menu");
@@ -132,30 +130,26 @@ function userSearch() {
     }
   });
   return userSearch;
-}
+} // export function showCatalog() {
+//     menuItem = document.querySelectorAll('.catalog')
+//     let closeCatalog = document.querySelector(".catalog__close-btn")
+//     menuItem.forEach((item) => {
+//         item.addEventListener("click" ,  () => {
+//             catalog.classList.add("catalog-menu__active")
+//             if (catalog.classList.contains("catalog-menu__active")) {
+//                 menu.classList.remove('active');
+//                 menuBtn.classList.remove('active');
+//                 menuBtn.classList.remove("fixed")
+//                 menuBtn.classList.remove("left")
+//             }
+//         })
+//     })
+//     closeCatalog.onclick = () => {
+//         catalog.classList.remove("catalog-menu__active")
+//     }
+//     return showCatalog
+// }
 
-function showCatalog() {
-  menuItem = document.querySelectorAll("#catalog");
-  var closeCatalog = document.querySelector(".catalog__close-btn");
-  menuItem.forEach(function (item) {
-    item.addEventListener("click", function () {
-      catalog.classList.add("catalog-menu__active");
-
-      if (catalog.classList.contains("catalog-menu__active")) {
-        menu.classList.remove('active');
-        menuBtn.classList.remove('active');
-        menuBtn.classList.remove("fixed");
-        menuBtn.classList.remove("left");
-      }
-    });
-  });
-
-  closeCatalog.onclick = function () {
-    catalog.classList.remove("catalog-menu__active");
-  };
-
-  return showCatalog;
-}
 
 animation();
 var _default = animation;

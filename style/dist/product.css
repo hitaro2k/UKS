@@ -4,48 +4,66 @@
   margin: 0 auto;
 }
 
-.main .content {
-  padding-bottom: 200px;
-  padding-top: 100px;
-}
-@media (max-width: 768px) {
-  .main .content .products__container {
-    width: 95%;
-  }
-}
-.main .content .products__container .product {
+.main .product {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
 }
-.main .content .products__container .product .product-img {
-  width: 25%;
+@media (max-width: 1200px) {
+  .main .product {
+    align-items: center;
+  }
 }
-.main .content .products__container .product .product-content {
-  width: 70%;
+@media (max-width: 768px) {
+  .main .product {
+    flex-direction: column;
+  }
+}
+.main .product .product-image {
+  width: 20%;
+}
+@media (max-width: 768px) {
+  .main .product .product-image {
+    width: 50%;
+  }
+}
+.main .product .product-content {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  margin-left: 80px;
+  margin-left: 100px;
 }
-.main .content .products__container .product .product-content .product-name {
-  font-size: 20px;
-  color: white;
+@media (max-width: 768px) {
+  .main .product .product-content {
+    margin-left: 0px;
+  }
 }
-.main .content .products__container .product .product-content .product__articul {
-  font-size: 15px;
-  color: #535353;
+.main .product .product-content .product-title {
+  font-size: 25px;
 }
-.main .content .products__container .product .product-content .product-buy {
-  width: 90%;
+.main .product .product-content .product__articul {
+  font-size: 12px;
+  color: gray;
+}
+.main .product .product-content .product-buy {
+  width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  margin-top: 30px;
 }
-.main .content .products__container .product .product-content .product-buy .product__price {
-  font-size: 20px;
+@media (max-width: 480px) {
+  .main .product .product-content .product-buy {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
-.main .content .products__container .product .product-content .product-buy .product-btn {
-  width: 30%;
-  border-radius: 3px;
+.main .product .product-content .product-buy .product-price {
+  font-size: 25px;
+}
+.main .product .product-content .product-buy .product-btn {
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  cursor: pointer;
 }

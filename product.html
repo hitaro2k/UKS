@@ -54,65 +54,135 @@
             </ul>
           </div>
 
-        <div class="form-order__background">
-            <form action="" class="form-order">
-                <div class="close-form__wrapper">
-                    <object data="close" type="image/svg+xml" class="close-form">
-                        <svg width="20" height="20" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill="white" d="M8.25538 6.73346L13.1508 1.83808C13.5692 1.41962 13.5692 0.736539 13.1508 0.315001C12.7323 -0.106537 12.0462 -0.10346 11.6277 0.315001L6.73231 5.21039L1.83692 0.315001C1.41846 -0.10346 0.735385 -0.10346 0.313846 0.315001C-0.104615 0.736539 -0.104615 1.41962 0.313846 1.83808L5.20923 6.73346L0.313846 11.6288C-0.104615 12.0473 -0.104615 12.7304 0.313846 13.1519C0.732308 13.5735 1.41846 13.5704 1.83692 13.1519L6.73231 8.25654L11.6277 13.1519C11.8369 13.3612 12.1138 13.4658 12.3908 13.4658C12.6677 13.4658 12.9415 13.3612 13.1508 13.1519C13.5692 12.7335 13.5692 12.0504 13.1508 11.6288L8.25538 6.73346Z" fill="black"/>
-                        </svg>
-                    </object>
-                </div>
-               
-                <div class="form-content">
-                    <div class="block__product-price">
-        
-                    </div>
-                    <div class="personal-info">
-                        <div class="info-input__wrapper">
-                            <input placeholder="Імя" type="text" class="info-input">
-                        </div>
-                        <div class="info-input__wrapper">
-                            <input placeholder="Прізвище" type="text" class="info-input">
-                        </div>
-                        <div class="info-input__wrapper">
-                            <input placeholder="Номер телефону" type="text" class="info-input">
-                        </div>
+          <div class="form-order__background">
+            <form action="GET" class="form-order">
+              <div class="close-form__wrapper">
+                <object data="close" type="image/svg+xml" class="close-form">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill="white"
+                      d="M8.25538 6.73346L13.1508 1.83808C13.5692 1.41962 13.5692 0.736539 13.1508 0.315001C12.7323 -0.106537 12.0462 -0.10346 11.6277 0.315001L6.73231 5.21039L1.83692 0.315001C1.41846 -0.10346 0.735385 -0.10346 0.313846 0.315001C-0.104615 0.736539 -0.104615 1.41962 0.313846 1.83808L5.20923 6.73346L0.313846 11.6288C-0.104615 12.0473 -0.104615 12.7304 0.313846 13.1519C0.732308 13.5735 1.41846 13.5704 1.83692 13.1519L6.73231 8.25654L11.6277 13.1519C11.8369 13.3612 12.1138 13.4658 12.3908 13.4658C12.6677 13.4658 12.9415 13.3612 13.1508 13.1519C13.5692 12.7335 13.5692 12.0504 13.1508 11.6288L8.25538 6.73346Z"
+                      
+                    />
+                  </svg>
+                </object>
+              </div>
     
-                        <div class="post-office">
-                            <div class="post-office__office">
-                                <label for="" class="label-form" id="checkbox1">
-                                    <input class="input-form" type="checkbox">
-                                    <object data="" type="" class="form-img__wrapper" id="form-check1">
-                                        <img class="form-img" src="/img/checkmark.svg" alt="">
-                                    </object>
-                                </label>
-                                <div class="info-input__wrapper" id="info-input__post-office">
-                                    <input placeholder="Номер відділу" type="text" class="info-input">
-                                </div>
-                            </div>
-                            
-                            <div class="post-office__self">
-                                <label for="" class="label-form" id="checkbox2">
-                                    <input class="input-form" type="checkbox">
-                                    <object data="" type="" class="form-img__wrapper" id="form-check2">
-                                        <img class="form-img" src="/img/checkmark.svg" alt="">
-                                    </object>
-                                </label>
-                                <div class="info-input__wrapper" id="info-input__post-office-self">
-                                    <input placeholder="Самовивіз" type="text" class="info-input">
-                                </div>
-                            </div>
-                           
-                        </div>
-                        <textarea placeholder="Залиште ваш комментар" name="" id="" cols="30" rows="10" class="user-comm" style="resize: none;"></textarea>
-                        
-                    </div>
+              <div class="form-content">
+                <div class="block__product">
+                  <div class="block__product-item"></div>
+                  <div class="block__product-price"></div>
+                  <button class="to-response">Оплатить</button>
                 </div>
-
+    
+                <div class="personal-info">
+                  <div class="info-input__wrapper">
+                    <input placeholder="Імя" type="text" class="info-input" />
+                  </div>
+                  <div class="info-input__wrapper">
+                    <input placeholder="Прізвище" type="text" class="info-input" />
+                  </div>
+                  <div class="info-input__wrapper">
+                    <input
+                      placeholder="Номер телефону"
+                      type="text"
+                      class="info-input"
+                    />
+                  </div>
+    
+                  <div class="post-office">
+                    <div class="post-office__office">
+                      <label for="inputCheck1" class="label-form" id="checkbox1">
+                        <input class="input-form" type="checkbox" id="inputCheck1" />
+                        <object
+                          class="form-img__wrapper"
+                          id="form-check1"
+                          data="img.svg"
+                          type="img/svg"
+                        >
+                          <img class="form-img" src="./img/checkmark.svg" alt="" />
+                        </object>
+                      </label>
+                      <div class="info-input__wrapper" id="info-input__post-office">
+                        <input
+                          placeholder="Номер відділу"
+                          type="text"
+                          class="info-input"
+                        />
+                      </div>
+                    </div>
+    
+                    <div class="post-office__self">
+                      <label for="inputCheck2" class="label-form" id="checkbox2">
+                        <input class="input-form" type="checkbox" id="inputCheck2" />
+                        <object
+                          class="form-img__wrapper"
+                          id="form-check2"
+                          data="img.svg"
+                          type="img/svg"
+                        >
+                          <img class="form-img" src="./img/checkmark.svg" alt="" />
+                        </object>
+                      </label>
+                      <div
+                        class="info-input__wrapper"
+                        id="info-input__post-office-self"
+                      >
+                        <input
+                          placeholder="Самовивіз"
+                          type="text"
+                          class="info-input"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <textarea
+                    placeholder="Залиште ваш комментар"
+                    cols="30"
+                    rows="10"
+                    class="user-comm"
+                    style="resize: none"
+                  ></textarea>
+                </div>
+              </div>
             </form>
-           
-        </div>
+          </div>
+    
+          <div class="form-response">
+            <h3 class="form-response__title">Ваша заявка успiшно оброблена</h3>
+            <div class="form-response__text">
+              <p class="form-response__subtitle">
+                Якщо ми не відповідаємо більше 2х днів, напишіть нам у телеграм
+              </p>
+              <a href="" class="form-response__link">
+                <img
+                  class="form-response__link-image"
+                  src="./img/telegram_logo.webp"
+                  alt=""
+                />
+              </a>
+            </div>
+          </div>
+    
+          <form class="form-payment">
+            <div class="pay-img" id="image-container">
+              <input class="pay-input" type="file" />
+            </div>
+            <div class="access">
+              <img class="access-img" src="./img/access.png" alt="acces" />
+            </div>
+            <div class="error">
+              <img class="error-img" src="./img/error.png" alt="error" />
+            </div>
+    
+            <button class="accept-btn">Подтвердить</button>
+          </form>
         
 
         <!-- <div class="catalog-menu">

@@ -67,11 +67,11 @@ export function views() {
         isclear.style.display = "none";
         let formPrice;
         let added = card.getAttribute("data-added");
-
+        
         if (added === "true") {
           return;
         }
-
+     
         added = "true";
         card.setAttribute("data-added", added);
 
@@ -113,6 +113,7 @@ export function views() {
 
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
+    
 
         /* -----------------------------------------------------------------------*/
         /*                                  FORM                                  */
@@ -251,7 +252,7 @@ export function views() {
             });
             
           });
-
+          showPayment.style.display = "block"
           let paymentAccept = document.querySelector(".accept-btn");
           let formAcces = document.querySelector(".form-response");
 
@@ -259,9 +260,10 @@ export function views() {
             e.preventDefault();
             formAcces.style.display = "flex";
             setTimeout(function () {
+              
               formAcces.style.display = "none";
               formProductPrice.innerHTML = "";
-              formProductItem.innerHTML = "";
+
               isclear.style.display = "flex";
               cartWrapper.style.display = "none";
               totalPrice.style.display = "none";
@@ -278,6 +280,11 @@ export function views() {
           productInfo.count = 0;
           let itemInCount = document.querySelector(".item-count");
           itemInCount.innerHTML = productInfo.count;
+          formProductItem.innerHTML = ""
+          card.removeAttribute("data-added")
+          removeCartItem(productId);
+          updateTotalPrice()
+          localStorage.removeItem("cartItems");
         }
 
         /* -------------------------------------------------------------------------*/
@@ -345,6 +352,7 @@ export function views() {
 
         function updateTotalPrice() {
           const itemPrices = document.querySelectorAll(".item-price");
+          console.log(itemPrices)
           let totalPriceCash = 0;
           itemPrices.forEach(function (item) {
             const productId = item
@@ -356,6 +364,8 @@ export function views() {
           document.querySelector(".total-price__text").innerHTML =
             totalPriceCash + " грн";
         }
+       
+
         updateTotalPrice();
         formOrder();
       }

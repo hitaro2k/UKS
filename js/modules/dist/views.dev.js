@@ -201,6 +201,7 @@ function views() {
               }
             });
           });
+          showPayment.style.display = "block";
           var paymentAccept = document.querySelector(".accept-btn");
           var formAcces = document.querySelector(".form-response");
           paymentAccept.addEventListener("click", function (e) {
@@ -209,7 +210,6 @@ function views() {
             setTimeout(function () {
               formAcces.style.display = "none";
               formProductPrice.innerHTML = "";
-              formProductItem.innerHTML = "";
               isclear.style.display = "flex";
               cartWrapper.style.display = "none";
               totalPrice.style.display = "none";
@@ -226,6 +226,11 @@ function views() {
           productInfo.count = 0;
           var itemInCount = document.querySelector(".item-count");
           itemInCount.innerHTML = productInfo.count;
+          formProductItem.innerHTML = "";
+          card.removeAttribute("data-added");
+          removeCartItem(productId);
+          updateTotalPrice();
+          localStorage.removeItem("cartItems");
         };
         /* -------------------------------------------------------------------------*/
 
@@ -246,6 +251,7 @@ function views() {
 
         var updateTotalPrice = function updateTotalPrice() {
           var itemPrices = document.querySelectorAll(".item-price");
+          console.log(itemPrices);
           var totalPriceCash = 0;
           itemPrices.forEach(function (item) {
             var productId = item.closest(".item").querySelector(".button-primary__plus").dataset.id;
