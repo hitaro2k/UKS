@@ -686,7 +686,7 @@ li {
     margin: 0 auto;
     animation: opacity;
     animation-iteration-count: infinite;
-    animation-duration: 4s;
+    animation-duration: 2s;
     padding-bottom: 30px;
 
     @include breakpoint(elg) {
@@ -812,7 +812,7 @@ li {
       }
 
       .isclear {
-        display: flex;
+        display: none;
         flex-direction: column;
         align-items: center;
         padding-top: 80px;
@@ -860,7 +860,7 @@ li {
 
       .isntclear {
         width: 100%;
-        display: none;
+        display: flex;
         flex-direction: column;
         gap: 30px 0px;
 
@@ -899,7 +899,7 @@ li {
     }
 
     .total-price__wrapper {
-      display: none;
+      display: flex;
       flex-direction: row;
       justify-content: space-between;
       background-color: #161616;
@@ -981,518 +981,56 @@ li {
 
   .full-screen {
     position: relative;
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    overflow: hidden;
     @include breakpoint(md){
       flex-direction: column;
       align-items: center;
     }
-    .full-screen__selected-items{
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.175) 0%, rgba(255, 255, 255, 0.175) 100%);
-      border-radius: 0px 5px 5px 0px;
-      margin-top: 50px;
-      width: 10%;
-      @include breakpoint(md){
-        border-radius: 5px;
-        width: 50%;
-      }
-      .mark-selected{
-        margin-top: 20px;
-        cursor: pointer;
-        .item-wrapper{
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        img{
-          width: 50%;
-          
-        }
-      }
-      .year-selected{
-        cursor: pointer;
-      }
-      .model-selected{
-        cursor: pointer;
-      }
-      .body-selected{
-        cursor: pointer;
-      }
-      .engine-selected{
-        cursor: pointer;
-      }
+    .slider-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
     }
-    .full-screen__container {
-      .full-screen__body {
-        width: 80%;
-        position: relative;
-        z-index: 1;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.175) 0%,
-          rgba(255, 255, 255, 0.175) 100%
-        );
-        border-radius: 5px;
-        margin: 0 auto;
-        margin-top: 50px;
-        @include breakpoint(sm) {
-          width: 100%;
+    
+    .slider {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      white-space: nowrap;
+      gap: 0px 80px;
+      animation: marquee 15s linear infinite;
+      .slider:hover {
+        animation-play-state: paused;
+      }
+      
+      .slider-item {
+        display: inline-block;
+        margin-right: 10px;
+        .slider-img {
+          width: 200px; 
         }
-        .full-screen__body__mark-items {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          .mark-items__top {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            width: 100%;
-            justify-content: space-around;
-            .selected-mark {
-              display: none;
-              flex-direction: column;
-              align-items: center;
-              .item-wrapper {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 215px;
-                height: 140px;
-                border: 2px solid #ffffff;
-                border-radius: 3px;
-                transition: transform 0.3s ease-in-out;
-                margin-bottom: 30px;
-                margin-top: 30px;
-                cursor: pointer;
+      }
+      
+      
+    }
 
-                &:hover {
-                  transform: scale(1.1);
-                  @include breakpoint(md) {
-                    transform: none;
-                  }
-                }
+    .marquee:hover {
+      animation-play-state: paused;
+    }
 
-                &:not(:hover) {
-                  transition: transform 0.3s ease-in-out;
-                  transform: scale(1);
-                  @include breakpoint(md) {
-                    transform: none;
-                  }
-                }
-
-                .mark-item {
-                  width: 150px;
-                }
-              }
-              .select__buttons {
-                display: flex;
-                flex-direction: row;
-                gap: 0px 30px;
-                @include breakpoint(sm){
-                  flex-direction: column;
-                }
-                .back__select {
-                  width: 200px;
-                  height: 40px;
-                  background-color: #d28711;
-                  color: white;
-                  border-radius: 5px;
-                  margin-bottom: 50px;
-                  cursor: pointer;
-                  transition: background-color 0.5s, color 0.5s;
-                  display: none;
-                }
-                .mark-items__markbtn {
-                  width: 200px;
-                  height: 40px;
-                  background-color: #d28711;
-                  color: white;
-                  border-radius: 5px;
-                  margin-bottom: 50px;
-                  cursor: pointer;
-                  transition: background-color 0.5s, color 0.5s;
-                  display: none;
-                }
-              }
-            }
-            .mark-wrapper {
-              display: flex;
-              flex-direction: column;
-              width: 100%;
-              .items-wrapper {
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: 0px 20px;
-                justify-content: center;
-                @include breakpoint(md) {
-                  flex-direction: column;
-                  transition: 0s;
-                }
-                .item-wrapper {
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  width: 215px;
-                  height: 140px;
-                  border: 2px solid #ffffff;
-                  border-radius: 3px;
-                  transition: transform 0.3s ease-in-out;
-                  margin-bottom: 30px;
-                  margin-top: 30px;
-                  cursor: pointer;
-
-                  &:hover {
-                    transform: scale(1.1);
-                    @include breakpoint(md) {
-                      transform: none;
-                    }
-                  }
-
-                  &:not(:hover) {
-                    transition: transform 0.3s ease-in-out;
-                    transform: scale(1);
-                    @include breakpoint(md) {
-                      transform: none;
-                    }
-                  }
-
-                  .mark-item {
-                    width: 75%;
-                  }
-                }
-              }
-            }
-            
-          }
-
-          .mark-items__markbtn {
-            width: 200px;
-            height: 40px;
-            background-color: #d28711;
-            color: white;
-            border-radius: 5px;
-            margin-bottom: 50px;
-            cursor: pointer;
-            transition: background-color 0.5s, color 0.5s;
-            display: none;
-          }
-        }
-
-        .full-screen__body__year-items {
-          display: none;
-          flex-direction: row;
-          justify-content: center;
-          gap: 0px 20px;
-          width: 100%;
-          height: 100%;
-          
-          .year-items__top {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            justify-content: center;
-            .year-columns {
-              display: flex;
-              flex-direction: row;
-              gap: 0px 30px;
-              @include breakpoint(md){
-                gap: 0px 20px;
-              }
-              @include breakpoint(sm){
-                gap: 0px 10px;
-              }
-              .year-column {
-                display: flex;
-                flex-direction: column;
-                gap: 20px 0px;
-                .year-item {
-                  cursor: pointer;
-                  @include breakpoint(sm){
-                    font-size: 12px;
-                  }
-                }
-              }
-            }
-            .year__text-select {
-              font-size: 30px;
-            }
-          }
-          .selected-year{
-            width: 100%;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            .selected-item__year {
-              justify-content: center;
-            }
-            .select__buttons {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              gap: 0px 30px;
-              margin-bottom: 40px;
-              justify-content: space-between;
-              @include breakpoint(sm){
-                width: 80%;
-              }
-              .back__select {
-                width: 200px;
-                height: 40px;
-                background-color: #d28711;
-                color: white;
-                border-radius: 5px;
-                @include breakpoint(sm){
-                  width: 40%;
-                }
-  
-                cursor: pointer;
-                transition: background-color 0.5s, color 0.5s;
-                display: none;
-              }
-  
-              .mark-items__yearbtn {
-                width: 200px;
-                height: 40px;
-                background-color: #d28711;
-                color: white;
-                border-radius: 5px;
-  
-                cursor: pointer;
-                transition: background-color 0.5s, color 0.5s;
-                display: none;
-                @include breakpoint(sm){
-                  width: 40%;
-                  font-size: 11px;
-                }
-              }
-            }
-          }
-          
-        }
-
-        .full-screen__body__model-items {
-          display: none;
-          justify-content: center;
-          width: 100%;
-          .model-wrapper {
-            display: flex;
-            width: 80%;
-            flex-direction: row;
-            gap: 0px 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            .model-item{
-              cursor: pointer;
-            }
-          }
-          .selected-model{
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            .selected-item__model{
-              .model-item__selected{
-                font-size: 23px;
-              }
-            }
-            .select__buttons {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              gap: 0px 30px;
-              margin-bottom: 40px;
-              width: 100%;
-              justify-content: center;
-              .back__select {
-                width: 200px;
-                height: 40px;
-                background-color: #d28711;
-                color: white;
-                border-radius: 5px;
-  
-                cursor: pointer;
-                transition: background-color 0.5s, color 0.5s;
-                display: none;
-                @include breakpoint(sm){
-                  width: 40%;
-                }
-              }
-  
-              .mark-items__autobtn {
-                width: 200px;
-                height: 40px;
-                background-color: #d28711;
-                color: white;
-                border-radius: 5px;
-  
-                cursor: pointer;
-                transition: background-color 0.5s, color 0.5s;
-                display: none;
-                @include breakpoint(sm){
-                  width: 40%;
-                }
-              }
-            }
-          }
-        }
-
-        .full-screen__body__body-items{
-          width: 90%;
-          display: none;
-          flex-direction: column;
-          align-items: center;
-          .body-wrapper{
-            width: 90%;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0px 20px;
-            .body-item{
-              cursor: pointer;
-              font-size: 20px;
-            }
-          }
-          .selected-body{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            .selected-item__body{
-              .body-item{
-                font-size: 20px;
-              }
-            }
-            .select__buttons {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              gap: 0px 30px;
-              margin-bottom: 40px;
-              width: 100%;
-              justify-content: center;
-              .back__select {
-                width: 200px;
-                height: 40px;
-                background-color: #d28711;
-                color: white;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background-color 0.5s, color 0.5s;
-                display: none;    
-                @include breakpoint(sm){
-                  width: 40%;
-                }        
-              }
-  
-              .mark-items__bodybtn {
-                width: 200px;
-                height: 40px;
-                background-color: #d28711;
-                color: white;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background-color 0.5s, color 0.5s;
-                display: none;   
-                @include breakpoint(sm){
-                  width: 40%;
-                  font-size: 11px;
-                }          
-               }
-            }
-          }
-         
-        }
-        .full-screen__body__engine-items {
-          display: none;
-          .engine-wrapper{
-            display: flex;
-            flex-direction: column;
-            .type-engine{
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              gap: 0px 20px;
-              color: white;
-              font-weight: 600;
-              .engine-item{
-                font-weight: 400;
-                cursor: pointer;
-              }
-            }
-
-          }
-          .selected-engine{
-         
-            .selected-item__engine{
-              display: flex;
-              flex-direction: column;
-              align-items: center;            
-              .engine-item{
-                font-size: 20px;
-              }
-            }
-          }
-          
-          
-          .select__buttons {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 0px 30px;
-            width: 100%;
-            margin-bottom: 40px;
-            justify-content: center;
-            .back__select {
-              width: 60%;
-              height: 40px;
-              background-color: #d28711;
-              color: white;
-              border-radius: 5px;
-              cursor: pointer;
-              transition: background-color 0.5s, color 0.5s;
-              display: none; 
-              @include breakpoint(sm){
-                width: 40%;
-                font-size: 12px;
-              }            
-            }
-
-            .mark-items__enginebtn {
-              width: 60%;
-              height: 40px;
-              background-color: #d28711;
-              color: white;
-              border-radius: 5px;
-              cursor: pointer;
-              transition: background-color 0.5s, color 0.5s;
-              display: none;  
-              @include breakpoint(sm){
-                width: 40%;
-                font-size: 11px;
-              }             
-             }
-          }
-        }
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
       }
     }
   }
-
   .full-screen__bg{
     position: fixed;
     top: 0;
@@ -1846,8 +1384,6 @@ li {
       transform: translateX(0%) !important;
     }
   }
-
-  
 
   .cart-active {
     transform: translateX(101%);
