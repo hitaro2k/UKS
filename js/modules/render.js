@@ -2,7 +2,8 @@ const popularContainer = document.querySelector("#popular__container");
 
 export async function getProductsPopular() {
   const response = await fetch("./js/modules/popular.json")
-  
+  let documentHTML = document.querySelector("html")
+ 
   const productArray = await response.json();
   productArray.forEach((item) => {
     const productHTML = `
@@ -21,7 +22,7 @@ export async function getProductsPopular() {
             </div>
         </div>`
     popularContainer.insertAdjacentHTML("beforeend", productHTML)
-    
+    documentHTML.setAttribute("load" ,true)
   })
   const productTitle = document.querySelectorAll(".product-title")
   renderData(productTitle)

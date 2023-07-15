@@ -9,7 +9,7 @@ const animation = () => {
     userSearch()
     mediaAnim()
     burgerMenu()
-
+    slide()
 }
 
 let catalog = document.querySelector(".catalog-menu")
@@ -25,7 +25,7 @@ export function burgerMenu() {
         menu.style.display = "flex"
         cartMenu.classList.remove("cart-active")
         documentHTML.style.position = "static"
-        catalog.classList.remove("catalog-menu__active")
+        
         if (menuBtn.classList.contains("active")) {
             menuBtn.classList.add("fixed")
             menuBtn.classList.add("left")
@@ -116,7 +116,22 @@ export function userSearch() {
     });
     return userSearch
 }
+export function slide(){
+    const slider = document.querySelector('.slider');
+    const slideItem = document.querySelectorAll(".slider-item")
 
+    slideItem.forEach(item =>{
+        item.addEventListener('mouseenter', function() {
+            slider.style.animationPlayState = 'paused';
+        });
+        item.addEventListener('mouseleave', function() {
+            slider.style.animationPlayState = 'running';
+        });
+    })
+  
+    
+   
+}
 // export function showCatalog() {
 //     menuItem = document.querySelectorAll('.catalog')
 //     let closeCatalog = document.querySelector(".catalog__close-btn")
