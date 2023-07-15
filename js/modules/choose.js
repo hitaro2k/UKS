@@ -8,18 +8,18 @@ const chooseProduct = () => {
     const markItemsBlock = document.querySelector(
       ".full-screen__body__mark-items"
     );
-   
+
     const yearItemsBlock = document.querySelector(
       ".full-screen__body__year-items"
     );
-    const selectYear = document.querySelector(".selected-year")
+    const selectYear = document.querySelector(".selected-year");
     const yearItems = document.querySelectorAll(".year-item");
     const yearWrapper = document.querySelector(".year-columns");
 
     const modelItemsBlock = document.querySelector(
       ".full-screen__body__model-items"
     );
-    
+
     const modelWrapper = document.querySelector(".model-wrapper");
 
     const bodyItemsBlock = document.querySelector(
@@ -30,7 +30,7 @@ const chooseProduct = () => {
     const engineItemsBlock = document.querySelector(
       ".full-screen__body__engine-items"
     );
-    const engineWrapper = document.querySelector(".engine-wrapper")
+    const engineWrapper = document.querySelector(".engine-wrapper");
 
     /* -------------------------------------------------------------------------- */
     /*                                   Buttons                                  */
@@ -43,9 +43,9 @@ const chooseProduct = () => {
     const modelBtn = document.querySelector(".mark-items__autobtn");
     const bodyBtn = document.querySelector(".mark-items__bodybtn");
     const backBodyBtn = document.getElementById("to-body");
-    const engineBtn = document.querySelector(".mark-items__enginebtn")
-    const backEngineBtn = document.getElementById("to-engine")
-    
+    const engineBtn = document.querySelector(".mark-items__enginebtn");
+    const backEngineBtn = document.getElementById("to-engine");
+
     const allBtn = [
       markBtn,
       yearBtn,
@@ -59,18 +59,18 @@ const chooseProduct = () => {
     /* -------------------------------------------------------------------------- */
     /*                                    Block                                   */
     /* -------------------------------------------------------------------------- */
-    
+
     const markBlock = document.querySelector(".select-item");
     const yearBlock = document.querySelector(".selected-item__year");
     const modelBlock = document.querySelector(".selected-item__model");
     const bodyBlock = document.querySelector(".selected-item__body");
-    const engineBlock = document.querySelector(".selected-item__engine")
-    const selectModelBlock = document.querySelector(".selected-model")
-    const markSelected = document.querySelector(".mark-selected")
-    const yearSelected = document.querySelector(".year-selected")
-    const modelSelected = document.querySelector(".model-selected")
-    const bodySelected = document.querySelector(".body-selected")
-    const engineSelected = document.querySelector(".engine-selected")
+    const engineBlock = document.querySelector(".selected-item__engine");
+    const selectModelBlock = document.querySelector(".selected-model");
+    const markSelected = document.querySelector(".mark-selected");
+    const yearSelected = document.querySelector(".year-selected");
+    const modelSelected = document.querySelector(".model-selected");
+    const bodySelected = document.querySelector(".body-selected");
+    const engineSelected = document.querySelector(".engine-selected");
     function searchAuto() {
       function returnAutoJson(item) {
         let suitableAuto = {
@@ -78,25 +78,22 @@ const chooseProduct = () => {
           year: "",
           model: "",
           body: "",
-          engine: ""
+          engine: "",
         };
-    
-    
-       
+
         let itemAttr = null;
 
-        itemsWrapper.forEach( (item) => {
-          item.removeEventListener("click",handleMark); 
-          item.addEventListener("click",handleMark); 
+        itemsWrapper.forEach((item) => {
+          item.removeEventListener("click", handleMark);
+          item.addEventListener("click", handleMark);
         });
-        function handleMark(){
+        function handleMark() {
           itemAttr = this.getAttribute("data-mark");
           suitableAuto.mark = itemAttr;
           markWrapper.style.display = "none";
-          selectBlock.style.display = "flex";            
-          const markItemSrc = this
-            .querySelector(".mark-item")
-            .getAttribute("src");
+          selectBlock.style.display = "flex";
+          const markItemSrc =
+            this.querySelector(".mark-item").getAttribute("src");
           let markItem = `  
           <div class="item-wrapper" data-mark = "${itemAttr}">
               <img class="mark-item" src="${markItemSrc}" alt="">
@@ -104,46 +101,43 @@ const chooseProduct = () => {
           `;
           backMarkBtn.style.display = "block";
           markBtn.style.display = "block";
-          markSelected.addEventListener("click" , () =>{
+          markSelected.addEventListener("click", () => {
             markItemsBlock.style.display = "flex";
-            markBlock.style.display = "flex"
-            suitableAuto.mark = ""
-            yearItemsBlock.style.display = "none"
-            modelItemsBlock.style.display = "none"
-            bodyItemsBlock.style.display = "none"
-            engineItemsBlock.style.display = "none"
-            yearBlock.style.display = "none" 
-            modelBlock.style.display = "none"
-            bodyBlock.style.display = "none"
-            engineBlock.style.display = "none"
-            markSelected.classList.add("active")
-          })
+            markBlock.style.display = "flex";
+            suitableAuto.mark = "";
+            yearItemsBlock.style.display = "none";
+            modelItemsBlock.style.display = "none";
+            bodyItemsBlock.style.display = "none";
+            engineItemsBlock.style.display = "none";
+            yearBlock.style.display = "none";
+            modelBlock.style.display = "none";
+            bodyBlock.style.display = "none";
+            engineBlock.style.display = "none";
+            markSelected.classList.add("active");
+          });
 
           markSelected.insertAdjacentHTML("beforeend", markItem);
           markBlock.insertAdjacentHTML("beforeend", markItem);
-          markBtn.addEventListener("click" , handleMarkBtnClick)
-          backMarkBtn.addEventListener("click" , handleBackMarkBtnClick)
+          markBtn.addEventListener("click", handleMarkBtnClick);
+          backMarkBtn.addEventListener("click", handleBackMarkBtnClick);
         }
         function handleBackMarkBtnClick() {
-          console.log(suitableAuto)
-         
+          console.log(suitableAuto);
+
           markWrapper.style.display = "block";
           selectBlock.style.display = "none";
           markBlock.innerHTML = "";
           suitableAuto.mark = "";
           markSelected.innerHTML = "";
         }
-        
+
         function handleMarkBtnClick() {
           yearItemsBlock.style.display = "flex";
           markItemsBlock.style.display = "none";
           yearBlock.style.display = "flex";
-          console.log(suitableAuto)
-         
+          console.log(suitableAuto);
         }
-        
-      
-     
+
         yearItems.forEach((item) => {
           item.addEventListener("click", () => {
             let yearValue = item.textContent;
@@ -152,32 +146,32 @@ const chooseProduct = () => {
             backYearBtn.style.display = "block";
             let yearItemSrc = `<p class="year__text-select">${yearValue}</p>`;
             yearSelected.insertAdjacentHTML("beforeend", yearItemSrc);
-            
+
             yearBlock.insertAdjacentHTML("beforeend", yearItemSrc);
             yearBlock.style.display = "flex";
-           
-            yearSelected.addEventListener("click" , () =>{
+
+            yearSelected.addEventListener("click", () => {
               yearItemsBlock.style.display = "flex";
-              yearBlock.style.display = "flex"
-              suitableAuto.year= ""
-              markItemsBlock.style.display = "none"
-              modelItemsBlock.style.display = "none"
-              bodyItemsBlock.style.display = "none"
-              engineItemsBlock.style.display = "none"
-              markBlock.style.display = "none"
-              modelBlock.style.display = "none"
-              bodyBlock.style.display = "none"
-              engineBlock.style.display = "none"
-              console.log(suitableAuto)
-            })
+              yearBlock.style.display = "flex";
+              suitableAuto.year = "";
+              markItemsBlock.style.display = "none";
+              modelItemsBlock.style.display = "none";
+              bodyItemsBlock.style.display = "none";
+              engineItemsBlock.style.display = "none";
+              markBlock.style.display = "none";
+              modelBlock.style.display = "none";
+              bodyBlock.style.display = "none";
+              engineBlock.style.display = "none";
+              console.log(suitableAuto);
+            });
             selectYear.style.display = "flex";
             yearWrapper.style.display = "none";
             backYearBtn.addEventListener("click", handleBackYearBtnClick);
           });
         });
-        
+
         yearBtn.addEventListener("click", handleYearBtnClick);
-        
+
         function handleBackYearBtnClick() {
           yearWrapper.style.display = "flex";
           yearBlock.style.display = "none";
@@ -186,21 +180,21 @@ const chooseProduct = () => {
           backYearBtn.style.display = "none";
           suitableAuto.year = "";
           selectYear.style.display = "none";
-          yearSelected.innerHTML = "" 
-          modelWrapper.innerHTML = ""
-          console.log(suitableAuto)
+          yearSelected.innerHTML = "";
+          modelWrapper.innerHTML = "";
+          console.log(suitableAuto);
         }
-        
+
         function handleYearBtnClick() {
           yearItemsBlock.style.display = "none";
           modelItemsBlock.style.display = "flex";
           modelBlock.style.display = "flex";
-          console.log(suitableAuto)
+          console.log(suitableAuto);
           returnModel();
         }
-        
+
         async function returnModel() {
-         await fetch("js/auto.json")
+          await fetch("js/auto.json")
             .then((res) => res.json())
             .then((data) => {
               const findMark = data.find((item) => item[suitableAuto.mark]);
@@ -221,49 +215,49 @@ const chooseProduct = () => {
         function selectModel() {
           const modelItems = document.querySelectorAll(".model-item");
           modelItems.forEach((item) => {
-            item.removeEventListener("click", handleModelItemClick); 
-            item.addEventListener("click", handleModelItemClick); 
+            item.removeEventListener("click", handleModelItemClick);
+            item.addEventListener("click", handleModelItemClick);
           });
         }
-        
+
         function handleModelItemClick() {
-          let userSelectedModel = `<p class="model-item__selected">${this.textContent}</p>`; 
+          let userSelectedModel = `<p class="model-item__selected">${this.textContent}</p>`;
           suitableAuto.model = this.textContent;
           modelBtn.style.display = "block";
           backModelBtn.style.display = "block";
           modelSelected.insertAdjacentHTML("beforeend", userSelectedModel);
           modelBlock.insertAdjacentHTML("beforeend", userSelectedModel);
-          modelSelected.addEventListener("click" , () =>{
+          modelSelected.addEventListener("click", () => {
             modelItemsBlock.style.display = "flex";
-            modelBlock.style.display = "flex"
-            suitableAuto.model = ""
-            yearItemsBlock.style.display = "none"
-            bodyItemsBlock.style.display = "none"
-            engineItemsBlock.style.display = "none"
-            yearBlock.style.display = "none" 
-            bodyBlock.style.display = "none"
-            engineBlock.style.display = "none"
+            modelBlock.style.display = "flex";
+            suitableAuto.model = "";
+            yearItemsBlock.style.display = "none";
+            bodyItemsBlock.style.display = "none";
+            engineItemsBlock.style.display = "none";
+            yearBlock.style.display = "none";
+            bodyBlock.style.display = "none";
+            engineBlock.style.display = "none";
 
-            console.log(suitableAuto)
-          })
+            console.log(suitableAuto);
+          });
           modelBlock.style.display = "flex";
           modelWrapper.style.display = "none";
           selectModelBlock.style.display = "flex";
           modelBtn.addEventListener("click", handleModelBtnClick);
           backModelBtn.addEventListener("click", handleBackModelBtnClick);
         }
-        
+
         function handleModelBtnClick() {
           modelItemsBlock.style.display = "none";
           bodyItemsBlock.style.display = "flex";
-          bodyBlock.style.display = "flex"
-          console.log(suitableAuto)
+          bodyBlock.style.display = "flex";
+          console.log(suitableAuto);
           returnBody();
         }
-        
+
         function handleBackModelBtnClick() {
           modelWrapper.style.display = "flex";
-          bodyWrapper.innerHTML = ""
+          bodyWrapper.innerHTML = "";
           modelBlock.style.display = "none";
           modelBlock.innerHTML = "";
           suitableAuto.model = "";
@@ -272,7 +266,7 @@ const chooseProduct = () => {
           selectModelBlock.style.display = "none";
           modelSelected.innerHTML = "";
         }
-        
+
         async function returnBody() {
           await fetch("js/auto.json")
             .then((res) => res.json())
@@ -282,47 +276,45 @@ const chooseProduct = () => {
                 const selectedCar = findMark[suitableAuto.mark];
                 if (suitableAuto.model in selectedCar) {
                   const result = selectedCar[suitableAuto.model];
-                  result.forEach((item)=>{
+                  result.forEach((item) => {
                     let bodyItem = `<p class="body-item">${item.body}</p>`;
                     bodyWrapper.insertAdjacentHTML("beforeend", bodyItem);
-                  })
+                  });
                 }
-                
               }
             });
           selectBody();
         }
 
-        function selectBody(){
+        function selectBody() {
           const bodyItem = document.querySelectorAll(".body-item");
           bodyItem.forEach((item) => {
-            item.removeEventListener("click", handleBodyItemClick); 
-            item.addEventListener("click", handleBodyItemClick); 
+            item.removeEventListener("click", handleBodyItemClick);
+            item.addEventListener("click", handleBodyItemClick);
           });
-        } 
-        
+        }
+
         function handleBodyItemClick() {
           let bodyText = this.textContent;
-          suitableAuto.body =bodyText;
+          suitableAuto.body = bodyText;
           bodyBtn.style.display = "block";
           backBodyBtn.style.display = "block";
           bodyWrapper.style.display = "none";
-          bodyBlock.style.display = "flex"
-          bodySelected.addEventListener("click" , () =>{
+          bodyBlock.style.display = "flex";
+          bodySelected.addEventListener("click", () => {
             bodyItemsBlock.style.display = "flex";
-            bodyBlock.style.display = "flex"
-            suitableAuto.body = ""
-            markItemsBlock.style.display = "none"
+            bodyBlock.style.display = "flex";
+            suitableAuto.body = "";
+            markItemsBlock.style.display = "none";
             modelItemsBlock.style.display = "none";
-            yearItemsBlock.style.display = "none"
-            engineItemsBlock.style.display = "none"
-            markBlock.style.display = "none"
-            yearBlock.style.display = "none" 
-            modelBlock.style.display = "none"
-            engineBlock.style.display = "none"
-           
-          })
-          console.log(suitableAuto)
+            yearItemsBlock.style.display = "none";
+            engineItemsBlock.style.display = "none";
+            markBlock.style.display = "none";
+            yearBlock.style.display = "none";
+            modelBlock.style.display = "none";
+            engineBlock.style.display = "none";
+          });
+          console.log(suitableAuto);
           let bodyItemSrc = `
                       <p class="body-item">${bodyText}</p>
                       `;
@@ -332,11 +324,11 @@ const chooseProduct = () => {
           backBodyBtn.addEventListener("click", handleBackBodyBtnClick);
         }
         function handleBodyBtnClick() {
-          bodyItemsBlock.style.display = "none"
-          engineItemsBlock.style.display = "flex"
-          engineBlock.style.display = "flex"
-          console.log(suitableAuto)
-          returnEngine()
+          bodyItemsBlock.style.display = "none";
+          engineItemsBlock.style.display = "flex";
+          engineBlock.style.display = "flex";
+          console.log(suitableAuto);
+          returnEngine();
         }
         function handleBackBodyBtnClick() {
           bodyWrapper.style.display = "flex";
@@ -344,11 +336,10 @@ const chooseProduct = () => {
           bodyBlock.innerHTML = "";
           bodyBtn.style.display = "none";
           backBodyBtn.style.display = "none";
-          bodySelected.innerHTML = ""
-          engineWrapper.innerHTML = ""
+          bodySelected.innerHTML = "";
+          engineWrapper.innerHTML = "";
         }
-       
- 
+
         async function returnEngine() {
           await fetch("js/auto.json")
             .then((res) => res.json())
@@ -358,7 +349,7 @@ const chooseProduct = () => {
                 const selectedCar = findMark[suitableAuto.mark];
                 if (suitableAuto.model in selectedCar) {
                   const result = selectedCar[suitableAuto.model];
-                  result.forEach((item)=>{
+                  result.forEach((item) => {
                     let engineType = `
                     <ul class="type-engine">
                       <li class="type-engine">${item.fuel}:</li>
@@ -367,44 +358,43 @@ const chooseProduct = () => {
               
                     `;
                     engineWrapper.insertAdjacentHTML("beforeend", engineType);
-                  })
+                  });
                 }
               }
             });
-            selectEngine();
+          selectEngine();
         }
 
-        function selectEngine(){
-        const engineItems = document.querySelectorAll(".engine-item");
-        engineItems.forEach((item) => {
-          item.removeEventListener("click", handleEngineItemClick); 
-          item.addEventListener("click", handleEngineItemClick); 
-         
+        function selectEngine() {
+          const engineItems = document.querySelectorAll(".engine-item");
+          engineItems.forEach((item) => {
+            item.removeEventListener("click", handleEngineItemClick);
+            item.addEventListener("click", handleEngineItemClick);
           });
         }
 
-        function handleEngineItemClick(){
+        function handleEngineItemClick() {
           let engineText = this.textContent;
           suitableAuto.engine = engineText;
-          
+
           engineBtn.style.display = "block";
           backEngineBtn.style.display = "block";
           engineWrapper.style.display = "none";
-  
-          engineBlock.style.display = "flex"
-          engineSelected.addEventListener("click" , () =>{
+
+          engineBlock.style.display = "flex";
+          engineSelected.addEventListener("click", () => {
             engineItemsBlock.style.display = "flex";
-            engineBlock.style.display = "flex"
-            suitableAuto.engine = ""
-            markItemsBlock.style.display = "none"
+            engineBlock.style.display = "flex";
+            suitableAuto.engine = "";
+            markItemsBlock.style.display = "none";
             modelItemsBlock.style.display = "none";
-            yearItemsBlock.style.display = "none"
-            bodyItemsBlock.style.display = "none"
-            markBlock.style.display = "none"
-            yearBlock.style.display = "none" 
-            bodyBlock.style.display = "none"
-            modelBlock.style.display = "none"
-          })
+            yearItemsBlock.style.display = "none";
+            bodyItemsBlock.style.display = "none";
+            markBlock.style.display = "none";
+            yearBlock.style.display = "none";
+            bodyBlock.style.display = "none";
+            modelBlock.style.display = "none";
+          });
           let engineItemSrc = `
                       <p class="engine-item">${engineText}</p>
                       `;
@@ -413,21 +403,20 @@ const chooseProduct = () => {
           engineBtn.addEventListener("click", handleEngineBtnClick);
           backEngineBtn.addEventListener("click", handleBackEngineBtnClick);
         }
-     
+
         function handleEngineBtnClick() {
-          console.log("Search")
+          console.log("Search");
         }
         function handleBackEngineBtnClick() {
           engineWrapper.style.display = "flex";
           engineBlock.style.display = "none";
           engineBlock.innerHTML = "";
-          suitableAuto.engine= ""
+          suitableAuto.engine = "";
           engineBtn.style.display = "none";
           backEngineBtn.style.display = "none";
           engineSelected.innerHTML = "";
-         
         }
-       
+
         allBtn.forEach((item) => {
           item.addEventListener("mouseover", function () {
             this.style.backgroundColor = "white";
@@ -441,16 +430,12 @@ const chooseProduct = () => {
             this.style.fontWeight = "400";
           });
         });
-        
-       
       }
-      
-      returnAutoJson()
-    }
-    
-   
-    searchAuto();
 
+      returnAutoJson();
+    }
+
+    searchAuto();
   });
 };
 

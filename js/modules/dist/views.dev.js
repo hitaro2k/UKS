@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.views = views;
 
-var _cart = require("./cart.js");
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -15,15 +13,9 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var documentHTML = document.querySelector("html");
 var cartItems = [];
 
 function views() {
-  /* -------------------------------------------------------------------------- */
-
-  /*                                  Variables                                 */
-
-  /* -------------------------------------------------------------------------- */
   var cartMenu = document.querySelector(".cart-menu");
   var menuBtn;
   var menu;
@@ -34,43 +26,71 @@ function views() {
   var formWrap = document.querySelector(".form-order__background");
   var formProductPrice = document.querySelector(".block__product-price");
   var formProductItem = document.querySelector(".block__product-item");
-  /* -------------------------------------------------------------------------- */
-
-  /*                                Main scripts                                */
-
-  /* -------------------------------------------------------------------------- */
-
+  var cartIcon = document.querySelector(".shopping-card__link");
+  var cartClose = document.getElementById("close-cart");
+  var documentHTML = document.querySelector("html");
+  menuBtn = document.querySelector('.menu-btn');
+  menu = document.querySelector(".menu--burger-list");
+  document.querySelector(".total-price__text").innerHTML = localStorage.getItem("price") + "грн";
   document.addEventListener("DOMContentLoaded", function () {
-    /* -------------------------------------------------------------------------- */
+    if (cartItems.length > 0) {
+      isclear.style.display = "none";
+      cartWrapper.style.display = "flex";
+      totalPrice.style.display = "flex";
+    }
 
-    /*                                  Preloader                                 */
+    cartIcon.onclick = function () {
+      cartMenu.classList.add("cart-active");
 
-    /* -------------------------------------------------------------------------- */
-    window.addEventListener("load", function () {
-      var images = [];
-      document.querySelectorAll("img").forEach(function (img) {
-        images.push(img.src);
-      });
-      var imagesLoaded = 0;
-
-      for (var i = 0; i < images.length; i++) {
-        var img = new Image();
-        img.src = images[i];
-
-        img.onload = function () {
-          imagesLoaded++;
-
-          if (imagesLoaded == images.length) {
-            document.querySelector("#preloader").style.display = "none";
-          }
-        };
+      if (cartItems.length <= 0) {
+        isclear.style.display = "flex";
+        cartWrapper.style.display = "none";
+        totalPrice.style.display = "none";
+      } else {
+        isclear.style.display = "none";
+        cartWrapper.style.display = "flex";
+        totalPrice.style.display = "flex";
       }
+
+      if (window.innerWidth < 560) {
+        documentHTML.style.position = "fixed";
+        documentHTML.style.height = "100vh";
+        documentHTML.style.width = "100%";
+        documentHTML.style.top = "0";
+        documentHTML.style.margin = "0 auto";
+      } else if (window.innerWidth < 560) {
+        documentHTML.style.position = "static";
+      }
+    };
+
+    cartClose.addEventListener("click", function () {
+      cartMenu.classList.remove("cart-active");
+      documentHTML.style.position = "static";
+      localStorage.setItem("stateActive", "flex");
+      localStorage.setItem("statePassive", "none");
     });
-    /* -------------------------------------------------------------------------- */
 
-    /*                                Functionality                               */
+    function handleClick(item) {
+      var key = 'key_' + item.data;
+      var value = JSON.stringify(item);
+      localStorage.setItem(key, value);
+    }
 
-    /* -------------------------------------------------------------------------- */
+    function getAllItemsFromStorage() {
+      var items = [];
+
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+
+        if (key.startsWith('key_')) {
+          var value = localStorage.getItem(key);
+          var item = JSON.parse(value);
+          items.push(item);
+        }
+      }
+
+      return items;
+    }
 
     function findCartItem(id) {
       return cartItems.find(function (item) {
@@ -96,19 +116,8 @@ function views() {
           });
           showForm.addEventListener("click", function () {
             var priceToForm = document.querySelector(".total-price__text").textContent;
-            /* -------------------------------------------------------------------------- */
-
-            /*                              Arr for database                              */
-
-            /* -------------------------------------------------------------------------- */
-
             var checkedFormItems = [];
             var transferredItems = [];
-            /* -------------------------------------------------------------------------- */
-
-            /*                              Arr for database                              */
-
-            /* -------------------------------------------------------------------------- */
 
             if (formProductPrice.children.length === 0) {
               var buyPrice = " \n              <div class=\"price-block\">\n                <p class=\"title\">Title</p>\n                <p class=\"total-price\">".concat(priceToForm, "</p>\n              </div>\n              ");
@@ -190,8 +199,7 @@ function views() {
                   imageContainer.insertAdjacentHTML("beforeend", "<img class= \"user-img\" src=\"".concat(image.src, "\" alt=\"\u0424\u043E\u0442\u043E\">"));
                   var formData = new FormData();
                   formData.append("photo", file);
-                  console.log(image.src); // ОТПРАВЛЯЮ ФОТОЧКУ
-
+                  console.log(image.src);
                   console.log(formData);
                 }); // ЧИТАЮ ФОТКУ
 
@@ -223,14 +231,16 @@ function views() {
         };
 
         var counterReset = function counterReset() {
-          productInfo.count = 0;
+          _productInfo.count = 0;
           var itemInCount = document.querySelector(".item-count");
-          itemInCount.innerHTML = productInfo.count;
+          itemInCount.innerHTML = _productInfo.count;
           formProductItem.innerHTML = "";
-          card.removeAttribute("data-added");
+
+          _card.removeAttribute("data-added");
+
           removeCartItem(productId);
           updateTotalPrice();
-          localStorage.removeItem("cartItems");
+          localStorage.clear();
         };
         /* -------------------------------------------------------------------------*/
 
@@ -239,49 +249,34 @@ function views() {
         /* -------------------------------------------------------------------------*/
 
 
-        var removeCartItem = function removeCartItem(id) {
-          var index = cartItems.findIndex(function (item) {
-            return item.id === id;
-          });
-          cartItems.splice(index, 1);
-          var item = document.querySelector("[data-id=\"".concat(id, "\"]")).closest(".item");
-          item.parentNode.removeChild(item);
-          updateTotalPrice();
-        };
+        var _card = event.target.closest(".product");
 
-        var updateTotalPrice = function updateTotalPrice() {
-          var itemPrices = document.querySelectorAll(".item-price");
-          console.log(itemPrices);
-          var totalPriceCash = 0;
-          itemPrices.forEach(function (item) {
-            var productId = item.closest(".item").querySelector(".button-primary__plus").dataset.id;
-            var itemInfo = findCartItem(productId);
-            totalPriceCash += parseFloat(item.textContent) * itemInfo.count;
-          });
-          document.querySelector(".total-price__text").innerHTML = totalPriceCash + " грн";
-        };
-
-        var card = event.target.closest(".product");
-        var productId = card.dataset.id;
+        var productId = _card.dataset.id;
         var existingItem = findCartItem(productId);
         cartMenu.classList.add("cart-active");
         cartWrapper.style.display = "flex";
         totalPrice.style.display = "flex";
         isclear.style.display = "none";
         var formPrice;
-        var added = card.getAttribute("data-added");
+
+        var added = _card.getAttribute("data-added");
+
+        localStorage.setItem("isclear", "none");
+        localStorage.setItem("isntclear", "flex");
 
         if (added === "true") {
           return;
         }
 
         added = "true";
-        card.setAttribute("data-added", added);
+
+        _card.setAttribute("data-added", added);
         /* -----------------------------------------------------------------------*/
 
         /*                                Card Item                               */
 
         /* -----------------------------------------------------------------------*/
+
 
         if (existingItem) {
           var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
@@ -289,19 +284,24 @@ function views() {
           return;
         }
 
-        var productInfo = {
+        var _productInfo = {
           id: productId,
-          imgSrc: card.querySelector(".product-image").getAttribute("src"),
-          title: card.querySelector(".product-title").innerText,
-          status: card.querySelector(".product-status").innerText,
-          price: card.querySelector(".product-price").innerText,
+          imgSrc: _card.querySelector(".product-image").getAttribute("src"),
+          title: _card.querySelector(".product-title").innerText,
+          status: _card.querySelector(".product-status").innerText,
+          price: _card.querySelector(".product-price").innerText,
           count: 0,
           data: "".concat(productId)
         };
-        productInfo.count++;
-        var itemInCart = "   <div class=\"item\" data-id=\"".concat(productInfo.data, "\" >\n                <img src=\"").concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                <p class=\"item-name\">").concat(productInfo.title, "</p>\n                <p class=\"item-price\">").concat(productInfo.price, "</p>\n                <div class=\"item__button__add-delete\">\n                    <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                    <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                    <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                </div>\n            </div>\n        ");
+
+        cartClose.onclick = function () {
+          handleClick(_productInfo);
+        };
+
+        _productInfo.count++;
+        var itemInCart = "<div class=\"item\" data-id=\"".concat(_productInfo.data, "\" >\n                <img src=\"").concat(_productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                <p class=\"item-name\">").concat(_productInfo.title, "</p>\n                <p class=\"item-price\">").concat(_productInfo.price, "</p>\n                <div class=\"item__button__add-delete\">\n                    <button class=\"button-primary__plus\" data-id=\"").concat(_productInfo.data, "\">+</button>\n                    <p class=\"item-count\" data-counter=\"").concat(_productInfo.id, "\">").concat(_productInfo.count, "</p>\n                    <button class=\"button-primary__minus\" data-id=\"").concat(_productInfo.data, "\" id=\"minus\">-</button>\n                </div>\n            </div>\n        ");
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
-        cartItems.push(productInfo);
+        cartItems.push(_productInfo);
         var btnPlus = document.querySelectorAll(".button-primary__plus");
         var btnMinus = document.querySelectorAll(".button-primary__minus");
         /* --------------------------------------------------------------------------*/
@@ -317,7 +317,7 @@ function views() {
             var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
             var countElemAttr = countElem.getAttribute("data-counter");
 
-            if (countElemAttr == productInfo.data) {
+            if (countElemAttr == _productInfo.data) {
               item.count++;
             }
 
@@ -337,14 +337,22 @@ function views() {
             var item = findCartItem(productId);
             var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
             var countElemAttr = countElem.getAttribute("data-counter");
+            localStorage.setItem("counterElem", countElemAttr);
 
-            if (countElemAttr == productInfo.data) {
+            if (countElemAttr == _productInfo.data) {
               item.count--;
             }
 
             if (item.count === 0) {
               removeCartItem(productId);
-              card.removeAttribute("data-added");
+
+              if (cartItems.length <= 0) {
+                isclear.style.display = "flex";
+                cartWrapper.style.display = "none";
+                totalPrice.style.display = "none";
+              }
+
+              _card.removeAttribute("data-added");
             } else {
               countElem.textContent = item.count;
               updateTotalPrice();
@@ -355,6 +363,121 @@ function views() {
         formOrder();
       }
     });
+    window.addEventListener("load", function () {
+      var images = [];
+      document.querySelectorAll("img").forEach(function (img) {
+        images.push(img.src);
+      });
+      var imagesLoaded = 0;
+
+      for (var i = 0; i < images.length; i++) {
+        var img = new Image();
+        img.src = images[i];
+
+        img.onload = function () {
+          imagesLoaded++;
+
+          if (imagesLoaded == images.length) {
+            document.querySelector("#preloader").style.display = "none";
+          }
+        };
+      }
+
+      var btnPlus = document.querySelectorAll(".button-primary__plus");
+      var btnMinus = document.querySelectorAll(".button-primary__minus");
+      var savedItems = getAllItemsFromStorage();
+      savedItems.forEach(function (item) {
+        var itemInCart = "<div class=\"item\" data-id=\"".concat(item.data, "\">\n          <img src=\"").concat(item.imgSrc, "\" alt=\"\" class=\"item-image\">\n          <p class=\"item-name\">").concat(item.title, "</p>\n          <p class=\"item-price\">").concat(item.price, "</p>\n          <div class=\"item__button__add-delete\">\n              <button class=\"button-primary__plus\" data-id=\"").concat(item.data, "\">+</button>\n              <p class=\"item-count\" data-counter=\"").concat(item.id, "\">").concat(item.count, "</p>\n              <button class=\"button-primary__minus\" data-id=\"").concat(item.data, "\" id=\"minus\">-</button>\n          </div>\n        </div>");
+        cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
+        cartItems.push(item);
+        btnPlus.forEach(function (button) {
+          button.addEventListener("click", function (event) {
+            var productId = event.target.dataset.id;
+            var item = findCartItem(productId);
+            var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
+            var countElemAttr = countElem.getAttribute("data-counter");
+
+            if (countElemAttr == productInfo.data) {
+              item.count++;
+            }
+
+            countElem.textContent = item.count;
+            updateTotalPrice();
+          });
+        });
+        btnMinus.forEach(function (button) {
+          button.addEventListener("click", function (event) {
+            var productId = event.target.dataset.id;
+            var item = findCartItem(productId);
+            var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
+            var countElemAttr = countElem.getAttribute("data-counter");
+            localStorage.setItem("counterElem", countElemAttr);
+
+            if (countElemAttr == productInfo.data) {
+              item.count--;
+            }
+
+            if (item.count === 0) {
+              removeCartItem(productId);
+
+              if (cartItems.length <= 0) {
+                isclear.style.display = "flex";
+                cartWrapper.style.display = "none";
+                totalPrice.style.display = "none";
+              }
+
+              card.removeAttribute("data-added");
+            } else {
+              countElem.textContent = item.count;
+              updateTotalPrice();
+            }
+          });
+        });
+      });
+    });
+
+    function removeCartItem(id) {
+      var index = cartItems.findIndex(function (item) {
+        return item.id === id;
+      });
+      cartItems.splice(index, 1);
+      var item = document.querySelector("[data-id=\"".concat(id, "\"]")).closest(".item");
+      item.parentNode.removeChild(item);
+      updateTotalPrice();
+    }
+
+    function updateTotalPrice() {
+      var itemPrices = document.querySelectorAll(".item-price");
+      var totalPriceCash = 0;
+      itemPrices.forEach(function (item) {
+        var productId = item.closest(".item").querySelector(".button-primary__plus").dataset.id;
+        var itemInfo = findCartItem(productId);
+        totalPriceCash += parseFloat(item.textContent) * itemInfo.count;
+      });
+      document.querySelector(".total-price__text").innerHTML = totalPriceCash + " грн";
+
+      function stateMoney() {
+        localStorage.setItem("price", totalPriceCash);
+      }
+
+      stateMoney();
+    }
+
+    function handleAddCount(event) {
+      var productId = event.target.dataset.id;
+      var item = findCartItem(productId);
+      var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
+      var countElemAttr = countElem.getAttribute("data-counter");
+
+      if (countElemAttr == productInfo.data) {
+        item.count++;
+      }
+
+      countElem.textContent = item.count;
+      updateTotalPrice();
+    }
+
+    function handleRemoveCount() {}
   });
   return views;
 }
