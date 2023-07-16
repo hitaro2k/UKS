@@ -20,7 +20,7 @@ function getProductData() {
             <p class="product__articul">${parsedCartData.articul}</p>
             <p class= "product-status"> </p>
             <div class="product-buy">
-                <p class="product-price">${setPrice} грн</p>
+                <p class="product-price__grn">${setPrice} грн</p>
                 <button class="product-btn" data>Купить </button>
             </div>
         </div>

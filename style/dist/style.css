@@ -389,6 +389,11 @@ li {
   flex-direction: column;
   align-items: center;
 }
+@media (max-width: 576px) {
+  .main .form-order__background .form-order .form-content .block__product {
+    width: 90%;
+  }
+}
 .main .form-order__background .form-order .form-content .block__product .block__product-price {
   width: 100%;
   display: flex;
@@ -427,6 +432,7 @@ li {
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 20px 0px;
 }
 .main .form-order__background .form-order .form-content .block__product .block__product-item .product-block {
   border: 2px solid white;
@@ -448,6 +454,12 @@ li {
 @media (max-width: 992px) {
   .main .form-order__background .form-order .form-content .block__product .block__product-item .product-block .product {
     height: 60px;
+  }
+}
+@media (max-width: 576px) {
+  .main .form-order__background .form-order .form-content .block__product .block__product-item .product-block .product {
+    height: 60%;
+    flex-direction: column;
   }
 }
 .main .form-order__background .form-order .form-content .block__product .block__product-item .product-block .product .image {
@@ -1079,6 +1091,30 @@ li {
   display: flex;
   flex-direction: column;
 }
+.main .content .popular__container .products__container .product .product-info__price .all-price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.main .content .popular__container .products__container .product .product-info__price .all-price .product-price__grn {
+  padding-left: 5px;
+  font-size: 13px;
+  padding-top: 22px;
+  color: #ffffff63;
+  font-family: "Montserrat";
+}
+.main .content .popular__container .products__container .product .product-info__price .all-price .product-price__dollar {
+  padding-left: 20px;
+  font-size: 20px;
+  padding-top: 20px;
+  color: white;
+  font-family: "Montserrat";
+}
+.main .content .popular__container .products__container .product .product-info__price .product-status {
+  color: rgba(110, 255, 110, 0.938);
+  font-size: 12px;
+  padding-left: 20px;
+}
 .main .content .popular__container .products__container .product .product-image {
   width: 60%;
   margin: 0 auto;
@@ -1097,11 +1133,6 @@ li {
   font-size: 12px;
   color: rgba(163, 163, 163, 0.69);
 }
-.main .content .popular__container .products__container .product .product-price {
-  padding-left: 20px;
-  font-size: 20px;
-  padding-top: 20px;
-}
 .main .content .popular__container .products__container .product .product-button {
   background-color: transparent;
   color: white;
@@ -1111,11 +1142,6 @@ li {
   height: 40px;
   cursor: pointer;
   margin-right: 10px;
-}
-.main .content .popular__container .products__container .product .product-status {
-  color: rgba(110, 255, 110, 0.938);
-  font-size: 12px;
-  padding-left: 20px;
 }
 .main .footer {
   padding-top: 100px;

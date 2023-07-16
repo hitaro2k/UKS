@@ -6,6 +6,8 @@ export async function getProductsPopular() {
  
   const productArray = await response.json();
   productArray.forEach((item) => {
+    const convertedPrice = item.price * 37.5
+
     const productHTML = `
         <div class="product" data-id ="${item.id}">
           <img class="product-image" src="${item.image}" alt="img">
@@ -15,7 +17,10 @@ export async function getProductsPopular() {
               </div>
               <div class ="product-info">
                 <div class ="product-info__price"> 
-                  <p class="product-price">${item.price} грн</p>
+                <div class = "all-price">
+                  <p class="product-price__dollar">${item.price}$</p>
+                  <p class="product-price__grn">${convertedPrice} грн</p>
+                </div>
                   <p class="product-status">${item.status}</p>
                 </div>
               <button class="product-button" data > ${item.buy}</button>
@@ -31,11 +36,13 @@ export function renderData(data) {
   data.forEach(item => {
     item.addEventListener("click", (e) => {
       const closestCard = e.target.closest(".product");
+      const priceInNumber = closestCard.querySelector(".product-price__dollar").textContent
+      var number = parseInt(priceInNumber);
       const cartAlready = {
         "image": closestCard.querySelector(".product-image").src,
         "name": closestCard.querySelector(".product-title").textContent,
         "articul": closestCard.querySelector(".product-articul").textContent,
-        "price": closestCard.querySelector(".product-price").textContent,
+        "price": number,
         "id":closestCard.getAttribute("data-id")
       };
 
