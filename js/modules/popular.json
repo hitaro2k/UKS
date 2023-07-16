@@ -2,7 +2,7 @@
     {
         "id":"1A",
         "title": "Chevrolet brakes",
-        "price":1000,
+        "price":20,
         "image": "img/d2690dd9e88799e1903.webp",
         "status":"В наявності",
         "articul":"A78D12RR",
@@ -12,7 +12,7 @@
     {
         "id":"2A",
         "title": "Ford brakes",
-        "price":2000,
+        "price":10,
         "image": "img/tel-alfa-romeo-1600.webp",
         "status":"В наявності",
         "articul":"A78D12ADS",
@@ -23,7 +23,7 @@
     {
         "id":"3A",
         "title": "Shell brakes",
-        "price":23000,
+        "price":230,
         "image": "img/tel-alfa-romeo-1600.webp",
         "status":"В наявності",
         "articul":"A78AFAWD12ADS",
@@ -34,7 +34,7 @@
     {
         "id":"4A",
         "title": "Lamborghini brakes",
-        "price":20000,
+        "price":200,
         "image": "img/tel-alfa-romeo-1600.webp",
         "status":"В наявності",
         "articul":"A78D1AF2ADS",
