@@ -96,6 +96,7 @@ function views() {
         };
       }
 
+      console.log(cartItems);
       var savedItems = getAllItemsFromStorage();
       savedItems.forEach(function (item) {
         var itemInCart = "<div class=\"item\" data-id=\"".concat(item.data, "\">\n          <img src=\"").concat(item.imgSrc, "\" alt=\"\" class=\"item-image\">\n          <p class=\"item-name\">").concat(item.title, "</p>\n          <p class=\"item-price\">").concat(item.price, "</p>\n          <div class=\"item__button__add-delete\">\n              <button class=\"button-primary__plus\" data-id=\"").concat(item.data, "\">+</button>\n              <p class=\"item-count\" data-counter=\"").concat(item.id, "\">").concat(item.count, "</p>\n              <button class=\"button-primary__minus\" data-id=\"").concat(item.data, "\" id=\"minus\">-</button>\n          </div>\n        </div>");
@@ -104,52 +105,79 @@ function views() {
           var btnPlus = document.querySelectorAll(".button-primary__plus");
           var btnMinus = document.querySelectorAll(".button-primary__minus");
           btnPlus.forEach(function (button) {
-            button.addEventListener("click", function (event) {
-              var productId = event.target.dataset.id;
-              var getProductInfo = localStorage.getItem("key_" + productId);
-              var productInfo = JSON.parse(getProductInfo);
-              var item = findCartItem(productId);
-              var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
-              var countElemAttr = countElem.getAttribute("data-counter");
-
-              if (countElemAttr == productInfo.data) {
-                item.count++;
-              }
-
-              countElem.textContent = item.count;
-              updateTotalPrice();
-            });
+            button.removeEventListener("click", handlePlusClick);
+            button.addEventListener("click", handlePlusClick);
           });
           btnMinus.forEach(function (button) {
-            button.addEventListener("click", function (event) {
-              var productId = event.target.dataset.id;
-              var item = findCartItem(productId);
-              var getProductInfo = localStorage.getItem("key_" + productId);
-              var productInfo = JSON.parse(getProductInfo);
-              var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
-              var countElemAttr = countElem.getAttribute("data-counter");
-              localStorage.setItem("counterElem", countElemAttr);
-
-              if (countElemAttr == productInfo.data) {
-                item.count--;
-              }
-
-              if (item.count === 0) {
-                removeCartItem(productId);
-
-                if (cartItems.length <= 0) {
-                  isclear.style.display = "flex";
-                  cartWrapper.style.display = "none";
-                  totalPrice.style.display = "none";
-                }
-
-                card.removeAttribute("data-added");
-              } else {
-                countElem.textContent = item.count;
-                updateTotalPrice();
-              }
-            });
+            button.removeEventListener("click", handleMinusClick);
+            button.addEventListener("click", handleMinusClick);
           });
+
+          function handlePlusClick(event) {
+            if (event.target.dataset.clicked === "true") {
+              return;
+            }
+
+            event.target.dataset.clicked = "true";
+            var productId = event.target.dataset.id;
+            var getProductInfo = localStorage.getItem("key_" + productId);
+            var productInfo = JSON.parse(getProductInfo);
+            var item = findCartItem(productId);
+            var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
+            console.log(cartItems);
+            var countElemAttr = countElem.getAttribute("data-counter");
+
+            if (countElemAttr == productInfo.data) {
+              item.count++;
+              handleClick(item);
+            }
+
+            countElem.textContent = item.count;
+            updateTotalPrice();
+            setTimeout(function () {
+              event.target.removeAttribute("data-clicked");
+            }, 1000);
+          }
+
+          function handleMinusClick(event) {
+            if (event.target.dataset.clicked === "true") {
+              return;
+            }
+
+            event.target.dataset.clicked = "true";
+            var productId = event.target.dataset.id;
+            var item = findCartItem(productId);
+            console.log(productId);
+            console.log(item);
+            var getProductInfo = localStorage.getItem("key_" + productId);
+            var productInfo = JSON.parse(getProductInfo);
+            var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
+            console.log(cartItems);
+            var countElemAttr = countElem.getAttribute("data-counter");
+            localStorage.setItem("counterElem", countElemAttr);
+
+            if (countElemAttr == productInfo.data) {
+              item.count--;
+              handleClick(item);
+            }
+
+            if (item.count === 0) {
+              removeCartItem(productId);
+
+              if (cartItems.length <= 0) {
+                isclear.style.display = "flex";
+                cartWrapper.style.display = "none";
+                totalPrice.style.display = "none";
+              }
+            } else {
+              countElem.textContent = item.count;
+              updateTotalPrice();
+            }
+
+            setTimeout(function () {
+              event.target.removeAttribute("data-clicked");
+            }, 1000);
+          }
         }
 
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
@@ -204,11 +232,6 @@ function views() {
         checkedFormItems.forEach(function (item) {
           transferredItems.push.apply(transferredItems, _toConsumableArray(item));
         });
-        /* -------------------------------------------------------------------------- */
-
-        /*                            JSON with id product                            */
-
-        /* -------------------------------------------------------------------------- */
 
         function sendDataToServer(data) {
           var url = 'server/data.php';
@@ -261,28 +284,6 @@ function views() {
       showPayment.addEventListener("click", function (e) {
         e.preventDefault();
         formPayment.style.display = "flex";
-        var fileInput = document.querySelector(".pay-input");
-        fileInput.addEventListener("change", function (event) {
-          var file = event.target.files[0];
-
-          if (file && file.type.startsWith("image/")) {
-            var reader = new FileReader();
-            fileInput.style.display = "none";
-            reader.addEventListener("load", function (loadEvent) {
-              var image = new Image();
-              image.src = loadEvent.target.result;
-              var imageContainer = document.getElementById("image-container");
-              imageContainer.insertAdjacentHTML("beforeend", "<img class= \"user-img\" src=\"".concat(image.src, "\" alt=\"\u0424\u043E\u0442\u043E\">"));
-              var formData = new FormData();
-              formData.append("photo", file);
-              console.log(image.src);
-              console.log(formData);
-            });
-            reader.readAsDataURL(file);
-          } else {
-            alert("Выберите файл-изображение");
-          }
-        });
       });
       var paymentAccept = document.querySelector(".accept-btn");
       var formAcces = document.querySelector(".form-response");
@@ -311,7 +312,6 @@ function views() {
       console.log(cartItems);
       formProductItem.innerHTML = "";
       localStorage.clear();
-      imageContainer.innerHTML = "";
       removeCartItem(productId);
       updateTotalPrice();
     }
@@ -323,22 +323,18 @@ function views() {
           productInfo.count = 0;
           var itemInCount = document.querySelector(".item-count");
           itemInCount.innerHTML = productInfo.count;
-
-          _card.removeAttribute("data-added");
+          card.removeAttribute("data-added");
         };
 
-        var _card = event.target.closest(".product");
-
-        var _productId = _card.dataset.id;
+        var card = event.target.closest(".product");
+        var _productId = card.dataset.id;
         var existingItem = findCartItem(_productId);
         cartMenu.classList.add("cart-active");
         cartWrapper.style.display = "flex";
         totalPrice.style.display = "flex";
         isclear.style.display = "none";
         var formPrice;
-
-        var added = _card.getAttribute("data-added");
-
+        var added = card.getAttribute("data-added");
         localStorage.setItem("isclear", "none");
         localStorage.setItem("isntclear", "flex");
 
@@ -347,14 +343,12 @@ function views() {
         }
 
         added = "true";
-
-        _card.setAttribute("data-added", added);
+        card.setAttribute("data-added", added);
         /* -----------------------------------------------------------------------*/
 
         /*                                Card Item                               */
 
         /* -----------------------------------------------------------------------*/
-
 
         if (existingItem) {
           var countElem = document.querySelector(".item-count[data-counter=\"".concat(_productId, "\"]"));
@@ -364,10 +358,10 @@ function views() {
 
         var productInfo = {
           id: _productId,
-          imgSrc: _card.querySelector(".product-image").getAttribute("src"),
-          title: _card.querySelector(".product-title").innerText,
-          status: _card.querySelector(".product-status").innerText,
-          price: _card.querySelector(".product-price__grn").innerText,
+          imgSrc: card.querySelector(".product-image").getAttribute("src"),
+          title: card.querySelector(".product-title").innerText,
+          status: card.querySelector(".product-status").innerText,
+          price: card.querySelector(".product-price__grn").innerText,
           count: 0,
           data: "".concat(_productId)
         };
@@ -375,6 +369,7 @@ function views() {
         var itemInCart = "<div class=\"item\" data-id=\"".concat(productInfo.data, "\" >\n                <img src=\"").concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                <p class=\"item-name\">").concat(productInfo.title, "</p>\n                <p class=\"item-price\">").concat(productInfo.price, "</p>\n                <div class=\"item__button__add-delete\">\n                    <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                    <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                    <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                </div>\n            </div>\n        ");
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
+        console.log(cartItems);
         forms();
         handleClick(productInfo);
         /* -------------------------------------------------------------------------*/
@@ -403,6 +398,7 @@ function views() {
               handleClick(productInfo);
             }
 
+            console.log(cartItems);
             countElem.textContent = item.count;
             updateTotalPrice();
           });
@@ -418,6 +414,7 @@ function views() {
             var productId = event.target.dataset.id;
             var item = findCartItem(productId);
             var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
+            console.log(cartItems);
             var countElemAttr = countElem.getAttribute("data-counter");
             localStorage.setItem("counterElem", countElemAttr);
 
@@ -435,7 +432,7 @@ function views() {
                 totalPrice.style.display = "none";
               }
 
-              _card.removeAttribute("data-added");
+              card.removeAttribute("data-added");
             } else {
               countElem.textContent = item.count;
               updateTotalPrice();

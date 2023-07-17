@@ -11,7 +11,8 @@ function getProductData() {
   
     if (cartData) {
       const parsedCartData = JSON.parse(decodeURIComponent(cartData));
-      let setPrice = parsedCartData.price * 37.5
+      const priceNumber = parseFloat(parsedCartData.price.replace(',', '.'));
+      let setPrice = priceNumber * 37.5
       const product = `
         <div class="product" data-id ="${parsedCartData.id}">
         <img src="${parsedCartData.image}" alt="" class="product-image">
