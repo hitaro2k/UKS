@@ -47,7 +47,8 @@ function search() {
           "articul": item.name,
           "price": item.price,
           "id": item.id,
-          "image": item.image
+          "image": item.image,
+          "count": item.count
         };
         var redirectUrl = "product.html?cartData=".concat(encodeURIComponent(JSON.stringify(cartAlready)));
         window.location.href = redirectUrl;

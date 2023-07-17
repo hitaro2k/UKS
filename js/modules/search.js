@@ -32,14 +32,15 @@ export function search() {
         liName.textContent = item.name
         liName.style.color = "orange"
         liDescription.textContent = item.description;
-        
         liDescription.addEventListener('click', () => {
+          
           const cartAlready  = {
             "name": item.description,
             "articul": item.name,
             "price": item.price,
             "id":item.id,
             "image":item.image,
+            "count":item.count
           }
           const redirectUrl = `product.html?cartData=${encodeURIComponent(JSON.stringify(cartAlready))}`;
           window.location.href = redirectUrl;

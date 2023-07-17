@@ -96,8 +96,17 @@ function views() {
         };
       }
 
-      console.log(cartItems);
       var savedItems = getAllItemsFromStorage();
+
+      function updateAvailability(productId, count) {
+        var getProductInfo = localStorage.getItem("key_" + productId);
+        var productInfo = JSON.parse(getProductInfo);
+        console.log(productInfo);
+        productInfo["Наличие"] = String(Number(productInfo["Наличие"]) - count); // Сохранение обновленного значения в JSON
+
+        localStorage.setItem("key_" + productId, JSON.stringify(productInfo));
+      }
+
       savedItems.forEach(function (item) {
         var itemInCart = "<div class=\"item\" data-id=\"".concat(item.data, "\">\n          <img src=\"").concat(item.imgSrc, "\" alt=\"\" class=\"item-image\">\n          <p class=\"item-name\">").concat(item.title, "</p>\n          <p class=\"item-price\">").concat(item.price, "</p>\n          <div class=\"item__button__add-delete\">\n              <button class=\"button-primary__plus\" data-id=\"").concat(item.data, "\">+</button>\n              <p class=\"item-count\" data-counter=\"").concat(item.id, "\">").concat(item.count, "</p>\n              <button class=\"button-primary__minus\" data-id=\"").concat(item.data, "\" id=\"minus\">-</button>\n          </div>\n        </div>");
 
@@ -124,12 +133,17 @@ function views() {
             var productInfo = JSON.parse(getProductInfo);
             var item = findCartItem(productId);
             var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
-            console.log(cartItems);
+            console.log(productId);
+            console.log(productInfo);
+            console.log(item);
+            console.log(countElem);
             var countElemAttr = countElem.getAttribute("data-counter");
 
             if (countElemAttr == productInfo.data) {
+              console.log(item.count);
               item.count++;
               handleClick(item);
+              updateAvailability(productId, 1);
             }
 
             countElem.textContent = item.count;
@@ -159,6 +173,7 @@ function views() {
             if (countElemAttr == productInfo.data) {
               item.count--;
               handleClick(item);
+              updateAvailability(productId, -1);
             }
 
             if (item.count === 0) {
@@ -311,8 +326,8 @@ function views() {
       cartItems = [];
       console.log(cartItems);
       formProductItem.innerHTML = "";
-      localStorage.clear();
-      removeCartItem(productId);
+      localStorage.clear(); // removeCartItem(productId);
+
       updateTotalPrice();
     }
 
@@ -327,8 +342,8 @@ function views() {
         };
 
         var card = event.target.closest(".product");
-        var _productId = card.dataset.id;
-        var existingItem = findCartItem(_productId);
+        var productId = card.dataset.id;
+        var existingItem = findCartItem(productId);
         cartMenu.classList.add("cart-active");
         cartWrapper.style.display = "flex";
         totalPrice.style.display = "flex";
@@ -351,19 +366,19 @@ function views() {
         /* -----------------------------------------------------------------------*/
 
         if (existingItem) {
-          var countElem = document.querySelector(".item-count[data-counter=\"".concat(_productId, "\"]"));
+          var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
           countElem.textContent = Number(countElem.textContent) + 1;
           return;
         }
 
         var productInfo = {
-          id: _productId,
+          id: productId,
           imgSrc: card.querySelector(".product-image").getAttribute("src"),
           title: card.querySelector(".product-title").innerText,
           status: card.querySelector(".product-status").innerText,
           price: card.querySelector(".product-price__grn").innerText,
           count: 0,
-          data: "".concat(_productId)
+          data: "".concat(productId)
         };
         productInfo.count++;
         var itemInCart = "<div class=\"item\" data-id=\"".concat(productInfo.data, "\" >\n                <img src=\"").concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                <p class=\"item-name\">").concat(productInfo.title, "</p>\n                <p class=\"item-price\">").concat(productInfo.price, "</p>\n                <div class=\"item__button__add-delete\">\n                    <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                    <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                    <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                </div>\n            </div>\n        ");

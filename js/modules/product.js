@@ -8,11 +8,12 @@ function getProductData() {
     const productContainer = document.querySelector(".products__container")
     const urlParams = new URLSearchParams(window.location.search);
     const cartData = urlParams.get("cartData");
-  
+    
     if (cartData) {
       const parsedCartData = JSON.parse(decodeURIComponent(cartData));
       const priceNumber = parseFloat(parsedCartData.price.replace(',', '.'));
       let setPrice = priceNumber * 37.5
+      console.log(parsedCartData)
       const product = `
         <div class="product" data-id ="${parsedCartData.id}">
         <img src="${parsedCartData.image}" alt="" class="product-image">

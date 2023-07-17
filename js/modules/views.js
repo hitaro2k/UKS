@@ -81,8 +81,19 @@ export function views() {
           }
         };
       }
-      console.log(cartItems)
       var savedItems = getAllItemsFromStorage();
+
+      function updateAvailability(productId, count) {
+        const getProductInfo = localStorage.getItem("key_" + productId);
+        let productInfo = JSON.parse(getProductInfo);
+        
+        console.log(productInfo)
+
+        productInfo["Наличие"] = String(Number(productInfo["Наличие"]) - count);
+      
+        // Сохранение обновленного значения в JSON
+        localStorage.setItem("key_" + productId, JSON.stringify(productInfo));
+      }
 
       savedItems.forEach(function (item) {
         const itemInCart = `<div class="item" data-id="${item.data}">
@@ -112,19 +123,26 @@ export function views() {
               if (event.target.dataset.clicked === "true") {
                 return;
               }
+              
               event.target.dataset.clicked = "true";
               let productId = event.target.dataset.id;
               const getProductInfo = localStorage.getItem("key_" + productId)
+              
               let productInfo = JSON.parse(getProductInfo)
               const item = findCartItem(productId);
               const countElem = document.querySelector(
                 `.item-count[data-counter="${productId}"]`
               ); 
-              console.log(cartItems)
+              console.log(productId)
+              console.log(productInfo)
+              console.log(item)
+              console.log(countElem)
               let countElemAttr = countElem.getAttribute("data-counter");                 
               if (countElemAttr == productInfo.data) {
+                console.log(item.count)
                 item.count++;
                 handleClick(item)
+                updateAvailability(productId, 1)
               }
               countElem.textContent = item.count;
               updateTotalPrice();
@@ -153,6 +171,7 @@ export function views() {
               if (countElemAttr == productInfo.data) {
                 item.count--;
                 handleClick(item)
+                updateAvailability(productId, -1);
               }
               if (item.count === 0) {
                 removeCartItem(productId);
@@ -323,7 +342,7 @@ export function views() {
       console.log(cartItems)
       formProductItem.innerHTML = ""
       localStorage.clear()
-      removeCartItem(productId);
+      // removeCartItem(productId);
       updateTotalPrice()
     }
 
@@ -338,7 +357,7 @@ export function views() {
         cartWrapper.style.display = "flex";
         totalPrice.style.display = "flex";
         isclear.style.display = "none";
-        
+
         let formPrice;
         let added = card.getAttribute("data-added");
         localStorage.setItem("isclear" , "none")
