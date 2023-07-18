@@ -297,8 +297,26 @@ function views() {
       });
       var formPayment = document.querySelector(".form-payment");
       showPayment.addEventListener("click", function (e) {
-        e.preventDefault();
         formPayment.style.display = "flex";
+      });
+      var form = document.querySelector('.form-order');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var formData = new FormData(form);
+        fetch('server/serv.php', {
+          method: 'POST',
+          body: formData
+        }).then(function (response) {
+          if (response.ok) {
+            return response.text();
+          } else {
+            throw new Error('Помилка: ' + response.status);
+          }
+        }).then(function (data) {
+          console.log(data);
+        })["catch"](function (error) {
+          console.error('Помилка запиту:', error);
+        });
       });
       var paymentAccept = document.querySelector(".accept-btn");
       var formAcces = document.querySelector(".form-response");
@@ -384,7 +402,6 @@ function views() {
         var itemInCart = "<div class=\"item\" data-id=\"".concat(productInfo.data, "\" >\n                <img src=\"").concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                <p class=\"item-name\">").concat(productInfo.title, "</p>\n                <p class=\"item-price\">").concat(productInfo.price, "</p>\n                <div class=\"item__button__add-delete\">\n                    <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                    <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                    <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                </div>\n            </div>\n        ");
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
-        console.log(cartItems);
         forms();
         handleClick(productInfo);
         /* -------------------------------------------------------------------------*/

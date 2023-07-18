@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>product</title>
     
-    <link rel="stylesheet" href="/style/dist/preloader.css">
-    <link rel="stylesheet" href="/style/dist/style.css">
-    <link rel="stylesheet" href="/style/dist/product.css">
+    <link rel="stylesheet" href="./style/dist/preloader.css">
+    <link rel="stylesheet" href="./style/dist/style.css">
+    <link rel="stylesheet" href="./style/dist/product.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 <body>
@@ -18,7 +18,7 @@
     
     <main class="main">
         <header class="full-screen__header__container">
-            <a class="logo-link" href="/index.html">
+            <a class="logo-link" href="http://localhost/dashboard/UK/index.html">
                 <img src="img/UK.svg" alt="logo" class="logo-img">
             </a>
 
@@ -33,7 +33,7 @@
             
             <div class="user-ui">
                 <button class="button-search"><img src="img/search-svg.svg" alt="img"></button>
-                <img class="shopping-card__link" src="/img/shopping-cart-svg.svg" alt="img">
+                <img class="shopping-card__link" src="./img/shopping-cart-svg.svg" alt="img">
             </div>
 
 
@@ -55,7 +55,7 @@
           </div>
 
           <div class="form-order__background">
-            <form action="GET" class="form-order">
+            <form action="server/serv.php" method="POST" class="form-order">
               <div class="close-form__wrapper">
                 <object data="close" type="image/svg+xml" class="close-form">
                   <svg
@@ -78,77 +78,83 @@
                 <div class="block__product">
                   <div class="block__product-item"></div>
                   <div class="block__product-price"></div>
-                  <button class="to-response">Оплатить</button>
+                  <button type="submit" class="to-response">Оплатить</button>
                 </div>
     
                 <div class="personal-info">
-                  <div class="info-input__wrapper">
-                    <input placeholder="Імя" type="text" class="info-input" />
-                  </div>
-                  <div class="info-input__wrapper">
-                    <input placeholder="Прізвище" type="text" class="info-input" />
-                  </div>
-                  <div class="info-input__wrapper">
-                    <input
-                      placeholder="Номер телефону"
-                      type="text"
-                      class="info-input"
-                    />
-                  </div>
-    
-                  <div class="post-office">
-                    <div class="post-office__office">
-                      <label for="inputCheck1" class="label-form" id="checkbox1">
-                        <input class="input-form" type="checkbox" id="inputCheck1" />
-                        <object
-                          class="form-img__wrapper"
-                          id="form-check1"
-                          data="img.svg"
-                          type="img/svg"
-                        >
-                          <img class="form-img" src="./img/checkmark.svg" alt="" />
-                        </object>
-                      </label>
-                      <div class="info-input__wrapper" id="info-input__post-office">
-                        <input
-                          placeholder="Номер відділу"
-                          type="text"
-                          class="info-input"
-                        />
-                      </div>
+              
+                        <div class="info-input__wrapper">
+                      <input placeholder="Імя" type="text" class="info-input" name="name"  />
+                    </div>
+                    <div class="info-input__wrapper">
+                      <input placeholder="Прізвище" type="text" class="info-input" name="surname" />
+                    </div>
+                    <div class="info-input__wrapper">
+                      <input
+                        name="phone" 
+                        placeholder="Номер телефону"
+                        type="text"
+                        class="info-input"
+                      />
                     </div>
     
-                    <div class="post-office__self">
-                      <label for="inputCheck2" class="label-form" id="checkbox2">
-                        <input class="input-form" type="checkbox" id="inputCheck2" />
-                        <object
-                          class="form-img__wrapper"
-                          id="form-check2"
-                          data="img.svg"
-                          type="img/svg"
+                    <div class="post-office">
+                      <div class="post-office__office">
+                        <label for="inputCheck1" class="label-form" id="checkbox1">
+                          <input class="input-form" type="checkbox" id="inputCheck1" />
+                          <object
+                            class="form-img__wrapper"
+                            id="form-check1"
+                            data="img.svg"
+                            type="img/svg"
+                          >
+                            <img class="form-img" src="./img/checkmark.svg" alt="" />
+                          </object>
+                        </label>
+                        <div class="info-input__wrapper" id="info-input__post-office">
+                          <input
+                            name="delivery-department" 
+                            placeholder="Номер відділу"
+                            type="text"
+                            class="info-input"
+                          />
+                        </div>
+                      </div>
+    
+                      <div class="post-office__self">
+                        <label for="inputCheck2" class="label-form" id="checkbox2">
+                          <input class="input-form" type="checkbox" id="inputCheck2" />
+                          <object
+                            class="form-img__wrapper"
+                            id="form-check2"
+                            data="img.svg"
+                            type="img/svg"
+                          >
+                            <img class="form-img" src="./img/checkmark.svg" alt="" />
+                          </object>
+                        </label>
+                        <div
+                          class="info-input__wrapper"
+                          id="info-input__post-office-self"
                         >
-                          <img class="form-img" src="./img/checkmark.svg" alt="" />
-                        </object>
-                      </label>
-                      <div
-                        class="info-input__wrapper"
-                        id="info-input__post-office-self"
-                      >
-                        <input
-                          placeholder="Самовивіз"
-                          type="text"
-                          class="info-input"
-                        />
+                          <input
+                            name="delivery-solo"
+                            placeholder="Самовивіз"
+                            type="text"
+                            class="info-input"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <textarea
-                    placeholder="Залиште ваш комментар"
-                    cols="30"
-                    rows="10"
-                    class="user-comm"
-                    style="resize: none"
-                  ></textarea>
+                    <textarea
+                      placeholder="Залиште ваш комментар"
+                      cols="30"
+                      rows="10"
+                      class="user-comm"
+                      style="resize: none"
+                    ></textarea>
+     
+                
                 </div>
               </div>
             </form>
@@ -235,7 +241,7 @@
             <div class="items">
                 <div class="isclear">
                     <div class="icons">
-                        <img class="icons-image" src="/img/shopping-cart-svg.svg" alt="">
+                        <img class="icons-image" src="./img/shopping-cart-svg.svg" alt="">
                     </div>
                     <div class="items-text">
                         <h2 class="items-title">Ваш кошик порожній</h2>
@@ -255,19 +261,19 @@
             <div class="checkout__product-price">
                 <div class="product-price__product-wrapper">
                     <div class="product-wrapper">
-                        <img src="/img/d2690dd9e88799e1903.webp" alt="" class="product-wrapper__image">
+                        <img src="./img/d2690dd9e88799e1903.webp" alt="" class="product-wrapper__image">
                         <p class="product-wrapper__name">Name</p>
                         <p class="product-wrapper__count">5</p>
                         <p class="product-wrapper__price">$212</p>
                     </div>
                     <div class="product-wrapper">
-                        <img src="/img/d2690dd9e88799e1903.webp" alt="" class="product-wrapper__image">
+                        <img src="./img/d2690dd9e88799e1903.webp" alt="" class="product-wrapper__image">
                         <p class="product-wrapper__name">Name</p>
                         <p class="product-wrapper__count">5</p>
                         <p class="product-wrapper__price">$212</p>
                     </div>
                     <div class="product-wrapper">
-                        <img src="/img/d2690dd9e88799e1903.webp" alt="" class="product-wrapper__image">
+                        <img src="./img/d2690dd9e88799e1903.webp" alt="" class="product-wrapper__image">
                         <p class="product-wrapper__name">Name</p>
                         <p class="product-wrapper__count">5</p>
                         <p class="product-wrapper__price">$212</p>
@@ -369,6 +375,6 @@
         
 
     </main>
-    <script type="module" src="/js/modules/product.js"></script>
+    <script type="module" src="./js/modules/product.js"></script>
 </body>
 </html>

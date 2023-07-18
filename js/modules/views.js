@@ -305,13 +305,33 @@ export function views() {
         });
         let formPayment = document.querySelector(".form-payment");
         showPayment.addEventListener("click", (e) => {
-            e.preventDefault();
-            formPayment.style.display = "flex";
-          
-           
-            
+            formPayment.style.display = "flex";  
         });
-         
+        var form = document.querySelector('.form-order');
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var formData = new FormData(form);
+          
+          fetch('server/serv.php', {
+            method: 'POST',
+            body: formData
+          })
+          .then(function(response) {
+            if (response.ok) {
+              return response.text();
+            } else {
+              throw new Error('Помилка: ' + response.status);
+            }
+          })
+          .then(function(data) {
+            console.log(data);
+          })
+          .catch(function(error) {
+            console.error('Помилка запиту:', error);
+          });
+        });
+        
+
           let paymentAccept = document.querySelector(".accept-btn");
           let formAcces = document.querySelector(".form-response");
 
@@ -412,7 +432,6 @@ export function views() {
         `;
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(productInfo);
-        console.log(cartItems)
         forms()
         
         handleClick(productInfo)

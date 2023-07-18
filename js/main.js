@@ -5,5 +5,4 @@ import {search} from "./modules/search.js"
 import {getProductsPopular} from "./modules/render.js"
 import {form} from "./modules/form.js"
 import {views} from "./modules/views.js"
-// import { cartLogic } from "./modules/cartLogic.js"
 getProductsPopular()
