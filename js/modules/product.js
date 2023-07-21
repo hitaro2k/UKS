@@ -1,7 +1,6 @@
 "use strict"
 import {views} from "../modules/views.js"
 import {search} from "../modules/search.js"
-import {form} from "../modules/form.js"
 import {renderData} from "../modules/render.js"
 import animation from "../modules/animation.js"
 function getProductData() {

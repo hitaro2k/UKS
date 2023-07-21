@@ -3,7 +3,7 @@ export function search() {
   const searchInput = document.querySelector(".search-input");
   const searchList = document.querySelector(".search-stroke__list");
 
-  fetch('./js/modules/search.json')
+  fetch('server/api.php')
     .then(response => response.json())
     .then(data => {
     const transformedData = data.map(item => ({
@@ -32,6 +32,7 @@ export function search() {
         liName.textContent = item.name
         liName.style.color = "orange"
         liDescription.textContent = item.description;
+     
         liDescription.addEventListener('click', () => {
           
           const cartAlready  = {
