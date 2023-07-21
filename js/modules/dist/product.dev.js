@@ -4,8 +4,6 @@ var _views = require("../modules/views.js");
 
 var _search = require("../modules/search.js");
 
-var _form = require("../modules/form.js");
-
 var _render = require("../modules/render.js");
 
 var _animation = _interopRequireDefault(require("../modules/animation.js"));

@@ -8,7 +8,7 @@ exports.search = search;
 function search() {
   var searchInput = document.querySelector(".search-input");
   var searchList = document.querySelector(".search-stroke__list");
-  fetch('./js/modules/search.json').then(function (response) {
+  fetch('server/api.php').then(function (response) {
     return response.json();
   }).then(function (data) {
     var transformedData = data.map(function (item) {

@@ -346,11 +346,22 @@ li {
   overflow-x: hidden;
   overflow-y: scroll;
 }
+.main .form-order__background .to-checked {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  height: 50px;
+  margin-top: 20px;
+  font-family: "Montserrat";
+  cursor: pointer;
+  display: none;
+}
 .main .form-order__background .form-order {
   display: flex;
   flex-direction: column;
   width: 80%;
-  background-color: rgba(35, 35, 35, 0.5);
+  height: 100%;
+  background-color: rgba(14, 14, 14, 0.5);
   z-index: 5;
   gap: 0px 15px;
   margin-top: 30px;
@@ -385,6 +396,7 @@ li {
 }
 .main .form-order__background .form-order .form-content .block__product {
   width: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -482,6 +494,7 @@ li {
   font-family: "Montserrat";
 }
 .main .form-order__background .form-order .form-content .block__product .to-response {
+  display: none;
   border: none;
   border-radius: 5px;
   width: 200px;
@@ -496,7 +509,7 @@ li {
   width: 50%;
   border: 2px solid white;
   gap: 20px 0px;
-  height: 550px;
+  height: 100%;
   border-radius: 5px;
 }
 @media (max-width: 768px) {
@@ -599,6 +612,120 @@ li {
   width: 90%;
   border-radius: 5px;
   padding: 5px;
+}
+.main .form-order__background .checked-form {
+  display: none;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  background-color: rgba(14, 14, 14, 0.5);
+  z-index: 5;
+  gap: 0px 15px;
+  margin-top: 30px;
+  padding: 10px;
+  align-items: center;
+}
+.main .form-order__background .checked-form .info__countainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-top: 30px;
+  flex-direction: row;
+}
+.main .form-order__background .checked-form .info__countainer .payment__info {
+  width: 50%;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.main .form-order__background .checked-form .info__countainer .payment__info .payment__bank__method {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 30%;
+  gap: 0px 15px;
+}
+.main .form-order__background .checked-form .info__countainer .payment__info .payment__bank__method .payment__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #161616;
+  width: 50%;
+  height: 35%;
+  cursor: pointer;
+  border-radius: 25px;
+  overflow: hidden;
+}
+.main .form-order__background .checked-form .info__countainer .payment__info .payment__bank__method .payment__item .payment__item-img {
+  width: 15%;
+}
+.main .form-order__background .checked-form .info__countainer .payment__info .payment__bank__method .payment__item #privat {
+  margin-top: 7px;
+}
+.main .form-order__background .checked-form .info__countainer .payment__info .payment__bank__method .payment__item #mono {
+  width: 40%;
+}
+.main .form-order__background .checked-form .info__countainer .payment__info .crypto__method {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 30%;
+  margin-top: 15px;
+}
+.main .form-order__background .checked-form .info__countainer .payment__info .crypto__method .payment__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #161616;
+  width: 100%;
+  height: 30%;
+  cursor: pointer;
+  border-radius: 25px;
+  overflow: hidden;
+}
+.main .form-order__background .checked-form .info__countainer .payment__info .crypto__method .payment__item .payment__item-img {
+  width: 10%;
+}
+.main .form-order__background .checked-form .info__countainer .payment__info .crypto__method .payment__item .payment__net .payment__text {
+  font-size: 14px;
+}
+.main .form-order__background .checked-form .info__countainer .user__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+}
+.main .form-order__background .checked-form .info__countainer .user__info .user__wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main .form-order__background .form__btn {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  gap: 0px 20px;
+}
+.main .form-order__background .form__btn .to-order {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  height: 50px;
+  font-family: "Montserrat";
+  cursor: pointer;
+}
+.main .form-order__background .form__btn .to-response {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  height: 50px;
+  font-family: "Montserrat";
+  cursor: pointer;
 }
 .main .form-response {
   display: none;
@@ -1484,4 +1611,12 @@ li {
 .disabled {
   cursor: no-drop;
   pointer-events: none;
+}
+
+.info-input__wrapper {
+  border: 2px solid transparent;
+}
+
+.info-input__wrapper.highlighted {
+  border-color: red;
 }

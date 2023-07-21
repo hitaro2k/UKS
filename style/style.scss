@@ -359,17 +359,28 @@ li {
     z-index: 4;
     overflow-x: hidden;
     overflow-y: scroll;
-
+    .to-checked{
+      border: none;
+      border-radius: 5px;
+      width: 200px;
+      height: 50px;
+      margin-top: 20px;
+      font-family: "Montserrat";
+      cursor: pointer;
+      display: none;
+    }
     .form-order {
       display: flex;
       flex-direction: column;
       width: 80%;
-      background-color: rgba(35, 35, 35, 0.5);
+      height: 100%;
+      background-color: rgb(14 14 14 / 50%);
       z-index: 5;
       gap: 0px 15px;
       margin-top: 30px;
       padding: 10px;
       align-items: center;
+      
       .close-form__wrapper {
         width: 100%;
         display: flex;
@@ -394,6 +405,7 @@ li {
         }
         .block__product {
           width: 50%;
+          height: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -485,6 +497,7 @@ li {
             }
           }
           .to-response {
+            display: none;
             border: none;
             border-radius: 5px;
             width: 200px;
@@ -501,7 +514,7 @@ li {
           width: 50%;
           border: 2px solid white;
           gap: 20px 0px;
-          height: 550px;
+          height: 100%;
           border-radius: 5px;
           @include breakpoint(md) {
             margin-top: 50px;
@@ -603,6 +616,125 @@ li {
             padding: 5px;
           }
         }
+      }
+    }
+    .checked-form{
+      display: none;
+      flex-direction: column;
+      width: 80%;
+      height: 100%;
+      background-color: rgb(14 14 14 / 50%);
+      z-index: 5;
+      gap: 0px 15px;
+      margin-top: 30px;
+      padding: 10px;
+      align-items: center;
+      .info__countainer{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        margin-top: 30px;
+        flex-direction: row;
+        .payment__info{
+          width: 50%;
+          display: flex;
+          height: 100%;
+          flex-direction: column;
+          align-items: center;
+          .payment__bank__method{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 30%;
+            gap: 0px 15px;
+            .payment__item{
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: flex-start;
+              background-color: #161616;
+              width: 50%;
+              height: 35%;
+              cursor: pointer;
+              border-radius:25px;
+              overflow: hidden; 
+              .payment__item-img{
+                width: 15%;
+                
+              }
+              #privat{
+                margin-top: 7px;
+              }
+              #mono{
+                width: 40%;
+              }
+            }
+          }
+          .crypto__method{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 30%;
+            margin-top: 15px;
+            .payment__item{
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: flex-start;
+              background-color: #161616;
+              width: 100%;
+              height: 30%;
+              cursor: pointer;
+              border-radius:25px;
+              overflow: hidden;
+              .payment__item-img{
+                width: 10%;
+              }
+              .payment__net{
+                .payment__text{
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+         
+        }
+        .user__info{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 50%;
+          height: 50%;
+          .user__wrapper{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+      }
+     
+    }
+    .form__btn{
+      display: none;
+      flex-direction: row;
+      align-items: center;
+      gap: 0px 20px;
+      .to-order{
+         border: none;
+        border-radius: 5px;
+        width: 200px;
+        height: 50px;
+        font-family: "Montserrat";
+        cursor: pointer;
+      }
+      .to-response{
+         border: none;
+        border-radius: 5px;
+        width: 200px;
+        height: 50px;
+        font-family: "Montserrat";
+        cursor: pointer;
       }
     }
   }
@@ -1518,4 +1650,11 @@ li {
 .disabled {
   cursor: no-drop;
   pointer-events: none;
+}
+.info-input__wrapper {
+  border: 2px solid transparent;
+}
+
+.info-input__wrapper.highlighted {
+  border-color: red;
 }

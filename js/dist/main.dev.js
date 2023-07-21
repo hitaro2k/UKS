@@ -8,9 +8,9 @@ var _search = require("./modules/search.js");
 
 var _render = require("./modules/render.js");
 
-var _form = require("./modules/form.js");
-
 var _views = require("./modules/views.js");
+
+var _validation = require("./modules/validation.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

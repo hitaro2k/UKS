@@ -1,19 +1,37 @@
 const popularContainer = document.querySelector("#popular__container");
 
 export async function getProductsPopular() {
-  const response = await fetch("./js/modules/popular.json")
+  const response = await fetch("server/api.php")
   let documentHTML = document.querySelector("html")
  
   const productArray = await response.json();
-  productArray.forEach((item) => {
-    const convertedPrice = item.price * 37.5
-
+ 
+  const transformedData = productArray.map(item => ({
+    name: item["Производитель"],
+    id: item["Код"],
+    description: item["Описание"],
+    price: item["Цена у.е."],
+    count: item["Наличие"],
+    image:item["Фото"]
+    
+  }));
+  const firstFiveProducts = transformedData.slice(0, 4)
+  firstFiveProducts.forEach((item) => {
+    const priceNumber = parseFloat(item.price.replace(',', '.'));
+    const convertedPrice = priceNumber * 37.5
+    let status
+    if(item.count > 0){
+     status = "В наявностi"
+    }else{
+      status = "Не в наявностi"
+      
+    }
     const productHTML = `
         <div class="product" data-id ="${item.id}">
-          <img class="product-image" src="${item.image}" alt="img">
+          <img class="product-image" src="img/Frame-27.png" alt="img">
               <div class = "product-description">
-                <a class="product-title">${item.title}</a>
-                <p class="product-articul">${item.articul}</p>
+                <a class="product-title">${item.name}</a>
+                <p class="product-articul">${item.id}</p>
               </div>
               <div class ="product-info">
                 <div class ="product-info__price"> 
@@ -21,9 +39,9 @@ export async function getProductsPopular() {
                   <p class="product-price__dollar">${item.price}$</p>
                   <p class="product-price__grn">${convertedPrice} грн</p>
                 </div>
-                  <p class="product-status">${item.status}</p>
+                  <p class="product-status">${status}</p>
                 </div>
-              <button class="product-button" data > ${item.buy}</button>
+              <button class="product-button" data >В кошик</button>
             </div>
         </div>`
     popularContainer.insertAdjacentHTML("beforeend", productHTML)

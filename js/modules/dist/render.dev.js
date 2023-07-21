@@ -8,13 +8,13 @@ exports.renderData = renderData;
 var popularContainer = document.querySelector("#popular__container");
 
 function getProductsPopular() {
-  var response, documentHTML, productArray, productTitle;
+  var response, documentHTML, productArray, transformedData, firstFiveProducts, productTitle;
   return regeneratorRuntime.async(function getProductsPopular$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return regeneratorRuntime.awrap(fetch("./js/modules/popular.json"));
+          return regeneratorRuntime.awrap(fetch("server/api.php"));
 
         case 2:
           response = _context.sent;
@@ -24,16 +24,36 @@ function getProductsPopular() {
 
         case 6:
           productArray = _context.sent;
-          productArray.forEach(function (item) {
-            var convertedPrice = item.price * 37.5;
-            var productHTML = "\n        <div class=\"product\" data-id =\"".concat(item.id, "\">\n          <img class=\"product-image\" src=\"").concat(item.image, "\" alt=\"img\">\n              <div class = \"product-description\">\n                <a class=\"product-title\">").concat(item.title, "</a>\n                <p class=\"product-articul\">").concat(item.articul, "</p>\n              </div>\n              <div class =\"product-info\">\n                <div class =\"product-info__price\"> \n                <div class = \"all-price\">\n                  <p class=\"product-price__dollar\">").concat(item.price, "$</p>\n                  <p class=\"product-price__grn\">").concat(convertedPrice, " \u0433\u0440\u043D</p>\n                </div>\n                  <p class=\"product-status\">").concat(item.status, "</p>\n                </div>\n              <button class=\"product-button\" data > ").concat(item.buy, "</button>\n            </div>\n        </div>");
+          transformedData = productArray.map(function (item) {
+            return {
+              name: item["Производитель"],
+              id: item["Код"],
+              description: item["Описание"],
+              price: item["Цена у.е."],
+              count: item["Наличие"],
+              image: item["Фото"]
+            };
+          });
+          firstFiveProducts = transformedData.slice(0, 4);
+          firstFiveProducts.forEach(function (item) {
+            var priceNumber = parseFloat(item.price.replace(',', '.'));
+            var convertedPrice = priceNumber * 37.5;
+            var status;
+
+            if (item.count > 0) {
+              status = "В наявностi";
+            } else {
+              status = "Не в наявностi";
+            }
+
+            var productHTML = "\n        <div class=\"product\" data-id =\"".concat(item.id, "\">\n          <img class=\"product-image\" src=\"img/Frame-27.png\" alt=\"img\">\n              <div class = \"product-description\">\n                <a class=\"product-title\">").concat(item.name, "</a>\n                <p class=\"product-articul\">").concat(item.id, "</p>\n              </div>\n              <div class =\"product-info\">\n                <div class =\"product-info__price\"> \n                <div class = \"all-price\">\n                  <p class=\"product-price__dollar\">").concat(item.price, "$</p>\n                  <p class=\"product-price__grn\">").concat(convertedPrice, " \u0433\u0440\u043D</p>\n                </div>\n                  <p class=\"product-status\">").concat(status, "</p>\n                </div>\n              <button class=\"product-button\" data >\u0412 \u043A\u043E\u0448\u0438\u043A</button>\n            </div>\n        </div>");
             popularContainer.insertAdjacentHTML("beforeend", productHTML);
             documentHTML.setAttribute("load", true);
           });
           productTitle = document.querySelectorAll(".product-title");
           renderData(productTitle);
 
-        case 10:
+        case 12:
         case "end":
           return _context.stop();
       }
