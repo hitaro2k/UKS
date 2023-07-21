@@ -284,8 +284,7 @@ function views() {
         var getProductInfo = localStorage.getItem("key_" + productId);
         var productInfo = JSON.parse(getProductInfo);
         console.log(productInfo);
-        productInfo["Наличие"] = String(Number(productInfo["Наличие"]) - count); // Сохранение обновленного значения в JSON
-
+        productInfo["Наличие"] = String(Number(productInfo["Наличие"]) - count);
         localStorage.setItem("key_" + productId, JSON.stringify(productInfo));
       }
 

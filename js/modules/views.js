@@ -282,7 +282,7 @@ export function views() {
 
         productInfo["Наличие"] = String(Number(productInfo["Наличие"]) - count);
       
-        // Сохранение обновленного значения в JSON
+        
         localStorage.setItem("key_" + productId, JSON.stringify(productInfo));
       }
 
