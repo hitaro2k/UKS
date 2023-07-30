@@ -677,12 +677,7 @@ export function views() {
       cartItems = []
       formProductItem.innerHTML = ""
       localStorage.clear()
-<<<<<<< HEAD:js/modules/views.js
-      // removeCartItem(productId);
-      updateTotalPrice()
-=======
       document.querySelector(".total-price__text").innerHTML = "0 грн"
->>>>>>> master-slider:app/js/modules/views.js
     }
 
     forms()
