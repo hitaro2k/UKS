@@ -449,7 +449,7 @@ li {
           font-weight: 500;
         }
         .acces-btn{
-          background-color: chartreuse;
+          background-color: #7fff00a8;
           border-radius: 5px;
           width: 200px;
           height: 50px;
@@ -866,11 +866,18 @@ li {
       width: 60%;
       height: 500px;
       border: 2px solid white;
-      .pay-input {
-        font-family: "Montserrat";
-      }
-      .user-img{
-        width: 40%;
+      border-radius: 5px;
+      .label-input{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        .image-input{
+          width: 20%;
+        }
+        .user-image{
+          width: 100%;
+        }
       }
     }
    
@@ -884,21 +891,6 @@ li {
     }
   }
  
-
-  .scroll-down__title {
-    margin: 0 auto;
-    animation: opacity;
-    animation-iteration-count: infinite;
-    animation-duration: 2s;
-    padding-bottom: 30px;
-
-    @include breakpoint(elg) {
-      padding-top: 80px;
-    }
-  }
-
-
-
   .cart-menu {
     background-color: #1f1f1f;
     position: fixed;
@@ -1107,193 +1099,278 @@ li {
     }
   }
 
-  .full-screen {
-    position: relative;
-    min-height: 70vh;
+  .wrapper__content{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    overflow: hidden;
-    @include breakpoint(md){
-      flex-direction: column;
-      align-items: center;
-    }
-    .slider-container {
-      width: 100%;
-      overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    .full-screen {
+      width: 80%;
       position: relative;
-    }
-    
-    .slider {
+      min-height: 70vh;
       display: flex;
       flex-direction: row;
-      align-items: center;
-      white-space: nowrap;
-      gap: 0px 80px;
-      animation: marquee 15s linear infinite;
-      .slider:hover {
-        animation-play-state: paused;
+      justify-content: center;
+      overflow: hidden;
+      @include breakpoint(md){
+        flex-direction: column;
+        align-items: center;
       }
-      
-      .slider-item {
-        display: inline-block;
-        margin-right: 10px;
-        .slider-img {
-          width: 200px; 
-        }
-      }
-      
-      
-    }
-
-    .marquee:hover {
-      animation-play-state: paused;
-    }
-
-    @keyframes marquee {
-      0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-  }
-  .full-screen__bg{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.3;
-    z-index: -1;
-  }
-  .content {
-    position: relative;
-    background-color: black;
-    z-index: 1;
-
-    .popular__container {
-      padding-top: 100px;
-      display: flex;
-      flex-direction: column;
-
-      .popular__header {
-        color: white;
-        font-weight: 400;
-      }
-
-      .popular__more {
-        margin: 0 auto;
-        padding-top: 100px;
-        animation: opacity;
-        animation-iteration-count: infinite;
-        animation-duration: 4s;
-      }
-
-      .products__container {
+      .discount-container{
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
-        gap: 30px 30px;
-        padding-top: 50px;
-
-        @include breakpoint(lg) {
-          justify-content: center;
-          padding: 0px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        border: 2px solid gray;
+        border-radius: 15px;
+        @include breakpoint(md){
+          width: 90%;
         }
-
-        .product {
+        .product{
           display: flex;
-          flex-direction: column;
-          width: 250px;
-          height: 350px;
-          border: 1px solid #ffffff52;
-          border-radius: 5px;
-          justify-content: flex-end;
-          .product-description {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          width: 90%;
+          height: 90%;
+          background: rgb(255 255 255 / 7%);
+          border-radius: 10px;
+          @include breakpoint(lg){
+            flex-direction: column;
+          }
+          .product-description{
+            @include breakpoint(lg){
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+          }
+          .product-image{
+            width: 20%;
+            margin-left: 20px;
+            @include breakpoint(lg){
+              margin-left: 0px;
+              margin-top: 20px;
+            }
+          }
+          .titles{
+            margin-left: 50px;
+            .product-title{
+              font-size: 25px;
+            }
+            .subtitle{
+              font-size: 15px;
+              color: rgba(128, 128, 128, 0.594);
+            }
+          }
+          .product-info{
             display: flex;
             flex-direction: column;
-            margin-top: 20px;
-          }
-        
-          .product-info {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-          }
-        
-          .product-info__price {
-            display: flex;
-            flex-direction: column;
-           
-            .all-price{
+            margin-right: 45px;
+            width: 40%;
+            align-items: flex-end;
+            @include breakpoint(lg){
+              width: 100%;
+              align-items: center;
+            }
+            @include breakpoint(md){
+              margin-right: 0px;
+            }
+            .buy{
               display: flex;
               flex-direction: row;
               align-items: center;
-              .product-price__grn {
-                padding-left: 5px;
-                font-size: 13px;
-                padding-top: 22px;
-                color: #ffffff63;
-                font-family: "Montserrat";
+              @include breakpoint(sm){
+                flex-direction: column;
               }
-              .product-price__dollar {
-                padding-left: 20px;
-                font-size: 20px;
-                padding-top: 20px;
+              .product-button{
+                background-color: transparent;
                 color: white;
-                font-family: "Montserrat";
+                border: 1px solid #ffffff57;
+                border-radius: 5px;
+                width: 100px;
+                height: 40px;
+                cursor: pointer;
+                margin-left: 75px;
+                @include breakpoint(sm){
+                  margin-left: 0px;
+                }
               }
             }
-            
-        
-        
-          .product-status {
-            color: rgba(110, 255, 110, 0.938);
-            font-size: 12px;
-            padding-left: 20px;
+            .all-price{
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: flex-end;
+              @include breakpoint(lg){
+                justify-content: center;
+              }
+              .product-price__dollar{
+                color: rgba(255, 255, 255, 0.263);
+                font-size: 15px;
+                text-decoration: line-through;
+              }
+              .product-price__grn{
+                color: red;
+                font-size: 30px;
+                margin-left: 10px;
+                @include breakpoint(sm){
+                  font-size: 15px;
+                }
+              }
+            }
           }
-          }
-          .product-image {
-            width: 60%;
-            margin: 0 auto;
-            padding-top: 20px;
-          }
-        
-          .product-title {
-            padding-left: 20px;
-            font-weight: 400;
-            font-family: "Montserrat";
-            font-size: 15px;
-            height: 10px;
-            cursor: pointer;
-          }
-        
-          .product-articul {
-            padding-left: 20px;
-            font-size: 12px;
-            color: rgba(163, 163, 163, 0.69);
-          }
-          .product-button {
-            background-color: transparent;
-            color: white;
-            border: 1px solid #ffffff57;
-            border-radius: 5px;
-            width: 100px;
-            height: 40px;
-            cursor: pointer;
-            margin-right: 10px;
-          }
-       
-        
+        }
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
         }
       }
     }
+    .full-screen__bg{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.1;
+      z-index: -1;
+    }
+    .content {
+      position: relative;
+      width: 100%;
+      background-color: black;
+      z-index: 1;
+  
+      .popular__container {
+        padding-top: 100px;
+        display: flex;
+        flex-direction: column;
+  
+        .popular__header {
+          color: white;
+          font-weight: 400;
+        }
+  
+        .popular__more {
+          margin: 0 auto;
+          padding-top: 100px;
+          animation: opacity;
+          animation-iteration-count: infinite;
+          animation-duration: 4s;
+        }
+  
+        .products__container {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 30px 30px;
+          padding-top: 50px;
+  
+          @include breakpoint(lg) {
+            justify-content: center;
+            padding: 0px;
+          }
+  
+          .product {
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            height: 350px;
+            border: 1px solid #ffffff52;
+            border-radius: 5px;
+            justify-content: flex-end;
+            .product-description {
+              display: flex;
+              flex-direction: column;
+              margin-top: 20px;
+            }
+          
+            .product-info {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+            }
+          
+            .product-info__price {
+              display: flex;
+              flex-direction: column;
+             
+              .all-price{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .product-price__grn {
+                  padding-left: 5px;
+                  font-size: 13px;
+                  padding-top: 22px;
+                  color: #ffffff63;
+                  font-family: "Montserrat";
+                }
+                .product-price__dollar {
+                  padding-left: 20px;
+                  font-size: 20px;
+                  padding-top: 20px;
+                  color: white;
+                  font-family: "Montserrat";
+                }
+              }
+              
+          
+          
+            .product-status {
+              color: rgba(110, 255, 110, 0.938);
+              font-size: 12px;
+              padding-left: 20px;
+            }
+            }
+            .product-image {
+              width: 60%;
+              margin: 0 auto;
+              padding-top: 20px;
+            }
+          
+            .product-title {
+              padding-left: 20px;
+              font-weight: 400;
+              font-family: "Montserrat";
+              font-size: 15px;
+              height: 10px;
+              cursor: pointer;
+            }
+          
+            .product-articul {
+              padding-left: 20px;
+              font-size: 12px;
+              color: rgba(163, 163, 163, 0.69);
+            }
+            .product-button {
+              background-color: transparent;
+              color: white;
+              border: 1px solid #ffffff57;
+              border-radius: 5px;
+              width: 100px;
+              height: 40px;
+              cursor: pointer;
+              margin-right: 10px;
+            }
+         
+          
+          }
+        }
+      }
+    }
+  
   }
-
+ 
   .footer {
     padding-top: 100px;
     background-color: rgb(0, 0, 0);

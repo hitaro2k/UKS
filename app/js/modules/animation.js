@@ -9,7 +9,7 @@ const animation = () => {
     userSearch()
     mediaAnim()
     burgerMenu()
-    slide()
+    payment()
     progressLine()
 }
 
@@ -86,6 +86,26 @@ export function mediaAnim() {
     return mediaAnim
 }
 
+export function payment(){
+    document.getElementById("imagePreview").addEventListener("click", function() {
+        document.getElementById("fileInput").click();
+      });
+      
+      document.getElementById("fileInput").addEventListener("change", function(event) {
+        var file = event.target.files[0];
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            document.getElementById("imagePreview").style.display = "block"
+            document.getElementById("imagePreview").src = e.target.result;
+            document.querySelector(".image-input").style.display = "none"
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+      
+}
+
 export function userSearch() {
     const btnSearch = document.querySelector(".button-search")
     const closeSearch = document.querySelector(".close-search")
@@ -116,22 +136,6 @@ export function userSearch() {
         }
     });
     return userSearch
-}
-export function slide(){
-    const slider = document.querySelector('.slider');
-    const slideItem = document.querySelectorAll(".slider-item")
-
-    slideItem.forEach(item =>{
-        item.addEventListener('mouseenter', function() {
-            slider.style.animationPlayState = 'paused';
-        });
-        item.addEventListener('mouseleave', function() {
-            slider.style.animationPlayState = 'running';
-        });
-    })
-  
-    
-   
 }
 
 export function progressLine() {

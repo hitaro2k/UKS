@@ -18,8 +18,7 @@
       <div class="spinner"></div>
     </div> -->
 
-    <main class="main">
-      
+    <main class="main">  
       <header class="full-screen__header__container">
         <a class="logo-link" href="http://localhost/dashboard/UK/index.html">
           <img src="./app/img/UK.svg" alt="logo" class="logo-img" />
@@ -55,8 +54,6 @@
         </div>
       </header>
 
-      
-
       <div class="search-stroke__container">
         <div class="search-stroke__input-close">
           <input
@@ -88,6 +85,7 @@
               </svg>
             </object>
         </div>
+
         <div class="warn-wrapper">
           <p class="warn-title">Весь ваш прогресс будет сброшен</p>
           <div class="warn-btn">
@@ -95,6 +93,7 @@
             <button class="accept-warn">Отмена</button>
           </div>
         </div>
+
         <div class="verification" >
 
           <div class="input-wrapper">
@@ -113,7 +112,6 @@
         </div>
      
         <form action="./app/server/personalData.php"  method="POST" class="form-order" style="display: none;">
-         
 
           <div class="form-content" >
             <div class="block__product">
@@ -227,14 +225,17 @@
  
       <form action="./app/server/getImage.php" method="POST" class="form-payment" enctype="multipart/form-data">
         <div class="pay-img" id="image-container">
-          <input class="pay-input" type="file" name="file" value="" />
+          <label for="fileInput" class="label-input">
+            <img src="/app/img/gallery.png" alt="Выберите файл" id="image" class="image-input">
+            <img src="" alt="Выберите файл" id="imagePreview" class="user-image" style="display: none;">
+            <input type="file" id="fileInput" name="file" value="" style="display: none;">
+          </label>
           <input class="pay-inputnone" type="text" value="" id="unique-valueimg" style="display: none;" name="user-id"/>
         </div>
 
 
         <button type="submit" name="submit" class="send-data" >Подтвердить</button>
       </form>
-
 
       <div id="message"></div>
       
@@ -329,47 +330,27 @@
         </nav>
       </div>
 
-      <section class="full-screen" id="promo">
-        <div class="slider">
-          <div class="slider-item">
-            <a href=""><img src="./app/img/buick-logo.webp" alt="" class="slider-img"></a>
+      <section class="wrapper__content">
+        <div class="full-screen" id="promo">
+          <div class="discount-container">
             
-          </div>
-          <div class="slider-item">
-            <a href=""><img src="./app/img/cadillac-logo.webp" alt="" class="slider-img"></a>
-            
-          </div>
-          <div class="slider-item">
-            <a href="https://chat.openai.com"><img src="./app/img/ford-logo.webp" alt="" class="slider-img"></a>
-            
-          </div>
-          <div class="slider-item">
-            <a href=""><img src="./app/img/gmc-logo-2.webp" alt="" class="slider-img"></a>
-            
-          </div>
-          <div class="slider-item">
-            <a href=""> <img src="./app/img/jeep-logo.webp" alt="" class="slider-img"></a>
-           
-          </div>
-          <div class="slider-item">
-            <a href=""> <img src="./app/img/chevrolet-logo.webp" alt="" class="slider-img"></a>
-           
           </div>
         </div>
+  
+       <img class="full-screen__bg" src="./app/img/bgWithLogo.webp" alt="">
+
+  
+        <div class="content">
+          <section class="popular__container" id="popular">
+            <h2 class="popular__header">Популярні товари</h2>
+  
+            <div class="products__container" id="popular__container"></div>
+          </section>
+        </div>
+  
       </section>
 
-     <img class="full-screen__bg" src="./app/img/bgWithLogo.webp" alt="">
-
-      <p class="scroll-down__title">Листай нижче</p>
-
-      <div class="content">
-        <section class="popular__container" id="popular">
-          <h2 class="popular__header">Популярні товари</h2>
-
-          <div class="products__container" id="popular__container"></div>
-        </section>
-      </div>
-
+  
       <footer class="footer">
         <div class="footer__header-block">
           <a href="#promo" class="logo">
@@ -481,7 +462,7 @@
               </svg>
             </object>
           </div>
-          <a href="#" class="info-block__email-link">coprorationUk@gmail.com</a>
+          <a href="#" class="info-block__email-link">ukserviceofficial@gmail.com</a>
         </div>
 
         <div class="footer-banner">

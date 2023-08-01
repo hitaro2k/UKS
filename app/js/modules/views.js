@@ -74,7 +74,7 @@ export function views() {
           const card = event.target.closest(".product");
           const productId = card.dataset.id;
 
-          fetch("server/api.php")
+          fetch("/app/server/api.php")
           .then(res => res.json())
           .then(data => {
             const transformedData = data.map(item => ({
@@ -169,7 +169,7 @@ export function views() {
                 const countElem = document.querySelector(
                   `.item-count[data-counter="${productId}"]`
                 );
-                fetch("server/api.php")
+                fetch("/app/server/api.php")
                 .then(res => res.json())
                 .then(data =>{
                   const transformedData = data.map(item => ({
@@ -189,7 +189,9 @@ export function views() {
                       handleClick(productInfo)
                       updateTotalPrice();
                       countElem.textContent = element.count;
-                  
+                      console.log(element)
+                      console.log(itemNum)
+                      console.log(countElemNum)
                        if(itemNum <= countElemNum){
                         countElem.innerHTML = itemNum
                         element.count = itemNum
@@ -324,7 +326,7 @@ export function views() {
                 `.item-count[data-counter="${productId}"]`
               ); 
 
-              fetch("server/api.php")
+              fetch("/app/server/api.php")
               .then(res => res.json())
               .then(data =>{
                 const transformedData = data.map(item => ({
@@ -682,140 +684,7 @@ export function views() {
 
     forms()
 
-    window.addEventListener("click", function (event) {
-      if (event.target.hasAttribute("data")) {
-        const card = event.target.closest(".product");
-        const productId = card.dataset.id;
-        const existingItem = findCartItem(productId);
-        cartMenu.classList.add("cart-active");
-        cartWrapper.style.display = "flex";
-        totalPrice.style.display = "flex";
-        isclear.style.display = "none";
-
-        let formPrice;
-        let added = card.getAttribute("data-added");
-        localStorage.setItem("isclear" , "none")
-        localStorage.setItem("isntclear" ,"flex")
-        
-        function counterReseter(){
-          productInfo.count = 0;
-          let itemInCount = document.querySelector(".item-count");
-          itemInCount.innerHTML = productInfo.count;
-          card.removeAttribute("data-added")
-        }
-        if (added === "true") {
-          return;
-        }
-        added = "true";
-        card.setAttribute("data-added", added);
-
-        /* -----------------------------------------------------------------------*/
-        /*                                Card Item                               */
-        /* -----------------------------------------------------------------------*/
-
-        if (existingItem) {
-          const countElem = document.querySelector(
-            `.item-count[data-counter="${productId}"]`
-          );
-          countElem.textContent = Number(countElem.textContent) + 1;
-          return;
-        }
-         
-        const productInfo = {
-          id: productId,
-          imgSrc: card.querySelector(".product-image").getAttribute("src"),
-          title: card.querySelector(".product-title").innerText,
-          status: card.querySelector(".product-status").innerText,
-          price: card.querySelector(".product-price__grn").innerText,
-          count: 0,
-          data: `${productId}`,
-        };
-        
-        productInfo.count++;
-
-        const itemInCart = `<div class="item" data-id="${productInfo.data}" >
-                <img src="${productInfo.imgSrc}" alt="" class="item-image">
-                <p class="item-name">${productInfo.title}</p>
-                <p class="item-price">${productInfo.price}</p>
-                <div class="item__button__add-delete">
-                    <button class="button-primary__plus" data-id="${productInfo.data}">+</button>
-                    <p class="item-count" data-counter="${productInfo.id}">${productInfo.count}</p>
-                    <button class="button-primary__minus" data-id="${productInfo.data}" id="minus">-</button>
-                </div>
-            </div>
-        `;
-        cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
-        cartItems.push(productInfo);
-        forms()
-        
-        handleClick(productInfo)
-      
-        /* -------------------------------------------------------------------------*/
-        /*                                  Buttons                                 */
-        /* -------------------------------------------------------------------------*/
-
-        let btnPlus = document.querySelectorAll(".button-primary__plus");
-        let btnMinus = document.querySelectorAll(".button-primary__minus");
-
-        /* --------------------------------------------------------------------------*/
-        /*                                  Btn Plus                                 */
-        /* --------------------------------------------------------------------------*/
-
-        btnPlus.forEach(function (button) {
-          button.addEventListener("click",(event)=>{
-            const productId = event.target.dataset.id;
-            const item = findCartItem(productId);
-            const countElem = document.querySelector(
-              `.item-count[data-counter="${productId}"]`
-            );   
-            let countElemAttr = countElem.getAttribute("data-counter");
-            if (countElemAttr == productInfo.data) {
-              item.count++;
-              handleClick(productInfo)
-            }console.log(cartItems)
-            countElem.textContent = item.count;
-            updateTotalPrice();
-          });
-        });
-
-        /* --------------------------------------------------------------------------*/
-        /*                                  Btn Minus                                */
-        /* --------------------------------------------------------------------------*/
-
-        btnMinus.forEach(function (button) {
-          button.addEventListener("click", function (event) {
-            const productId = event.target.dataset.id;
-            const item = findCartItem(productId);
-            const countElem = document.querySelector(
-              `.item-count[data-counter="${productId}"]`
-            );
-            console.log(cartItems)
-            let countElemAttr = countElem.getAttribute("data-counter");
-            localStorage.setItem("counterElem" , countElemAttr)
-            if (countElemAttr == productInfo.data) {
-              item.count--;
-              handleClick(productInfo)
-            }
-            if (item.count === 0) {
-              removeCartItem(productId);
-              if(cartItems.length <= 0){
-                isclear.style.display = "flex";
-                cartWrapper.style.display = "none"
-                totalPrice.style.display = "none"
-              }
-              card.removeAttribute("data-added");
-            } else {
-              countElem.textContent = item.count;
-              updateTotalPrice();
-            }
-          });
-        });
-        updateTotalPrice();
-        forms();
-
-      }
-      
-    });
+   
   
     
     function removeCartItem(id) {
