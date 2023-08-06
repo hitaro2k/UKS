@@ -8,6 +8,7 @@ export function validation() {
       deliveryDepartment: false,
       deliverySolo: false,
     }
+   
     function countTrueProperties(obj) {
       let count = 0;
       for (let prop in obj) {
@@ -41,7 +42,7 @@ export function validation() {
         checkAllFields();
       }
       
-      function validatePatronymic() {
+    function validatePatronymic() {
         var patronymicInput = document.getElementById("patronymic");
         var parentDiv = patronymicInput.parentElement;
         var regex = /^[A-Za-zА-Яа-яЁё]+$/;
@@ -55,9 +56,9 @@ export function validation() {
         }
         
         checkAllFields();
-      }
+    }
       
-      function validateSurname() {
+    function validateSurname() {
         var surnameInput = document.getElementById("surname");
         var parentDiv = surnameInput.parentElement;
         var regex = /^[A-Za-zА-Яа-яЁё]+$/;
@@ -71,9 +72,9 @@ export function validation() {
         }
         
         checkAllFields();
-      }
+    }
       
-      function validatePhone() {
+    function validatePhone() {
         var phoneInput = document.getElementById("phone");
         var parentDiv = phoneInput.parentElement;
         var regex = /^\d+$/;
@@ -87,9 +88,9 @@ export function validation() {
         }
         
         checkAllFields();
-      }
+    }
       
-      function validateDeliveryDepartment() {
+    function validateDeliveryDepartment() {
         var deliveryDepartmentInput = document.getElementById("delivery-department");
         var parentDiv = deliveryDepartmentInput.parentElement;
         var regex = /(http|https|ftp):\/\/[^\s/$.?#].[^\s]*/i;
@@ -114,17 +115,19 @@ export function validation() {
         }
         
         checkAllFields();
-      }
-      const acceptSolo = document.querySelector(".accept-solo")
-      document.getElementById("info-input__post-office-self").onmouseenter = ()=>{
-          document.getElementById("delivery-solo").placeholder  = "вулиця Симиренка, 16А, Київ, 03134"
-          acceptSolo.style.display = "block"
-      }
-      document.getElementById("info-input__post-office-self").onmouseleave = ()=>{
-        document.getElementById("delivery-solo").placeholder  = "Самовивіз"
-        acceptSolo.style.display = "none"
     }
-      function validateDeliverySolo() {
+    const acceptSolo = document.querySelector(".accept-solo")
+    document.getElementById("info-input__post-office-self").onmouseenter = ()=>{
+          acceptSolo.style.display = "block"
+          acceptSolo.style.transition = "ease 2s"
+    }
+
+    document.getElementById("info-input__post-office-self").onmouseleave = ()=>{
+        acceptSolo.style.display = "none"        
+        acceptSolo.style.transition = "ease 2s"
+    }
+
+    function validateDeliverySolo() {
         var deliverySoloInput = document.getElementById("delivery-solo");
         var parentDiv = deliverySoloInput.parentElement;
         var regex = /^[\d\s]+$/;
@@ -145,18 +148,71 @@ export function validation() {
           deliveryDepartmentInput.disabled = false;
         }
         checkAllFields();
-      }
-      function checkAllFields() {
+    }
+
+    function checkAllFields() {
       
-        var toCheckedButton = document.querySelector(".to-checked");
+        var toCheckedButton = document.querySelector(".send-data");
         if (countTrueProperties(exam) >= 5) {
+         
           toCheckedButton.style.display = "block"
          
         }else if(countTrueProperties(exam)< 5){
           toCheckedButton.style.display = "none"
           
         }
+    }
+
+    const imageInput = document.querySelector('.imageInput');
+    const imageContainer = document.getElementById('image-container');
+    const removePhotoButton = document.getElementById('removePhotoButton');
+    let currentImage = null;
+    
+    imageInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+    
+      if (file) {
+        const fileReader = new FileReader();
+    
+        fileReader.onload = (event) => {
+          const img = new Image();
+          img.src = event.target.result;
+    
+          img.onload = () => {
+            imageContainer.innerHTML = '';
+            imageContainer.appendChild(img);
+            currentImage = img;
+            removePhotoButton.style.display = 'block';
+          };
+    
+          img.onerror = () => {
+          };
+        };
+    
+        fileReader.readAsDataURL(file);
       }
-      
+    });
+    
+    removePhotoButton.addEventListener('click', () => {
+      imageContainer.innerHTML = `
+        <label for="fileInput" class="label-input">
+          <img src="/app/img/gallery.png" alt="Выберите файл" id="image" class="image-input">
+          <img src="" alt="Выберите файл" id="imagePreview" class="user-image" style="display: none;">
+          <input type="file" id="fileInput" class="imageInput" name="file" value="" style="display: none;" >
+        </label>
+      `;
+      imageInput.value = '';
+      currentImage = null;
+      removePhotoButton.style.display = 'none';
+    });
+    
+    imageContainer.addEventListener('click', (e) => {
+      if (e.target !== imageInput) {
+        imageInput.click();
+      }
+    });
+    
+    
+          
 }
 validation()

@@ -18,7 +18,8 @@ function discount() {
         price: item["Цена у.е"],
         count: item["Наличие"],
         image: item["Фото"],
-        discount: item["Скидка"]
+        discount: item["Скидка"],
+        exchange: item["Курс"]
       };
     });
     var discount = transformedData.filter(function (item) {
@@ -31,31 +32,22 @@ function discount() {
 
   function makeDiscount(item) {
     var exclItem = item.slice(0, 1);
-    fetch("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json").then(function (res) {
-      return res.json();
-    }).then(function (data) {
-      data.forEach(function (item) {
-        if (item.txt === "Долар США") {
-          exclItem.forEach(function (element) {
-            var exchDollar = item.rate + 1.2;
-            var exchDollarNum = Number(exchDollar);
-            var dollarPriceTotal = parseFloat(element.price) * exchDollarNum;
-            var dollarPriceDiscount = element.discount * exchDollarNum;
-            var toFixedDollarTotal = dollarPriceTotal.toFixed(2);
-            var toFixedDollarDiscount = dollarPriceDiscount.toFixed(2);
-            var status;
+    exclItem.forEach(function (element) {
+      var exchDollarNum = Number(element.exchange);
+      var dollarPriceTotal = parseFloat(element.price) * exchDollarNum;
+      var dollarPriceDiscount = element.discount * exchDollarNum;
+      var toFixedDollarTotal = dollarPriceTotal.toFixed(2);
+      var toFixedDollarDiscount = dollarPriceDiscount.toFixed(2);
+      var status;
 
-            if (element.count > 0) {
-              status = "В наявностi";
-            } else {
-              status = "Не в наявностi";
-            }
+      if (element.count > 0) {
+        status = "В наявностi";
+      } else {
+        status = "Не в наявностi";
+      }
 
-            var discItem = "\n                        <div class=\"product\" data-id =\"".concat(element.id, "\">\n                          <img class=\"product-image\" src=\"/app/").concat(element.image, "\" alt=\"img\">\n                              <div class = \"product-description\">\n                                <a class=\"product-title\">").concat(element.description, "</a>\n                                <p class=\"product-articul\">").concat(element.id, "</p>\n                              </div>\n                                <div class =\"product-info\">\n                                    \n                                    <div class = \"all-price\">\n                                        <p class=\"product-price__dollar\">").concat(toFixedDollarTotal, " \u0433\u0440\u043D</p>\n                                        <p class=\"product-price__grn\">").concat(toFixedDollarDiscount, " \u0433\u0440\u043D</p>\n                                    </div>\n                                    <div class= \"buy\">\n                                        <p class=\"product-status\">").concat(status, "</p>\n                                        <button class=\"product-button\" data >\u0412 \u043A\u043E\u0448\u0438\u043A</button>\n                                    </div>\n\n                                </div>\n                        </div>\n                        ");
-            discountWrapper.insertAdjacentHTML("beforeend", discItem);
-          });
-        }
-      });
+      var discItem = "\n            <div class=\"product\" data-id =\"".concat(element.id, "\">\n              <img class=\"product-image\" src=\"/app/").concat(element.image, "\" alt=\"img\">\n                  <div class = \"product-description\">\n                    <a class=\"product-title\">").concat(element.description, "</a>\n                    <p class=\"product-articul\">").concat(element.id, "</p>\n                  </div>\n                    <div class =\"product-info\">\n                        \n                        <div class = \"all-price\">\n                            <p class=\"product-price__dollar\">").concat(toFixedDollarTotal, " \u0433\u0440\u043D</p>\n                            <p class=\"product-price__grn\">").concat(toFixedDollarDiscount, " \u0433\u0440\u043D</p>\n                        </div>\n                        <div class= \"buy\">\n                            <p class=\"product-status\">").concat(status, "</p>\n                            <button class=\"product-button\" data >\u0412 \u043A\u043E\u0448\u0438\u043A</button>\n                        </div>\n\n                    </div>\n            </div>\n            ");
+      discountWrapper.insertAdjacentHTML("beforeend", discItem);
     });
   }
 }

@@ -4,13 +4,13 @@ if (file_get_contents('php://input')) {
   $data = json_decode(file_get_contents('php://input'), true);
   $items = $data['items'];
   $mysql = new mysqli('localhost', 'root', '', 'uks-bd');
-
+  $user_id = end($items);
   for ($i = 0; $i < count($items); $i += 3) {
     if (isset($items[$i]) && isset($items[$i+1]) && isset($items[$i+2])) {
       $id_product = $items[$i];
       $price = $items[$i+1];
       $sum = $items[$i+2];
-      $user_id = $items[$i+3];
+      
 
       $selectNumber = $mysql->query("SELECT Наличие FROM all_production WHERE Код = '$id_product'");
       $row = $selectNumber->fetch_assoc();
@@ -22,6 +22,7 @@ if (file_get_contents('php://input')) {
       $mysql->query("INSERT INTO order (id_product, price, sum ,`user_id` ) VALUES ('$id_product', '$price', '$sum' , '$user_id')");
     }
   }
+  
 }
 
 

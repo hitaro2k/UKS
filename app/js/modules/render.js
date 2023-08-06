@@ -12,14 +12,27 @@ export async function getProductsPopular() {
     description: item["Описание"],
     price: item["Цена у.е"],
     count: item["Наличие"],
-    image:item["Фото"]
+    image:item["Фото"],
+    discount:item["Скидка"],
+    exchange:item["Курс"]
     
   }));
-  
+  const transformedDataExchange = transformedData.map(item =>{
+    const arrayPrices = []
+    arrayPrices.push(item.exchange)
+    const arrayTrash = arrayPrices.shift()
+    return arrayTrash    
+  })
+  const arrayClear = transformedDataExchange.filter(str => str !== '')
+  const exchangePriceStr = arrayClear[0]
+  const exchangePrice  = Number(exchangePriceStr)
+
+
   const firstFiveProducts = transformedData.slice(0, 4)
   firstFiveProducts.forEach((item) => {
     const priceNumber = parseFloat(item.price.replace(',', '.'));
-    const convertedPrice = priceNumber * 37.5
+    const convertedPrice = priceNumber * exchangePrice
+    const existPrice = convertedPrice.toFixed(2)
     let status
     if(item.count > 0){
      status = "В наявностi"
@@ -38,7 +51,7 @@ export async function getProductsPopular() {
                 <div class ="product-info__price"> 
                 <div class = "all-price">
                   <p class="product-price__dollar">${item.price}$</p>
-                  <p class="product-price__grn">${convertedPrice} грн</p>
+                  <p class="product-price__grn">${existPrice} грн</p>
                 </div>
                   <p class="product-status">${status}</p>
                 </div>

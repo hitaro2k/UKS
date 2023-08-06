@@ -186,12 +186,13 @@ li {
     justify-content: space-between;
 
     .logo-img {
+      width: 30%;
       @include breakpoint(md) {
-        width: 85%;
+        width: 25%;
       }
 
       @include breakpoint(sm) {
-        width: 65%;
+        width: 15%;
       }
     }
 
@@ -350,547 +351,6 @@ li {
     }
   }
 
-  .form-order__background {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    z-index: 4;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    .close-form__wrapper {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      margin-top: 20px;
-      margin-right: 75px;
-      .close-form {
-        cursor: pointer;
-      }
-    }
-    .warn-wrapper{
-      width: 100%;
-      height: 100%;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      .warn-btn{
-        display: flex;
-        flex-direction: row;
-        gap: 0px 30px;
-        margin-top: 50px;
-        z-index: 5;
-        .abort-warn{
-          border-radius:5px;
-          background-color: white;
-          color: black;
-          cursor: pointer;
-
-        }
-        .accept-warn{
-          border-radius:5px;
-          background-color: white;
-          color: black;
-          cursor: pointer;
-
-        }
-      }
-    }
-    .verification{
-      display: none;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background-color: black;
-      z-index: 4;
-      .input-wrapper{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        width: 60%;
-        height: 70px;
-        background-color: #343434;
-        margin-top: 50px;
-        border-radius: 10px;
-        .input-verif{
-          background-color: transparent;
-          outline: none;
-          color: white;
-          border: none;
-          margin-left: 50px;
-        }
-        .send-code{
-          background-color: transparent;
-          color: white;
-          cursor: pointer;
-          margin-right: 50px;
-        }
-      }
-      .verif-btn{
-        display: flex;
-        flex-direction: row;
-        gap: 0px 75px;
-        margin-top:75px;
-        .abort-btn{
-          background-color: gray;
-          border-radius: 5px;
-          width: 200px;
-          height: 50px;
-          cursor: pointer;
-          color: white;
-          font-weight: 500;
-        }
-        .acces-btn{
-          background-color: #7fff00a8;
-          border-radius: 5px;
-          width: 200px;
-          height: 50px;
-          cursor: pointer;
-          color: white;
-          font-weight: 500;
-        }
-      }
-    }
-    .to-checked{
-      border: none;
-      border-radius: 5px;
-      width: 200px;
-      height: 50px;
-      margin-top: 20px;
-      font-family: "Montserrat";
-      cursor: pointer;
-      display: none;
-    }
-    .form-order {
-      display: none;
-      flex-direction: column;
-      width: 80%;
-      height: 100%;
-      background-color: rgb(14 14 14 / 50%);
-      z-index: 5;
-      gap: 0px 15px;
-      margin-top: 30px;
-      padding: 10px;
-      align-items: center;
-      
-    
-      .form-content {
-        display: flex;
-        flex-direction: row;
-        width: 80%;
-        gap: 0px 15px;
-
-        @include breakpoint(lg) {
-          width: 100%;
-        }
-        @include breakpoint(md) {
-          flex-direction: column;
-          align-items: center;
-        }
-        .block__product {
-          width: 50%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          @include breakpoint(sm){
-            width: 90%;
-          }
-          .block__product-price {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-
-            @include breakpoint(md) {
-              width: 80%;
-              margin-top: 20px;
-            }
-            @include breakpoint(xs) {
-              width: 95%;
-            }
-
-            .price-block {
-              width: 99%;
-              height: 50px;
-              border: 2px solid white;
-              border-radius: 5px;
-              margin-top: 20px;
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              justify-content: space-between;
-              margin-bottom: 50px;
-              .title {
-                margin-left: 20px;
-              }
-              .total-price {
-                margin-right: 20px;
-              }
-            }
-          }
-          .block__product-item {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px 0px;
-            .product-block {
-              border: 2px solid white;
-              border-radius: 5px;
-            
-              .product {
-                width: 90%;
-                height: 80px;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                margin: 0 auto;
-                border: 2px solid white;
-                padding: 10px;
-                margin-top: 20px;
-                margin-bottom: 20px;
-                @include breakpoint(lg) {
-                  height: 60px;
-                }
-                @include breakpoint(sm){
-                  height: 60%;
-                  flex-direction: column;
-                }
-                .image {
-                  width: 65px;
-                  height: 60px;
-                }
-
-                .name {
-                  margin: 0px;
-                  color: white;
-                  font-family: "Montserrat";
-                }
-                .articul {
-                  margin: 0px;
-                  color: rgba(255, 255, 255, 0.49);
-                  font-family: "Montserrat";
-                }
-                
-                .product-price {
-                  padding: 0px;
-                  color: white;
-                  font-family: "Montserrat";
-                }
-              }
-            }
-          }
-          .to-response {
-            display: none;
-            border: none;
-            border-radius: 5px;
-            width: 200px;
-            height: 50px;
-            font-family: "Montserrat";
-            cursor: pointer;
-          }
-        }
-
-        .personal-info {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 50%;
-          border: 2px solid white;
-          gap: 20px 0px;
-          height: 100%;
-          border-radius: 5px;
-          @include breakpoint(md) {
-            margin-top: 50px;
-            width: 80%;
-          }
-          @include breakpoint(xs) {
-            width: 95%;
-          }
-
-          .info-input__wrapper {
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 90%;
-            height: 40px;
-            margin-top: 10px;
-            border-radius: 5px;
-            .info-input {
-              width: 90%;
-              background-color: transparent;
-              outline: none;
-              border: none;
-              font-family: "Montserrat";
-              margin-left: 10px;
-            }
-          }
-          .post-office {
-            width: 90%;
-            .post-office__office {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              .label-form {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 20px;
-                height: 20px;
-                background-color: white;
-                border-radius: 5px;
-                border: 2px solid rgb(255, 81, 0);
-                .form-img__wrapper {
-                  display: none;
-                  position: absolute;
-                  .form-img {
-                    width: 25px;
-                    height: 25px;
-                  }
-                }
-                .input-form {
-                  z-index: -1;
-                }
-              }
-
-              .info-input__wrapper {
-                margin-left: 20px;
-                border-radius: 5px;
-              }
-            }
-            .post-office__self {
-              display: flex;
-              flex-direction: column;
-              align-items: flex-start;
-            
-              .info-input__wrapper {
-                margin-left: 20px;
-                border-radius: 5px;
-              }
-              .accept-solo{
-                margin:  0 auto;
-              }
-            }
-          }
-          .user-comm {
-            outline: none;
-            font-family: "Montserrat";
-            width: 90%;
-            border-radius: 5px;
-            padding: 5px;
-          }
-        }
-      }
-    }
-    .checked-form{
-      display: none;
-      flex-direction: column;
-      width: 80%;
-      height: 100%;
-      background-color: rgb(14 14 14 / 50%);
-      z-index: 5;
-      gap: 0px 15px;
-      margin-top: 30px;
-      padding: 10px;
-      align-items: center;
-      .info__countainer{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        margin-top: 30px;
-        flex-direction: row;
-        .payment__info{
-          width: 50%;
-          display: flex;
-          height: 100%;
-          flex-direction: column;
-          align-items: center;
-          .payment__bank__method{
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            height: 30%;
-            gap: 0px 15px;
-            .payment__item{
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: flex-start;
-              background-color: #161616;
-              width: 50%;
-              height: 35%;
-              cursor: pointer;
-              border-radius:25px;
-              overflow: hidden; 
-              .payment__item-img{
-                width: 15%;
-                
-              }
-              #privat{
-                margin-top: 7px;
-              }
-              #mono{
-                width: 40%;
-              }
-            }
-          }
-          .crypto__method{
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            height: 30%;
-            margin-top: 15px;
-            .payment__item{
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: flex-start;
-              background-color: #161616;
-              width: 100%;
-              height: 30%;
-              cursor: pointer;
-              border-radius:25px;
-              overflow: hidden;
-              .payment__item-img{
-                width: 10%;
-              }
-              .payment__net{
-                .payment__text{
-                  font-size: 14px;
-                }
-              }
-            }
-          }
-         
-        }
-        .user__info{
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 50%;
-          height: 50%;
-          .user__wrapper{
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-        }
-      }
-     
-    }
-    .form__btn{
-      display: none;
-      flex-direction: row;
-      align-items: center;
-      gap: 0px 20px;
-      .to-order{
-         border: none;
-        border-radius: 5px;
-        width: 200px;
-        height: 50px;
-        font-family: "Montserrat";
-        cursor: pointer;
-      }
-      .to-response{
-         border: none;
-        border-radius: 5px;
-        width: 200px;
-        height: 50px;
-        font-family: "Montserrat";
-        cursor: pointer;
-      }
-    }
-  }
-
-  .form-response {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    z-index: 4;
-    .form-response__title {
-      font-weight: 400;
-      font-size: 45px;
-      @include breakpoint(lg) {
-        font-size: 28px;
-      }
-      @include breakpoint(xs) {
-        font-size: 17px;
-      }
-    }
-    .form-response__text {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 30px;
-      .form-response__subtitle {
-        text-align: center;
-      }
-      .form-response__link {
-        margin-top: 40px;
-        .form-response__link-image {
-          width: 75px;
-        }
-      }
-    }
-  }
-  .form-payment {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    z-index: 4;
-    .pay-img {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-top: 75px;
-      width: 60%;
-      height: 500px;
-      border: 2px solid white;
-      border-radius: 5px;
-      .label-input{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        cursor: pointer;
-        .image-input{
-          width: 20%;
-        }
-        .user-image{
-          width: 100%;
-        }
-      }
-    }
-   
-    .send-data{
-      margin-top: 100px;
-      margin-bottom: 100px;
-      width: 150px;
-      height: 75px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-  }
- 
   .cart-menu {
     background-color: #1f1f1f;
     position: fixed;
@@ -1576,7 +1036,7 @@ li {
 
   .logo-img__footer {
     padding-left: 50px;
-
+    width: 25%;
     @include breakpoint(lg) {
       padding-left: 0px;
     }
@@ -1661,6 +1121,97 @@ li {
     font-size: 25px;
     cursor: pointer;
   }
+}
+
+.verification{
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 4;
+  .sendMail-success_text{
+    color: white;
+  }
+  .sendMail-error__text{
+    color: rgb(255, 0, 0);
+  }
+  .input-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    height: 70px;
+    background-color: #343434;
+    margin-top: 50px;
+    border-radius: 10px;
+    .input-verif{
+      background-color: transparent;
+      outline: none;
+      color: white;
+      border: none;
+      margin-left: 50px;
+    }
+    .send-code{
+      background-color: transparent;
+      color: white;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+  }
+  .form-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .input-wrapper{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 60%;
+      height: 70px;
+      background-color: #343434;
+      margin-top: 50px;
+      border-radius: 10px;
+      .input-verif{
+        background-color: transparent;
+        outline: none;
+        color: white;
+        border: none;
+        margin-left: 50px;
+      }
+    }
+    .verif-btn{
+      display: flex;
+      flex-direction: row;
+      gap: 0px 75px;
+      margin-top:75px;
+      .abort-btn{
+        background-color: gray;
+        border-radius: 5px;
+        width: 200px;
+        height: 50px;
+        cursor: pointer;
+        color: white;
+        font-weight: 500;
+      }
+      .acces-btn{
+        background-color: #7fff00a8;
+        border-radius: 5px;
+        width: 200px;
+        height: 50px;
+        cursor: pointer;
+        color: white;
+        font-weight: 500;
+      }
+    }
+  }
+  
 }
 .succes__popup{
   position: fixed;

@@ -9,8 +9,6 @@ const animation = () => {
     userSearch()
     mediaAnim()
     burgerMenu()
-    payment()
-    progressLine()
 }
 
 let catalog = document.querySelector(".catalog-menu")
@@ -86,25 +84,25 @@ export function mediaAnim() {
     return mediaAnim
 }
 
-export function payment(){
-    document.getElementById("imagePreview").addEventListener("click", function() {
-        document.getElementById("fileInput").click();
-      });
+// export function payment(){
+//     document.getElementById("imagePreview").addEventListener("click", function() {
+//         document.getElementById("fileInput").click();
+//       });
       
-      document.getElementById("fileInput").addEventListener("change", function(event) {
-        var file = event.target.files[0];
-        if (file) {
-          var reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById("imagePreview").style.display = "block"
-            document.getElementById("imagePreview").src = e.target.result;
-            document.querySelector(".image-input").style.display = "none"
-          };
-          reader.readAsDataURL(file);
-        }
-      });
+//       document.getElementById("fileInput").addEventListener("change", function(event) {
+//         var file = event.target.files[0];
+//         if (file) {
+//           var reader = new FileReader();
+//           reader.onload = function(e) {
+//             document.getElementById("imagePreview").style.display = "block"
+//             document.getElementById("imagePreview").src = e.target.result;
+//             document.querySelector(".image-input").style.display = "none"
+//           };
+//           reader.readAsDataURL(file);
+//         }
+//       });
       
-}
+// }
 
 export function userSearch() {
     const btnSearch = document.querySelector(".button-search")
@@ -138,58 +136,38 @@ export function userSearch() {
     return userSearch
 }
 
-export function progressLine() {
-    function startTimer(duration, display) {
-      let timer = duration;
-      let timerBar = document.querySelector(".timer-bar");
-      let width = 100;
+// export function progressLine() {
+//     function startTimer(duration, display) {
+//       let timer = duration;
+//       let timerBar = document.querySelector(".timer-bar");
+//       let width = 100;
   
-      let timerInterval = setInterval(function () {
-        timer--;
-        width = (timer / duration) * 100;
-        timerBar.style.width = width + "%";
-        timerBar.style.borderRadius = "0" + "px";
-        if (timer <= 0) {
-          clearInterval(timerInterval);
+//       let timerInterval = setInterval(function () {
+//         timer--;
+//         width = (timer / duration) * 100;
+//         timerBar.style.width = width + "%";
+//         timerBar.style.borderRadius = "0" + "px";
+//         if (timer <= 0) {
+//           clearInterval(timerInterval);
 
-          document.querySelector(".succes__popup").classList.remove("active-popup");
-        }
-      }, 1000);
+//           document.querySelector(".succes__popup").classList.remove("active-popup");
+//         }
+//       }, 1000);
   
-      timerBar.addEventListener("animationend", function () {
-        document.querySelector(".succes__popup").classList.remove("active-popup");
-      });
-    }
-  
-    document.addEventListener("DOMContentLoaded", function () {
-      const timerContainer = document.querySelector(".succes__popup");
-      document.querySelector(".send-data").addEventListener("click", function () {
-        timerContainer.classList.add("active-popup");
-        startTimer(7, timerContainer);
-      });
-    });
-}
-  
-  
-// export function showCatalog() {
-//     menuItem = document.querySelectorAll('.catalog')
-//     let closeCatalog = document.querySelector(".catalog__close-btn")
-//     menuItem.forEach((item) => {
-//         item.addEventListener("click" ,  () => {
-//             catalog.classList.add("catalog-menu__active")
-//             if (catalog.classList.contains("catalog-menu__active")) {
-//                 menu.classList.remove('active');
-//                 menuBtn.classList.remove('active');
-//                 menuBtn.classList.remove("fixed")
-//                 menuBtn.classList.remove("left")
-//             }
-//         })
-//     })
-//     closeCatalog.onclick = () => {
-//         catalog.classList.remove("catalog-menu__active")
+//       timerBar.addEventListener("animationend", function () {
+//         document.querySelector(".succes__popup").classList.remove("active-popup");
+//       });
 //     }
-//     return showCatalog
+  
+//     document.addEventListener("DOMContentLoaded", function () {
+//       const timerContainer = document.querySelector(".succes__popup");
+//       document.querySelector(".send-data").addEventListener("click", function () {
+//         timerContainer.classList.add("active-popup");
+//         startTimer(7, timerContainer);
+//       });
+//     });
 // }
+ 
 
 animation()
 
