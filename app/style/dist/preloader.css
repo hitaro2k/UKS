@@ -10,22 +10,22 @@
   background-color: #000;
   z-index: 9999;
 }
-#preloader .spinner {
-  top: 50%;
-  left: 50%;
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #ffc400;
+#preloader .rotating-image {
+  width: 200px;
+  height: 200px;
+  background-image: url("path/to/your/image.jpg");
+  background-size: cover;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  animation: spin 2s linear infinite;
+  animation: rotate 3s linear infinite;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
-@keyframes spin {
+@keyframes rotate {
   0% {
-    transform: rotate(0deg);
+    transform: rotateY(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotateY(360deg);
   }
 }

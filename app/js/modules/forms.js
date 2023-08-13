@@ -6,14 +6,14 @@ let documentHTML = document.querySelector("html")
 const verifWrapper = document.querySelector(".verification")
 const accesBtn = document.querySelector(".acces-btn")
 const abortBtn = document.querySelector(".abort-btn")
-let transferredItems = [];
 
     // const uniqueInput = document.getElementById('unique-value')
     // const uniqueInputImg = document.getElementById("unique-value__img")
     // uniqueInput.value = randomNum
     // uniqueInputImg.value = randomNum
   
-function forms(){ 
+export function forms(){ 
+
     const inputName = document.getElementById("name")
     const inputPatronymic = document.getElementById("patronymic")
     const inputSurname = document.getElementById("surname")
@@ -21,71 +21,8 @@ function forms(){
     const inputDelivery = document.getElementById("delivery-department")
 
     const sendData = document.querySelector(".send-data")
-
-    function submitForms() {
-      const form1Data = new FormData(document.getElementById('form'));
-      const form2Data = new FormData(document.getElementById('form-payment'));
-      const photoInput = document.getElementById('fileInput');
-      const photoFile = photoInput.files[0];
-      const photoFormData = new FormData();
-      photoFormData.append('file', photoFile);
-    
-      Promise.all([
-        fetch('/app/server/personalData.php', {
-          method: 'POST',
-          body: form1Data
-        }),
-        fetch('/app/server/getImage.php', {
-          method: 'POST',
-          body: form2Data
-        })
-      ])
-      .then(responses => Promise.all(responses.map(response => response.json())))
-      .then(data => {
-        console.log(data)
-      })
-      .catch(error => {
-        
-      });
-    }
-    function generateId(){
-        let randomNumber = '';
-        for (let i = 0; i < 10; i++) {
-          randomNumber += Math.floor(Math.random() * 10);
-        }
-        return randomNumber;
-    }
-    let randomNum = generateId();
-    
-    function sendDataToServer(data) {
-        const url = "app/server/changeDb.php";
-        const options = {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        };
       
-        fetch(url, options)
-          .then((response) => response.json())
-          .then((result) => {
-            console.log("Успешно", result);
-          })
-          .catch((error) => {
-            
-          });
-    }
-      
-    function sendAllData(){  
-        if (transferredItems.length > 0) {
-          transferredItems.push(randomNum)
-          let itemJson = {
-            items: transferredItems.flat(),
-          };
-          console.log(itemJson)
-          sendDataToServer(itemJson);
-        }      
+    function sendAllData(){   
         formProductPrice.innerHTML = "";
         inputName.value = "" 
         inputPatronymic.value = ""
@@ -95,11 +32,7 @@ function forms(){
         window.location.href = "http://uk"
         localStorage.clear()
     }
-    sendData.addEventListener("click" , (e)=>{
-        e.preventDefault()
-        sendAllData()
-    })
-    
+
     // form.addEventListener('submit', function(e) {
     //     e.preventDefault();
     //     var formData = new FormData(form);
@@ -119,8 +52,8 @@ function forms(){
     //     throw new Error
     //     });
     // });
-    
-    const checkedFormItems = [] ;
+
+
     const formProductPrice = document.querySelector(".block__product-price")
     const formProductItem = document.querySelector(".block__product-item")
     const priceToForm = localStorage.getItem("price")
@@ -133,6 +66,7 @@ function forms(){
         `;
         formProductPrice.insertAdjacentHTML("beforeend", buyPrice);
     }
+
     const cartItems = JSON.parse(localStorage.getItem("cartItems"))
     
     if (formProductItem.children.length === 0) {
@@ -148,36 +82,105 @@ function forms(){
             </div>
             `;
         formProductItem.insertAdjacentHTML("beforeend", inCartProduct);
-        checkedFormItems.push([item.id, item.price, item.count]);
         });
     }
-    checkedFormItems.forEach(item =>{
-        transferredItems.push(...item)
-    })
+    const userId = JSON.stringify(localStorage.getItem("userId"))
+    const formPayment= document.querySelector(".form-payment")
+    const sendPhoto = document.querySelector(".send-photo")
+    const succesPopup = document.querySelector('.popup-success__img')
+    const fileInput = document.getElementById('fileInput');
+    const imageContainer = document.getElementById('imageContainer');
+    const deleteButton = document.getElementById('deleteButton');
 
-    // function submitForms() {
-    //   const form1Data = new FormData(document.getElementById('form1'));
-    //   const form2Data = new FormData(document.getElementById('form2'));
-    //   const combinedData = new FormData();
-    //   for (const [name, value] of form1Data) {
-    //     combinedData.append(name, value);
-    //   }
-    //   for (const [name, value] of form2Data) {
-    //     combinedData.append(name, value);
-    //   }
+    fileInput.addEventListener('change', function() {
+      const file = fileInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.classList.add('uploaded-image');
+          imageContainer.innerHTML = ''; 
+          imageContainer.setAttribute("image-add", "true")
+          imageContainer.appendChild(img);
+          deleteButton.style.display = 'inline'; 
+        };
+
+        reader.readAsDataURL(file);
+      }
+    });
+
+    deleteButton.addEventListener('click', function() {
+      imageContainer.innerHTML = ''; 
+      deleteButton.style.display = 'none'; 
+      fileInput.value = null; 
+      sendPhoto.removeAttribute('sended');
+    });
+
+    const imageElement = imageContainer.querySelector("img");
+    const errorPopup = document.querySelector(".popup-error__img")
+    formPayment.addEventListener('submit', handleSubmit);
+    function handleSubmit(e) {
+      e.preventDefault();
+      if (imageContainer.hasAttribute("image-add")) {
+        succesPopup.style.left = "0"+ "px"
+        setTimeout(function(){
+          succesPopup.style.left = "-300" + "px"
+        },2000)
+      } else {
+        errorPopup.style.left = "0" + "px"
+        setTimeout(function(){
+          errorPopup.style.left = "-300" + "px"
+        },2000)
+      }
   
-    //   fetch('/your-server-url', {
-    //     method: 'POST',
-    //     body: combinedData
-    //   })
-    //   .then(response => {
+      if(sendPhoto.hasAttribute('sended')){
+        formPayment.removeEventListener("submit" , handleSubmit)
+      }else{
+        formPayment.addEventListener('submit', handleSubmit)
+      }
 
-    //   })
-    //   .catch(error => {
-       
-    //   });
-    // }
+      var formData = new FormData(formPayment);
+      var imageFile = document.querySelector('#fileInput').files[0];
+      formData.append('image', imageFile);
+      sendPhoto.setAttribute("sended", "true");
     
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'app/server/getImage.php', true);
+    
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          
+        } else {
+        }
+      };
+    
+      xhr.send(formData);
+    }
+
+    sendData.addEventListener('click', function () {
+      var personalInfoForm = document.getElementById('form');
+      var personalInfoData = new FormData(personalInfoForm);
+      var xhr1 = new XMLHttpRequest();
+      var url1 = 'app/server/personalData.php';
+      
+      xhr1.open('POST', url1, true);
+      xhr1.onload = function () {
+        if (xhr1.status === 200) {
+          console.log('Данные первой формы отправлены успешно.');
+        } else {
+          console.error('Ошибка отправки данных первой формы. Код ошибки:', xhr1.status);
+        }
+      };
+      xhr1.onerror = function () {
+        console.error('Произошла ошибка сети при отправке данных первой формы.');
+      };
+      xhr1.send(personalInfoData);
+     
+
+      sendAllData() 
+    });
     selectPayment()
 }
 

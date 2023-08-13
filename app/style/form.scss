@@ -442,45 +442,130 @@ body{
         }
         
     }
-    .form-payment{
+    .form-img__wrapper{
+       width: 100%;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       .title{
+        color: white;
+        font-family: "Montserrat";
+       }
+       .content{
+        width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        margin-top: 100px;
-        .title{
-            color: white;
-            font-family: "Montserrat";
-            @include breakpoint(sm){
-                font-size: 15px;
-            }
-        }
-        .pay-img{
-            width: 100%;
+        justify-content: space-around;
+        .form-payment{
+            width: 70%;
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 100px;
-            .label-input{
+            .send-photo{
+                background-color: #d28711;
+                color: white;
+                border: 0px;
+                border-radius: 5px;
+                width: 100px;
+                height: 30px;
+                margin-top: 40px;
+                cursor: pointer;
+            }
+            .title{
+                color: white;
+                font-family: "Montserrat";
+                @include breakpoint(sm){
+                    font-size: 15px;
+                }
+            }
+            .pay-img{
+                width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                margin-top: 100px;
+                .label-input{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .image-input{
+                    width: 20%;
+                }
             }
-            .image-input{
-                width: 20%;
+            .delete-img{
+                background-color: #cb162c;
+                width: 150px;
+                height: 50px;
+                color: white;
+                font-family: "Montserrat";
+                border: none;
+                border-radius: 5px;
+                margin-top: 50px;
+                cursor: pointer;
+            }
+          
+        }
+        .image__user{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            #imageContainer{
+                display: flex;
+                img{
+                    margin: 0 auto;
+                 width: 50%;
+                }
+            }
+            #deleteButton{
+                background-color: #d28711;
+                color: white;
+                border: 0px;
+                border-radius: 5px;
+                width: 100px;
+                height: 30px;
+                margin-top: 40px;
             }
         }
-        .delete-img{
-            background-color: #cb162c;
-            width: 150px;
-            height: 50px;
-            color: white;
-            font-family: "Montserrat";
-            border: none;
-            border-radius: 5px;
-            margin-top: 50px;
-            cursor: pointer;
-        }
+       }
       
+    }
+    .popup-success__img{
+        position: fixed;
+        width: 200px;
+        height: 50px;
+        border-radius: 0px 5px 5px 0px;
+        display: flex;
+        background-color: white;
+        justify-content: center;
+        bottom: 0;
+        left: -300px; 
+        transition: left 1s ease;
+        .title{
+            color: rgb(33, 255, 13);
+            font-family: "Montserrat";
+            font-size: 15px;
+        }
+    }
+    .popup-error__img{
+        position: fixed;
+        width: 200px;
+        height: 50px;
+        border-radius: 0px 5px 5px 0px;
+        display: flex;
+        background-color: white;
+        justify-content: center;
+        bottom: 0;
+        left: -300px; 
+        transition: left 1s ease;
+        .title{
+            color: rgb(255, 0, 0);
+            font-family: "Montserrat";
+            font-size: 15px;
+        }
     }
     .send-data{
         display: none;
@@ -496,5 +581,6 @@ body{
         margin: 0 auto;
         margin-top: 100px;
     }
+    
 }
 

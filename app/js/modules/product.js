@@ -15,14 +15,18 @@ function getProductData() {
       const priceNumberFixed = setPrice.toFixed(2)
       const product = `
         <div class="product" data-id ="${parsedCartData.id}">
-        <img src="${parsedCartData.image !== '' ? parsedCartData.image : 'app/img/UK.svg'}" alt="" class="product-image">
+        <img src="./app/img/UK.svg" alt="" class="product-image">
         <div class="product-content">
-            <p class="product-title">${parsedCartData.name}</p>
-            <p class="product__articul">${parsedCartData.articul}</p>
+        <div class = "product-text"> 
+            <a href = "" class="product-title">${parsedCartData.name !== '' ? parsedCartData.name : ''}</a>
+            <a href = "" class="product__articul">${parsedCartData.articul}</a>
+            <a href = "" class="product__id">${parsedCartData.id}</a>
+        </div>
+            
             <p class= "product-status"> </p>
             <div class="product-buy">
                 <p class="product-price__grn">${priceNumberFixed } грн</p>
-                <button class="product-btn" data>Купить </button>
+                <button class="product-btn" data><img src="./app/img/shopping-cart.svg" alt="" class="product-image"></button>
             </div>
         </div>
     </div>

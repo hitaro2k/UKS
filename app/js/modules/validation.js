@@ -1,4 +1,5 @@
 "use strict"
+document.addEventListener("DOMContentLoaded" , validation())
 export function validation() {
     let exam = {
       name: false,
@@ -7,7 +8,10 @@ export function validation() {
       phone: false,
       deliveryDepartment: false,
       deliverySolo: false,
-    }
+      sended: false
+    } 
+    console.log(exam.sended)
+
    
     function countTrueProperties(obj) {
       let count = 0;
@@ -25,7 +29,8 @@ export function validation() {
     document.getElementById("phone").addEventListener("input", validatePhone);
     document.getElementById("delivery-department").addEventListener("input", validateDeliveryDepartment);
     document.getElementById("delivery-solo").addEventListener("input", validateDeliverySolo);
-    
+
+
     function validateName() {
         var nameInput = document.getElementById("name");
         var parentDiv = nameInput.parentElement;
@@ -117,16 +122,7 @@ export function validation() {
         checkAllFields();
     }
     const acceptSolo = document.querySelector(".accept-solo")
-    document.getElementById("info-input__post-office-self").onmouseenter = ()=>{
-          acceptSolo.style.display = "block"
-          acceptSolo.style.transition = "ease 2s"
-    }
-
-    document.getElementById("info-input__post-office-self").onmouseleave = ()=>{
-        acceptSolo.style.display = "none"        
-        acceptSolo.style.transition = "ease 2s"
-    }
-
+  
     function validateDeliverySolo() {
         var deliverySoloInput = document.getElementById("delivery-solo");
         var parentDiv = deliverySoloInput.parentElement;
@@ -149,70 +145,41 @@ export function validation() {
         }
         checkAllFields();
     }
+    const sendPhoto = document.querySelector(".send-photo")
+    const imageContainer = document.getElementById("imageContainer")
+    const deleteButton = document.getElementById('deleteButton');
 
+   
+    sendPhoto.addEventListener("click", function() {
+      if (imageContainer.hasAttribute("image-add")) {
+        exam.sended = true
+        checkAllFields() 
+      }
+    });
+    // deleteButton.addEventListener('click', function() {
+    //   if(!sendPhoto.hasAttribute("sended")){
+    //     exam.sended = false
+    //     checkAllFields()  
+    //   }
+    
+    // });
+
+    const uniqueInput = document.querySelector("#unique-value")
+    const uniqueInputImage  = document.querySelector("#unique-input__value")
+    uniqueInput.value = localStorage.getItem("userId")
+    uniqueInputImage.value =  localStorage.getItem("userId")
+    
     function checkAllFields() {
-      
+      console.log(exam)
         var toCheckedButton = document.querySelector(".send-data");
-        if (countTrueProperties(exam) >= 5) {
-         
+        if (countTrueProperties(exam) == 6 ){
           toCheckedButton.style.display = "block"
          
-        }else if(countTrueProperties(exam)< 5){
+        }else if(countTrueProperties(exam) < 6){
           toCheckedButton.style.display = "none"
           
         }
     }
-
-    const imageInput = document.querySelector('.imageInput');
-    const imageContainer = document.getElementById('image-container');
-    const removePhotoButton = document.getElementById('removePhotoButton');
-    let currentImage = null;
-    
-    imageInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-    
-      if (file) {
-        const fileReader = new FileReader();
-    
-        fileReader.onload = (event) => {
-          const img = new Image();
-          img.src = event.target.result;
-    
-          img.onload = () => {
-            imageContainer.innerHTML = '';
-            imageContainer.appendChild(img);
-            currentImage = img;
-            removePhotoButton.style.display = 'block';
-          };
-    
-          img.onerror = () => {
-          };
-        };
-    
-        fileReader.readAsDataURL(file);
-      }
-    });
-    
-    removePhotoButton.addEventListener('click', () => {
-      imageContainer.innerHTML = `
-        <label for="fileInput" class="label-input">
-          <img src="/app/img/gallery.png" alt="Выберите файл" id="image" class="image-input">
-          <img src="" alt="Выберите файл" id="imagePreview" class="user-image" style="display: none;">
-          <input type="file" id="fileInput" class="imageInput" name="file" value="" style="display: none;" >
-        </label>
-      `;
-      imageInput.value = '';
-      currentImage = null;
-      removePhotoButton.style.display = 'none';
-    });
-    
-    imageContainer.addEventListener('click', (e) => {
-      if (e.target !== imageInput) {
-        imageInput.click();
-      }
-    });
-    
-    
-          
+       
 }
 validation()

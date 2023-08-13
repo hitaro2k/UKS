@@ -1,7 +1,7 @@
 "use strict"
 
 export function discount(){
-    const discountWrapper = document.querySelector(".discount-container")
+    
     fetch("/app/server/api.php")
     .then(response => response.json())
     .then(data => {

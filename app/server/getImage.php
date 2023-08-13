@@ -1,39 +1,37 @@
 <?php
-
-require '../vendor/autoload.php';
+require './vendor/autoload.php';
 
 use Intervention\Image\ImageManagerStatic as Image;
 
-if(isset($_POST['submit'])){
+if(isset($_FILES['file'])){
   $pdo = new PDO('mysql:host=localhost;dbname=uks-bd', 'root', '');
 
-  $imgData = file_get_contents($_FILES['file']['tmp_name']);
-  $rand = $_POST['user-id'];
+  $imgData = $_FILES['file']['tmp_name'];
+  $rand = $_POST['unique_input_value'];
 
-  $stmt = $pdo->prepare("INSERT INTO blob_file (image, user_id) VALUES (:img, :rand)");
+  $blob = $pdo->prepare("INSERT INTO blob_file (image, user_id) VALUES (:img, :rand)");
 
-  $stmt->bindParam(':img', $imgData, PDO::PARAM_LOB); 
-  $stmt->bindParam(':rand', $rand);
-  $stmt->execute();
+  $blob->bindParam(':img', $imgData, PDO::PARAM_LOB); 
+  $blob->bindParam(':rand', $rand);
+  $blob->execute();
 
-  $stmt = $pdo->prepare("SELECT image FROM blob_file WHERE user_id = :rand");
-  $stmt->bindParam(':rand', $rand);
-  $stmt->execute();
+  $getImage = $pdo->prepare("SELECT image FROM blob_file WHERE user_id = :rand");
+  $getImage->bindParam(':rand', $rand, PDO::PARAM_INT);
+  $getImage->execute();
 
-  $result = $stmt->fetch(PDO::FETCH_OBJ);
+  $row = $getImage->fetch(PDO::FETCH_ASSOC);
+  $blobData = $row['image'];
 
-  if($result){
-      $imageData = $result->image;
+  if($blobData){
+      $image = Image::make($blobData);
 
-      $image = Image::make($imageData);
-
-      $randPathName = rand('9999', 99999);
-      $pathToImage = "C:/OSPanel/domains/UK/image/$randPathName.jpg";
+      $randPathName = rand(100000, 999999);
+      $pathToImage = "C:/OSPanel/domains/UK/app/image/$randPathName.jpg";
 
       $image->save($pathToImage);
-      $stmt = $pdo->prepare("INSERT INTO image (path, user_id) VALUES (:path, :rand) ");
-      $stmt->bindParam(':path', $pathToImage);
-      $stmt->bindParam(':rand', $rand);
-      $stmt->execute();
+      $sendImage = $pdo->prepare("INSERT INTO image (path, user_id) VALUES (:path, :rand) ");
+      $sendImage->bindParam(':path', $pathToImage);
+      $sendImage->bindParam(':rand', $rand);
+      $sendImage->execute();
   }
 }

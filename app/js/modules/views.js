@@ -1,5 +1,6 @@
 "use strict";
 let cartItems = [];
+
 export function views() {
   let cartMenu = document.querySelector(".cart-menu");
   let menuBtn;
@@ -18,7 +19,6 @@ export function views() {
  
   document.addEventListener("DOMContentLoaded", function () {
     let card;
-   
     if(cartItems.length > 0){
       isclear.style.display = "none";
       cartWrapper.style.display = "flex"
@@ -55,15 +55,24 @@ export function views() {
       localStorage.setItem("statePassive","none" )
     })
 
-    function handleClick(item) {
+    function handleClick(item,) {
       var key = 'key_' + item.data;
       var value =JSON.stringify(item);
       localStorage.setItem(key, value);
       if(item.count <= 0){
         localStorage.removeItem(key);
       }
+      
     }
- 
+    function updateAvailability(productId, count) {
+      const getProductInfo = localStorage.getItem("key_" + productId);
+      let productInfo = JSON.parse(getProductInfo);
+      if(productInfo.count === 0){
+        console.log("negr")
+      }
+    }
+
+    const checkedFormItems = [] ;
     window.addEventListener("click", function (event) {
         if (event.target.hasAttribute("data")) {
           const card = event.target.closest(".product");
@@ -126,7 +135,7 @@ export function views() {
               count: 0,
               data: `${productId}`,
             };
-            
+            localStorage.setItem("idItem" , productInfo.id)
             productInfo.count++;
     
             const itemInCart = `<div class="item" data-id="${productInfo.data}" >
@@ -143,138 +152,44 @@ export function views() {
             cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
             cartItems.push(productInfo);
             localStorage.setItem("cartItems",JSON.stringify(cartItems))
-
             
             handleClick(productInfo)
-          
-            /* -------------------------------------------------------------------------*/
-            /*                                  Buttons                                 */
-            /* -------------------------------------------------------------------------*/
-    
-            let btnPlus = document.querySelectorAll(".button-primary__plus");
-            let btnMinus = document.querySelectorAll(".button-primary__minus");
-    
-            /* --------------------------------------------------------------------------*/
-            /*                                  Btn Plus                                 */
-            /* --------------------------------------------------------------------------*/
-    
-            btnPlus.forEach(function (button) {
-              button.addEventListener("click",(event)=>{
-                const productId = event.target.dataset.id;
-                
-                const countElem = document.querySelector(
-                  `.item-count[data-counter="${productId}"]`
-                );
-                fetch("/app/server/api.php")
-                .then(res => res.json())
-                .then(data =>{
-                  const transformedData = data.map(item => ({
-                    name: item["Производитель"],
-                    id: item["Код"],
-                    description: item["Описание"],
-                    price: item["Цена у.е."],
-                    count: item["Наличие"],
-                    image:item["Фото"]
-                  }));
-                  transformedData.forEach(item =>{
-                    if(item.id == productId){
-                      const element = findCartItem(productId); 
-                      const itemNum = Number(item.count)
-                      const countElemNum = Number(element.count)
-                      element.count++;
-                      localStorage.setItem("cartItems",JSON.stringify(cartItems))
-                      console.log(productInfo)
-                      updateTotalPrice();
-                      countElem.textContent = element.count;
-                      console.log(element )
-                      console.log( itemNum )
-                      console.log(countElemNum)
-                       if(itemNum <= countElemNum){
-                        handleClick(productInfo)
-                        countElem.innerHTML = itemNum
-                        element.count = itemNum
-                        localStorage.setItem("cartItems",JSON.stringify(cartItems))
-                        updateTotalPrice();
-                      }
-                    }
-                  })
-                })
-                
-              });
-            });
-    
-            /* --------------------------------------------------------------------------*/
-            /*                                  Btn Minus                                */
-            /* --------------------------------------------------------------------------*/
-    
-            btnMinus.forEach(function (button) {
-              button.addEventListener("click", function (event) {
-                const productId = event.target.dataset.id;
-                const item = findCartItem(productId);
-                const countElem = document.querySelector(
-                  `.item-count[data-counter="${productId}"]`
-                );
-                
-                let countElemAttr = countElem.getAttribute("data-counter");
-                localStorage.setItem("counterElem" , countElemAttr)
-                if (countElemAttr == productInfo.data) {
-                  item.count--;
-                  handleClick(productInfo)
-                  localStorage.setItem("cartItems",JSON.stringify(cartItems))
-                }
-                if (item.count === 0) {
-                  removeCartItem(productId);
-                  if(cartItems.length <= 0){
-                    isclear.style.display = "flex";
-                    cartWrapper.style.display = "none"
-                    totalPrice.style.display = "none"
-
-                  }
-                  card.removeAttribute("data-added");
-                } else {
-                  countElem.textContent = item.count;
-                  updateTotalPrice();
-                }
-              });
-            });
+            buttons()
             updateTotalPrice();
+
           }
          
         }
         
-    });
-  
+    });  
 
     window.addEventListener("load", function () {
-      // var images = [];
-      // document.querySelectorAll("img").forEach(function (img) {
-      //   images.push(img.src);
-      // });
+      var images = [];
+      document.querySelectorAll("img").forEach(function (img) {
+        images.push(img.src);
+      });
 
-      // var imagesLoaded = 0;
-      // for (var i = 0; i < images.length; i++) {
-      //   var img = new Image();
-      //   img.src = images[i];
-      //   img.onload = function () {
-      //     imagesLoaded++;
-      //     if (imagesLoaded == images.length) {
-      //       document.querySelector("#preloader").style.display = "none";
-      //     }
-      //   };
-      // }
-      var savedItems = getAllItemsFromStorage();
-
-      function updateAvailability(productId, count) {
-        const getProductInfo = localStorage.getItem("key_" + productId);
-        let productInfo = JSON.parse(getProductInfo);
-        
-        console.log(productInfo)
-
-        productInfo["Наличие"] = String(Number(productInfo["Наличие"]) - count);
-      
-        
-        localStorage.setItem("key_" + productId, JSON.stringify(productInfo));
+      var imagesLoaded = 0;
+      for (var i = 0; i < images.length; i++) {
+        var img = new Image();
+        img.src = images[i];
+        img.onload = function () {
+          imagesLoaded++;
+          if (imagesLoaded == images.length) {
+            document.querySelector("#preloader").style.display = "none";
+          }
+        };
       }
+      var savedItems = getAllItemsFromStorage();
+      const savedId = localStorage.getItem('idItem');
+      console.log(savedId)
+      
+      const productElement = document.querySelector(`[data-id="${savedId}"]`);
+      console.log(productElement)
+      if(productElement){
+        productElement.setAttribute('data-added', 'true');
+      }
+   
 
       savedItems.forEach(function (item) {
         const itemInCart = `<div class="item" data-id="${item.data}">
@@ -288,121 +203,124 @@ export function views() {
           </div>
         </div>`;
 
-        function buttons(){
-          let btnPlus = document.querySelectorAll(".button-primary__plus");
-          let btnMinus = document.querySelectorAll(".button-primary__minus");
-            btnPlus.forEach(function (button){
-              button.removeEventListener("click", handlePlusClick);
-              button.addEventListener("click", handlePlusClick);
-            })
-            btnMinus.forEach(function (button){
-              button.removeEventListener("click", handleMinusClick)
-              button.addEventListener("click", handleMinusClick);
-            })
-
-            function handlePlusClick(event){
-              if (event.target.dataset.clicked === "true") {
-                return;
-              }
- 
-              event.target.dataset.clicked = "true";
-              let productId = event.target.dataset.id;
-              const getProductInfo = localStorage.getItem("key_" + productId)
-              
-              let productInfo = JSON.parse(getProductInfo)
-              const countElem = document.querySelector(
-                `.item-count[data-counter="${productId}"]`
-              ); 
-
-              fetch("/app/server/api.php")
-              .then(res => res.json())
-              .then(data =>{
-                const transformedData = data.map(item => ({
-                  name: item["Производитель"],
-                  id: item["Код"],
-                  description: item["Описание"],
-                  price: item["Цена у.е."],
-                  count: item["Наличие"],
-                  image:item["Фото"]
-                }));
-                transformedData.forEach(item =>{
-                  if(item.id == productId){
-                    const element= findCartItem(productId);
-                    const itemNum = Number(item.count)
-                    const countElemNum = Number(element.count)
-                    element.count++;
-                    countElem.innerHTML = element.count
-                    handleClick(productInfo)
-                    updateTotalPrice();
-
-                    if(itemNum <= countElemNum){
-                      countElem.innerHTML = itemNum
-                      element.count = itemNum
-                      updateTotalPrice();
-                    }
-                  }
-                  
-                })
-              })
-              let countElemAttr = countElem.getAttribute("data-counter");                 
-              if (countElemAttr == productInfo.data) {
-                console.log(item.count)
-                item.count++;
-                handleClick(item)
-                updateAvailability(productId, 1)
-              }
-              countElem.textContent = item.count;
-              updateTotalPrice();
-              setTimeout(function () {
-                event.target.removeAttribute("data-clicked");
-              }, 100);
-            }
-
-            function handleMinusClick(event){
-              if (event.target.dataset.clicked === "true") {
-                return;
-              }
-              event.target.dataset.clicked = "true";
-              const productId = event.target.dataset.id;
-              const item = findCartItem(productId);
-              const getProductInfo = localStorage.getItem("key_" + productId)        
-              let productInfo = JSON.parse(getProductInfo)
-              const countElem = document.querySelector(
-                `.item-count[data-counter="${productId}"]`
-              );
-              let countElemAttr = countElem.getAttribute("data-counter");
-              localStorage.setItem("counterElem" , countElemAttr)
-              if (countElemAttr == productInfo.data) {
-                item.count--;
-                handleClick(item)
-                updateAvailability(productId, -1);
-              }
-              if (item.count === 0) {
-                removeCartItem(productId);
-                getProductInfo
-                if(cartItems.length <= 0){
-                  isclear.style.display = "flex";
-                  cartWrapper.style.display = "none"
-                  totalPrice.style.display = "none"
-                }
-              } else {
-                countElem.textContent = item.count;
-                updateTotalPrice();
-              }
-              setTimeout(function () {
-                event.target.removeAttribute("data-clicked");
-              }, 100);
-            }
-        }
-
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(item);
+
+
+        
         buttons()
 
       })
 
     });
 
+    function buttons(){
+      let btnPlus = document.querySelectorAll(".button-primary__plus");
+      let btnMinus = document.querySelectorAll(".button-primary__minus");
+      
+      btnPlus.forEach(function (button){
+          button.removeEventListener("click", handlePlusClick);
+          button.addEventListener("click", handlePlusClick);
+      })
+      btnMinus.forEach(function (button){
+          button.removeEventListener("click", handleMinusClick)
+          button.addEventListener("click", handleMinusClick);
+      })
+
+      function handlePlusClick(event){
+          if (event.target.dataset.clicked === "true") {
+            return;
+        }
+
+          event.target.dataset.clicked = "true";
+          let productId = event.target.dataset.id;
+          const getProductInfo = localStorage.getItem("key_" + productId)
+          
+          let productInfo = JSON.parse(getProductInfo)
+          const countElem = document.querySelector(
+            `.item-count[data-counter="${productId}"]`
+          ); 
+
+          fetch("/app/server/api.php")
+          .then(res => res.json())
+          .then(data =>{
+            const transformedData = data.map(item => ({
+              name: item["Производитель"],
+              id: item["Код"],
+              description: item["Описание"],
+              price: item["Цена у.е."],
+              count: item["Наличие"],
+              image:item["Фото"]
+            }));
+            transformedData.forEach(item =>{
+              if(item.id == productId){
+                const element= findCartItem(productId);
+                const itemNum = Number(item.count)
+                const countElemNum = Number(element.count)
+                element.count++;
+                countElem.innerHTML = element.count
+              
+                handleClick(element)
+                updateTotalPrice();
+                localStorage.setItem("cartItems",JSON.stringify(cartItems))
+                updateAvailability(productId ,1)
+                if(itemNum === countElemNum){
+                  countElem.innerHTML = itemNum
+                  
+                  handleClick(element)
+                  element.count = itemNum
+                  localStorage.setItem("cartItems",JSON.stringify(cartItems))
+                  updateTotalPrice();
+                }
+              }
+              
+            })
+          })
+
+          setTimeout(function () {
+            event.target.removeAttribute("data-clicked");
+          }, 500);
+      }
+
+      function handleMinusClick(event){
+          if (event.target.dataset.clicked === "true") {
+            return;
+          }
+          event.target.dataset.clicked = "true";
+          const productId = event.target.dataset.id;
+          const item = findCartItem(productId);
+          const getProductInfo = localStorage.getItem("key_" + productId)        
+          let productInfo = JSON.parse(getProductInfo)
+          const countElem = document.querySelector(
+            `.item-count[data-counter="${productId}"]`
+          );
+          let countElemAttr = countElem.getAttribute("data-counter");
+          localStorage.setItem("counterElem" , countElemAttr)
+          if (countElemAttr == productInfo.data) {
+            item.count--;
+            localStorage.setItem("cartItems",JSON.stringify(cartItems))
+            handleClick(item)
+            updateAvailability(productId, 0);
+          }
+          if (item.count === 0) {
+            removeCartItem(productId);
+            getProductInfo
+            localStorage.setItem("cartItems",JSON.stringify(cartItems))
+            if(cartItems.length <= 0){
+              isclear.style.display = "flex";
+              cartWrapper.style.display = "none"
+              totalPrice.style.display = "none"
+            }
+          } else {
+            countElem.textContent = item.count;
+            updateTotalPrice();
+            localStorage.setItem("cartItems",JSON.stringify(cartItems))
+          }
+          setTimeout(function () {
+            event.target.removeAttribute("data-clicked");
+          }, 100);
+      }
+    }
     function getAllItemsFromStorage() {
       var items = [];
     
@@ -422,8 +340,6 @@ export function views() {
     function findCartItem(id) {
       return cartItems.find((item) => item.id === id);
     }
-
-  
     function removeDataAddedAttribute() {
       const products = document.querySelectorAll(".product");
       products.forEach((product) => {
@@ -432,8 +348,58 @@ export function views() {
         }
       });
     }
+   
+    function generateId(){
+      let randomNumber = '';
+      for (let i = 0; i < 10; i++) {
+        randomNumber += Math.floor(Math.random() * 10);
+      }
+      return randomNumber;
+    }
+    let randomNum = generateId();
+    localStorage.setItem("userId" , randomNum)
+
+    
+    function sendDataToServer(data) {
+        const url = "app/server/addProduct.php";
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
+      
+        fetch(url, options)
+          .then((response) => response.json())
+          .then((result) => {
+            console.log("Успешно", result);
+          })
+          .catch((error) => {
+            
+          });
+    }
     showForm.addEventListener("click" , ()=>{
-      window.location.href("/app/html/inputsSend.php")
+      const localCartItems = JSON.parse(localStorage.getItem("cartItems"))
+
+      localCartItems.forEach(product =>{
+          checkedFormItems.push([product.id, product.price, product.count]);
+      })
+
+      let transferredItems = [];
+      checkedFormItems.forEach(item =>{
+        transferredItems.push(...item)
+      })
+
+      if (transferredItems.length > 0) {
+          transferredItems.push(randomNum)
+          let itemJson = {
+            items: transferredItems.flat(),
+          };
+          console.log(itemJson)
+          sendDataToServer(itemJson);
+      }      
+      window.location.href = "/app/html/inputsSend.php"
     })
  
     function removeCartItem(id) {
@@ -446,20 +412,23 @@ export function views() {
       updateTotalPrice();
 
     }
+
     function updateTotalPrice() {
       const itemPrices = document.querySelectorAll(".item-price");
       let totalPriceCash = 0;
+      let totalPriceSum = 0;
       itemPrices.forEach(function (item) {
         const productId = item
           .closest(".item")
           .querySelector(".button-primary__plus").dataset.id;
         const itemInfo = findCartItem(productId);
         totalPriceCash += parseFloat(item.textContent) * itemInfo.count;
+        totalPriceSum = totalPriceCash.toFixed(2)
       });
       document.querySelector(".total-price__text").innerHTML =
-      totalPriceCash + " грн";
+      totalPriceSum + " грн";
       function stateMoney(){
-        localStorage.setItem("price", totalPriceCash)
+        localStorage.setItem("price", totalPriceSum)
       }
       stateMoney()
     }

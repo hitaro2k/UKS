@@ -58,7 +58,7 @@ export async function getProductsPopular() {
               <button class="product-button" data >В кошик</button>
             </div>
         </div>`
-    popularContainer.insertAdjacentHTML("beforeend", productHTML)
+    
     documentHTML.setAttribute("load" ,true)
   })
   const productTitle = document.querySelectorAll(".product-title")

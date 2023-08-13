@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.discount = discount;
 
 function discount() {
-  var discountWrapper = document.querySelector(".discount-container");
   fetch("/app/server/api.php").then(function (response) {
     return response.json();
   }).then(function (data) {

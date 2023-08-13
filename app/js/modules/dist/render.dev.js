@@ -61,7 +61,6 @@ function getProductsPopular() {
             }
 
             var productHTML = "\n        <div class=\"product\" data-id =\"".concat(item.id, "\">\n          <img class=\"product-image\" src=\"./app/img/Frame-27.png\" alt=\"img\">\n              <div class = \"product-description\">\n                <a class=\"product-title\">").concat(item.name, "</a>\n                <p class=\"product-articul\">").concat(item.id, "</p>\n              </div>\n              <div class =\"product-info\">\n                <div class =\"product-info__price\"> \n                <div class = \"all-price\">\n                  <p class=\"product-price__dollar\">").concat(item.price, "$</p>\n                  <p class=\"product-price__grn\">").concat(existPrice, " \u0433\u0440\u043D</p>\n                </div>\n                  <p class=\"product-status\">").concat(status, "</p>\n                </div>\n              <button class=\"product-button\" data >\u0412 \u043A\u043E\u0448\u0438\u043A</button>\n            </div>\n        </div>");
-            popularContainer.insertAdjacentHTML("beforeend", productHTML);
             documentHTML.setAttribute("load", true);
           });
           productTitle = document.querySelectorAll(".product-title");
