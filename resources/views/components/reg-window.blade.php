@@ -1,5 +1,7 @@
 <div class="popup-register" id="popup-register" >
-   <img src="/app/img/close.svg" alt="" class="close-popup">
+    <div class="close-wrapper">
+        <img src="/img/close.svg" alt="" class="close-popup" sty>
+    </div>
    <h2 class="title">Реєстрація</h2>
    <form action="{{ route('register') }}" method="POST" class="form-register">
      @csrf

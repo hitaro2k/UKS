@@ -141,29 +141,6 @@
     </div>
     
     <script type="module" src="./js/main.js"></script>
-    <script>
-      const profileB = document.getElementById('button-profile');
-      const auth = document.getElementById('popup-login');
-      const register = document.getElementById('popup-register');
-      const registerB = document.getElementById('register');
-      const authB = document.getElementById('auth');
-
-
-      profileB.addEventListener('click', () => {
-        auth.style.display = 'flex';
-      });
-
-      registerB.addEventListener('click', () => {
-        auth.style.display = 'none';
-        register.style.display = 'flex';
-      });
-
-      authB.addEventListener('click', () => {
-        register.style.display = 'none';
-        auth.style.display = 'flex';
-      });
-
-    </script>
     
   </body>
 

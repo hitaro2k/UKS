@@ -19,11 +19,11 @@
 </head>
 
   <body>
-    <!-- <div id="preloader">
+    <div id="preloader">
       <div class="rotating-image">
         <img src="/img/UK.svg" alt="">
       </div>
-    </div> -->
+    </div>
 
     <main class="main">  
       <header class="full-screen__header__container">
@@ -72,13 +72,13 @@
             alt="img"
           />
           @auth
-            <a href="/profile"  class="button-profile">
+            <a href="/profile"  class="button-profile" data-login>
               <img src="/img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
             </a>
           @else
-              <a class="button-profile" id="button-profile">
+              <div class="button-profile" id="button-profile">
                 <img src="/img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
-              </a>
+              </div>
           @endauth
           <style>
             .button-profile{
@@ -96,10 +96,13 @@
       </header>
 
       
-  <div class="popup-container" id="popup-container" style= "display:none">
-    <x-auth-window/>
-    <x-reg-window/>
-  </div>
+      <div class="popup-wrapper">
+        <div class="popup-container" id="popup-container" >
+          <x-auth-window/>
+          <x-reg-window/>
+        </div>
+      </div>
+ 
 
       
       

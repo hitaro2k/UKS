@@ -907,155 +907,181 @@ li {
     
   }
 
-  .popup-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    width: 40%;
-    height: 500px; 
-    margin: 0 auto;
-    border-radius: 10px;
-    @include breakpoint(md){
-      width: 80%;
-    }
-    .popup-login{
-     
-      width: 100%;
-      display: flex;
-      height: 100%; 
-      flex-direction: column;
-      .close-wrapper{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end; 
-        cursor: pointer;       
-        .close-popup{
-          width: 5%;
-          margin-top: 30px;
-          margin-right: 30px;
-        }
-      }
-      
-      .title{
-        color: black;
-        margin: 0 auto;
-        margin-top: 30px;
-      }
-      .form-login{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 40px 0px;
-        margin-top: 50px;
-        .input__wrapper{
-          background-color: #82828229;
-          border-radius: 10px;
-          width: 80%;
-          height: 50px;
-          display: flex;
-          .input{
-            background-color: transparent;
-            border: none;
-            outline: none;
-            color: rgb(0, 0, 0);
-            font-family: "Montserrat";
-            margin-left: 10px;
-          }
-        }
-        .button{
-          background-color: #ff9c00;
-          color: white;
-          width: 200px;
-          height: 50px;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-      }
-      .enaible-account{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        margin: 0 auto;
-        .title{
-          color: gray;
-          font-size: 12px;
-          
-        }
-        .button{
-          color: #d28711;
-          background-color: transparent;
-          border: none;
-          cursor: pointer;
-        }
-      }
-     
-    }
 
-    .popup-register{
-      display: none;
+  .popup-wrapper{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: #000000a6;
+    z-index: 3;
+    display: none;
+    
+    .popup-container{
+      display: flex;
       flex-direction: column;
-      width: 100%;
-      .title{
-        color: black;
-        margin: 0 auto;
-        margin-top: 30px;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      width: 40%;
+      height: 90%; 
+      margin: 0 auto;
+      border-radius: 10px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      @include breakpoint(md){
+        width: 80%;
       }
-      .form-register{
+      .popup-login{
+      
         width: 100%;
         display: flex;
+        height: 100%; 
         flex-direction: column;
-        align-items: center;
-        gap: 40px 0px;
-        margin-top: 50px;
-        .input__wrapper{
-          background-color: #82828229;
-          border-radius: 10px;
-          width: 80%;
-          height: 50px;
+        .close-wrapper{
+          width: 100%;
           display: flex;
-          .input{
-            background-color: transparent;
-            border: none;
-            outline: none;
-            color: rgb(0, 0, 0);
-            font-family: "Montserrat";
-            margin-left: 10px;
+          flex-direction: column;
+          align-items: flex-end; 
+          cursor: pointer;       
+          .close-popup{
+            width: 5%;
+            margin-top: 30px;
+            margin-right: 30px;
           }
         }
-        .button{
-          background-color: #ff9c00;
-          color: white;
-          width: 200px;
-          height: 50px;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-      }
-       .enaible-account{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        margin: 0 auto;
+        
         .title{
-          color: gray;
-          font-size: 12px;
+          color: black;
+          margin: 0 auto;
+          margin-top: 30px;
+        }
+        .form-login{
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 40px 0px;
+          margin-top: 50px;
+          .input__wrapper{
+            background-color: #82828229;
+            border-radius: 10px;
+            width: 80%;
+            height: 50px;
+            display: flex;
+            .input{
+              background-color: transparent;
+              border: none;
+              outline: none;
+              color: rgb(0, 0, 0);
+              font-family: "Montserrat";
+              margin-left: 10px;
+            }
+          }
+          .button{
+            background-color: #ff9c00;
+            color: white;
+            width: 200px;
+            height: 50px;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        }
+        .enaible-account{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          margin: 0 auto;
+          .title{
+            color: gray;
+            font-size: 12px;
+            
+          }
+          .button{
+            color: #d28711;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+          }
+        }
+      
+      }
+
+      .popup-register{
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        .close-wrapper{
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end; 
+          cursor: pointer;       
+          .close-popup{
+            width: 5%;
+            margin-top: 30px;
+            margin-right: 30px;
+          }
+        }
+        .title{
+          color: black;
+          margin: 0 auto;
           
         }
-        .button{
-          color: #d28711;
-          background-color: transparent;
-          border: none;
-          cursor: pointer;
+        .form-register{
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px 0px;
+          margin-top: 50px;
+          .input__wrapper{
+            background-color: #82828229;
+            border-radius: 10px;
+            width: 80%;
+            height: 50px;
+            display: flex;
+            .input{
+              background-color: transparent;
+              border: none;
+              outline: none;
+              color: rgb(0, 0, 0);
+              font-family: "Montserrat";
+              margin-left: 10px;
+            }
+          }
+          .button{
+            background-color: #ff9c00;
+            color: white;
+            width: 200px;
+            height: 50px;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        }
+        .enaible-account{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          margin: 0 auto;
+          .title{
+            color: gray;
+            font-size: 12px;
+            
+          }
+          .button{
+            color: #d28711;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+          }
         }
       }
     }
   }
+  
   .footer {
     padding-top: 100px;
     background-color: rgb(0, 0, 0);
