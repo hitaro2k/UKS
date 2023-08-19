@@ -6,7 +6,7 @@ export function search() {
   fetch('/get-api')
     .then(response => response.json())
     .then(data => {
-    console.log(data)
+    
     const transformedData = data.data.map(item => ({
       name: item["Производитель"],
       id: item["Код"],

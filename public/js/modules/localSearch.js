@@ -3,10 +3,10 @@ export function search() {
   const searchInput = document.querySelector(".search-input");
   const searchList = document.querySelector(".search-stroke__list");
 
-  fetch('./app/server/api.php')
+  fetch('/get-api')
     .then(response => response.json())
     .then(data => {
-    const transformedData = data.map(item => ({
+    const transformedData = data.data.map(item => ({
       name: item["Производитель"],
       id: item["Код"],
       description: item["Описание"],

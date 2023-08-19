@@ -12,6 +12,8 @@ var _views = require("./modules/views.js");
 
 var _mail = require("./modules/mail.js");
 
+var _profile = require("./modules/profile.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 (0, _render.getProductsPopular)();
