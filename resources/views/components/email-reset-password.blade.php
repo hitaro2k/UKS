@@ -10,4 +10,4 @@
       <x-input-error :messages="$errors->get('email')" class="mt-2" />
       <button type="submit" class="button">Авторизуватися</button>
    </form>
-</div>
+</div >
