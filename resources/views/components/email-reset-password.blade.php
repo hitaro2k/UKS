@@ -1,4 +1,4 @@
-<div class="popup-login" style="display: none;">
+<div class="popup-reset" style="display: flex;">
    <h2 class="title">Вхід</h2>
    <form action="{{ route('password.email') }}" method="POST" class="form-login">
    @csrf
