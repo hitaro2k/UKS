@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('patronymic');
             $table->string('email')->unique();
             $table->string('password');
+            $table->rememberToken();
+
         });
     }
 

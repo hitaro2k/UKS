@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ Route::view('/', 'pages.index')->name('home');
 Route::view('/client', 'pages.client')->name('client');
 Route::get('/get-api', 'ApiController')->name('get.api.all.production');
 Route::get('/contact', function(){return view('pages.contact');})->name('contact');
+Route::view('/test', 'auth.verify-email');
 
 
 Route::get('/dashboard', function () {

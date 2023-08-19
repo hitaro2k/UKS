@@ -112,6 +112,7 @@ class ComposerStaticInit91f6f280dccc094feadb005b5898a3fc
             'Psr\\Http\\Client\\' => 16,
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
+            'Psr\\Clock\\' => 10,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
             'Pest\\Plugin\\' => 12,
@@ -395,6 +396,10 @@ class ComposerStaticInit91f6f280dccc094feadb005b5898a3fc
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Psr\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
         'PhpParser\\' => 
         array (
@@ -2471,6 +2476,7 @@ class ComposerStaticInit91f6f280dccc094feadb005b5898a3fc
         'Illuminate\\Process\\Pool' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Process/Pool.php',
         'Illuminate\\Process\\ProcessPoolResults' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Process/ProcessPoolResults.php',
         'Illuminate\\Process\\ProcessResult' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Process/ProcessResult.php',
+        'Illuminate\\Queue\\Attributes\\WithoutRelations' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Attributes/WithoutRelations.php',
         'Illuminate\\Queue\\BeanstalkdQueue' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/BeanstalkdQueue.php',
         'Illuminate\\Queue\\CallQueuedClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/CallQueuedClosure.php',
         'Illuminate\\Queue\\CallQueuedHandler' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/CallQueuedHandler.php',
@@ -5239,6 +5245,7 @@ class ComposerStaticInit91f6f280dccc094feadb005b5898a3fc
         'PhpParser\\PrettyPrinterAbstract' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinterAbstract.php',
         'PhpParser\\PrettyPrinter\\Standard' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+        'Psr\\Clock\\ClockInterface' => __DIR__ . '/..' . '/psr/clock/src/ClockInterface.php',
         'Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
         'Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
         'Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',

@@ -95,9 +95,11 @@
       </header>
 
       
-  <div class="popup-container" id="popup-container" style= "display:none">
-    <x-auth-window/>
-    <x-reg-window/>
+      <div class="popup-container" >
+        <x-auth-window/>
+        <x-reg-window/>
+        <x-email-reset-password/>
+      </div>
   </div>
 
       

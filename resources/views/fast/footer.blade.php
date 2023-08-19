@@ -18,7 +18,7 @@
             </ul>
           </nav>
 
-          <form action="GET" class="form-footer">
+          <form action=""  class="form-footer">
             <div class="form-footer__input-wrapper">
               <input
                 type="email"
@@ -26,7 +26,7 @@
                 placeholder="Email"
               />
             </div>
-            <button class="form-footer__submit">Відправити</button>
+            <button type="submit" class="form-footer__submit">Відправити</button>
           </form>
         </div>
         <div class="footer__info-block">
