@@ -1,4 +1,4 @@
-<div class="popup-login" id="popup-login" style="display: none;" >
+<div class="popup-login" id="popup-login" >
     <div class="close-wrapper">
         <img src="/img/close.svg" alt="" class="close-popup" sty>
     </div>
@@ -16,7 +16,7 @@
         </div>
         <x-input-error :messages="$errors->get('email')" class="mt-2" />
         <button type="submit" class="button">Авторизуватися</button>
-        <a href="" style="color: #d28711;">Чо забыл папроль, терпила? ХХАХАХА лашара</a>
+        <a href="" style="color: #d28711;">Забули пароль?</a>
     </form>
     
     <div class="enaible-account">
