@@ -14,11 +14,10 @@ var cartMenu;
 var menuItem;
 var menuBtnSpan;
 
-var animation = function animation() {
+var defAnimation = function defAnimation() {
   userSearch();
   mediaAnim();
   burgerMenu();
-  switcher();
 };
 
 var catalog = document.querySelector(".catalog-menu");
@@ -331,6 +330,6 @@ function userSearch() {
 // }
 
 
-animation();
-var _default = animation;
+defAnimation();
+var _default = defAnimation;
 exports["default"] = _default;

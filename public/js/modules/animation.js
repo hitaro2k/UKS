@@ -5,12 +5,10 @@ let cartMenu;
 let menuItem;
 let menuBtnSpan;
 
-const animation = () => {
+const defAnimation = () => {
     userSearch()
     mediaAnim()
-    burgerMenu()
-    switcher()
-    
+    burgerMenu()    
 }
 
 let catalog = document.querySelector(".catalog-menu")
@@ -339,6 +337,6 @@ export function userSearch() {
 // }
  
 
-animation()
+defAnimation()
 
-export default animation
+export default defAnimation
