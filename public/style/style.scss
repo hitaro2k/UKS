@@ -845,68 +845,48 @@ li {
     }
   
   }
-  .wrapper{
+  
+  .panel-wrapper{
+    background: $color;
+    width: 60%;
+    height: 600px;
     display: flex;
     flex-direction: column;
-    gap: 0px;
-    padding-top: 0px;
-    flex-wrap: nowrap;
-    @include breakpoint(sm){
-      align-items: center;
-    }
-    .panel{
-      width: 90%;
-      background-color: #8787871f;
-      height: 200px;
-      margin: 0 auto;
-      border-radius: 15px;
-      .nav{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        .list{
-          display: flex;
-          flex-direction: column;
-          color: white;
-          margin-left: 25px;
-          margin-right: 25px;
-          gap: 20px 0px;
-        }
-      }
-    }
-    .about{
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    .panel-header{
+      width: 100%;
+      height: 20%;
+      border-radius: 10px 10px 0px 0px;
+      background: rgba(217, 217, 217, 0.07);
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      margin-left: 100px;
-      @include breakpoint(sm){
-        margin-left: 0px;
-      }
-      ul{
-        color: white;
-      }
-      .phone{
+      justify-content: center;
+      .nav{
+        margin-left: 30px;
         .list{
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
+          align-items: center;
+          gap: 0px 30px;
         }
-      }
-      .adress__ua{
-        .list{
-            display: flex;
-            flex-direction: column;
+        .list-item{
+          cursor: pointer;
         }
-      }
-      .mail{
-        .list{
+        .list-item:nth-child(4){
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
+          align-items: center;
+          cursor:default;
+          .list-item__title{
+            margin-left: 15px;
+          }
         }
       }
+     
     }
-    
   }
-
 
   .popup-wrapper{
     height: 100%;
@@ -1002,6 +982,25 @@ li {
             background-color: transparent;
             border: none;
             cursor: pointer;
+          }
+        }
+        .media-login{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: 100%;
+          justify-content: center;
+          margin-top: 40px;
+          gap: 0px 20px;
+          .google-log{
+            .log-img{
+              width: 40px;
+            }
+          }
+          .facebook-log{
+            .log-img{
+              width: 40px;
+            }
           }
         }
       
@@ -1464,6 +1463,7 @@ li {
   }
   
 }
+
 .succes__popup{
   position: fixed;
   bottom: 0;
@@ -1521,20 +1521,24 @@ li {
   }
   
 }
+
 .active-popup{
   display: flex ;
   transition:ease 1s;
 }
+
 .active {
   display: flex;
   animation-name: opacitys;
   animation-duration: 1.2s;
 }
+
 .active-car{
   display: block;
   animation-name: switcher;
   animation-duration: 2s;
 }
+
 .unactive-car{
   display: none;
   animation-name: switcher;

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./style/normalize.css">
     <link rel="stylesheet" href="./style/dist/style.css">
     <link rel="icon" type="image/png" href="/img/favicon-32x32.png">
+  
     @if(Route::is('contact'))
       <link
       rel="stylesheet"
