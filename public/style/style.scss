@@ -872,7 +872,7 @@ li {
           gap: 0px 30px;
         }
         .list-item{
-          cursor: pointer;
+          cursor: pointer;  
         }
         .list-item:nth-child(4){
           display: flex;
@@ -942,6 +942,9 @@ li {
           align-items: center;
           gap: 40px 0px;
           margin-top: 50px;
+          @include breakpoint(lg){
+            gap: 20px 0px;
+          }
           .input__wrapper{
             background-color: #82828229;
             border-radius: 10px;
@@ -992,14 +995,60 @@ li {
           justify-content: center;
           margin-top: 40px;
           gap: 0px 20px;
+          @include breakpoint(lg){
+            flex-direction: column;
+            gap: 20px 0px;
+          }
           .google-log{
+            width: 40%;
+            background-color:#ff4d4d;
+            border-radius: 5px;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+            @include breakpoint(lg){
+              width: 80%;
+              padding: 5px;
+            }
+            .title{
+              margin-top: 0px;
+              color: white;
+              font-weight: 500;
+              font-size: 12px;
+            }
             .log-img{
-              width: 40px;
+              width: 15%;
+              @include breakpoint(lg){
+                width: 9%;
+              }
             }
           }
           .facebook-log{
+            width: 40%;
+            border-radius: 5px;
+            background-color: black;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+            @include breakpoint(lg){
+              width: 80%;
+              padding: 5px;
+            }
+            .title{
+              margin-top: 0px;
+              color: white;
+              font-weight: 500;
+              font-size: 11px;
+            }
             .log-img{
-              width: 40px;
+              width: 15%;
+              @include breakpoint(lg){
+                width: 9%;
+              }
             }
           }
         }
@@ -1598,4 +1647,12 @@ li {
 
 .info-input__wrapper.highlighted {
   border-color: red;
+}
+.span-header{
+  content: "";
+  width: 100%;
+  background-color: #d28711;
+  height: 2px;
+  display: none;
+  margin-top: 10px;
 }

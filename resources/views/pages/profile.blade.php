@@ -17,7 +17,10 @@
             <div class="panel-header">
               <nav class="nav">
                 <ul class="list">
-                  <li class="list-item">Персональні дані</li>
+                  <li class="list-item">
+                    Персональні дані
+                    <span class = "span-header"></span>
+                  </li>
                   <li class="list-item">Замовлення</li>
                   <li class="list-item">Історія замовлень</li>
                   <li class="list-item">

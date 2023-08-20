@@ -24,11 +24,15 @@
         <button class="button" id="register">Зареєструватися</button>
     </div>
     <div class="media-login">
-        <a href="#" class="google-log">
+        <div href="#" class="google-log">
             <img src="/img/google-auth.png" alt="" class="log-img">
-        </a>
-        <a href="#" class="facebook-log">
+            <p class="title"> Увійти через google</p>
+          
+        </div>
+        <div href="#" class="facebook-log">
             <img src="/img/facebook-auth.png" alt="" class="log-img">
-        </a>
+            <p class="title">Увійти через facebook</p>
+            
+        </div>
     </div>
 </div>

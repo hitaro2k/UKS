@@ -1,4 +1,7 @@
 "use strict"
+
+import { list } from "postcss";
+
 let menuBtn;
 let menu;
 let cartMenu;
@@ -8,7 +11,8 @@ let menuBtnSpan;
 const defAnimation = () => {
     userSearch()
     mediaAnim()
-    burgerMenu()    
+    burgerMenu()  
+  
 }
 
 let catalog = document.querySelector(".catalog-menu")
@@ -303,6 +307,7 @@ export function userSearch() {
     });
     return userSearch
 }
+
 
 // export function progressLine() {
 //     function startTimer(duration, display) {

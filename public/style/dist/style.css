@@ -942,6 +942,11 @@ li {
   gap: 40px 0px;
   margin-top: 50px;
 }
+@media (max-width: 992px) {
+  .main .popup-wrapper .popup-container .popup-login .form-login {
+    gap: 20px 0px;
+  }
+}
 .main .popup-wrapper .popup-container .popup-login .form-login .input__wrapper {
   background-color: #82828229;
   border-radius: 10px;
@@ -991,11 +996,71 @@ li {
   margin-top: 40px;
   gap: 0px 20px;
 }
+@media (max-width: 992px) {
+  .main .popup-wrapper .popup-container .popup-login .media-login {
+    flex-direction: column;
+    gap: 20px 0px;
+  }
+}
+.main .popup-wrapper .popup-container .popup-login .media-login .google-log {
+  width: 40%;
+  background-color: #ff4d4d;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+@media (max-width: 992px) {
+  .main .popup-wrapper .popup-container .popup-login .media-login .google-log {
+    width: 80%;
+    padding: 5px;
+  }
+}
+.main .popup-wrapper .popup-container .popup-login .media-login .google-log .title {
+  margin-top: 0px;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+}
 .main .popup-wrapper .popup-container .popup-login .media-login .google-log .log-img {
-  width: 40px;
+  width: 15%;
+}
+@media (max-width: 992px) {
+  .main .popup-wrapper .popup-container .popup-login .media-login .google-log .log-img {
+    width: 9%;
+  }
+}
+.main .popup-wrapper .popup-container .popup-login .media-login .facebook-log {
+  width: 40%;
+  border-radius: 5px;
+  background-color: black;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+@media (max-width: 992px) {
+  .main .popup-wrapper .popup-container .popup-login .media-login .facebook-log {
+    width: 80%;
+    padding: 5px;
+  }
+}
+.main .popup-wrapper .popup-container .popup-login .media-login .facebook-log .title {
+  margin-top: 0px;
+  color: white;
+  font-weight: 500;
+  font-size: 11px;
 }
 .main .popup-wrapper .popup-container .popup-login .media-login .facebook-log .log-img {
-  width: 40px;
+  width: 15%;
+}
+@media (max-width: 992px) {
+  .main .popup-wrapper .popup-container .popup-login .media-login .facebook-log .log-img {
+    width: 9%;
+  }
 }
 .main .popup-wrapper .popup-container .popup-register {
   display: none;
@@ -1578,4 +1643,13 @@ li {
 
 .info-input__wrapper.highlighted {
   border-color: red;
+}
+
+.span-header {
+  content: "";
+  width: 100%;
+  background-color: #d28711;
+  height: 2px;
+  display: none;
+  margin-top: 10px;
 }
