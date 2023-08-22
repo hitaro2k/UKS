@@ -1,8 +1,14 @@
-@include('fast.header')
+  @include('fast.header')
 
 @isset($_GET['login'])
   <style>
+    .popup-wrapper{
+      display: flex;
+    }
     .popup-container{
+      display: flex;
+    }
+    .popup-login{
       display: flex;
     }
   </style>

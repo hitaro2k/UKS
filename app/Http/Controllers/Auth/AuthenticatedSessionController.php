@@ -8,8 +8,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\View\View;
-
+use App\Models\User;
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -30,6 +31,35 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         return redirect()->intended(route('profile'))->with('access-send', 'Вы успешный пидорас');
+    }
+
+    /**
+     * Gogole Oauthintivikation2
+     */
+    public function OAuth($provider)
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Gogole Oauthintivikation2
+     */
+    public function callback()
+    {
+        $Social = Socialite::driver('facebook')->user();
+
+        $user = User::updateOrCreate([
+            'provider_id' => $Social->id,
+            'provider' => $provider
+        ], [
+            'name' => $Social->name,
+            'email' => $Social->email,
+            'provider_token' => $Social->token,
+        ]);
+     
+        Auth::login($user);
+
+        return redirect()->route('profile');
     }
 
     /**

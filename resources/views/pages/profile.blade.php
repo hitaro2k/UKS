@@ -27,6 +27,13 @@
                 </ul>
               </nav>
             </div>
+            <div>
+              <p>{{$user->email}}</p>
+              <p>{{$user->surname}}</p>
+              <p>{{$user->name}}</p>
+              <p></p>
+              <p></p>
+            </div>
         </div>
 
         
