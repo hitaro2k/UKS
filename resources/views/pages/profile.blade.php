@@ -47,7 +47,7 @@
                   <div class="media-info__mail">
                       <h4 class="title">Пошта</h4>
                       <div class="media-info__mail-inner">
-                        <p class="title-mail">{{$user->email}}</p>
+                        <form action="{{ route('profile.update') }}" method="POST" ><input type="text" class="title-mail" value="{{$user->email}}"> <input type="submit"></form>
                         <p class="mail-edit">Редагувати</p>
                       </>
                   </div>

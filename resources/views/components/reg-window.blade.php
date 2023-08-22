@@ -7,19 +7,24 @@
      @csrf
        <div class="input__wrapper">
            <input type="text" name="email" class="input" placeholder="Ваша пошта">
+           <x-input-error :messages="$errors->get('email')" class="mt-2" />
        </div>
      
        <div class="input__wrapper">
            <input type="password" name="password" class="input" placeholder="Пароль">
+           <x-input-error :messages="$errors->get('password')" class="mt-2" />
        </div>
        <div class="input__wrapper">
          <input type="text" name="name" class="input" placeholder="Ім'я">
+           <x-input-error :messages="$errors->get('name')" class="mt-2" />
        </div>
        <div class="input__wrapper">
          <input type="text" name="surname" class="input" placeholder="По-батькові">
+           <x-input-error :messages="$errors->get('name')" class="mt-2" />
        </div>
        <div class="input__wrapper">
          <input type="text" name="patronymic" class="input" placeholder="Прізвище">
+           <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
      <button type="submit" class="button">Зареєструватися</button>
    </form>
