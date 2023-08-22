@@ -1,18 +1,18 @@
 "use strict";
 
-var _animation = _interopRequireDefault(require("./modules/animation.js"));
+var _animation = _interopRequireDefault(require("./modules/animation/animation.js"));
 
-var _scrollIcon = require("./modules/scrollIcon.js");
+var _scrollIcon = require("./modules/animation/scrollIcon.js");
 
-var _search = require("./search.js");
+var _search = require("./modules/logic/search.js");
 
-var _render = require("./modules/render.js");
+var _render = require("./modules/product/render.js");
 
-var _views = require("./modules/views.js");
+var _views = require("./modules/logic/views.js");
 
-var _mail = require("./modules/mail.js");
+var _mail = require("./modules/logic/mail.js");
 
-var _profile = require("./modules/profile.js");
+var _profile = require("./modules/profile/profile.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

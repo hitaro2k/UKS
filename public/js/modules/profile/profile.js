@@ -26,4 +26,13 @@ export function formRegister(){
         popupRegister.style.display = "none"
     }
 }
+export function editProfile(){
+    const mailEdit = document.querySelector(".mail-edit")
+    const mailTitle = document.querySelector(".title-mail")
+    mailEdit.addEventListener("click", ()=>{
+        mailTitle.contentEditable = true;
+        mailTitle.focus();
+    })
+}
+editProfile()
 formRegister()

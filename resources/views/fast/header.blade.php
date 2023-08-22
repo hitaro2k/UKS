@@ -20,11 +20,11 @@
 </head>
 
   <body>
-    <!-- <div id="preloader">
+    <div id="preloader">
       <div class="rotating-image">
         <img src="/img/UK.svg" alt="">
       </div>
-    </div> -->
+    </div>
 
     <main class="main">  
       <header class="full-screen__header__container">

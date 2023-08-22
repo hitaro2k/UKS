@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.formRegister = formRegister;
+exports.editProfile = editProfile;
 
 function formRegister() {
   var selectRegister = document.querySelector("#register");
@@ -33,4 +34,14 @@ function formRegister() {
   };
 }
 
+function editProfile() {
+  var mailEdit = document.querySelector(".mail-edit");
+  var mailTitle = document.querySelector(".title-mail");
+  mailEdit.addEventListener("click", function () {
+    mailTitle.contentEditable = true;
+    mailTitle.focus();
+  });
+}
+
+editProfile();
 formRegister();

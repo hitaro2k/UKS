@@ -29,10 +29,5 @@
             <p class="title"> Увійти через google</p>
           
         </div>
-        <div href="#" class="facebook-log">
-            <img src="/img/facebook-auth.png" alt="" class="log-img">
-            <p class="title">Увійти через facebook</p>
-            
-        </div>
     </div>
 </div>

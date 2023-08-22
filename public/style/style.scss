@@ -1,5 +1,5 @@
 @import "../style/mixin.scss";
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@200;300;400&display=swap");
 $color: linear-gradient(
   180deg,
   rgba(255, 255, 255, 0.05) 0%,
@@ -289,7 +289,7 @@ li {
         display: flex;
         justify-content: center;
         border-radius:30px;
-        padding:4px;
+        padding:6px;
         border: none;
         cursor: pointer;
         width: 20%;
@@ -848,7 +848,7 @@ li {
   
   .panel-wrapper{
     background: $color;
-    width: 60%;
+    width: 90%;
     height: 600px;
     display: flex;
     flex-direction: column;
@@ -865,27 +865,268 @@ li {
       justify-content: center;
       .nav{
         margin-left: 30px;
+        @include breakpoint(xs){
+          margin-left: 0px;
+        }
         .list{
           display: flex;
           flex-direction: row;
           align-items: center;
           gap: 0px 30px;
+          @include breakpoint(md){      
+            justify-content: center;
+          }
+          @include breakpoint(xs){
+            gap: 0px 10px;
+          }
         }
         .list-item{
           cursor: pointer;  
-        }
-        .list-item:nth-child(4){
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          cursor:default;
-          .list-item__title{
-            margin-left: 15px;
+          @include breakpoint(md){
+            font-size: 12px;
+          }
+          @include breakpoint(xs){
+            font-size: 10px;
           }
         }
+       
       }
      
     }
+    .panel__user-data{
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+
+      .panel__user-data__personal-info{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        .title{
+          color: #FFF;
+          font-family: Montserrat;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 500;
+        }
+     
+        .title-surname{
+          color: #FFF;
+          font-family: Montserrat;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 200;
+          line-height: normal;
+        }
+        .title-phone{
+          color: #FFF;
+          font-family: Montserrat;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 200;
+          line-height: normal;
+        }
+        .wrap-title{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 0px 5px;
+          .title-name{
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 200;
+            line-height: normal;
+          }
+          .title-patronymic{
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 200;
+            line-height: normal;
+                      }
+        }
+        .panel-edit{
+          color: #FFF;
+          font-family: Montserrat;
+          font-size: 12px;
+          font-weight: 300;
+          cursor: pointer;
+          text-transform: uppercase;
+        }
+      }
+      .panel__user-data__media-info{
+        .title{
+          color: #FFF;
+          font-family: Montserrat;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 500;
+        }
+        .media-info__mail{
+          .title{
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin: 0px;
+          }
+          .media-info__mail-inner{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0px 20px;
+            .title-mail{
+              color: #FFF;
+              font-family: Montserrat;
+              font-size: 20px;
+              font-weight: 300;
+              outline: none;
+            }
+            .mail-edit{
+              color: #FFF;
+              font-family: Montserrat;
+              font-size: 10px;
+              font-weight: 300;
+              cursor: pointer;
+              text-transform: uppercase;
+            }
+          }
+         
+        }
+        .media-info__password{
+          .title{
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin: 0px;
+          }
+          .media-info__pass-inner{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0px 20px;
+            .title-pass{
+              color: #FFF;
+              font-family: Montserrat;
+              font-size: 20px;
+              font-weight: 300;
+             
+            }
+            
+            .pass-edit{
+              color: #FFF;
+              font-family: Montserrat;
+              font-size: 10px;
+              font-weight: 300;
+              cursor: pointer;
+              text-transform: uppercase;
+            }
+          }
+         
+        }
+
+      }
+    }
+    .panel-order{
+      display: flex;
+      margin-top: 20px;
+      width: 95%;
+      background-color: black;
+      border-radius: 5px 5px 0px 0px;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      @include breakpoint(md){
+        overflow-x: scroll;
+        align-items: flex-start;
+
+      }
+      table {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+        font-size: 14px;
+        text-align: left;
+        border-collapse: collapse;
+        border-radius: 20px;
+        color: #000000;
+        width: 100%;
+      }
+      th {
+        padding: 10px 8px;
+        background: rgb(0, 0, 0);
+        color:white;
+        @include breakpoint(lg){
+          font-size: 10px;
+        }
+      } 
+      td {
+        padding: 8px;
+        background: rgb(0, 0, 0);
+        color:white;
+        width: 10%;
+        @include breakpoint(lg){
+          font-size: 10px;
+        }
+        .img{
+          width: 50%;
+        }
+      }
+
+    }
+    .panel-order__history{
+      display: flex;
+      margin-top: 20px;
+      width: 95%;
+      background-color: black;
+      border-radius: 5px 5px 0px 0px;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      @include breakpoint(md){
+        overflow-x: scroll;
+        align-items: flex-start;
+
+      }
+      table {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+        font-size: 14px;
+        text-align: left;
+        border-collapse: collapse;
+        border-radius: 20px;
+        color: #000000;
+        width: 100%;
+      }
+      
+      th {
+        padding: 10px 8px;
+        background: rgb(0, 0, 0);
+        color:white;
+        @include breakpoint(lg){
+          font-size: 10px;
+        }
+      } 
+      td {
+        padding: 8px;
+        background: rgb(0, 0, 0);
+        color:white;
+        width: 10%;
+        @include breakpoint(lg){
+          font-size: 10px;
+        }
+        .img{
+          width: 50%;
+        }
+      }
+
+    }
+    
   }
 
   .popup-wrapper{
@@ -940,7 +1181,7 @@ li {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 40px 0px;
+          gap: 15px 0px;
           margin-top: 50px;
           @include breakpoint(lg){
             gap: 20px 0px;
@@ -967,6 +1208,10 @@ li {
             height: 50px;
             border-radius: 5px;
             cursor: pointer;
+            @include breakpoint(sm){
+              width: 175px;
+              height: 30px;
+            }
           }
         }
         .enaible-account{
@@ -1001,7 +1246,7 @@ li {
           }
           .google-log{
             width: 40%;
-            background-color:#ff4d4d;
+            background-color:black;
             border-radius: 5px;
             padding: 10px;
             display: flex;
@@ -1021,36 +1266,12 @@ li {
             .log-img{
               width: 15%;
               @include breakpoint(lg){
-                width: 9%;
+                width: 5%;
+                padding: 3px;
               }
             }
           }
-          .facebook-log{
-            width: 40%;
-            border-radius: 5px;
-            background-color: black;
-            padding: 10px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            cursor: pointer;
-            @include breakpoint(lg){
-              width: 80%;
-              padding: 5px;
-            }
-            .title{
-              margin-top: 0px;
-              color: white;
-              font-weight: 500;
-              font-size: 11px;
-            }
-            .log-img{
-              width: 15%;
-              @include breakpoint(lg){
-                width: 9%;
-              }
-            }
-          }
+       
         }
       
       }
