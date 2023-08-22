@@ -34,6 +34,8 @@ function formRegister() {
   };
 }
 
+formRegister();
+
 function editProfile() {
   var mailEdit = document.querySelector(".mail-edit");
   var mailTitle = document.querySelector(".title-mail");
@@ -44,4 +46,3 @@ function editProfile() {
 }
 
 editProfile();
-formRegister();
