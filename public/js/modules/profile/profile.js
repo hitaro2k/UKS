@@ -26,6 +26,9 @@ export function formRegister(){
         popupRegister.style.display = "none"
     }
 }
+
+formRegister()
+
 export function editProfile(){
     const mailEdit = document.querySelector(".mail-edit")
     const mailTitle = document.querySelector(".title-mail")
@@ -35,4 +38,3 @@ export function editProfile(){
     })
 }
 editProfile()
-formRegister()

@@ -27,8 +27,5 @@
         <a href="/auth/google/oauth" class="google-log">
             <img src="/img/google-auth.png" alt="" class="log-img">
         </a>
-        <a href="auth/facebook/oauth" class="facebook-log">
-            <img src="/img/facebook-auth.png" alt="" class="log-img">
-        </a>
     </div>
 </div>

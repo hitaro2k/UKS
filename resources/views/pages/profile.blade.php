@@ -39,7 +39,7 @@
                   <p class="title-patronymic">{{$user->patronymic}}</p>
                   </div>
                   <p class="title-surname">{{$user->surname}}</p>
-                  <p class="title-phone">+380 67 378 30 53</p>
+                  <p class="title-phone">+380</p>
                   <p class="panel-edit">Редагувати</p>
               </div>
               <div class="panel__user-data__media-info">
@@ -47,7 +47,7 @@
                   <div class="media-info__mail">
                       <h4 class="title">Пошта</h4>
                       <div class="media-info__mail-inner">
-                        <p class="title-mail">hitaro@gmail.com</p>
+                        <p class="title-mail">{{$user->email}}</p>
                         <p class="mail-edit">Редагувати</p>
                       </>
                   </div>

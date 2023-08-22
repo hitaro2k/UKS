@@ -36,9 +36,9 @@ class AuthenticatedSessionController extends Controller
     /**
      * Gogole Oauthintivikation2
      */
-    public function OAuth($provider)
+    public function OAuth()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('google')->redirect();
     }
 
     /**
@@ -46,11 +46,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function callback()
     {
-        $Social = Socialite::driver('facebook')->user();
+        $Social = Socialite::driver('google')->user();
 
         $user = User::updateOrCreate([
             'provider_id' => $Social->id,
-            'provider' => $provider
+            'provider' => 'google'
         ], [
             'name' => $Social->name,
             'email' => $Social->email,
