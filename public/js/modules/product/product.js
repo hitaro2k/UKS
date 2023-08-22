@@ -1,8 +1,8 @@
 "use strict"
-import {views} from "../modules/views.js"
-import {search} from "./localSearch.js"
-import {renderData} from "../modules/render.js"
-import animation from "../modules/animation.js"
+import {views} from "../logic/views.js"
+import {search} from "../localSearch.js"
+import {renderData} from "./render.js"
+import animation from "../animation/animation.js"
 function getProductData() {
     const productContainer = document.querySelector(".products__container")
     const urlParams = new URLSearchParams(window.location.search);
