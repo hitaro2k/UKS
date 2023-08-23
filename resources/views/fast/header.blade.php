@@ -17,14 +17,21 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
       />
     @endif
+    @if(Route::is('client'))
+    <link rel="stylesheet" href="./style/dist/client.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      />
+    @endif
 </head>
 
   <body>
-    <div id="preloader">
+    <!-- <div id="preloader">
       <div class="rotating-image">
         <img src="/img/UK.svg" alt="">
       </div>
-    </div>
+    </div> -->
 
     <main class="main">  
       <header class="full-screen__header__container">
@@ -72,7 +79,7 @@
             alt="img"
           />
           @auth
-            <a href="/profile"  class="button-profile" data-login>
+            <a href="/profile" class="button-profile"   data-login>
               <img src="/img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
             </a>
           @else

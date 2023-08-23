@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -24,8 +26,10 @@ class ProfileController extends Controller
     /**
     * copy
     */
-    public function edit(Request $request): View
-    {
+    public function store(Request $request): View
+    {   
+        $user = Auth::user();
+        
         return view('pages.profile', [
             'user' => $request->user(),
         ]);

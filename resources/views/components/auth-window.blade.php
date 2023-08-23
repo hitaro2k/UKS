@@ -24,11 +24,8 @@
         <button class="button" id="register">Зареєструватися</button>
     </div>
     <div class="media-login">
-        <a href="#" class="google-log">
+        <a href="/auth/google/oauth" class="google-log">
             <img src="/img/google-auth.png" alt="" class="log-img">
-        </a>
-        <a href="#" class="facebook-log">
-            <img src="/img/facebook-auth.png" alt="" class="log-img">
         </a>
     </div>
 </div>

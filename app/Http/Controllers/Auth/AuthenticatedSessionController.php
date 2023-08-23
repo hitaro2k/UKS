@@ -8,8 +8,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\View\View;
-
+use App\Models\User;
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -46,7 +47,7 @@ class AuthenticatedSessionController extends Controller
     public function callback()
     {
         $Social = Socialite::driver('google')->user();
-        
+
         $user = User::updateOrCreate([
             'provider_id' => $Social->id,
             'provider' => 'google'

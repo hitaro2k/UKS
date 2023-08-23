@@ -17,18 +17,128 @@
             <div class="panel-header">
               <nav class="nav">
                 <ul class="list">
-                  <li class="list-item">Персональні дані</li>
-                  <li class="list-item">Замовлення</li>
-                  <li class="list-item">Історія замовлень</li>
-                  <li class="list-item">
-                    <img src="/img/dollar-coin-money_icon-icons 1.png" alt="">
-                    <p class="list-item__title">231</p>
+                  <li class="list-item" data-item ="1">
+                    Персональні дані
+                    <span class = "span-header" data-item ="1" style="display: flex;"></span>
+                  </li>
+                  <li class="list-item" data-item ="2">Замовлення
+                  <span class = "span-header" data-item ="2"></span>
+                  </li>
+                  <li class="list-item" data-item ="3">Історія замовлень
+                  <span class = "span-header" data-item ="3"></span>
                   </li>
                 </ul>
               </nav>
             </div>
+
+            <div class="panel__user-data panel"data-item = "1">
+              <div class="panel__user-data__personal-info">
+                  <h4 class="title">ДАНІ</h4>
+                  <div class="wrap-title">
+                  <p class="title-name">{{$user->name}}</p>
+                  <p class="title-patronymic">{{$user->patronymic}}</p>
+                  </div>
+                  <p class="title-surname">{{$user->surname}}</p>
+                  <p class="title-phone">+380</p>
+                  <p class="panel-edit">Редагувати</p>
+              </div>
+              <div class="panel__user-data__media-info">
+              <h4 class="title">ДАНІ ДЛЯ ВХОДУ В АКАУНТ</h4>
+                  <div class="media-info__mail">
+                      <h4 class="title">Пошта</h4>
+                      <div class="media-info__mail-inner">
+                        <form action="{{ route('profile.update') }}" method="POST" ><input type="text" class="title-mail" value="{{$user->email}}"> <input type="submit"></form>
+                        <p class="mail-edit">Редагувати</p>
+                      </>
+                  </div>
+                  <div class="media-info__password">
+                      <h4 class="title">Пароль</h4>
+                      <div class="media-info__pass-inner">
+                        <p class="title-pass">*********</p>
+                        <p class="pass-edit">Редагувати</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <div class="panel-order panel"  data-item = "2" style="display: none;">
+          <table>
+            <tr>
+              <th>Представник</th>
+              <th>Назва</th>
+              <th>Код</th>
+              <th>Кількість</th>
+              <th>Сума</th>
+              <th>Дата оформлення</th>
+              <th>Час доставки</th>
+              <th>Місто</th>
+              <th>Статус</th>
+            </tr>
+            <tr class = "item-order">
+              <td><img src="./img/UK.svg" alt="" class="img"></td>
+              <td>Амотизатор</td>
+              <td>34ARWV32</td>
+              <td>2</td>
+              <td>200$</td>
+              <td>21.08.2023</td>
+              <td>3-14дн</td>
+              <td>г.Киев</td>
+              <td>В оброботке</td>
+            </tr>
+          </table>   
         </div>
 
+        <div class="panel-order__history panel" style="display: none;" data-item = "3">
+        <table>
+            <tr>
+              <th>Представник</th>
+              <th>Назва</th>
+              <th>Код</th>
+              <th>Кількість</th>
+              <th>Сума</th>
+              <th>Дата оформлення</th>
+              <th>Час доставки</th>
+              <th>Місто</th>
+              <th>Статус</th>
+            </tr>
+
+            <tr class = "item-order">
+              <td><img src="./img/UK.svg" alt="" class="img"></td>
+              <td>Амотизатор</td>
+              <td>34ARWV32</td>
+              <td>2</td>
+              <td>200$</td>
+              <td>21.08.2023</td>
+              <td>3-14дн</td>
+              <td>г.Киев</td>
+              <td>В оброботке</td>
+            </tr>
+            <tr class = "item-order">
+              <td><img src="./img/UK.svg" alt="" class="img"></td>
+              <td>Амотизатор</td>
+              <td>34ARWV32</td>
+              <td>2</td>
+              <td>200$</td>
+              <td>21.08.2023</td>
+              <td>3-14дн</td>
+              <td>г.Киев</td>
+              <td>В оброботке</td>
+            </tr>
+            <tr class = "item-order">
+              <td><img src="./img/UK.svg" alt="" class="img"></td>
+              <td>Амотизатор</td>
+              <td>34ARWV32</td>
+              <td>2</td>
+              <td>200$</td>
+              <td>21.08.2023</td>
+              <td>3-14дн</td>
+              <td>г.Киев</td>
+              <td>В оброботке</td>
+            </tr>
+          </table>  
+        </div>
+
+    </div>
         
        
         

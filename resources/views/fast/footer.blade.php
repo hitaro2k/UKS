@@ -140,7 +140,12 @@
       <div class="timer-bar"></div>
     </div>
     
-   
+    @if(Route::is('client'))
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    @endif
     <script type="module" src="./js/main.js"></script>
     
   </body>

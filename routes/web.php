@@ -18,17 +18,18 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 Route::view('/', 'pages.index')->name('home');
 
 Route::view('/client', 'pages.client')->name('client');
+Route::view('/product', 'pages.product')->name('product');
 Route::get('/get-api', 'ApiController')->name('get.api.all.production');
 Route::get('/contact', function(){return view('pages.contact');})->name('contact');
 Route::view('/test', 'auth.verify-email');
-
+Route::get('/product/{id-product}', [ProductController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
+    Route::get('/profile', [ProfileController::class, 'store'])->name('profile');
 
     Route::get('/profile/1', [ProfileController::class, 'editL'])->name('profile.edit');
     Route::patch('/profile/2', [ProfileController::class, 'update'])->name('profile.update');

@@ -90,14 +90,14 @@
             </nav>
           </div>
     
-          <section class="content">
+          <section class="content animate__animated animate__fadeInLeft">
             <div class="content__container">
                 <div class="deliver__wrapper">
                     <h2 class="title">Доставка</h2>
                     <div class="content-part">
-                        <object class="content-part__block" data="" type="">
-                           <img src="../img/delivery.webp" alt="" class="block__image">                                
-                        </object>
+                        <div class="img-wrapper">
+                          <img src="./img/mbridelivery.png" alt="">
+                        </div>
                         <p class="content__text">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium delectus amet, qui quaerat iure deserunt cum mollitia sunt in porro, quibusdam quia architecto vel perferendis veritatis consequuntur quae alias accusamus.
                         </p>
@@ -107,9 +107,9 @@
                 <div class="payment__wrapper">
                     <h2 class="title">Оплата</h2>
                     <div class="content-part">
-                        <object class="content-part__block" data="" type="">
-                            <img src="../img/cash.webp" alt="" class="block__image">
-                        </object>
+                        <div class="img-wrapper">
+                          <img src="./img/payment.png" alt="">
+                        </div>
                         <p class="content__text">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium delectus amet, qui quaerat iure deserunt cum mollitia sunt in porro, quibusdam quia architecto vel perferendis veritatis consequuntur quae alias accusamus.
                         </p>
@@ -119,9 +119,9 @@
                 <div class="purchase-return__wrapper">
                     <h2 class="title">Возврат товара</h2>
                     <div class="content-part">
-                        <object class="content-part__block" data="" type="">
-                            <img src="../img/delivery-return.webp" alt="" class="block__image">
-                        </object>
+                      <div class="img-wrapper">
+                        <img src="./img/return-delivery.png" alt="">
+                      </div>
                         <p class="content__text">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium delectus amet, qui quaerat iure deserunt cum mollitia sunt in porro, quibusdam quia architecto vel perferendis veritatis consequuntur quae alias accusamus.
                         </p>
