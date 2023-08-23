@@ -360,6 +360,13 @@ li {
       flex-direction: column;
       background-color: #1f1f1f;
       border-radius: 0px 0px 5px 5px;
+      ul{
+        width: 100%;
+        a{
+          width: 90%;
+          margin-left: 20px;
+        }
+      }
       li {
         margin-left: 20px;
         margin-bottom: 15px;
@@ -604,7 +611,7 @@ li {
         border-top: 1px solid rgba(185, 185, 185, 0.235);
         padding-top: 50px;
         padding-bottom: 50px;
-        z-index: 2;
+        z-index: 1;
         width: 100%;
         .button{
           background-color: transparent;

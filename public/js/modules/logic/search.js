@@ -48,30 +48,17 @@ export function search() {
     function renderList(data) {
       searchList.innerHTML = '';
       data.forEach(item => {
+        console.log(item)
         const ul = document.createElement('ul');
-        const liDescription = document.createElement("li")
         const liName = document.createElement("li")
+        const liLink = document.createElement("a")
+        liLink.href = `/product/${item.id}`;
         liName.textContent = item.name
         liName.style.color = "orange"
-        liDescription.textContent = item.description;
-
-        liDescription.addEventListener('click', () => {
-          const cartAlready  = {
-            "name": item.description,
-            "articul": item.name,
-            "price": item.price,
-            "id":item.id,
-            "image":item.image,
-            "count":item.count,
-            "discount":item.discount,
-            "exchange":item.exchange
-          }
-          const redirectUrl = `product.html?cartData=${encodeURIComponent(JSON.stringify(cartAlready))}`;
-          window.location.href = redirectUrl;
-          
-        });
+        liLink.textContent = item.description;
+    
         searchList.appendChild(ul);
-        ul.appendChild(liDescription)
+        ul.appendChild(liLink)
         ul.appendChild(liName)
       });
     }
