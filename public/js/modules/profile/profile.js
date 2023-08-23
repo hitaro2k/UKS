@@ -7,7 +7,7 @@ export function formRegister(){
     const popupLogin = document.querySelector(".popup-login")
     const closePopup =document.querySelectorAll(".close-popup")
     const popup = document.querySelector(".popup-wrapper")
-    const profileIcon = document.querySelector(".button-profile")
+    const profileIcon = document.querySelector("#button-profile")
     profileIcon.addEventListener("click" , ()=>{
         popup.style.display = "flex"
     })
