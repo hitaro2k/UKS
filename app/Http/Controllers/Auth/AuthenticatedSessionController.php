@@ -33,6 +33,35 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
+     * Gogole Oauthintivikation2
+     */
+    public function OAuth()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Gogole Oauthintivikation2
+     */
+    public function callback()
+    {
+        $Social = Socialite::driver('google')->user();
+        
+        $user = User::updateOrCreate([
+            'provider_id' => $Social->id,
+            'provider' => 'google'
+        ], [
+            'name' => $Social->name,
+            'email' => $Social->email,
+            'provider_token' => $Social->token,
+        ]);
+     
+        Auth::login($user);
+
+        return redirect()->route('profile');
+    }
+
+    /**
      * Destroy an authenticated session.
      */
     public function destroy(Request $request): RedirectResponse
