@@ -23,17 +23,6 @@ function search() {
         exchange: item["Курс"]
       };
     });
-    var transformedDataExchange = transformedData.map(function (item) {
-      var arrayPrices = [];
-      arrayPrices.push(item.exchange);
-      var arrayTrash = arrayPrices.shift();
-      return arrayTrash;
-    });
-    var arrayClear = transformedDataExchange.filter(function (str) {
-      return str !== '';
-    });
-    var exchangePriceStr = arrayClear[0];
-    var exchangePrice = Number(exchangePriceStr);
     var reTransformedData = transformedData.map(function (item) {
       return {
         name: item.name,
@@ -42,8 +31,7 @@ function search() {
         price: item.price,
         count: item.count,
         image: item.image,
-        discount: item.discount,
-        exchange: exchangePrice
+        discount: item.discount
       };
     });
     searchInput.addEventListener('input', function () {

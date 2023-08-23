@@ -18,16 +18,7 @@ export function search() {
       exchange:item["Курс"]
     }));
 
-    const transformedDataExchange = transformedData.map(item =>{
-      const arrayPrices = []
-      arrayPrices.push(item.exchange)
-      const arrayTrash = arrayPrices.shift()
-      return arrayTrash    
-    })
-    const arrayClear = transformedDataExchange.filter(str => str !== '')
-    const exchangePriceStr = arrayClear[0]
-    const exchangePrice  = Number(exchangePriceStr)
-
+  
     const reTransformedData = transformedData.map(item=>({
       name: item.name,
       id: item.id,
@@ -36,7 +27,6 @@ export function search() {
       count: item.count,
       image:item.image,
       discount:item.discount,
-      exchange:exchangePrice
     }))
       searchInput.addEventListener('input', () => {
         const searchTerm = searchInput.value.toLowerCase();
