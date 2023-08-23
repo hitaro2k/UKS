@@ -1,15 +1,14 @@
-
+@include('fast.header')
 
 @if($product != null)
-{{$product->Производитель}}<br>
-{{$product->Код}}<br>
-{{$product->Описание}}<br>
-{{$product->Наличие}}
+  <!-- если есть товар -->
+  {{$product->Производитель}}<br>
+  {{$product->Код}}<br>
+  {{$product->Описание}}<br>
+  {{$product->Наличие}}
+
 @else
- Прошу идите нахуй
+  <!-- Если не существует, нужно выдать прям тут ответ, в хтмл, типа такого нету -->
 @endif
 
-
-
-@isset($error)
-@endisset
+@include('fast.footer')
