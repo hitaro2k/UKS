@@ -1275,17 +1275,18 @@ li {
   }
 }
 .main .popup-wrapper .popup-container .popup-login .media-login .google-log .title {
-  margin-top: 0px;
   color: white;
-  font-weight: 500;
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 auto;
+  color: #f70059;
 }
 .main .popup-wrapper .popup-container .popup-login .media-login .google-log .log-img {
   width: 15%;
 }
 @media (max-width: 992px) {
   .main .popup-wrapper .popup-container .popup-login .media-login .google-log .log-img {
-    width: 5%;
+    width: 10%;
     padding: 3px;
   }
 }

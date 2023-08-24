@@ -1265,15 +1265,16 @@ li {
               padding: 5px;
             }
             .title{
-              margin-top: 0px;
               color: white;
-              font-weight: 500;
-              font-size: 12px;
+              font-weight: 600;
+              font-size: 14px;
+              margin: 0 auto;
+              color: #f70059;
             }
             .log-img{
               width: 15%;
               @include breakpoint(lg){
-                width: 5%;
+                width: 10%;
                 padding: 3px;
               }
             }
