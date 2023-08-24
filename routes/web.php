@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
@@ -22,7 +23,7 @@ Route::view('/product', 'pages.product')->name('product');
 Route::get('/get-api', 'ApiController')->name('get.api.all.production');
 Route::get('/contact', function(){return view('pages.contact');})->name('contact');
 Route::view('/test', 'auth.verify-email');
-Route::get('/product/{id-product}', [ProductController::class, 'store']);
+Route::get('/product/{id}', [ProductController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

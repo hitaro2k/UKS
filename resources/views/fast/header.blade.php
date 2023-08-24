@@ -54,7 +54,7 @@
               <a href="#" class="menu__list-link">Про нас</a>
             </li> 
             @auth
-            <form method="POST" action="{{ route('logout') }}">
+                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')"
