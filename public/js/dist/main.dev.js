@@ -10,4 +10,6 @@ var _views = require("./modules/logic/views.js");
 
 var _mail = require("./modules/logic/mail.js");
 
+var _formRegister = require("./modules/forms/formRegister.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

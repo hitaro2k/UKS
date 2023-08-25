@@ -70,7 +70,7 @@
           />
           @auth
             <a href="/profile" class="button-profile" id="button-profile"   data-login>
-              <img src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
+              <img  src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
             </a>
           @else
               <div class="button-profile" id="button-profile">
