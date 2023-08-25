@@ -47,19 +47,28 @@ class AuthenticatedSessionController extends Controller
     public function callback()
     {
         $Social = Socialite::driver('google')->user();
+    
+        $email = $Social->email;
 
-        $user = User::updateOrCreate([
-            'provider_id' => $Social->id,
-            'provider' => 'google'
-        ], [
-            'name' => $Social->name,
-            'email' => $Social->email,
-            'provider_token' => $Social->token,
-        ]);
-     
-        Auth::login($user);
-
-        return redirect()->route('profile');
+        $emailCheck = User::where('email', $email)->first();
+        
+        if($emailCheck === null){
+            $user = User::updateOrCreate([
+                'provider_id' => $Social->id,
+                'provider' => 'google'
+            ], [
+                'name' => $Social->name,
+                'email' => $Social->email,
+                'provider_token' => $Social->token,
+            ]);
+         
+            Auth::login($user);
+    
+            return redirect()->route('profile');
+        }else{
+            return redirect()->route('home')->with('status', 'Email-exist');
+        }
+        
     }
 
     /**

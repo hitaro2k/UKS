@@ -23,10 +23,10 @@
         <p class="title">Немає облікового запису?</p>
         <button class="button" id="register">Зареєструватися</button>
     </div>
-    <!-- <div class="media-login">
+    <div class="media-login">
         <a href="/auth/google/oauth" class="google-log">
             <img src="/img/google-auth.png" alt="" class="log-img">
             <p class="title">Увійти з гуглом</p>
         </a>
-    </div> -->
+    </div>
 </div>
