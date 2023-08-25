@@ -1,5 +1,5 @@
 "use strict"
-import { validation } from "../modules/validation.js";
+import { validation } from "./validation.js";
 let showForm = document.querySelector(".total-price__button-buy");
 let formWrap = document.querySelector(".form-order__background");
 let documentHTML = document.querySelector("html")

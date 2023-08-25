@@ -8,6 +8,9 @@
     <form action="{{ route('login') }}" method="POST" class="form-login">
     @csrf
         <div class="input__wrapper">
+            <input type="text" name="phone" class="input" placeholder="Ваш телефон">
+        </div>
+        <div class="input__wrapper">
             <input type="text" name="email" class="input" placeholder="Ваша пошта">
         </div>
 
@@ -22,11 +25,5 @@
     <div class="enaible-account">
         <p class="title">Немає облікового запису?</p>
         <button class="button" id="register">Зареєструватися</button>
-    </div>
-    <div class="media-login">
-        <a href="/auth/google/oauth" class="google-log">
-            <img src="/img/google-auth.png" alt="" class="log-img">
-            <p class="title">Увійти з гуглом</p>
-        </a>
     </div>
 </div>

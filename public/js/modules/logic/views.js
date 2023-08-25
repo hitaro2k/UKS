@@ -67,8 +67,9 @@ export function views() {
     function updateAvailability(productId, count) {
       const getProductInfo = localStorage.getItem("key_" + productId);
       let productInfo = JSON.parse(getProductInfo);
+      console.log(getProductInfo)
       if(productInfo.count === 0){
-        console.log("negr")
+        localStorage.removeItem(getProductInfo)
       }
     }
 
@@ -90,10 +91,8 @@ export function views() {
               analogue:item["analogue"],
               exchange:item["exchange"]
             }));
-            transformedData.forEach(product =>{
-              console.log(productId)    
-              console.log(product.id)         
-              if(product.id == productId && product.count >= 1){
+            transformedData.forEach(product =>{        
+              if(product.count >= 1){
                 start()
               }
             })
@@ -118,10 +117,6 @@ export function views() {
             added = "true";
             card.setAttribute("data-added", added);
 
-            /* -----------------------------------------------------------------------*/
-            /*                                Card Item                               */
-            /* -----------------------------------------------------------------------*/
-    
             if (existingItem) {
               const countElem = document.querySelector(
                 `.item-count[data-counter="${productId}"]`
@@ -132,7 +127,6 @@ export function views() {
              
             const productInfo = {
               id: productId,
-              imgSrc: card.querySelector(".product-image").getAttribute("src"),
               title: card.querySelector(".product-title").innerText,
               price: card.querySelector(".product-price__grn").innerText,
               count: 0,
@@ -142,7 +136,7 @@ export function views() {
             productInfo.count++;
     
             const itemInCart = `<div class="item" data-id="${productInfo.data}" >
-                    <img src="${productInfo.imgSrc}" alt="" class="item-image">
+                    <img src="../img/UK.svg" alt="" class="item-image">
                     <p class="item-name">${productInfo.title}</p>
                     <p class="item-price">${productInfo.price}</p>
                     <div class="item__button__add-delete">
@@ -155,7 +149,6 @@ export function views() {
             cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
             cartItems.push(productInfo);
             localStorage.setItem("cartItems",JSON.stringify(cartItems))
-            
             handleClick(productInfo)
             buttons()
             updateTotalPrice();
@@ -184,11 +177,8 @@ export function views() {
       //   };
       // }
       var savedItems = getAllItemsFromStorage();
-      const savedId = localStorage.getItem('idItem');
-      console.log(savedId)
-      
+      const savedId = localStorage.getItem('idItem'); 
       const productElement = document.querySelector(`[data-id="${savedId}"]`);
-      console.log(productElement)
       if(productElement){
         productElement.setAttribute('data-added', 'true');
       }
@@ -234,8 +224,6 @@ export function views() {
           if (event.target.dataset.clicked === "true") {
             return;
           }
-          
-
           event.target.dataset.clicked = "true";
           let productId = event.target.dataset.id;
           const getProductInfo = localStorage.getItem("key_" + productId)
@@ -244,17 +232,17 @@ export function views() {
           const countElem = document.querySelector(
             `.item-count[data-counter="${productId}"]`
           ); 
-          console.log(productInfo)
           fetch("/get-api")
           .then(res => res.json())
           .then(data =>{
             const transformedData = data.data.map(item => ({
-              name: item["Производитель"],
-              id: item["Код"],
-              description: item["Описание"],
-              price: item["Цена у.е."],
-              count: item["Наличие"],
-              image:item["Фото"]
+              name: item["maker"],
+              id: item["code"],
+              description: item["name"],
+              price: item["price"],
+              count: item["count"],
+              analogue:item["analogue"],
+              exchange:item["exchange"]
             }));
             transformedData.forEach(item =>{
               if(item.id == productId){
@@ -263,16 +251,14 @@ export function views() {
                 const countElemNum = Number(element.count)
                 element.count++;
                 countElem.innerHTML = element.count
-              
                 handleClick(element)
                 updateTotalPrice();
                 localStorage.setItem("cartItems",JSON.stringify(cartItems))
-                updateAvailability(productId ,1)
                 if(itemNum === countElemNum){
                   countElem.innerHTML = itemNum
-                  
-                  handleClick(element)
                   element.count = itemNum
+                  handleClick(element)
+                  updateAvailability(productId ,1)
                   localStorage.setItem("cartItems",JSON.stringify(cartItems))
                   updateTotalPrice();
                 }
@@ -302,9 +288,10 @@ export function views() {
           localStorage.setItem("counterElem" , countElemAttr)
           if (countElemAttr == productInfo.data) {
             item.count--;
+            updateAvailability(productId, 0);
             localStorage.setItem("cartItems",JSON.stringify(cartItems))
             handleClick(item)
-            updateAvailability(productId, 0);
+           
           }
           if (item.count === 0) {
             removeCartItem(productId);
@@ -403,7 +390,7 @@ export function views() {
           console.log(itemJson)
           sendDataToServer(itemJson);
       }      
-      window.location.href = "/app/html/inputsSend.php"
+      window.location.href = "/form"
     })
  
     function removeCartItem(id) {

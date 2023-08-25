@@ -9,6 +9,10 @@
            <input type="text" name="email" class="input" placeholder="Ваша пошта">
            <x-input-error :messages="$errors->get('email')" class="mt-2" />
        </div>
+       <div class="input__wrapper">
+           <input type="text" name="phone" class="input" placeholder="Ваша телефон">
+           <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+       </div>
      
        <div class="input__wrapper">
            <input type="password" name="password" class="input" placeholder="Пароль">

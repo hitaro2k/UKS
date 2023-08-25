@@ -22,6 +22,8 @@ Route::view('/client', 'pages.client')->name('client');
 
 Route::view('/product', 'pages.product')->name('product');
 
+Route::get('/form', [ProfileController::class, 'test'])->name('form');
+
 Route::get('/get-api', 'ApiController')->name('get.api.all.production');
 
 Route::get('/contact', function(){return view('pages.contact');})->name('contact');

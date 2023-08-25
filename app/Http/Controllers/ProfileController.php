@@ -48,6 +48,14 @@ class ProfileController extends Controller
             'user' => $request->user(),
         ]);
     }
+    public function test(Request $request): View
+    {   
+        $user = Auth::user();
+        
+        return view('pages.form', [
+            'user' => $request->user(),
+        ]);
+    }
 
     /**
      * Update the user's profile information.

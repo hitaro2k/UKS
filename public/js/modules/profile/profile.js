@@ -40,20 +40,3 @@ export function panelProfile(){
 }
 
 panelProfile()
-
-export function setProfile(){
-    document.addEventListener("DOMContentLoaded" , ()=>{
-        const resetProfile = document.querySelector(".reset-profile")
-        const formReset = document.querySelector(".popup__set-profile")
-        const closeForm = document.querySelector(".close-popup-reset")
-        console.log(closeForm)
-        resetProfile.onclick = () =>{
-            formReset.style.display = "flex"
-        }
-        closeForm.onclick = ()=>{
-            formReset.style.display = "none"
-        }
-    })
-  
-}
-setProfile()

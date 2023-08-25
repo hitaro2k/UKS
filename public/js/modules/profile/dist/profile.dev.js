@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.panelProfile = panelProfile;
-exports.setProfile = setProfile;
 
 function panelProfile() {
   var listItem = document.querySelectorAll(".list-item");
@@ -46,22 +45,3 @@ function panelProfile() {
 }
 
 panelProfile();
-
-function setProfile() {
-  document.addEventListener("DOMContentLoaded", function () {
-    var resetProfile = document.querySelector(".reset-profile");
-    var formReset = document.querySelector(".popup__set-profile");
-    var closeForm = document.querySelector(".close-popup-reset");
-    console.log(closeForm);
-
-    resetProfile.onclick = function () {
-      formReset.style.display = "flex";
-    };
-
-    closeForm.onclick = function () {
-      formReset.style.display = "none";
-    };
-  });
-}
-
-setProfile();

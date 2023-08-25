@@ -83,9 +83,10 @@ function views() {
     function updateAvailability(productId, count) {
       var getProductInfo = localStorage.getItem("key_" + productId);
       var productInfo = JSON.parse(getProductInfo);
+      console.log(getProductInfo);
 
       if (productInfo.count === 0) {
-        console.log("negr");
+        localStorage.removeItem(getProductInfo);
       }
     }
 
@@ -113,12 +114,6 @@ function views() {
           added = "true";
 
           _card.setAttribute("data-added", added);
-          /* -----------------------------------------------------------------------*/
-
-          /*                                Card Item                               */
-
-          /* -----------------------------------------------------------------------*/
-
 
           if (existingItem) {
             var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
@@ -128,7 +123,6 @@ function views() {
 
           var productInfo = {
             id: productId,
-            imgSrc: _card.querySelector(".product-image").getAttribute("src"),
             title: _card.querySelector(".product-title").innerText,
             price: _card.querySelector(".product-price__grn").innerText,
             count: 0,
@@ -136,7 +130,7 @@ function views() {
           };
           localStorage.setItem("idItem", productInfo.id);
           productInfo.count++;
-          var itemInCart = "<div class=\"item\" data-id=\"".concat(productInfo.data, "\" >\n                    <img src=\"").concat(productInfo.imgSrc, "\" alt=\"\" class=\"item-image\">\n                    <p class=\"item-name\">").concat(productInfo.title, "</p>\n                    <p class=\"item-price\">").concat(productInfo.price, "</p>\n                    <div class=\"item__button__add-delete\">\n                        <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                        <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                        <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                    </div>\n                </div>\n            ");
+          var itemInCart = "<div class=\"item\" data-id=\"".concat(productInfo.data, "\" >\n                    <img src=\"../img/UK.svg\" alt=\"\" class=\"item-image\">\n                    <p class=\"item-name\">").concat(productInfo.title, "</p>\n                    <p class=\"item-price\">").concat(productInfo.price, "</p>\n                    <div class=\"item__button__add-delete\">\n                        <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                        <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                        <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                    </div>\n                </div>\n            ");
           cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
           cartItems.push(productInfo);
           localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -164,10 +158,7 @@ function views() {
             };
           });
           transformedData.forEach(function (product) {
-            console.log(productId);
-            console.log(product.id);
-
-            if (product.id == productId && product.count >= 1) {
+            if (product.count >= 1) {
               start();
             }
           });
@@ -192,9 +183,7 @@ function views() {
       // }
       var savedItems = getAllItemsFromStorage();
       var savedId = localStorage.getItem('idItem');
-      console.log(savedId);
       var productElement = document.querySelector("[data-id=\"".concat(savedId, "\"]"));
-      console.log(productElement);
 
       if (productElement) {
         productElement.setAttribute('data-added', 'true');
@@ -230,18 +219,18 @@ function views() {
         var getProductInfo = localStorage.getItem("key_" + productId);
         var productInfo = JSON.parse(getProductInfo);
         var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
-        console.log(productInfo);
         fetch("/get-api").then(function (res) {
           return res.json();
         }).then(function (data) {
           var transformedData = data.data.map(function (item) {
             return {
-              name: item["Производитель"],
-              id: item["Код"],
-              description: item["Описание"],
-              price: item["Цена у.е."],
-              count: item["Наличие"],
-              image: item["Фото"]
+              name: item["maker"],
+              id: item["code"],
+              description: item["name"],
+              price: item["price"],
+              count: item["count"],
+              analogue: item["analogue"],
+              exchange: item["exchange"]
             };
           });
           transformedData.forEach(function (item) {
@@ -254,12 +243,12 @@ function views() {
               handleClick(element);
               updateTotalPrice();
               localStorage.setItem("cartItems", JSON.stringify(cartItems));
-              updateAvailability(productId, 1);
 
               if (itemNum === countElemNum) {
                 countElem.innerHTML = itemNum;
-                handleClick(element);
                 element.count = itemNum;
+                handleClick(element);
+                updateAvailability(productId, 1);
                 localStorage.setItem("cartItems", JSON.stringify(cartItems));
                 updateTotalPrice();
               }
@@ -287,9 +276,9 @@ function views() {
 
         if (countElemAttr == productInfo.data) {
           item.count--;
+          updateAvailability(productId, 0);
           localStorage.setItem("cartItems", JSON.stringify(cartItems));
           handleClick(item);
-          updateAvailability(productId, 0);
         }
 
         if (item.count === 0) {
@@ -393,7 +382,7 @@ function views() {
         sendDataToServer(itemJson);
       }
 
-      window.location.href = "/app/html/inputsSend.php";
+      window.location.href = "/form";
     });
 
     function removeCartItem(id) {

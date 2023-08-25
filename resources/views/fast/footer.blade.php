@@ -139,13 +139,21 @@
         new WOW().init();
     </script>
     @endif
-    
+
+    @if(Route::is('form'))
+    <script type="module" src=""></script>
+    @endif
+
     @if(Route::is('home'))
     <script type="module" src="../js/main.js"></script>
     @endif
+
+    <script type = "module" src = "../js/module.js"></script>
+
     @if(Route::is('profile'))
     <script type="module" src="../js/modules/profile/profile.js"></script>
     @endif
+    
   </body>
 
 </html>
