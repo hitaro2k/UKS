@@ -13,9 +13,23 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+
     /**
      * Display the user's profile form.
      */
+    
+     public function edit(Request $request): View
+     {
+         return view('pages.profile.edit', [
+             'user' => $request->user(),
+         ]);
+     }
+
+
+    /**
+     * Display the user's profile form.
+     */
+    
     public function editL(Request $request): View
     {
         return view('profile.edit', [
@@ -30,7 +44,7 @@ class ProfileController extends Controller
     {   
         $user = Auth::user();
         
-        return view('pages.profile', [
+        return view('pages.profile.main', [
             'user' => $request->user(),
         ]);
     }
