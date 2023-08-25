@@ -1,5 +1,6 @@
 @include('fast.header')
-<div class = "popup__set-profile" > 
+<div class = "popup__set-profile" style="display: flex;" > 
+            
             <form action="POST">
               <div class="close-wrapper">
                 <img src="/img/close.svg" alt="" class="close-popup-reset" >
@@ -12,5 +13,7 @@
 
               <button class="save-btn">Зберегти</button>
             </form>
-</div>
+      </div>
+
+
 @include('fast.footer')

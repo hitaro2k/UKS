@@ -72,7 +72,7 @@
                       </x-responsive-nav-link>
                   </form> 
               @endauth
-                <button class="reset-profile">Змінити профіль</button>
+                <a href="{{ Route('profile.edit') }}" ><button class="reset-profile">Змінити профіль</button></a>
             </div>
           </div>
       <div class="panel-order panel"  data-item = "2" style="display: none;">
@@ -153,32 +153,36 @@
       </div>
       </div>
         
-      <div id="message"></div>
+
+      
+       
         
-      <div class="cart-menu">
-        <button class="close-item" id="close-cart">Закрити</button>
-        <div class="items">
-          <div class="isclear">
-            <div class="icons">
-              <img
+        <div id="message"></div>
+        
+        <div class="cart-menu">
+          <button class="close-item" id="close-cart">Закрити</button>
+          <div class="items">
+            <div class="isclear">
+              <div class="icons">
+                <img
                   class="icons-image"
                   src="./img/shopping-cart.svg"
                   alt=""
                 />
+              </div>
+              <div class="items-text">
+                <h2 class="items-title">Ваш кошик порожній</h2>
+                <p class="items-subtitle">Ви ще не додали жодного товару</p>
+              </div>
             </div>
-            <div class="items-text">
-              <h2 class="items-title">Ваш кошик порожній</h2>
-              <p class="items-subtitle">Ви ще не додали жодного товару</p>
-            </div>
+            <div class="isntclear"></div>
           </div>
-          <div class="isntclear"></div>
-        </div>
   
-        <div class="total-price__wrapper">
-          <p class="total-price__text">0 грн</p>
-          <button class="total-price__button-buy">Оформить заказ</button>
+          <div class="total-price__wrapper">
+            <p class="total-price__text">0 грн</p>
+            <button class="total-price__button-buy">Оформить заказ</button>
+          </div>
         </div>
-      </div>
   
     
         <div class="menu-burger__wrapper">
