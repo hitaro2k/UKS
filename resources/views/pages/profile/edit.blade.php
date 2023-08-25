@@ -18,7 +18,7 @@
           <div class="input-wrapper"><input type="text" placeholder = "Прізвище"></div>
           <div class="input-wrapper"><input type="text" placeholder = "Пошта"></div>
 
-          <button type="submit">Зберегти</button>
+          <button class = "btn-data-sumb"  type="submit">Зберегти</button>
         </form>
       </div>
         
@@ -28,7 +28,7 @@
           <div class="input-wrapper"><input type="text" placeholder = "Новий пароль"></div>
           <div class="input-wrapper"><input type="text" placeholder = "Підтвердіть новий пароль"></div>
 
-          <button type="submit">Зберегти</button>
+          <button class = "btn-pass-sumb" type="submit">Зберегти</button>
         </form>
       </div>
      
@@ -47,4 +47,14 @@
   
 
 </body>
+<script src="">
+  const btnSumb = document.querySelector(".btn-data-sumb")
+  const btnPass = document.querySelector(".btn-pass-sumb")
+  btnSumb.onclick = (e)=>{
+    e.preventDefault()
+  }
+  btnPass.onclick = (e)=>{
+    e.preventDefault()
+  }
+</script>
 </html>
