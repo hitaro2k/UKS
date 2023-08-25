@@ -31,7 +31,7 @@
       <div class="form-wrapper">
         <form action="" class="form-delete">
           <p class="title">Видалити аккаунт</p>
-          <div class="input-wrapper"><input type="text" placeholder = "Видалити"></div>
+          <div class="input-wrapper"><button type="submit">Видалити</button></div>
         </form>
       </div>
       
