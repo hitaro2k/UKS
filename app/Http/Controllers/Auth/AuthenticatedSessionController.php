@@ -51,7 +51,6 @@ class AuthenticatedSessionController extends Controller
         $email = $Social->email;
 
         $emailCheck = User::where('email', $email)->first();
-        
         if($emailCheck === null){
             $user = User::updateOrCreate([
                 'provider_id' => $Social->id,
