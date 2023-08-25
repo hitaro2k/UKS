@@ -139,7 +139,7 @@
         new WOW().init();
     </script>
     @endif
-    <script type="module" src="../js/main.js"></script>
+    
     @if(Route::is('home'))
     <script type="module" src="../js/main.js"></script>
     @endif

@@ -1245,7 +1245,7 @@ li {
   }
 
   .popup-wrapper{
-    height: 85%;
+    height:100%;
     width: 100%;
     position: fixed;
     background: #000000a6;
@@ -1287,7 +1287,7 @@ li {
         }
         
         .title{
-          color: black;
+          color: rgb(255, 255, 255);
           margin: 0 auto;
           margin-top: 30px;
         }
@@ -1306,10 +1306,11 @@ li {
             height: 50px;
             display: flex;
             .input{
+              width: 100%;
               background-color: transparent;
               border: none;
               outline: none;
-              color: rgb(0, 0, 0);
+              color: rgb(255, 255, 255);
               font-family: "Montserrat";
               margin-left: 10px;
             }
@@ -1359,7 +1360,7 @@ li {
           }
           .google-log{
             width: 40%;
-            background-color:black;
+            background-color:rgb(255, 255, 255);
             border-radius: 5px;
             padding: 10px;
             display: flex;
@@ -1375,7 +1376,7 @@ li {
               font-weight: 600;
               font-size: 14px;
               margin: 0 auto;
-              color: #f70059;
+              color: #0059f7;
             }
             .log-img{
               width: 15%;
@@ -1426,10 +1427,11 @@ li {
             height: 50px;
             display: flex;
             .input{
+              width: 100%;
               background-color: transparent;
               border: none;
               outline: none;
-              color: rgb(0, 0, 0);
+              color: rgb(255, 255, 255);
               font-family: "Montserrat";
               margin-left: 10px;
             }
@@ -1449,6 +1451,7 @@ li {
           align-items: center;
           width: 100%;
           margin: 0 auto;
+          margin-top: 20px;
           .title{
             color: gray;
             font-size: 12px;
@@ -1463,70 +1466,6 @@ li {
         }
       }
     }
-  }
-  .popup__set-profile{
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    background: #000000a6;
-    z-index: 3;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    form{
-      width: 60%;
-      height: 90%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 50px 0px;
-      background-color: white;
-      border-radius: 5px;
-      .close-wrapper{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end; 
-           
-        .close-popup-reset{
-          width: 3%;
-          margin-top: 0px;
-          margin-right: 30px;
-          cursor: pointer;
-          @include breakpoint(sm){
-            width: 6%;
-          }
-        }
-      }
-      .input-wrapper{
-        background-color: #cdcdcd;
-        width: 50%;
-        height: 7%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        border-radius: 5px;
-        @include breakpoint(md){
-          width: 90%;
-        }
-        .input-set{
-          outline: none;
-          background-color: transparent;
-          border: none;
-          margin-left: 5px;
-        }
-      }
-    .save-btn{
-      background-color: #ff5c20;
-      color: white;
-      width: 50%;
-      height: 7%;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    }
-   
   }
   
   .footer {
