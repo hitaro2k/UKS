@@ -852,11 +852,45 @@ li {
     }
   
   }
+  .content-wrapper__product{
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    background: $color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    .product{
+      background-color: black;
+      width: 90%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 20px;
+      padding: 5px;
+      gap: 0px 20px;
+      border-radius: 5px;
+      justify-content: space-between;
+      .product-btn{
+        background-color: #30d230a3;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+    .content-analogue{
+      width: 90%;
+      display: flex;
+      margin-top: 50px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
   
   .panel-wrapper{
     background: $color;
     width: 90%;
-    height: 600px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -902,145 +936,217 @@ li {
     }
     .panel__user-data{
       width: 80%;
+      height: 100%;
       display: flex;
-      flex-direction: row;
-
-      .panel__user-data__personal-info{
+      flex-direction: column;
+      justify-content: space-between;
+      .profile-content{
         display: flex;
-        flex-direction: column;
-        width: 50%;
-        .title{
-          color: #FFF;
-          font-family: Montserrat;
-          font-size: 20px;
-          font-style: normal;
-          font-weight: 500;
-        }
-     
-        .title-surname{
-          color: #FFF;
-          font-family: Montserrat;
-          font-size: 15px;
-          font-style: normal;
-          font-weight: 200;
-          line-height: normal;
-        }
-        .title-phone{
-          color: #FFF;
-          font-family: Montserrat;
-          font-size: 15px;
-          font-style: normal;
-          font-weight: 200;
-          line-height: normal;
-        }
-        .wrap-title{
+        flex-direction: row;
+        @include breakpoint(lg){
           display: flex;
-          flex-direction: row;
-          align-items: center;
-          gap: 0px 5px;
-          .title-name{
-            color: #FFF;
-            font-family: Montserrat;
-            font-size: 17px;
-            font-style: normal;
-            font-weight: 200;
-            line-height: normal;
-          }
-          .title-patronymic{
-            color: #FFF;
-            font-family: Montserrat;
-            font-size: 17px;
-            font-style: normal;
-            font-weight: 200;
-            line-height: normal;
-                      }
+          flex-direction: column;
+          
         }
-        .panel-edit{
-          color: #FFF;
-          font-family: Montserrat;
-          font-size: 12px;
-          font-weight: 300;
-          cursor: pointer;
-          text-transform: uppercase;
-        }
-      }
-      .panel__user-data__media-info{
-        .title{
-          color: #FFF;
-          font-family: Montserrat;
-          font-size: 20px;
-          font-style: normal;
-          font-weight: 500;
-        }
-        .media-info__mail{
+        .panel__user-data__personal-info{
+          display: flex;
+          flex-direction: column;
+          width: 50%;
           .title{
             color: #FFF;
             font-family: Montserrat;
             font-size: 20px;
             font-style: normal;
             font-weight: 500;
-            line-height: normal;
-            margin: 0px;
+            @include breakpoint(sm){
+              font-size: 14px;
+            }
           }
-          .media-info__mail-inner{
+       
+          .title-surname{
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 200;
+            line-height: normal;
+            @include breakpoint(sm){
+              font-size: 14px;
+            }
+          }
+          .title-phone{
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 200;
+            line-height: normal;
+            @include breakpoint(sm){
+              font-size: 14px;
+            }
+          }
+          .wrap-title{
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 0px 20px;
-            .title-mail{
+            gap: 0px 5px;
+            .product-title{
               color: #FFF;
               font-family: Montserrat;
-              font-size: 20px;
-              font-weight: 300;
-              outline: none;
+              font-size: 17px;
+              font-style: normal;
+              font-weight: 200;
+              line-height: normal;
+              @include breakpoint(sm){
+                font-size: 14px;
+              }
             }
-            .mail-edit{
+            .title-patronymic{
               color: #FFF;
               font-family: Montserrat;
-              font-size: 10px;
-              font-weight: 300;
-              cursor: pointer;
-              text-transform: uppercase;
+              font-size: 17px;
+              font-style: normal;
+              font-weight: 200;
+              line-height: normal;
+              @include breakpoint(sm){
+                font-size: 14px;
+              }
             }
           }
-         
+          .panel-edit{
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 12px;
+            font-weight: 300;
+            cursor: pointer;
+            text-transform: uppercase;
+          }
         }
         .media-info__password{
+          margin-top: 50px;
+        }
+        .panel__user-data__media-info{
           .title{
             color: #FFF;
             font-family: Montserrat;
             font-size: 20px;
             font-style: normal;
             font-weight: 500;
-            line-height: normal;
-            margin: 0px;
+            @include breakpoint(sm){
+              font-size: 14px;
+            }
           }
-          .media-info__pass-inner{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 0px 20px;
-            .title-pass{
+          .media-info__mail{
+            .title{
               color: #FFF;
               font-family: Montserrat;
               font-size: 20px;
-              font-weight: 300;
-             
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+              margin: 0px;
+              @include breakpoint(sm){
+                font-size: 14px;
+              }
             }
-            
-            .pass-edit{
+            .media-info__mail-inner{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 0px 20px;
+              .title-mail{
+                color: #FFF;
+                font-family: Montserrat;
+                font-size: 20px;
+                font-weight: 300;
+                outline: none;
+                @include breakpoint(sm){
+                  font-size: 14px;
+                }
+              }
+              .mail-edit{
+                color: #FFF;
+                font-family: Montserrat;
+                font-size: 10px;
+                font-weight: 300;
+                cursor: pointer;
+                text-transform: uppercase;
+              }
+            }
+           
+          }
+          .media-info__password{
+            .title{
               color: #FFF;
               font-family: Montserrat;
-              font-size: 10px;
-              font-weight: 300;
-              cursor: pointer;
-              text-transform: uppercase;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+              margin: 0px;
+              @include breakpoint(sm){
+                font-size: 14px;
+              }
             }
+            .media-info__pass-inner{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 0px 20px;
+              .title-pass{
+                color: #FFF;
+                font-family: Montserrat;
+                font-size: 20px;
+                font-weight: 300;
+               
+              }
+              
+              .pass-edit{
+                color: #FFF;
+                font-family: Montserrat;
+                font-size: 10px;
+                font-weight: 300;
+                cursor: pointer;
+                text-transform: uppercase;
+              }
+            }
+           
           }
-         
+  
         }
-
       }
+      .button-profile{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        justify-content: space-around;
+        margin-bottom: 40px;
+        .title{
+          background-color: #ec6f05de;
+          padding: 15px;
+          border-radius: 5px;
+          cursor: pointer;
+          @include breakpoint(sm){
+            padding: 10px;
+            font-size: 12px;
+          }
+        }
+        .reset-profile{
+          width: 200px;
+          height: 50px;
+          color: white;
+          border-radius: 5px;
+          background-color: #ec6f05de;
+          cursor: pointer;
+          @include breakpoint(sm){
+            width: 135px;
+            height: 30px;
+            font-size: 10px;
+          }
+        }
+      }
+     
     }
     .panel-order{
       display: flex;
@@ -1051,6 +1157,7 @@ li {
       flex-direction: column;
       align-items: center;
       overflow: hidden;
+      margin-bottom: 20px;
       @include breakpoint(md){
         overflow-x: scroll;
         align-items: flex-start;
@@ -1096,6 +1203,7 @@ li {
       flex-direction: column;
       align-items: center;
       overflow: hidden;
+      margin-bottom: 20px;
       @include breakpoint(md){
         overflow-x: scroll;
         align-items: flex-start;
@@ -1137,7 +1245,7 @@ li {
   }
 
   .popup-wrapper{
-    height: 100%;
+    height: 85%;
     width: 100%;
     position: fixed;
     background: #000000a6;
@@ -1151,7 +1259,7 @@ li {
       justify-content: center;
       background-color: white;
       width: 40%;
-      height: 90%; 
+      height: 100%; 
       margin: 0 auto;
       border-radius: 10px;
       margin-top: 50px;
@@ -1160,7 +1268,6 @@ li {
         width: 80%;
       }
       .popup-login{
-      
         width: 100%;
         display: flex;
         height: 100%; 
@@ -1170,11 +1277,12 @@ li {
           display: flex;
           flex-direction: column;
           align-items: flex-end; 
-          cursor: pointer;       
+                
           .close-popup{
             width: 5%;
             margin-top: 30px;
             margin-right: 30px;
+            cursor: pointer; 
           }
         }
         
@@ -1188,11 +1296,9 @@ li {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 15px 0px;
+          gap: 40px 0px;
           margin-top: 50px;
-          @include breakpoint(lg){
-            gap: 20px 0px;
-          }
+         
           .input__wrapper{
             background-color: #82828229;
             border-radius: 10px;
@@ -1357,6 +1463,70 @@ li {
         }
       }
     }
+  }
+  .popup__set-profile{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: #000000a6;
+    z-index: 3;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    form{
+      width: 60%;
+      height: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 50px 0px;
+      background-color: white;
+      border-radius: 5px;
+      .close-wrapper{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; 
+           
+        .close-popup-reset{
+          width: 3%;
+          margin-top: 0px;
+          margin-right: 30px;
+          cursor: pointer;
+          @include breakpoint(sm){
+            width: 6%;
+          }
+        }
+      }
+      .input-wrapper{
+        background-color: #cdcdcd;
+        width: 50%;
+        height: 7%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 5px;
+        @include breakpoint(md){
+          width: 90%;
+        }
+        .input-set{
+          outline: none;
+          background-color: transparent;
+          border: none;
+          margin-left: 5px;
+        }
+      }
+    .save-btn{
+      background-color: #ff5c20;
+      color: white;
+      width: 50%;
+      height: 7%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    }
+   
   }
   
   .footer {

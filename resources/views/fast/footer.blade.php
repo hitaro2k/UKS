@@ -1,7 +1,7 @@
 <footer class="footer">
         <div class="footer__header-block">
           <a href="#promo" class="logo">
-            <img src="./img/UK.svg" alt="logo" class="logo-img__footer"
+            <img src="../img/UK.svg" alt="logo" class="logo-img__footer"
           /></a>
 
           <nav class="menu__footer">
@@ -32,11 +32,8 @@
         <div class="footer__info-block">
           <div class="footer__info-block__media">
             <object
-              data="media"
-              type="image/svg+xml"
               class="svg-logo__wrapper-tg"
               id="telegram"
-             
             >
               <svg
                 class="telegram-logo__svg"
@@ -54,8 +51,6 @@
             </object>
 
             <object
-              data="media"
-              type="image/svg+xml"
               class="svg-logo__wrapper-facebook"
               id="facebook"
             >
@@ -75,8 +70,6 @@
             </object>
 
             <object
-              data="media"
-              type="image/svg+xml"
               class="svg-logo__wrapper-inst"
               id="instagram"
             >
@@ -127,12 +120,12 @@
     <div class="succes__popup">
       <div class="succes__popup-top">
         <div class="succes__popup__succes">
-          <img src="./img/succes.png" alt="" class="succes__img">
+          <img src="../img/succes.png" alt="" class="succes__img">
           <p class="succes__title">Успiшно!</p>
         </div>
         <div class="succes__popup__link">
           <a href="#" class="succes-link">
-            <img class="succes-link__image" src="./img/telegram_logo_icon_229299.png" alt="">
+            <img class="succes-link__image" src="../img/telegram_logo_icon_229299.png" alt="">
           </a>
         </div>
        
@@ -146,8 +139,13 @@
         new WOW().init();
     </script>
     @endif
-    <script type="module" src="./js/main.js"></script>
-    
+    <script type="module" src="../js/main.js"></script>
+    @if(Route::is('home'))
+    <script type="module" src="../js/main.js"></script>
+    @endif
+    @if(Route::is('profile'))
+    <script type="module" src="../js/modules/profile/profile.js"></script>
+    @endif
   </body>
 
 </html>

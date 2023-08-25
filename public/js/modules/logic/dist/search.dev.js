@@ -13,14 +13,13 @@ function search() {
   }).then(function (data) {
     var transformedData = data.data.map(function (item) {
       return {
-        name: item["Производитель"],
-        id: item["Код"],
-        description: item["Описание"],
-        price: item["Цена у.е"],
-        count: item["Наличие"],
-        image: item["Фото"],
-        discount: item["Скидка"],
-        exchange: item["Курс"]
+        name: item["maker"],
+        id: item["code"],
+        description: item["name"],
+        price: item["price"],
+        count: item["count"],
+        analogue: item["analogue"],
+        exchange: item["exchange"]
       };
     });
     var reTransformedData = transformedData.map(function (item) {
@@ -30,8 +29,7 @@ function search() {
         description: item.description,
         price: item.price,
         count: item.count,
-        image: item.image,
-        discount: item.discount
+        analogue: item.analogue
       };
     });
     searchInput.addEventListener('input', function () {

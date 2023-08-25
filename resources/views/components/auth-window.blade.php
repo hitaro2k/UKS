@@ -1,6 +1,6 @@
 <div class="popup-login" id="popup-login" >
     <div class="close-wrapper">
-        <img src="/img/close.svg" alt="" class="close-popup" sty>
+        <img src="/img/close.svg" alt="" class="close-popup" >
     </div>
 
     <h2 class="title">Вхід</h2>
@@ -23,10 +23,10 @@
         <p class="title">Немає облікового запису?</p>
         <button class="button" id="register">Зареєструватися</button>
     </div>
-    <div class="media-login">
+    <!-- <div class="media-login">
         <a href="/auth/google/oauth" class="google-log">
             <img src="/img/google-auth.png" alt="" class="log-img">
             <p class="title">Увійти з гуглом</p>
         </a>
-    </div>
+    </div> -->
 </div>

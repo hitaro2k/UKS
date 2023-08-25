@@ -1,31 +1,59 @@
 "use strict"
 
-export function formRegister(){
-    const selectRegister = document.querySelector("#register")
-    const selectLogin = document.querySelector("#auth")
-    const popupRegister = document.querySelector(".popup-register")
-    const popupLogin = document.querySelector(".popup-login")
-    const closePopup =document.querySelectorAll(".close-popup")
-    const popup = document.querySelector(".popup-wrapper")
-    const profileIcon = document.querySelector("#button-profile")
-    profileIcon.addEventListener("click" , ()=>{
-        popup.style.display = "flex"
-    })
-    closePopup.forEach(item =>{
+export function panelProfile(){
+    const listItem = document.querySelectorAll(".list-item")
+    const spanItem = document.querySelectorAll(".span-header")
+
+    listItem.forEach(item =>{
+        item.onmouseenter = ()=>{
+            item.style.color = "orange"
+            item.style.transition = "1s"
+        }
+        item.onmouseleave = ()=>{
+            item.style.color = "white"
+            item.style.transition = "1s"
+        }
         item.onclick = ()=>{
-            popup.style.display = "none"
+            const dataItem = item.getAttribute("data-item");
+            spanItem.forEach(item=>{
+                const spanDataItem = item.getAttribute("data-item");
+                if (dataItem === spanDataItem) {
+                   item.style.display = "flex"
+                }else{
+                    item.style.display = "none"
+                }
+            })
+            const panel = document.querySelectorAll(".panel")
+            panel.forEach(item =>{
+                const panelDataItem = item.getAttribute("data-item")
+                if(dataItem == panelDataItem){
+                    item.style.display = "flex"
+                }else{
+                    item.style.display = "none"
+                }
+            })
+
+           
         }
     })
-
-    selectRegister.onclick = ()=>{
-        popupRegister.style.display = "flex"
-        popupLogin.style.display = "none"
-    }
-    selectLogin.onclick = ()=>{
-        popupLogin.style.display = "flex"
-        popupRegister.style.display = "none"
-    }
+   
 }
 
-formRegister()
+panelProfile()
 
+export function setProfile(){
+    document.addEventListener("DOMContentLoaded" , ()=>{
+        const resetProfile = document.querySelector(".reset-profile")
+        const formReset = document.querySelector(".popup__set-profile")
+        const closeForm = document.querySelector(".close-popup-reset")
+        console.log(closeForm)
+        resetProfile.onclick = () =>{
+            formReset.style.display = "flex"
+        }
+        closeForm.onclick = ()=>{
+            formReset.style.display = "none"
+        }
+    })
+  
+}
+setProfile()

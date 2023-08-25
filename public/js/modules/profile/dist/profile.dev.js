@@ -3,46 +3,65 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.formRegister = formRegister;
-exports.editProfile = editProfile;
+exports.panelProfile = panelProfile;
+exports.setProfile = setProfile;
 
-function formRegister() {
-  var selectRegister = document.querySelector("#register");
-  var selectLogin = document.querySelector("#auth");
-  var popupRegister = document.querySelector(".popup-register");
-  var popupLogin = document.querySelector(".popup-login");
-  var closePopup = document.querySelectorAll(".close-popup");
-  var popup = document.querySelector(".popup-wrapper");
-  var profileIcon = document.querySelector(".button-profile");
-  profileIcon.addEventListener("click", function () {
-    popup.style.display = "flex";
-  });
-  closePopup.forEach(function (item) {
+function panelProfile() {
+  var listItem = document.querySelectorAll(".list-item");
+  var spanItem = document.querySelectorAll(".span-header");
+  listItem.forEach(function (item) {
+    item.onmouseenter = function () {
+      item.style.color = "orange";
+      item.style.transition = "1s";
+    };
+
+    item.onmouseleave = function () {
+      item.style.color = "white";
+      item.style.transition = "1s";
+    };
+
     item.onclick = function () {
-      popup.style.display = "none";
+      var dataItem = item.getAttribute("data-item");
+      spanItem.forEach(function (item) {
+        var spanDataItem = item.getAttribute("data-item");
+
+        if (dataItem === spanDataItem) {
+          item.style.display = "flex";
+        } else {
+          item.style.display = "none";
+        }
+      });
+      var panel = document.querySelectorAll(".panel");
+      panel.forEach(function (item) {
+        var panelDataItem = item.getAttribute("data-item");
+
+        if (dataItem == panelDataItem) {
+          item.style.display = "flex";
+        } else {
+          item.style.display = "none";
+        }
+      });
     };
   });
-
-  selectRegister.onclick = function () {
-    popupRegister.style.display = "flex";
-    popupLogin.style.display = "none";
-  };
-
-  selectLogin.onclick = function () {
-    popupLogin.style.display = "flex";
-    popupRegister.style.display = "none";
-  };
 }
 
-formRegister();
+panelProfile();
 
-function editProfile() {
-  var mailEdit = document.querySelector(".mail-edit");
-  var mailTitle = document.querySelector(".title-mail");
-  mailEdit.addEventListener("click", function () {
-    mailTitle.contentEditable = true;
-    mailTitle.focus();
+function setProfile() {
+  document.addEventListener("DOMContentLoaded", function () {
+    var resetProfile = document.querySelector(".reset-profile");
+    var formReset = document.querySelector(".popup__set-profile");
+    var closeForm = document.querySelector(".close-popup-reset");
+    console.log(closeForm);
+
+    resetProfile.onclick = function () {
+      formReset.style.display = "flex";
+    };
+
+    closeForm.onclick = function () {
+      formReset.style.display = "none";
+    };
   });
 }
 
-editProfile();
+setProfile();

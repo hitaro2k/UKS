@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function store($id)
     {
-        $product = Products::where('Код', $id)->first();
+        $product = Products::where('code', $id)->first();
         return view('pages.product')->with('product', $product);
     }
 }

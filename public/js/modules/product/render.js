@@ -7,14 +7,13 @@ export async function getProductsPopular() {
   const productArray = await response.json();
  
   const transformedData = productArray.data.map(item => ({
-    name: item["Производитель"],
-    id: item["Код"],
-    description: item["Описание"],
-    price: item["Цена у.е"],
-    count: item["Наличие"],
-    image:item["Фото"],
-    discount:item["Скидка"],
-    exchange:item["Курс"]
+    name: item["maker"],
+    id: item["code"],
+    description: item["name"],
+    price: item["price"],
+    count: item["count"],
+    analogue:item["analogue"],
+    exchange:item["exchange"]
     
   }));
   const transformedDataExchange = transformedData.map(item =>{

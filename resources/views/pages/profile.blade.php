@@ -12,83 +12,97 @@
   
           <ul class="search-stroke__list"></ul>
         </div>
-       
-        <div class="panel-wrapper">
-            <div class="panel-header">
-              <nav class="nav">
-                <ul class="list">
-                  <li class="list-item" data-item ="1">
-                    Персональні дані
-                    <span class = "span-header" data-item ="1" style="display: flex;"></span>
-                  </li>
-                  <li class="list-item" data-item ="2">Замовлення
-                  <span class = "span-header" data-item ="2"></span>
-                  </li>
-                  <li class="list-item" data-item ="3">Історія замовлень
-                  <span class = "span-header" data-item ="3"></span>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+        
+          <div class="panel-wrapper">
+          <div class="panel-header">
+            <nav class="nav">
+              <ul class="list">
+                <li class="list-item" data-item ="1">
+                  Персональні дані
+                  <span class = "span-header" data-item ="1" style="display: flex;"></span>
+                </li>
+                <li class="list-item" data-item ="2">Замовлення
+                <span class = "span-header" data-item ="2"></span>
+                </li>
+                <li class="list-item" data-item ="3">Історія замовлень
+                <span class = "span-header" data-item ="3"></span>
+                </li>
+              </ul>
+            </nav>
+          </div>
 
-            <div class="panel__user-data panel"data-item = "1">
-              <div class="panel__user-data__personal-info">
-                  <h4 class="title">ДАНІ</h4>
-                  <div class="wrap-title">
-                  <p class="title-name">{{$user->name}}</p>
-                  <p class="title-patronymic">{{$user->patronymic}}</p>
-                  </div>
-                  <p class="title-surname">{{$user->surname}}</p>
-                  <p class="title-phone">+380</p>
-                  <p class="panel-edit">Редагувати</p>
-              </div>
-              <div class="panel__user-data__media-info">
-              <h4 class="title">ДАНІ ДЛЯ ВХОДУ В АКАУНТ</h4>
-                  <div class="media-info__mail">
-                      <h4 class="title">Пошта</h4>
-                      <div class="media-info__mail-inner">
-                        <form action="{{ route('profile.update') }}" method="POST" ><input type="text" class="title-mail" value="{{$user->email}}"> <input type="submit"></form>
-                        <p class="mail-edit">Редагувати</p>
-                      </>
-                  </div>
-                  <div class="media-info__password">
-                      <h4 class="title">Пароль</h4>
-                      <div class="media-info__pass-inner">
-                        <p class="title-pass">*********</p>
-                        <p class="pass-edit">Редагувати</p>
-                      </div>
-                  </div>
-              </div>
+          <div class="panel__user-data panel"data-item = "1">
+            <div class="profile-content">
+            <div class="panel__user-data__personal-info">
+                <h4 class="title">ДАНІ</h4>
+                <div class="wrap-title">
+                <p class="title-name">{{$user->name}}</p>
+                <p class="title-patronymic">{{$user->patronymic}}</p>
+                </div>
+                <p class="title-surname">{{$user->surname}}</p>
+                <p class="title-phone">+380</p>
             </div>
-        </div>
-        <div class="panel-order panel"  data-item = "2" style="display: none;">
-          <table>
-            <tr>
-              <th>Представник</th>
-              <th>Назва</th>
-              <th>Код</th>
-              <th>Кількість</th>
-              <th>Сума</th>
-              <th>Дата оформлення</th>
-              <th>Час доставки</th>
-              <th>Місто</th>
-              <th>Статус</th>
-            </tr>
-            <tr class = "item-order">
-              <td><img src="./img/UK.svg" alt="" class="img"></td>
-              <td>Амотизатор</td>
-              <td>34ARWV32</td>
-              <td>2</td>
-              <td>200$</td>
-              <td>21.08.2023</td>
-              <td>3-14дн</td>
-              <td>г.Киев</td>
-              <td>В оброботке</td>
-            </tr>
-          </table>   
-        </div>
+            <div class="panel__user-data__media-info">
+                <h4 class="title">ДАНІ ДЛЯ ВХОДУ В АКАУНТ</h4>
+                <div class="media-info__mail">
+                    <h4 class="title">Пошта</h4>
+                    <div class="media-info__mail-inner">
+                      <h4 class="title">{{$user->email}}</h4>
+                    </div>
+                </div>
+                <div class="media-info__password">
+                    <h4 class="title">Пароль</h4>
+                    <div class="media-info__pass-inner">
+                      <p class="title-pass">*********</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        
 
-        <div class="panel-order__history panel" style="display: none;" data-item = "3">
+            <div class="button-profile">
+                @auth
+                  <form method="POST" class ="title" action="{{ route('logout') }}">
+                      @csrf
+
+                      <x-responsive-nav-link :href="route('logout')"
+                              onclick="event.preventDefault();
+                                          this.closest('form').submit();">
+                          {{ __('Log Out') }}
+                      </x-responsive-nav-link>
+                  </form> 
+              @endauth
+                <button class="reset-profile">Змінити профіль</button>
+            </div>
+          </div>
+      <div class="panel-order panel"  data-item = "2" style="display: none;">
+        <table>
+          <tr>
+            <th>Представник</th>
+            <th>Назва</th>
+            <th>Код</th>
+            <th>Кількість</th>
+            <th>Сума</th>
+            <th>Дата оформлення</th>
+            <th>Час доставки</th>
+            <th>Місто</th>
+            <th>Статус</th>
+          </tr>
+          <tr class = "item-order">
+            <td><img src="./img/UK.svg" alt="" class="img"></td>
+            <td>Амотизатор</td>
+            <td>34ARWV32</td>
+            <td>2</td>
+            <td>200$</td>
+            <td>21.08.2023</td>
+            <td>3-14дн</td>
+            <td>г.Киев</td>
+            <td>В оброботке</td>
+          </tr>
+        </table>  
+      </div> 
+
+      <div class="panel-order__history panel" style="display: none;" data-item = "3">
         <table>
             <tr>
               <th>Представник</th>
@@ -136,10 +150,25 @@
               <td>В оброботке</td>
             </tr>
           </table>  
-        </div>
-
-    </div>
+      </div>
+      </div>
         
+
+      <div class = "popup__set-profile" > 
+            
+            <form action="POST">
+              <div class="close-wrapper">
+                <img src="/img/close.svg" alt="" class="close-popup-reset" >
+              </div>
+              <div class="input-wrapper"><input class = "input-set" type="text" placeholder="Ім'я"></div>
+              <div class="input-wrapper"><input class = "input-set" type="text" placeholder="По батькові"></div>
+              <div class="input-wrapper"><input class = "input-set" type="text" placeholder="Прізвище"></div>
+              <div class="input-wrapper"><input class = "input-set" type="text" placeholder="Пошта"></div>
+              <div class="input-wrapper"><input class = "input-set" type="text" placeholder="Пароль"></div>
+
+              <button class="save-btn">Зберегти</button>
+            </form>
+      </div>
        
         
         <div id="message"></div>
@@ -185,4 +214,4 @@
             </ul>
           </nav>
         </div>
-        @include('fast.footer')
+@include('fast.footer')

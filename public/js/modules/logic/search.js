@@ -8,14 +8,13 @@ export function search() {
     .then(data => {
     
     const transformedData = data.data.map(item => ({
-      name: item["Производитель"],
-      id: item["Код"],
-      description: item["Описание"],
-      price: item["Цена у.е"],
-      count: item["Наличие"],
-      image:item["Фото"],
-      discount:item["Скидка"],
-      exchange:item["Курс"]
+      name: item["maker"],
+      id: item["code"],
+      description: item["name"],
+      price: item["price"],
+      count: item["count"],
+      analogue:item["analogue"],
+      exchange:item["exchange"]
     }));
 
   
@@ -25,8 +24,7 @@ export function search() {
       description: item.description,
       price:item.price,
       count: item.count,
-      image:item.image,
-      discount:item.discount,
+      analogue:item.analogue,
     }))
       searchInput.addEventListener('input', () => {
         const searchTerm = searchInput.value.toLowerCase();

@@ -77,19 +77,22 @@ export function views() {
         if (event.target.hasAttribute("data")) {
           const card = event.target.closest(".product");
           const productId = card.dataset.id;
-
-          fetch("/app/server/api.php")
+          console.log(productId)
+          fetch("/get-api")
           .then(res => res.json())
           .then(data => {
-            const transformedData = data.map(item => ({
-              name: item["Производитель"],
-              id: item["Код"],
-              description: item["Описание"],
-              price: item["Цена у.е."],
-              count: item["Наличие"],
-              image:item["Фото"]
+            const transformedData = data.data.map(item => ({
+              name: item["maker"],
+              id: item["code"],
+              description: item["name"],
+              price: item["price"],
+              count: item["count"],
+              analogue:item["analogue"],
+              exchange:item["exchange"]
             }));
             transformedData.forEach(product =>{
+              console.log(productId)    
+              console.log(product.id)         
               if(product.id == productId && product.count >= 1){
                 start()
               }
@@ -99,6 +102,7 @@ export function views() {
         
           function start(){
             const existingItem = findCartItem(productId);
+            console.log(existingItem)
             cartMenu.classList.add("cart-active");
             cartWrapper.style.display = "flex";
             totalPrice.style.display = "flex";
@@ -130,7 +134,6 @@ export function views() {
               id: productId,
               imgSrc: card.querySelector(".product-image").getAttribute("src"),
               title: card.querySelector(".product-title").innerText,
-              status: card.querySelector(".product-status").innerText,
               price: card.querySelector(".product-price__grn").innerText,
               count: 0,
               data: `${productId}`,
@@ -164,22 +167,22 @@ export function views() {
     });  
 
     window.addEventListener("load", function () {
-      var images = [];
-      document.querySelectorAll("img").forEach(function (img) {
-        images.push(img.src);
-      });
+      // var images = [];
+      // document.querySelectorAll("img").forEach(function (img) {
+      //   images.push(img.src);
+      // });
 
-      var imagesLoaded = 0;
-      for (var i = 0; i < images.length; i++) {
-        var img = new Image();
-        img.src = images[i];
-        img.onload = function () {
-          imagesLoaded++;
-          if (imagesLoaded == images.length) {
-            document.querySelector("#preloader").style.display = "none";
-          }
-        };
-      }
+      // var imagesLoaded = 0;
+      // for (var i = 0; i < images.length; i++) {
+      //   var img = new Image();
+      //   img.src = images[i];
+      //   img.onload = function () {
+      //     imagesLoaded++;
+      //     if (imagesLoaded == images.length) {
+      //       document.querySelector("#preloader").style.display = "none";
+      //     }
+      //   };
+      // }
       var savedItems = getAllItemsFromStorage();
       const savedId = localStorage.getItem('idItem');
       console.log(savedId)
@@ -230,7 +233,8 @@ export function views() {
       function handlePlusClick(event){
           if (event.target.dataset.clicked === "true") {
             return;
-        }
+          }
+          
 
           event.target.dataset.clicked = "true";
           let productId = event.target.dataset.id;
@@ -240,11 +244,11 @@ export function views() {
           const countElem = document.querySelector(
             `.item-count[data-counter="${productId}"]`
           ); 
-
-          fetch("/app/server/api.php")
+          console.log(productInfo)
+          fetch("/get-api")
           .then(res => res.json())
           .then(data =>{
-            const transformedData = data.map(item => ({
+            const transformedData = data.data.map(item => ({
               name: item["Производитель"],
               id: item["Код"],
               description: item["Описание"],

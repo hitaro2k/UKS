@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UK Service</title>
 
-    <link rel="stylesheet" href="./style/dist/preloader.css">
-    <link rel="stylesheet" href="./style/normalize.css">
-    <link rel="stylesheet" href="./style/dist/style.css">
+    <link rel="stylesheet" href="../style/dist/preloader.css">
+    <link rel="stylesheet" href="../style/normalize.css">
+    <link rel="stylesheet" href="../style/dist/style.css">
     <link rel="icon" type="image/png" href="/img/favicon-32x32.png">
   
     @if(Route::is('contact'))
@@ -18,7 +18,7 @@
       />
     @endif
     @if(Route::is('client'))
-    <link rel="stylesheet" href="./style/dist/client.css">
+    <link rel="stylesheet" href="../style/dist/client.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -36,7 +36,7 @@
     <main class="main">  
       <header class="full-screen__header__container">
         <a class="logo-link" href="/">
-          <img src="./img/UK.svg" alt="logo" class="logo-img" />
+          <img src="../img/UK.svg" alt="logo" class="logo-img" />
         </a> 
         <nav class="menu">
           <ul class="menu__list">
@@ -53,17 +53,7 @@
             <li class="menu__list-item">
               <a href="#" class="menu__list-link">Про нас</a>
             </li> 
-            @auth
-                 <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form> 
-            @endauth
+          
             
            
           </ul>
@@ -71,20 +61,20 @@
 
         <div class="user-ui">
           <button class="button-search">
-            <img src="./img/search-svg.svg" alt="img" />
+            <img src="../img/search-svg.svg" alt="img" />
           </button>
           <img
             class="shopping-card__link"
-            src="./img/shopping-cart.svg"
+            src="../img/shopping-cart.svg"
             alt="img"
           />
           @auth
-            <a href="/profile" class="button-profile"   data-login>
-              <img src="/img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
+            <a href="/profile" class="button-profile" id="button-profile"   data-login>
+              <img src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
             </a>
           @else
               <div class="button-profile" id="button-profile">
-                <img src="/img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
+                <img src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
               </div>
           @endauth
           <style>
@@ -101,6 +91,63 @@
           <span></span>
         </div>
       </header>
+      <div class="search-stroke__container">
+        <div class="search-stroke__input-close">
+          <input
+            type="text"
+            placeholder="Введіть код товару"
+            class="search-input"
+          />
+          <p class="close-search">Натисніть 2 рази щоб закрити</p>
+        </div>
+
+        <ul class="search-stroke__list"></ul>
+      </div>
+
+              
+      <div id="message"></div>
+      
+      <div class="cart-menu">
+        <button class="close-item" id="close-cart">Закрити</button>
+        <div class="items">
+          <div class="isclear">
+            <div class="icons">
+              <img
+                class="icons-image"
+                src="../img/shopping-cart.svg"
+                alt=""
+              />
+            </div>
+            <div class="items-text">
+              <h2 class="items-title">Ваш кошик порожній</h2>
+              <p class="items-subtitle">Ви ще не додали жодного товару</p>
+            </div>
+          </div>
+          <div class="isntclear"></div>
+        </div>
+
+        <div class="total-price__wrapper">
+          <p class="total-price__text">0 грн</p>
+          <button class="total-price__button-buy">Оформить заказ</button>
+        </div>
+      </div>
+
+  
+      <div class="menu-burger__wrapper">
+        <nav>
+          <ul class="menu--burger-list">
+            <li class="menu--burger-item catalog" >
+              <a class="menu--burger-item" href="#">Каталог</a>
+            </li>
+            <li class="menu--burger-item">
+              <a class="menu--burger-item" href="#">Кліентам</a>
+            </li>
+            <li class="menu--burger-item">
+              <a class="menu--burger-item" href="#">Популярне</a>
+          </li>
+          </ul>
+        </nav>
+      </div>
 
       
       <div class="popup-wrapper">
