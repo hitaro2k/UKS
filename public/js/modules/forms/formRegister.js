@@ -6,8 +6,10 @@ export function formRegister(){
     const closePopup =document.querySelectorAll(".close-popup")
     const popup = document.querySelector(".popup-wrapper")
     const profileIcon = document.querySelector("#button-profile")
+    const htmlDoc = document.querySelector("html")
     profileIcon.addEventListener("click" , ()=>{
         popup.style.display = "flex"
+        htmlDoc.style.overflow = "hidden"
     })
     closePopup.forEach(item =>{
         item.onclick = ()=>{
