@@ -32,6 +32,8 @@ Route::view('/test', 'auth.verify-email');
 
 Route::get('/product/{id}', [ProductController::class, 'store']);
 
+Route::post('/get-product', [GetDataController::class, 'get']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
