@@ -1723,6 +1723,10 @@ li {
   cursor: pointer;
 }
 
+#close-editor {
+  cursor: pointer;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;

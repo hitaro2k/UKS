@@ -11,7 +11,7 @@
 <body>
   <div class="form-container">
       <div class="close-wrapper">
-          <img src="/img/close.svg" alt="" class="close-popup" >
+          <img src="/img/close.svg" alt="" class="close-popup" id = "close-editor">
       </div>
       <div class="form-wrapper">
       <form method="post" action="{{ route('profile.update') }}" class="form-data">
@@ -24,15 +24,15 @@
           </div>
           <div class="input-wrapper">
             
-            <input type="text" name="surname" value="{{ $user->surname }}"
+            <input type="text" name="surname" value="{{ $user->surname }}">
           </div>
           <div class="input-wrapper">
             
-            <input type="text" name="patronymic" value="{{ $user->patronymic }}"
+            <input type="text" name="patronymic" value="{{ $user->patronymic }}">
           </div>
           <div class="input-wrapper">
             
-            <input type="text" name="email" value="{{ $user->email }}"
+            <input type="text" name="email" value="{{ $user->email }}">
           </div>
           
           <x-input-error class="mt-2" :messages="$errors->get('email')" />
@@ -92,14 +92,5 @@
   
 
 </body>
-<script src="">
-  const btnSumb = document.querySelector(".btn-data-sumb")
-  const btnPass = document.querySelector(".btn-pass-sumb")
-  btnSumb.onclick = (e)=>{
-    e.preventDefault()
-  }
-  btnPass.onclick = (e)=>{
-    e.preventDefault()
-  }
-</script>
+<script type = "module" src="../js/modules/profile/resetProfile.js"></script>
 </html>
