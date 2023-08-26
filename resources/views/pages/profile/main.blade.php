@@ -42,7 +42,7 @@
                 <p class="title-name__top">По батькові</p>
                 <p class="title-surname">{{$user->surname}}</p>
                 <p class="title-name__top">Телефон</p>
-                <p class="title-phone">+380</p>
+                <p class="title-phone">{{ $user->phone }}</p>
             </div>
             <div class="panel__user-data__media-info">
                 <h4 class="title">ДАНІ ДЛЯ ВХОДУ В АКАУНТ</h4>
