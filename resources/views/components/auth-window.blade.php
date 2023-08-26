@@ -26,4 +26,5 @@
         <p class="title">Немає облікового запису?</p>
         <button class="button" id="register">Зареєструватися</button>
     </div>
+    
 </div>

@@ -14,7 +14,7 @@ class ProductController extends Controller
 
         $exchange = Products::first()->value('exchange');   
 
-        $sum = $exchange / $price;
+        $sum = $exchange * $price;
         
         return view('pages.product')->with('product', $product)->with('price', $sum);
     }
