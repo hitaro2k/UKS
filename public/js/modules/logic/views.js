@@ -352,7 +352,7 @@ export function views() {
 
     
     function sendDataToServer(data) {
-        const url = "app/server/addProduct.php";
+        const url = "/get-product";
         const options = {
           method: "POST",
           headers: {

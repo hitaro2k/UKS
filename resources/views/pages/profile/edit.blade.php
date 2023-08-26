@@ -18,10 +18,23 @@
         @csrf
         @method('patch')
           <p class="title">Особисті дані</p>
-          <div class="input-wrapper"><input type="text" name="name" value="{{ $user->name }}"></div>
-          <div class="input-wrapper"><input type="text" name="surname" value="{{ $user->surname }}"</div>
-          <div class="input-wrapper"><input type="text" name="patronymic" value="{{ $user->patronymic }}"</div>
-          <div class="input-wrapper"><input type="text" name="email" value="{{ $user->email }}"</div>
+          <div class="input-wrapper">
+            
+            <input type="text" name="name" value="{{ $user->name }}">
+          </div>
+          <div class="input-wrapper">
+            
+            <input type="text" name="surname" value="{{ $user->surname }}"
+          </div>
+          <div class="input-wrapper">
+            
+            <input type="text" name="patronymic" value="{{ $user->patronymic }}"
+          </div>
+          <div class="input-wrapper">
+            
+            <input type="text" name="email" value="{{ $user->email }}"
+          </div>
+          
           <x-input-error class="mt-2" :messages="$errors->get('email')" />
           @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>

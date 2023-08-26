@@ -10,12 +10,8 @@ class ProductController extends Controller
     public function store($id)
     {
         $product = Products::where('code', $id)->first();
-        $price = $product->price;
-
-        $exchange = Products::first()->value('exchange');   
-
-        $sum = $exchange * $price;
         
-        return view('pages.product')->with('product', $product)->with('price', $sum);
+        
+        return view('pages.product')->with('product', $product);
     }
 }

@@ -8,7 +8,7 @@
         <p class="title-code">{{$product->code}}</p>
         <p class="title-author">{{$product->maker}}</p>
         <p class="title-count">{{$product->count}}</p>
-        <p class="product-price__grn">{{$price}} грн</p>
+        <p  class="product-price__grn"></p>
         <button class="product-btn" data><img data src="../img/shopping-cart.svg" alt="" class="product-image"></button>
       </div>
 

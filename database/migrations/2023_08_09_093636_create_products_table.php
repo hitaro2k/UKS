@@ -15,11 +15,11 @@ return new class extends Migration
 
             $table->string('maker', 255);
             $table->string('code', 255);
-            $table->string('name', 2555);
-            $table->decimal('price', 5, 2);
+            $table->string('name', 255);
+            $table->string('price', 255);
             $table->integer('count');
             $table->string('analog',255)->nullable();
-            $table->decimal('exchange', 5, 2)->nullable();
+            $table->string('exchange', 255)->nullable();
             
         });
     }

@@ -93,21 +93,21 @@
                 <div class="bank-payment" data-pay="1">
                   <div class="payment__bank__method">
                     <div class="payment__item" id="privat-wrapper">
-                      <img class="payment__item-img" src="./app/img/Privat24_Logo.png" alt="" id="privat">
+                      <img class="payment__item-img" src="../img/Privat24_Logo.png" alt="" id="privat">
                       <div class="card-number privat-number ">
                         <p class="payment__text privat__num text-to-copy" data-id="1">5168 7559 0616 6828</p>
                         <button class="copy-button" id="copy-privat">
-                          <img src="/app/img/copy_icon.png" alt="" class="copy-img" data-target="1">
+                          <img src="../img/copy_icon.png" alt="" class="copy-img" data-target="1">
                         </button>
                       </div>
                       
                     </div>
                     <div class="payment__item"  id="mono-wrapper">
-                      <img class="payment__item-img" src="./app/img/monobank.png" alt="" id="mono">
+                      <img class="payment__item-img" src="../img/monobank.png" alt="" id="mono">
                       <div class="card-number monobank-number">
                         <p class="payment__text mono__num text-to-copy" data-id="2">5163 7559 0616 6828</p>
                         <button class="copy-button" id="copy-mono">
-                          <img src="/app/img/copy_icon.png" alt="" class="copy-img" data-target="2">
+                          <img src="../img/copy_icon.png" alt="" class="copy-img" data-target="2">
                         </button>
                       </div>
                      
@@ -115,13 +115,13 @@
                   </div>
                   <div class="crypto__method">
                     <div class="payment__item" id="tether-wrapper">
-                        <img class="payment__item-img" src="./app/img/tether.png" alt="" id="tether">
+                        <img class="payment__item-img" src="../img/tether.png" alt="" id="tether">
                         <div class="payment__net tether-number" >
                           <p class="payment__text">
                               Tron(TRC20): <span style="font-size: 0px;" data-id="3">TNNYGid4dQmuQXqTmpW3b9Hv7qLfcqyuKJ</span> 
                           </p>
                           <button class="copy-button">
-                            <img src="/app/img/copy_icon.png" alt="" class="copy-img" data-target="3">
+                            <img src="../img/copy_icon.png" alt="" class="copy-img" data-target="3">
                           </button>
                         </div>
                     </div>

@@ -8,9 +8,6 @@
     <form action="{{ route('login') }}" method="POST" class="form-login">
     @csrf
         <div class="input__wrapper">
-            <input type="text" name="phone" class="input" placeholder="Ваш телефон">
-        </div>
-        <div class="input__wrapper">
             <input type="text" name="email" class="input" placeholder="Ваша пошта">
         </div>
 

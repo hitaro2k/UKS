@@ -70,101 +70,19 @@ function forms() {
       var inCartProduct = "\n            <div class=\"product-block\" data=\"".concat(item.id, "\">\n                <div class=\"product\">\n                <div class=\"image\"><img class=\"image\" src=\"").concat(item.imgSrc, "\" alt=\"\"></div>\n                <p class=\"name\">").concat(item.title, "</p>\n                <p class= \"count\">").concat(item.count, "</p>\n                <p class=\"product-price\">").concat(item.price, "</p>\n                </div>\n            </div>\n            ");
       formProductItem.insertAdjacentHTML("beforeend", inCartProduct);
     });
-  }
+  } // if (imageContainer.hasAttribute("image-add")) {
+  //   succesPopup.style.left = "0"+ "px"
+  //   setTimeout(function(){
+  //     succesPopup.style.left = "-300" + "px"
+  //   },2000)
+  // } else {
+  //   errorPopup.style.left = "0" + "px"
+  //   setTimeout(function(){
+  //     errorPopup.style.left = "-300" + "px"
+  //   },2000)
+  // }
 
-  var userId = JSON.stringify(localStorage.getItem("userId"));
-  var formPayment = document.querySelector(".form-payment");
-  var sendPhoto = document.querySelector(".send-photo");
-  var succesPopup = document.querySelector('.popup-success__img');
-  var fileInput = document.getElementById('fileInput');
-  var imageContainer = document.getElementById('imageContainer');
-  var deleteButton = document.getElementById('deleteButton');
-  fileInput.addEventListener('change', function () {
-    var file = fileInput.files[0];
 
-    if (file) {
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        var img = document.createElement('img');
-        img.src = e.target.result;
-        img.classList.add('uploaded-image');
-        imageContainer.innerHTML = '';
-        imageContainer.setAttribute("image-add", "true");
-        imageContainer.appendChild(img);
-        deleteButton.style.display = 'inline';
-      };
-
-      reader.readAsDataURL(file);
-    }
-  });
-  deleteButton.addEventListener('click', function () {
-    imageContainer.innerHTML = '';
-    deleteButton.style.display = 'none';
-    fileInput.value = null;
-    sendPhoto.removeAttribute('sended');
-  });
-  var imageElement = imageContainer.querySelector("img");
-  var errorPopup = document.querySelector(".popup-error__img");
-  formPayment.addEventListener('submit', handleSubmit);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    if (imageContainer.hasAttribute("image-add")) {
-      succesPopup.style.left = "0" + "px";
-      setTimeout(function () {
-        succesPopup.style.left = "-300" + "px";
-      }, 2000);
-    } else {
-      errorPopup.style.left = "0" + "px";
-      setTimeout(function () {
-        errorPopup.style.left = "-300" + "px";
-      }, 2000);
-    }
-
-    if (sendPhoto.hasAttribute('sended')) {
-      formPayment.removeEventListener("submit", handleSubmit);
-    } else {
-      formPayment.addEventListener('submit', handleSubmit);
-    }
-
-    var formData = new FormData(formPayment);
-    var imageFile = document.querySelector('#fileInput').files[0];
-    formData.append('image', imageFile);
-    sendPhoto.setAttribute("sended", "true");
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'app/server/getImage.php', true);
-
-    xhr.onload = function () {
-      if (xhr.status === 200) {} else {}
-    };
-
-    xhr.send(formData);
-  }
-
-  sendData.addEventListener('click', function () {
-    var personalInfoForm = document.getElementById('form');
-    var personalInfoData = new FormData(personalInfoForm);
-    var xhr1 = new XMLHttpRequest();
-    var url1 = 'app/server/personalData.php';
-    xhr1.open('POST', url1, true);
-
-    xhr1.onload = function () {
-      if (xhr1.status === 200) {
-        console.log('Данные первой формы отправлены успешно.');
-      } else {
-        console.error('Ошибка отправки данных первой формы. Код ошибки:', xhr1.status);
-      }
-    };
-
-    xhr1.onerror = function () {
-      console.error('Произошла ошибка сети при отправке данных первой формы.');
-    };
-
-    xhr1.send(personalInfoData);
-    sendAllData();
-  });
   selectPayment();
 }
 

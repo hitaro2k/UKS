@@ -8,10 +8,7 @@ export function validation() {
       phone: false,
       deliveryDepartment: false,
       deliverySolo: false,
-      sended: false
     } 
-    console.log(exam.sended)
-
    
     function countTrueProperties(obj) {
       let count = 0;
@@ -145,34 +142,12 @@ export function validation() {
         }
         checkAllFields();
     }
-    const sendPhoto = document.querySelector(".send-photo")
-    const imageContainer = document.getElementById("imageContainer")
-    const deleteButton = document.getElementById('deleteButton');
-
+    
    
-    sendPhoto.addEventListener("click", function() {
-      if (imageContainer.hasAttribute("image-add")) {
-        exam.sended = true
-        checkAllFields() 
-      }
-    });
-    // deleteButton.addEventListener('click', function() {
-    //   if(!sendPhoto.hasAttribute("sended")){
-    //     exam.sended = false
-    //     checkAllFields()  
-    //   }
-    
-    // });
-
-    const uniqueInput = document.querySelector("#unique-value")
-    const uniqueInputImage  = document.querySelector("#unique-input__value")
-    uniqueInput.value = localStorage.getItem("userId")
-    uniqueInputImage.value =  localStorage.getItem("userId")
-    
     function checkAllFields() {
-      console.log(exam)
+
         var toCheckedButton = document.querySelector(".send-data");
-        if (countTrueProperties(exam) == 6 ){
+        if (countTrueProperties(exam) == 5 ){
           toCheckedButton.style.display = "block"
          
         }else if(countTrueProperties(exam) < 6){

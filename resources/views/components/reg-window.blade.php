@@ -5,17 +5,13 @@
    <h2 class="title">Реєстрація</h2>
    <form action="{{ route('register') }}" method="POST" class="form-register">
      @csrf
-        <div class="input__wrapper">
-           <input type="text" name="phone" class="input" placeholder="Ваша номер телефону">
-           <!-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> -->
-       </div>
 
        <div class="input__wrapper">
            <input type="text" name="email" class="input" placeholder="Ваша пошта">
            <x-input-error :messages="$errors->get('email')" class="mt-2" />
        </div>
        <div class="input__wrapper">
-           <input type="text" name="phone" class="input" placeholder="Ваша телефон">
+           <input type="text" name="phone" class="input" placeholder="Ваш телефон">
            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
        </div>
      

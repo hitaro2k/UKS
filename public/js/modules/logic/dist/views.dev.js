@@ -348,7 +348,7 @@ function views() {
     localStorage.setItem("userId", randomNum);
 
     function sendDataToServer(data) {
-      var url = "app/server/addProduct.php";
+      var url = "/get-product";
       var options = {
         method: "POST",
         headers: {
