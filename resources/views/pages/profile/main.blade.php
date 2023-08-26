@@ -40,7 +40,7 @@
                 </div>
                 <p class="title-name">{{$user->name}}</p>
                 <p class="title-patronymic">{{$user->patronymic}}</p>
-                <p class="title-phone">+380</p>
+                <p class="title-phone">{{ $user->phone }}</p>
             </div>
             <div class="panel__user-data__media-info">
                 <h4 class="title">ДАНІ ДЛЯ ВХОДУ В АКАУНТ</h4>
