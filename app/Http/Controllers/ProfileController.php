@@ -47,7 +47,7 @@ class ProfileController extends Controller
         return view('pages.profile.main', [
             'user' => $request->user(),
         ]);
-    }
+    } 
 
     /**
      * Update the user's profile information.

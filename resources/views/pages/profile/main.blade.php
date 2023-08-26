@@ -36,10 +36,10 @@
             <div class="panel__user-data__personal-info">
                 <h4 class="title">ДАНІ</h4>
                 <div class="wrap-title">
+                <p class="title-surname">{{$user->surname}}</p>
+                </div>
                 <p class="title-name">{{$user->name}}</p>
                 <p class="title-patronymic">{{$user->patronymic}}</p>
-                </div>
-                <p class="title-surname">{{$user->surname}}</p>
                 <p class="title-phone">+380</p>
             </div>
             <div class="panel__user-data__media-info">

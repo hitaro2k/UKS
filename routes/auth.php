@@ -37,8 +37,6 @@ Route::middleware('guest')->group(function () {
                 ->name('password.store');
 });
 
-Route::get('/auth/google/oauth', [AuthenticatedSessionController::class, 'OAuth'])->name('auth');
-Route::get('/auth/google/callback', [AuthenticatedSessionController::class, 'callback'])->name('callback');
 
 Route::middleware('auth')->group(function () {
     
