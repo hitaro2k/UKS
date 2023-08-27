@@ -78,7 +78,8 @@ export function views() {
         if (event.target.hasAttribute("data")) {
           const card = event.target.closest(".product");
           const productId = card.dataset.id;
-          console.log(productId)
+          console.log(card)
+          
           fetch("/get-api")
           .then(res => res.json())
           .then(data => {
@@ -126,14 +127,15 @@ export function views() {
              
             const productInfo = {
               id: productId,
-              title: card.querySelector(".product-title").innerText,
-              price: card.querySelector(".product-price__grn").innerText,
+              title: card.querySelector(".product-title").textContent,
+              price: card.querySelector(".product-price__grn").textContent,
               count: 0,
               data: `${productId}`,
             };
+
             localStorage.setItem("idItem" , productInfo.id)
             productInfo.count++;
-    
+           
             const itemInCart = `<div class="item" data-id="${productInfo.data}" >
                     <img src="../img/UK.svg" alt="" class="item-image">
                     <p class="item-name">${productInfo.title}</p>
