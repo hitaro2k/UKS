@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\GetDataController;
+use App\Http\Controllers\ArrayController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
@@ -33,7 +33,9 @@ Route::view('/test', 'auth.verify-email');
 
 Route::get('/product/{id}', [ProductController::class, 'store']);
 
-Route::post('/get-product', [GetDataController::class, 'get']);
+Route::post('/process-array', [ArrayController::class, 'processArray'])->name('process.array');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

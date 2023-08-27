@@ -101,7 +101,6 @@ export function views() {
         
           function start(){
             const existingItem = findCartItem(productId);
-            console.log(existingItem)
             cartMenu.classList.add("cart-active");
             cartWrapper.style.display = "flex";
             totalPrice.style.display = "flex";
@@ -350,16 +349,16 @@ export function views() {
     let randomNum = generateId();
     localStorage.setItem("userId" , randomNum)
 
-    
+    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     function sendDataToServer(data) {
-        const url = "/get-product";
+        const url = "/process-array";
         const options = {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            'X-CSRF-TOKEN': '{{ eyJpdiI6IlRFdFRpa2h2N3NGMkZxaTBoMFVIN2c9PSIsInZhbHVlIjoiWFFDQmNDN21vT3BKaFc5YWp5empya0dXK3dlTVM5d0lreFkvemU4K1Ntc0NBcVZxeXozb1B1WDluY2NTclc3TkE0QmJ4bU5uVVgzVWdiZmljTlVCOE84NUZQU2VUQzdYaHhqR3h3ZysxcVg0UEluQzV4eDUyYkNyaklPKzY1dE0iLCJtYWMiOiI5OTlhNmEzYjc4MGIyMTc5NWZjODc2OTZkYmUzNjQxNDYwNDhlZmMyZjUyZTYzNmE3YzA0MTQ4ZDk0NzgxOGQ3IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6ImxjUE1Yd01YY0ZxNVlJQnA1c3ZIN1E9PSIsInZhbHVlIjoiSnVQb0VHQnp2ZmNGUlpDa0xHU2R1b3VmbXBUMzMzK3UyMjQva0R3TmdqUm91L1c5S1hRYVRLRExGaTlYT2w5NDA0cm9vMnlHTTkvTUtzVlkrVnFlbERWZWZIL2hlaG5FTkNsRGEzVHBWUzJ1dzFrT0ltcWJzQzNWQ1JjU2w2aDQiLCJtYWMiOiIxZDZlYjExYWNkMGYyZGIxNDcyYjM4YzIyMzBjYjVlZmE0ZjQxOGU0ZmZkOWIxNWI0OTQ4ZTkyNTgxNjU5MDBkIiwidGFnIjoiIn0%3D }}'
+            'X-CSRF-TOKEN': csrfToken
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify({ data: data })
         };
       
         fetch(url, options)
@@ -371,6 +370,7 @@ export function views() {
               console.log(error)
           });
     }
+    
     showForm.addEventListener("click" , ()=>{
       const localCartItems = JSON.parse(localStorage.getItem("cartItems"))
 

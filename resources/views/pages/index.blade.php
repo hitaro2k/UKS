@@ -42,6 +42,12 @@
 
               <div class="text">
                 <div class="title">Dodge Challenger</div>
+                
+                <form>
+                  @csrf 
+                  <button id="sendArrayButton">Отправить массив</button>
+                </form>
+
                 <div class="more__btn" id="dodge-btn">
                   <p class="title">Детальніше</p>
                   <span id="line"></span>
