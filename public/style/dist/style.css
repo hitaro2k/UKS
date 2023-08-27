@@ -117,6 +117,11 @@ li {
   padding-top: 50px;
   justify-content: center;
 }
+.wrapper .about .adress__ua .list {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
 
 .menu-burger__wrapper {
   display: none;

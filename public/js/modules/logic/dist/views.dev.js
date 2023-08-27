@@ -352,7 +352,8 @@ function views() {
       var options = {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          'X-CSRF-TOKEN': '{{ eyJpdiI6IlRFdFRpa2h2N3NGMkZxaTBoMFVIN2c9PSIsInZhbHVlIjoiWFFDQmNDN21vT3BKaFc5YWp5empya0dXK3dlTVM5d0lreFkvemU4K1Ntc0NBcVZxeXozb1B1WDluY2NTclc3TkE0QmJ4bU5uVVgzVWdiZmljTlVCOE84NUZQU2VUQzdYaHhqR3h3ZysxcVg0UEluQzV4eDUyYkNyaklPKzY1dE0iLCJtYWMiOiI5OTlhNmEzYjc4MGIyMTc5NWZjODc2OTZkYmUzNjQxNDYwNDhlZmMyZjUyZTYzNmE3YzA0MTQ4ZDk0NzgxOGQ3IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6ImxjUE1Yd01YY0ZxNVlJQnA1c3ZIN1E9PSIsInZhbHVlIjoiSnVQb0VHQnp2ZmNGUlpDa0xHU2R1b3VmbXBUMzMzK3UyMjQva0R3TmdqUm91L1c5S1hRYVRLRExGaTlYT2w5NDA0cm9vMnlHTTkvTUtzVlkrVnFlbERWZWZIL2hlaG5FTkNsRGEzVHBWUzJ1dzFrT0ltcWJzQzNWQ1JjU2w2aDQiLCJtYWMiOiIxZDZlYjExYWNkMGYyZGIxNDcyYjM4YzIyMzBjYjVlZmE0ZjQxOGU0ZmZkOWIxNWI0OTQ4ZTkyNTgxNjU5MDBkIiwidGFnIjoiIn0%3D }}'
         },
         body: JSON.stringify(data)
       };
@@ -360,7 +361,9 @@ function views() {
         return response.json();
       }).then(function (result) {
         console.log("Успешно", result);
-      })["catch"](function (error) {});
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
 
     showForm.addEventListener("click", function () {
@@ -380,9 +383,8 @@ function views() {
         };
         console.log(itemJson);
         sendDataToServer(itemJson);
-      }
+      } // window.location.href = "/form"
 
-      window.location.href = "/form";
     });
 
     function removeCartItem(id) {
