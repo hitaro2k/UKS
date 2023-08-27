@@ -25,7 +25,7 @@
 
                 <div class="text">
                   <div class="title">Chevrolet Cammaro</div>
-                  z
+                  
                 </div>
               
               </div>
