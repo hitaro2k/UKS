@@ -41,7 +41,7 @@ class ProfileController extends Controller
     * copy
     */
     public function store(Request $request): View
-    {   
+    {       
         $user = Auth::user();
         
         return view('pages.profile.main', [
