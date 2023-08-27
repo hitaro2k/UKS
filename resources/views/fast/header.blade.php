@@ -128,7 +128,7 @@
 
         <div class="total-price__wrapper">
           <p class="total-price__text">0 грн</p>
-          <button class="total-price__button-buy">Оформить заказ</button>
+          <button type="submit" class="total-price__button-buy">Оформить заказ</button>
         </div>
       </div>
 
