@@ -38,7 +38,9 @@
           <div class="input-wrapper">  
             <input type="text" name="email" value="{{ $user->email }}">
           </div>
-          
+          @if(session('error') === 'error email')
+          <div class="">гамно email</div>
+          @endif
           <x-input-error class="mt-2" :messages="$errors->get('email')" />
           @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
