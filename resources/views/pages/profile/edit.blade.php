@@ -18,20 +18,24 @@
         @csrf
         @method('patch')
           <p class="title">Особисті дані</p>
+
+          <p class="title-name__top">Ім'я</p>
           <div class="input-wrapper">
-            
             <input type="text" name="name" value="{{ $user->name }}">
           </div>
+
+          <p class="title-name__top">Прізвище</p>
           <div class="input-wrapper">
-            
             <input type="text" name="surname" value="{{ $user->surname }}">
           </div>
+
+          <p class="title-name__top">По батькові</p>
           <div class="input-wrapper">
-            
             <input type="text" name="patronymic" value="{{ $user->patronymic }}">
           </div>
-          <div class="input-wrapper">
-            
+
+          <p class="title-name__top">Пошта</p>
+          <div class="input-wrapper">  
             <input type="text" name="email" value="{{ $user->email }}">
           </div>
           
