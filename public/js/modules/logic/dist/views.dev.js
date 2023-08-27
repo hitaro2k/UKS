@@ -122,8 +122,8 @@ function views() {
 
           var productInfo = {
             id: productId,
-            title: _card.querySelector(".product-title").innerText,
-            price: _card.querySelector(".product-price__grn").innerText,
+            title: _card.querySelector(".product-title").textContent,
+            price: _card.querySelector(".product-price__grn").textContent,
             count: 0,
             data: "".concat(productId)
           };
@@ -141,7 +141,7 @@ function views() {
         var _card = event.target.closest(".product");
 
         var productId = _card.dataset.id;
-        console.log(productId);
+        console.log(_card);
         fetch("/get-api").then(function (res) {
           return res.json();
         }).then(function (data) {
