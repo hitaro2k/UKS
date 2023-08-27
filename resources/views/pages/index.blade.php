@@ -25,10 +25,7 @@
 
                 <div class="text">
                   <div class="title">Chevrolet Cammaro</div>
-                  <div class="more__btn" id="chevrolet-btn">
-                    <p class="title">Детальніше</p>
-                    <span id="line"></span>
-                  </div>
+                  z
                 </div>
               
               </div>

@@ -357,6 +357,7 @@ export function views() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
           },
           body: JSON.stringify(data),
         };
@@ -367,7 +368,7 @@ export function views() {
             console.log("Успешно", result);
           })
           .catch((error) => {
-            
+            console.log('Error', error)
           });
     }
     showForm.addEventListener("click" , ()=>{
@@ -390,7 +391,7 @@ export function views() {
           console.log(itemJson)
           sendDataToServer(itemJson);
       }      
-      window.location.href = "/form"
+
     })
  
     function removeCartItem(id) {

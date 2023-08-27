@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orderd_products', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('blabla', 255);
+            $table->string('labla', 255);
+            $table->string('labsfsdf', 255);
+            $table->string('labsfsddfsdffdsf', 255);
+            $table->string('labsfsddfsdffdsfываыва', 255);
+            $table->string('labsfsddfsdffdsfываываваыва', 255);
         });
     }
 
