@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="../style/dist/style.css">
 </head>
 <body>
-  <div class="form-container">
+    <div class="main">
+    <div class="form-container">
       <div class="close-wrapper">
           <img src="/img/close.svg" alt="" class="close-popup" id = "close-editor">
       </div>
@@ -94,21 +95,31 @@
         </div>
       </div>
 
-      <div class="form-wrapper__delete" style = "display:none;">
+     
+  </div>
+  <div class="form-wrapper__delete" >
       <form method="post" action="{{ route('profile.destroy') }}" class="p-6 form-delete">
           @csrf
           @method('delete')
-          <input type="text" name="password">
+          <h2 class="title">Ви впевнені, що хочете видалити обліковий запис?</h2>
+          <p class="subtitle">При видаленні облікового запису видалятися всі замовлення які не були виконані і всі бонуси, які ви накопичили</p>
 
-            <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+          <p class="title-name__top">Введіть прізвище</p>
+          <div class="input-wrapper">
+            <input type="text" name="surname" placeholder = "Прізвище">
+          </div>
+          
 
+          <div class="buttons-del">
             <x-secondary-button x-on:click="$dispatch('close')">
                 {{ __('Cancel') }}
             </x-secondary-button>
 
-            <x-danger-button class="ml-3">
+            <x-danger-button class="ml-3 btn-del__accept">
                 {{ __('Delete Account') }}
             </x-danger-button>
+          </div>
+            
             <!-- если не правильно ввел фамилию в инпут -->
             @if(session('surname-status') === 'error')
               <style>
@@ -120,9 +131,8 @@
             @endif
           </form> 
       </div>
-  </div>
-  
 
+    </div>
 </body>
 <script type = "module" src="../js/modules/profile/resetProfile.js"></script>
 </html>

@@ -31,6 +31,11 @@
          <input type="text" name="patronymic" class="input" placeholder="Прізвище">
            <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
+        <div class="input__wrapper">
+          <input type="text" name="company" class="input" placeholder="Назва компанія">
+           <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+        
      <button type="submit" class="button">Зареєструватися</button>
    </form>
    <div class="enaible-account">

@@ -15,6 +15,12 @@
         @media(max-width:340px){@content;}
     }
 }
+@mixin breakpoint($point){
+    @if $point == lsm{
+        @media(max-height:620px){@content;}
+    }
+
+}
 
 [class *="__container"] {
     width: 90%;
