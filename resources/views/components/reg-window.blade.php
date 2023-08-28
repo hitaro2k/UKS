@@ -35,8 +35,9 @@
           <input type="text" name="company" class="input" placeholder="Назва компанія">
            <x-input-error :messages="$errors->get('company')" class="mt-2" />
         </div>
-        
-     <button type="submit" class="button">Зареєструватися</button>
+
+
+     <button type="submit" class="button btn-reg">Зареєструватися</button>
    </form>
    <div class="enaible-account">
        <p class="title">Є обліковий запис?</p>
