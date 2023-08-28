@@ -100,16 +100,25 @@
           @method('delete')
           <input type="text" name="password">
 
-          <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+            <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
 
-          <x-secondary-button x-on:click="$dispatch('close')">
-              {{ __('Cancel') }}
-          </x-secondary-button>
+            <x-secondary-button x-on:click="$dispatch('close')">
+                {{ __('Cancel') }}
+            </x-secondary-button>
 
-          <x-danger-button class="ml-3">
-              {{ __('Delete Account') }}
-          </x-danger-button>
-        </form> 
+            <x-danger-button class="ml-3">
+                {{ __('Delete Account') }}
+            </x-danger-button>
+            <!-- если не правильно ввел фамилию в инпут -->
+            @if(session('surname-status') === 'error')
+              <style>
+                /* тут давай стиль чтобы это окно с вводом фамилии было флекс или блок или иди нахуй */
+              </style>
+              <div>
+                <!-- тут выводи ответ мол неправильно ввел фамилию -->
+              </div>
+            @endif
+          </form> 
       </div>
   </div>
   

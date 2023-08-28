@@ -16,7 +16,7 @@ class EmailCheckMiddleware
     public function handle(Request $request, Closure $next): Response
     {
 
-        $email = $request->input('email'); // Предполагается, что параметр email передается в запросе
+        $email = $request->input('email');
 
         $validator = Validator::make(['email' => $email], [
             'email' => 'required|email',
