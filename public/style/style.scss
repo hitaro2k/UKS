@@ -1748,10 +1748,18 @@ li {
     .form-data{
       display: flex;
       flex-direction: column;
-      gap: 30px 0px;
+      gap: 10px 0px;
       margin-left: 40px;
       margin-bottom: 50px;
       width: 100%;
+      @include breakpoint(xs){
+        margin-left: 10px;
+      }
+      .title-name__top{
+        font-size: 12px;
+        color: #ffffff5e;
+        margin: 0px;
+      }
       .input-wrapper{
         background-color: rgb(0, 0, 0);
         width: 50%;
@@ -1760,6 +1768,13 @@ li {
         flex-direction: column;
         justify-content: center;
         border-radius: 5px;
+        @include breakpoint(md){
+          width: 80%;
+        }
+        @include breakpoint(xs){
+          width: 90%;
+          overflow: hidden
+        }
          input{
           background-color: transparent;
           outline: none;
@@ -1767,6 +1782,11 @@ li {
           border: none;
           color: white;
           margin-left: 20px;
+          @include breakpoint(xs){
+            margin-left: 10px;
+            font-size: 12px;
+           ;
+          }
         }
       }
       .btn-data-sumb{
@@ -1774,21 +1794,41 @@ li {
         height: 30px;
         border-radius: 5px;
         cursor: pointer;
+        margin-top: 20px;
+        @include breakpoint(lg){
+          width: 20%;
+        }
+        @include breakpoint(md){
+          width: 40%;
+        }
       }
       .btn-pass-sumb{
         width: 10%;
         height: 30px;
         border-radius: 5px;
         cursor: pointer;
+        margin-top: 20px;
+        @include breakpoint(lg){
+          width: 20%;
+        }
+        @include breakpoint(md){
+          width: 40%;
+        }
       }
      .btn-del{
-      width: 15%;
+      width: 25%;
       height: 30px;
       border-radius: 5px;
       cursor: pointer;
       background-color: #fd2525;
       color: white;
       letter-spacing: 1px;
+      @include breakpoint(lg){
+        width: 40%;
+      }
+      @include breakpoint(sm){
+        width: 65%;
+      }
      }
     }
   }
@@ -1830,6 +1870,7 @@ li {
     background-color: #343434;
     margin-top: 50px;
     border-radius: 10px;
+   
     .input-verif{
       background-color: transparent;
       outline: none;
