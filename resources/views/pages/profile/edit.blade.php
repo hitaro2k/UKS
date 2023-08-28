@@ -93,7 +93,7 @@
       <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
           @csrf
           @method('delete')
-          <input type="text" name="password">
+          <input type="text" name="surname">
 
           <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
 
