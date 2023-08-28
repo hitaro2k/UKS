@@ -16,7 +16,8 @@ export function views() {
   menuBtn = document.querySelector('.menu-btn');
   menu = document.querySelector(".menu--burger-list");
   document.querySelector(".total-price__text").innerHTML = localStorage.getItem("price") + "грн"
- 
+
+
   document.addEventListener("DOMContentLoaded", function () {
     let card;
     if(cartItems.length > 0){
@@ -199,11 +200,7 @@ export function views() {
 
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(item);
-
-
-        
         buttons()
-
       })
 
     });
@@ -386,14 +383,14 @@ export function views() {
       })
 
       if (transferredItems.length > 0) {
-          transferredItems.push(randomNum)
+          transferredItems.push()
           let itemJson = {
             items: transferredItems.flat(),
           };
           console.log(itemJson)
           sendDataToServer(itemJson);
       }      
-      // window.location.href = "/form"
+      window.location.href = "/form"
     })
  
     function removeCartItem(id) {
