@@ -12,11 +12,16 @@ function formRegister() {
   var popupLogin = document.querySelector(".popup-login");
   var closePopup = document.querySelectorAll(".close-popup");
   var popup = document.querySelector(".popup-wrapper");
-  var profileIcon = document.querySelector("#button-profile");
+  var profileIcon = document.querySelector(".button-profile");
   var htmlDoc = document.querySelector("html");
+  console.log(profileIcon);
   profileIcon.addEventListener("click", function () {
-    popup.style.display = "flex";
-    htmlDoc.style.overflow = "hidden";
+    if (profileIcon.hasAttribute("data-login")) {
+      window.location.href = "/profile";
+    } else {
+      popup.style.display = "flex";
+      htmlDoc.style.overflow = "hidden";
+    }
   });
   closePopup.forEach(function (item) {
     item.onclick = function () {

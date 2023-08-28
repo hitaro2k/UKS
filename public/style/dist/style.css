@@ -184,6 +184,14 @@ li {
     width: 35%;
   }
 }
+.main .full-screen__header__container .button-profile .profileimg {
+  width: 30%;
+}
+@media (max-width: 768px) {
+  .main .full-screen__header__container .button-profile .profileimg {
+    width: 50%;
+  }
+}
 .main .full-screen__header__container .menu {
   z-index: 2;
   width: 55%;
