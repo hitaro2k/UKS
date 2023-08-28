@@ -379,14 +379,15 @@ function views() {
       });
 
       if (transferredItems.length > 0) {
-        transferredItems.push(randomNum);
+        transferredItems.push();
         var itemJson = {
           items: transferredItems.flat()
         };
         console.log(itemJson);
         sendDataToServer(itemJson);
-      } // window.location.href = "/form"
+      }
 
+      window.location.href = "/form";
     });
 
     function removeCartItem(id) {

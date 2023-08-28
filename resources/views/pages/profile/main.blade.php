@@ -49,7 +49,7 @@
                 <div class="media-info__mail">
                     <h4 class="title">Пошта</h4>
                     <div class="media-info__mail-inner">
-                      <h4 class="title">{{$user->email}}</h4>
+                      <h4 class="title" id = "user-mail">{{$user->email}}</h4>
                     </div>
                 </div>
                 <div class="media-info__password">
