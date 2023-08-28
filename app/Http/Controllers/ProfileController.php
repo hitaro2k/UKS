@@ -78,19 +78,24 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'password'],
-        ]);
+        $surname = $request->input('surname');
 
         $user = $request->user();
 
-        Auth::logout();
+        if($surname === $user->surname){
+            Auth::logout();
 
-        $user->delete();
+            $user->delete();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+            return Redirect::to('/');
+        }else{
+            return redirect()->back()->with('surname-status', 'error');
+        }
+
+        dd('nelox');
+        
     }
 }

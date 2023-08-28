@@ -69,7 +69,7 @@
             alt="img"
           />
           @auth
-            @if(Route::has('profile'))
+            @if(Route::is('profile'))
               <div class="button-profile" data-login>
                   <img  src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profileimg">
               </div>

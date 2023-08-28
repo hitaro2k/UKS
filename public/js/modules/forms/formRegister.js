@@ -10,7 +10,7 @@ export function formRegister(){
     console.log(profileIcon)
     profileIcon.addEventListener("click" , ()=>{
         if(profileIcon.hasAttribute("data-login")){
-            window.location.href = "/profile"
+            
         }else{
             popup.style.display = "flex"
             htmlDoc.style.overflow = "hidden"
