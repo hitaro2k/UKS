@@ -72,28 +72,40 @@
                 >{{ __('Дані успіно збережені.') }}</p>
             @endif
       </div>
-        
+
+        <!-- password -->
+
       <div class="form-wrapper">
-        <form method="post" action="" class="form-data">
+        <form method="post" action="{{ route('password.update') }}" class="form-data">
+        @csrf
+        @method('put')
           <p class="title">Зміна пароля</p>
-          <div class="input-wrapper"><input type="text" placeholder = "Новий пароль"></div>
-          <div class="input-wrapper"><input type="text" placeholder = "Підтвердіть новий пароль"></div>
+          <div class="input-wrapper"><input type="text" name="password" placeholder = "Новий пароль"></div>
+          <div class="input-wrapper"><input type="text" name="password_confirmation" placeholder = "Підтвердіть новий пароль"></div>
 
           <button class = "btn-pass-sumb" type="submit">Зберегти</button>
         </form>
       </div>
-     
+
+      <button>Видалити акаунт</button>
+
       <div class="form-wrapper">
-      <form class="form-data"  method="post" action="{{ route('profile.destroy') }}" class="p-6"> 
-        <p class="title">Видалити аккаунт</p>
-            @csrf
-            @method('delete')
-                <x-danger-button class="ml-3 btn-del">
-                    {{ __('Delete Account') }}
-                </x-danger-button>
-        </form>
+      <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+          @csrf
+          @method('delete')
+          <input type="text" name="password">
+
+          <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+
+          <x-secondary-button x-on:click="$dispatch('close')">
+              {{ __('Cancel') }}
+          </x-secondary-button>
+
+          <x-danger-button class="ml-3">
+              {{ __('Delete Account') }}
+          </x-danger-button>
+        </form> 
       </div>
-      
   </div>
   
 
