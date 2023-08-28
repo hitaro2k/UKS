@@ -5,11 +5,16 @@ export function formRegister(){
     const popupLogin = document.querySelector(".popup-login")
     const closePopup =document.querySelectorAll(".close-popup")
     const popup = document.querySelector(".popup-wrapper")
-    const profileIcon = document.querySelector("#button-profile")
+    const profileIcon = document.querySelector(".button-profile")
     const htmlDoc = document.querySelector("html")
+    console.log(profileIcon)
     profileIcon.addEventListener("click" , ()=>{
-        popup.style.display = "flex"
-        htmlDoc.style.overflow = "hidden"
+        if(profileIcon.hasAttribute("data-login")){
+            window.location.href = "/profile"
+        }else{
+            popup.style.display = "flex"
+            htmlDoc.style.overflow = "hidden"
+        }
     })
     closePopup.forEach(item =>{
         item.onclick = ()=>{

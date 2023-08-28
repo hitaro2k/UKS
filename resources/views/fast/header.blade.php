@@ -69,9 +69,15 @@
             alt="img"
           />
           @auth
-            <a href="/profile" class="button-profile" data-login>
-              <img  src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
-            </a>
+            @if(Route::has('profile'))
+              <div class="button-profile" data-login>
+                  <img  src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profileimg">
+              </div>
+            @else
+              <a href="/profile" class="button-profile" data-login>
+                  <img  src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profileimg">
+              </a>
+            @endif
           @else
               <div class="button-profile" id="button-profile">
                 <img src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
