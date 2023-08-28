@@ -1277,7 +1277,7 @@ li {
       justify-content: center;
       background-color: black;
       width: 40%;
-      height: 100%; 
+      height: 90%; 
       margin: 0 auto;
       border-radius: 10px;
       margin-top: 50px;
@@ -1838,6 +1838,18 @@ li {
         width: 65%;
       }
      }
+    }
+  }
+  .form-wrapper__delete{
+    background-color: #000000c4;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form-delete{
+      
     }
   }
   .close-wrapper{

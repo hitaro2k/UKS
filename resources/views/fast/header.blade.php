@@ -69,12 +69,13 @@
             alt="img"
           />
           @auth
-            @if(Route::has('profile'))
+            @if(Route::is('profile'))
               <div class="button-profile" data-login>
                   <img  src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profileimg">
               </div>
+              
             @else
-              <a href="/profile" class="button-profile" data-login>
+              <a href="/profile" class="button-profile" data-login loginned>
                   <img  src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profileimg">
               </a>
             @endif
@@ -83,6 +84,8 @@
                 <img src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
               </div>
           @endauth
+
+         
           <style>
             .button-profile{
               cursor: pointer;

@@ -87,10 +87,15 @@
         </form>
       </div>
 
-      <button>Видалити акаунт</button>
+      <div class="form-wrapper" >
+        <div class="form-data" >
+          <p class="title">Видалити аккаунт</p>
+          <button class = "btn-del">Видалити акаунт</button>
+        </div>
+      </div>
 
-      <div class="form-wrapper">
-      <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+      <div class="form-wrapper__delete" style = "display:none;">
+      <form method="post" action="{{ route('profile.destroy') }}" class="p-6 form-delete">
           @csrf
           @method('delete')
           <input type="text" name="password">

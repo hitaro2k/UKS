@@ -7,14 +7,9 @@ export function formRegister(){
     const popup = document.querySelector(".popup-wrapper")
     const profileIcon = document.querySelector(".button-profile")
     const htmlDoc = document.querySelector("html")
-    console.log(profileIcon)
     profileIcon.addEventListener("click" , ()=>{
-        if(profileIcon.hasAttribute("data-login")){
-            window.location.href = "/profile"
-        }else{
-            popup.style.display = "flex"
-            htmlDoc.style.overflow = "hidden"
-        }
+        popup.style.display = "flex"
+        htmlDoc.style.overflow = "hidden"
     })
     closePopup.forEach(item =>{
         item.onclick = ()=>{

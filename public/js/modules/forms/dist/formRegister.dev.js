@@ -14,14 +14,9 @@ function formRegister() {
   var popup = document.querySelector(".popup-wrapper");
   var profileIcon = document.querySelector(".button-profile");
   var htmlDoc = document.querySelector("html");
-  console.log(profileIcon);
   profileIcon.addEventListener("click", function () {
-    if (profileIcon.hasAttribute("data-login")) {
-      window.location.href = "/profile";
-    } else {
-      popup.style.display = "flex";
-      htmlDoc.style.overflow = "hidden";
-    }
+    popup.style.display = "flex";
+    htmlDoc.style.overflow = "hidden";
   });
   closePopup.forEach(function (item) {
     item.onclick = function () {

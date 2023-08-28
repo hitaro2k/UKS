@@ -6,4 +6,14 @@ export function closeEditer(){
         window.location.href = "/profile"
     }
 }
+
+export function openDelete(){
+    const delBtn = document.querySelector(".btn-del")
+    const formDel = document.querySelector(".form-wrapper__delete")
+    delBtn.onclick = () =>{
+        formDel.style.display = "flex"
+    }
+}
+
 closeEditer()
+openDelete()
