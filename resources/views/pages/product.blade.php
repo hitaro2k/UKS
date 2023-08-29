@@ -9,7 +9,13 @@
         <p class="title-author">{{$product->maker}}</p>
         <p class="title-count">{{$product->count}}</p>
         <p  class="product-price__grn">{{$product->price}}</p>
-        <button class="product-btn" data><img data src="../img/shopping-cart.svg" alt="" class="product-image"></button>
+        @auth
+          <!-- эта тема открывает карзину, она будет в том случае если чел зареган, allahu akbar -->
+          <button class="product-btn" data><img data src="../img/shopping-cart.svg" alt="" class="product-image"></button>
+        @else
+          <!-- сюда добавь кнопку, которая будет открывать попап, типа чтобы чед зарегался -->
+          <div class="" style="color: white;" >регайся, идиот</div>
+        @endauth
       </div>
 
       <div class="content-analogue">
