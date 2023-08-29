@@ -345,8 +345,7 @@ export function views() {
       }
       return randomNumber;
     }
-    let randomNum = generateId();
-    localStorage.setItem("userId" , randomNum)
+
 
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     function sendDataToServer(data) {

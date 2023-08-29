@@ -36,3 +36,18 @@ function formRegister() {
 }
 
 formRegister();
+
+function checkRegister() {
+  var popupRegister = document.querySelector(".popup-register");
+  var popup = document.querySelector(".popup-wrapper");
+  var popupLogin = document.querySelector(".popup-login");
+  var error = document.querySelector(".error");
+
+  if (error) {
+    popupRegister.style.display = "flex";
+    popup.style.display = "flex";
+    popupLogin.style.display = 'none';
+  }
+}
+
+checkRegister();
