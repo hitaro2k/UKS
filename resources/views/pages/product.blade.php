@@ -14,7 +14,9 @@
           <button class="product-btn" data><img data src="../img/shopping-cart.svg" alt="" class="product-image"></button>
         @else
           <!-- сюда добавь кнопку, которая будет открывать попап, типа чтобы чед зарегался -->
-          <div class="" style="color: white;" >регайся, идиот</div>
+          <button class="unloginned-btn">
+            <img class = "unloginned-img" src="../img/shopping-cart.svg" alt="">
+          </button>
         @endauth
       </div>
 

@@ -15,5 +15,7 @@ export function openDelete(){
     }
 }
 
+
+
 closeEditer()
 openDelete()

@@ -12,7 +12,7 @@ function formRegister() {
   var popupLogin = document.querySelector(".popup-login");
   var closePopup = document.querySelectorAll(".close-popup");
   var popup = document.querySelector(".popup-wrapper");
-  var profileIcon = document.querySelector(".button-profile");
+  var profileIcon = document.querySelector("#unloginned");
   var htmlDoc = document.querySelector("html");
   profileIcon.addEventListener("click", function () {
     popup.style.display = "flex";

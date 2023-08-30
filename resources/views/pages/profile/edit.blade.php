@@ -111,12 +111,12 @@
           
 
           <div class="buttons-del">
-            <x-secondary-button x-on:click="$dispatch('close')">
-                {{ __('Cancel') }}
-            </x-secondary-button>
+            <button type = "button" class="button-cancel">
+              Скасувати
+            </button>
 
             <x-danger-button class="ml-3 btn-del__accept">
-                {{ __('Delete Account') }}
+                {{ __('Видалити аккаунт') }}
             </x-danger-button>
           </div>
             

@@ -70,17 +70,17 @@
           />
           @auth
             @if(Route::is('profile'))
-              <div class="button-profile" data-login>
-                  <img  src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profileimg">
+              <div class="button-profile-login" data-login>
+                  <img  src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
               </div>
               
             @else
-              <a href="/profile" class="button-profile" data-login loginned>
-                  <img  src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profileimg">
+              <a href="/profile" class="button-profile" data-login >
+                  <img  src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
               </a>
             @endif
           @else
-              <div class="button-profile" id="button-profile">
+              <div class="button-profile" id="unloginned">
                 <img src="../img/3643745-human-man-people-person-profile_113435 1.png" alt="" class="profile__img">
               </div>
           @endauth

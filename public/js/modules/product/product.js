@@ -32,3 +32,11 @@ fetch('/get-api')
      }
     })
 })
+
+const popup = document.querySelector(".popup-wrapper")
+const htmlDoc = document.querySelector("html")
+const unloginnedBtn = document.querySelector(".unloginned-btn")
+unloginnedBtn.addEventListener("click" , ()=>{
+  popup.style.display = "flex"
+  htmlDoc.style.overflow = "hidden"
+})

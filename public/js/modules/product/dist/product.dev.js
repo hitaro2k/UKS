@@ -35,3 +35,10 @@ fetch('/get-api').then(function (response) {
     }
   });
 });
+var popup = document.querySelector(".popup-wrapper");
+var htmlDoc = document.querySelector("html");
+var unloginnedBtn = document.querySelector(".unloginned-btn");
+unloginnedBtn.addEventListener("click", function () {
+  popup.style.display = "flex";
+  htmlDoc.style.overflow = "hidden";
+});

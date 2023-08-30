@@ -58,6 +58,12 @@
                       <p class="title-pass">*********</p>
                     </div>
                 </div>
+                <div class="media-info__company">
+                    <h4 class="title">Назва компанії</h4>
+                    <div class="media-info__pass-inner">
+                      <p class="title-pass">{{$user->company}}</p>
+                    </div>
+                </div>
             </div>
             </div>
         

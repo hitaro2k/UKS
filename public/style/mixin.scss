@@ -13,13 +13,9 @@
         @media(max-width:480px){@content;}
     }@else if $point == xss{
         @media(max-width:340px){@content;}
-    }
-}
-@mixin breakpoint($point){
-    @if $point == lsm{
+    }@else if $point == lsm{
         @media(max-height:620px){@content;}
     }
-
 }
 
 [class *="__container"] {
