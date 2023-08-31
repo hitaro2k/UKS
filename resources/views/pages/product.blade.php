@@ -1,38 +1,39 @@
 @include('fast.header')
+@isset($product)
+  @if($product != null)
+    <!-- если есть товар -->
+    <div class="content-wrapper__product">
+        <div class="product" data-id = {{$product->code}}>
+          <p class="product-title">{{$product->name}}</p>
+          <p class="title-code">{{$product->code}}</p>
+          <p class="title-author">{{$product->maker}}</p>
+          <p class="title-count">{{$product->count}}</p>
+          <p  class="product-price__grn">{{$product->price}}</p>
+          
+          @auth
+            <!-- эта тема открывает карзину, она будет в том случае если чел зареган, allahu akbar -->
+            <button class="product-btn" data><img data src="../img/shopping-cart.svg" alt="" class="product-image"></button>
+          @else
+            <!-- сюда добавь кнопку, которая будет открывать попап, типа чтобы чед зарегался -->
+            <button class="unloginned-btn">
+              <img class = "unloginned-img" src="../img/shopping-cart.svg" alt="">
+            </button>
+          @endauth
+        </div>
 
-@if($product != null)
-  <!-- если есть товар -->
-  <div class="content-wrapper__product">
-      <div class="product" data-id = {{$product->code}}>
-        <p class="product-title">{{$product->name}}</p>
-        <p class="title-code">{{$product->code}}</p>
-        <p class="title-author">{{$product->maker}}</p>
-        <p class="title-count">{{$product->count}}</p>
-        <p  class="product-price__grn">{{$product->price}}</p>
-        @auth
-          <!-- эта тема открывает карзину, она будет в том случае если чел зареган, allahu akbar -->
-          <button class="product-btn" data><img data src="../img/shopping-cart.svg" alt="" class="product-image"></button>
-        @else
-          <!-- сюда добавь кнопку, которая будет открывать попап, типа чтобы чед зарегался -->
-          <button class="unloginned-btn">
-            <img class = "unloginned-img" src="../img/shopping-cart.svg" alt="">
-          </button>
-        @endauth
-      </div>
-
-      <div class="content-analogue">
-        <h3 class="title">Аналоги</h3>
-          <p class="title-analogue">{{$product->analogue}}</p>
-        
+        <div class="content-analogue">
+          <h3 class="title">Аналоги</h3>
+            <p class="title-analogue">{{$product->analogue}}</p>
+          
+          </div>
+          
         </div>
         
-      </div>
-      
-  </div>
-@else
-  <!-- Если не существует, нужно выдать прям тут ответ, в хтмл, типа такого нету -->
-@endif
-
+    </div>
+  @else
+    <!-- Если не существует, нужно выдать прям тут ответ, в хтмл, типа такого нету -->
+  @endif
+@endisset
 <footer class="footer">
         <div class="footer__header-block">
           <a href="#promo" class="logo">

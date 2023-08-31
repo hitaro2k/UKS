@@ -31,7 +31,7 @@ Route::get('/contact', function(){return view('pages.contact');})->name('contact
 
 Route::view('/test', 'auth.verify-email');
 
-Route::get('/product/{id}', [ProductController::class, 'store']);
+Route::get('/product/{id}', [ProductController::class, 'store'])->name('product');
 
 Route::post('/process-array', [ArrayController::class, 'processArray'])->name('process.array');
 

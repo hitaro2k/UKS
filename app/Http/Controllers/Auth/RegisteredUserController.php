@@ -28,7 +28,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request, $id): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -48,12 +48,17 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'company' => $request->company,
             'password' => Hash::make($request->password),
-        ]);
+        ]); 
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect()->route('profile')->with('access-send', 'Вы успешный пидорас');
+        if($id != 'NaN'){
+            return redirect("/product/$id");
+        }else{
+            return redirect('profile');
+        }
+
     }
 }

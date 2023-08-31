@@ -3,9 +3,12 @@
         <img src="/img/close.svg" alt="" class="close-popup" sty>
     </div>
    <h2 class="title">Реєстрація</h2>
-   <form action="{{ route('register') }}" method="POST" class="form-register">
-     @csrf
+   @php
+    $id = $id ?? 'NaN';
+   @endphp
+   <form action="/register/{{$id}}" method="POST" class="form-register">
 
+     @csrf
        <div class="input__wrapper">
            <input type="text" name="email" class="input" placeholder="Ваша пошта">
            <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -35,7 +38,7 @@
           <input type="text" name="company" class="input" placeholder="Назва компанія">
            <x-input-error :messages="$errors->get('company')" class="mt-2" />
         </div>
-
+        
 
      <button type="submit" class="button btn-reg">Зареєструватися</button>
    </form>
