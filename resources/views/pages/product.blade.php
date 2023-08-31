@@ -1,6 +1,5 @@
 @include('fast.header')
-@isset($product)
-  @if($product != null)
+@if($product != null)
   <!-- если есть товар -->
   <div class="content-wrapper__product">
     <table>
@@ -161,7 +160,6 @@
       </footer>
 
 
-      <x-progress/>
     </main>
     
     <div class="succes__popup">
