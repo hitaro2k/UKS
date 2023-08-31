@@ -1,7 +1,7 @@
 const popularContainer = document.querySelector("#popular__container");
 
 export async function getProductsPopular() {
-  const response = await fetch("/get-api")
+  const response = await fetch("/give-api")
   let documentHTML = document.querySelector("html")
  
   const productArray = await response.json();

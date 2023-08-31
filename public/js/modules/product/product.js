@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded" , function(){
   const titleCode = document.querySelector(".title-code").textContent
   const price = document.querySelector(".product-price__grn").textContent
   const priceHtml =  document.querySelector(".product-price__grn")
-    fetch('/get-api')
+    fetch('/give-api')
     .then(response => response.json())
     .then(data => {
     const transformedData = data.data.map(item => ({

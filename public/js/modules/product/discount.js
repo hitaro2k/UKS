@@ -2,7 +2,7 @@
 
 export function discount(){
     
-    fetch("/app/server/api.php")
+    fetch("/give-api")
     .then(response => response.json())
     .then(data => {
         const transformedData = data.map(item => ({
