@@ -23,8 +23,6 @@ Route::view('/client', 'pages.client')->name('client');
 
 Route::view('/product', 'pages.product')->name('product');
 
-Route::get('/form', [ProfileController::class, 'test'])->name('form');
-
 Route::get('/get-api', 'ApiController')->name('get.api.all.production');
 
 Route::get('/contact', function(){return view('pages.contact');})->name('contact');
@@ -43,8 +41,9 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'store'])->name('profile');
-
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    Route::get('/form', [ProfileController::class, 'test'])->name('form');
 
     Route::get('/profile/1', [ProfileController::class, 'editL'])->name('profile.editt');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('EmailCheck');

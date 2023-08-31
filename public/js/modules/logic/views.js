@@ -386,8 +386,8 @@ export function views() {
       })
 
       if (transferredItems.length > 0) {
+        transferredItems.push(localStorage.getItem("mail"))
           transferredItems.push(randomNum)
-          transferredItems.push(localStorage.getItem("mail"))
           let itemJson = {
             items: transferredItems.flat(),
           };
