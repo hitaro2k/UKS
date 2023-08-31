@@ -36,7 +36,6 @@ export function search() {
     function renderList(data) {
       searchList.innerHTML = '';
       data.forEach(item => {
-        console.log(item)
         const ul = document.createElement('ul');
         const liName = document.createElement("li")
         const liLink = document.createElement("a")
