@@ -23,6 +23,7 @@ function forms() {
   var inputSurname = document.getElementById("surname");
   var inputPhone = document.getElementById("phone");
   var inputDelivery = document.getElementById("delivery-department");
+  var closeForm = document.querySelector(".close");
   var sendData = document.querySelector(".send-data");
 
   function sendAllData() {
@@ -32,8 +33,7 @@ function forms() {
     inputSurname.value = "";
     inputPhone.value = "";
     inputDelivery.value = "";
-    window.location.href = "http://uk";
-    localStorage.clear();
+    window.location.href = "/";
   } // form.addEventListener('submit', function(e) {
   //     e.preventDefault();
   //     var formData = new FormData(form);
@@ -67,10 +67,23 @@ function forms() {
 
   if (formProductItem.children.length === 0) {
     cartItems.forEach(function (item) {
-      var inCartProduct = "\n            <div class=\"product-block\" data=\"".concat(item.id, "\">\n                <div class=\"product\">\n                <div class=\"image\"><img class=\"image\" src=\"").concat(item.imgSrc, "\" alt=\"\"></div>\n                <p class=\"name\">").concat(item.title, "</p>\n                <p class= \"count\">").concat(item.count, "</p>\n                <p class=\"product-price\">").concat(item.price, "</p>\n                </div>\n            </div>\n            ");
+      var inCartProduct = "\n            <div class=\"product-block\" data=\"".concat(item.id, "\">\n                <div class=\"product\">\n                <div class=\"image\"><img class=\"image\" src=\"../img/UK.svg\" alt=\"\"></div>\n                <p class=\"name\">").concat(item.title, "</p>\n                <p class= \"count\">").concat(item.count, "</p>\n                <p class=\"product-price\">").concat(item.price, "</p>\n                </div>\n            </div>\n            ");
       formProductItem.insertAdjacentHTML("beforeend", inCartProduct);
     });
-  } // if (imageContainer.hasAttribute("image-add")) {
+  }
+
+  var popup = document.querySelector(".popup-close");
+  var closeFormAcces = document.querySelector(".close-acces");
+  var continueBtn = document.querySelector(".continue");
+  closeForm.addEventListener("click", function () {
+    popup.style.display = "flex";
+  });
+  continueBtn.addEventListener("click", function () {
+    popup.style.display = "none";
+  });
+  closeFormAcces.addEventListener("click", function () {
+    sendAllData();
+  }); // if (imageContainer.hasAttribute("image-add")) {
   //   succesPopup.style.left = "0"+ "px"
   //   setTimeout(function(){
   //     succesPopup.style.left = "-300" + "px"
@@ -81,7 +94,6 @@ function forms() {
   //     errorPopup.style.left = "-300" + "px"
   //   },2000)
   // }
-
 
   selectPayment();
 }

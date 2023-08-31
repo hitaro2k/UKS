@@ -18,7 +18,7 @@
         <td class="title-code">{{$product->code}}</td>
         <td class="title-author">{{$product->maker}}</td>
         <td class="title-count">{{$product->count}}</td>
-        <td  class="product-price__grn">{{$product->price}}</td>
+        <td class="product-price__grn">{{$product->price}}</td>
         <td class = "product-btn__wrapper">
           @auth
             <!-- эта тема открывает карзину, она будет в том случае если чел зареган, allahu akbar -->

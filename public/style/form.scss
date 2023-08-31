@@ -3,6 +3,70 @@
 body{
     background: black;
 }
+.close{
+    margin-top: 25px;
+    margin-right: 25px;
+    right: 0;
+    position: absolute;
+    background-color: transparent;
+}
+.popup-close{
+    background-color: #000000a6;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .popup__inner{
+        width: 50%;
+        height: 250px;
+        background-color: black;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        @include breakpoint(elg){
+            width: 70%;
+        }
+        @include breakpoint(lg){
+            width: 90%;
+        }
+        .title{
+            font-family: "Montserrat";
+            color: #ac0e21;
+            width: 65%;
+            text-align: center;
+        }
+        .popup__btn{
+            display: flex;
+            flex-direction: row;
+            gap: 0px 20px;
+            .close-acces{
+                height: 30px;
+                color: white;
+                background-color: #cb162c;
+                cursor: pointer;
+                border-radius: 5px;
+                @include breakpoint(xs){
+                    font-size: 12px;
+                }
+            }
+            .continue{
+                height: 30px;
+                color: white;
+                background-color: #1cbb40;
+                cursor: pointer;
+                border-radius: 5px;
+                @include breakpoint(xs){
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
 .wrapper{
     display: flex;
     flex-direction: column;
@@ -421,6 +485,7 @@ body{
                     color: white;
                   }
                   .name {
+                    width: 50%;
                     margin: 0px;
                     color: white;
                     font-family: "Montserrat";

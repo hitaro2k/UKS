@@ -8,10 +8,6 @@ document.addEventListener("DOMContentLoaded", validation());
 
 function validation() {
   var exam = {
-    name: false,
-    patronymic: false,
-    surname: false,
-    phone: false,
     deliveryDepartment: false,
     deliverySolo: false
   };
@@ -155,11 +151,12 @@ function validation() {
   }
 
   function checkAllFields() {
+    console.log(exam);
     var toCheckedButton = document.querySelector(".send-data");
 
-    if (countTrueProperties(exam) == 5) {
+    if (countTrueProperties(exam) == 1) {
       toCheckedButton.style.display = "block";
-    } else if (countTrueProperties(exam) < 6) {
+    } else if (countTrueProperties(exam) < 1) {
       toCheckedButton.style.display = "none";
     }
   }

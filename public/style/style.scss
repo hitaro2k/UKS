@@ -908,7 +908,9 @@ li {
       width: 100%;
     }
     th {
+
       padding: 8px;
+      padding-left: 10px;
       background: rgb(0, 0, 0);
       color:white;
       font-family: "Montserrat";
@@ -969,6 +971,8 @@ li {
       }
       .img{
         width: 30%;
+        padding-left: 10px;
+
       }
     }
    
@@ -1365,7 +1369,7 @@ li {
       }
       .popup-login{
         width: 100%;
-        display: flex;
+        display: none;
         height: 100%; 
         flex-direction: column;
         .close-wrapper{
@@ -1448,7 +1452,7 @@ li {
       }
 
       .popup-register{
-        display: none;
+        display: flex;
         flex-direction: column;
         width: 100%;
         height: 100%;

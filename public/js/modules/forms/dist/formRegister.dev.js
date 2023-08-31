@@ -14,10 +14,14 @@ function formRegister() {
   var popup = document.querySelector(".popup-wrapper");
   var profileIcon = document.querySelector("#unloginned");
   var htmlDoc = document.querySelector("html");
-  profileIcon.addEventListener("click", function () {
-    popup.style.display = "flex";
-    htmlDoc.style.overflow = "hidden";
-  });
+
+  try {
+    profileIcon.addEventListener("click", function () {
+      popup.style.display = "flex";
+      htmlDoc.style.overflow = "hidden";
+    });
+  } catch (_unused) {}
+
   closePopup.forEach(function (item) {
     item.onclick = function () {
       popup.style.display = "none";

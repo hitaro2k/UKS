@@ -1,4 +1,5 @@
 "use strict"
+
 import { validation } from "./validation.js";
 let showForm = document.querySelector(".total-price__button-buy");
 let formWrap = document.querySelector(".form-order__background");
@@ -19,7 +20,7 @@ export function forms(){
     const inputSurname = document.getElementById("surname")
     const inputPhone = document.getElementById("phone")
     const inputDelivery = document.getElementById("delivery-department")
-
+    const closeForm = document.querySelector(".close")
     const sendData = document.querySelector(".send-data")
       
     function sendAllData(){   
@@ -29,8 +30,8 @@ export function forms(){
         inputSurname.value = ""
         inputPhone.value = ""
         inputDelivery.value = ""
-        window.location.href = "http://uk"
-        localStorage.clear()
+        window.location.href = "/"
+        
     }
 
     // form.addEventListener('submit', function(e) {
@@ -74,7 +75,7 @@ export function forms(){
         const inCartProduct = `
             <div class="product-block" data="${item.id}">
                 <div class="product">
-                <div class="image"><img class="image" src="${item.imgSrc}" alt=""></div>
+                <div class="image"><img class="image" src="../img/UK.svg" alt=""></div>
                 <p class="name">${item.title}</p>
                 <p class= "count">${item.count}</p>
                 <p class="product-price">${item.price}</p>
@@ -84,6 +85,19 @@ export function forms(){
         formProductItem.insertAdjacentHTML("beforeend", inCartProduct);
         });
     }
+    const popup = document.querySelector(".popup-close")
+    const closeFormAcces = document.querySelector(".close-acces")
+    const continueBtn = document.querySelector(".continue")
+    closeForm.addEventListener("click" , function (){
+      popup.style.display = "flex"
+    })
+    continueBtn.addEventListener("click" , function (){
+      popup.style.display = "none"
+    })
+
+    closeFormAcces.addEventListener("click", function(){
+      sendAllData()
+    })
     // if (imageContainer.hasAttribute("image-add")) {
     //   succesPopup.style.left = "0"+ "px"
     //   setTimeout(function(){

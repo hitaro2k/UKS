@@ -2,10 +2,6 @@
 document.addEventListener("DOMContentLoaded" , validation())
 export function validation() {
     let exam = {
-      name: false,
-      patronymic: false,
-      surname: false,
-      phone: false,
       deliveryDepartment: false,
       deliverySolo: false,
     } 
@@ -145,12 +141,13 @@ export function validation() {
     
    
     function checkAllFields() {
-
-        var toCheckedButton = document.querySelector(".send-data");
-        if (countTrueProperties(exam) == 5 ){
+      console.log(exam)
+       const toCheckedButton = document.querySelector(".send-data");
+        if (countTrueProperties(exam) == 1 ){
+          
           toCheckedButton.style.display = "block"
          
-        }else if(countTrueProperties(exam) < 6){
+        }else if(countTrueProperties(exam) < 1){
           toCheckedButton.style.display = "none"
           
         }

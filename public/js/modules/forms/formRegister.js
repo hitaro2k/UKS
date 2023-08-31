@@ -8,10 +8,15 @@ export function formRegister(){
     const popup = document.querySelector(".popup-wrapper")
     const profileIcon = document.querySelector("#unloginned")
     const htmlDoc = document.querySelector("html")
-    profileIcon.addEventListener("click" , ()=>{
-        popup.style.display = "flex"
-        htmlDoc.style.overflow = "hidden"
-    })
+    try{
+        profileIcon.addEventListener("click" , ()=>{
+            popup.style.display = "flex"
+            htmlDoc.style.overflow = "hidden"
+        })
+    }catch{
+        
+    }
+    
     closePopup.forEach(item =>{
         item.onclick = ()=>{
             popup.style.display = "none"

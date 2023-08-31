@@ -78,9 +78,7 @@ export function views() {
     window.addEventListener("click", function (event) {
         if (event.target.hasAttribute("data")) {
           const card = event.target.closest(".product");
-          const productId = card.dataset.id;
-          console.log(card)
-          
+          const productId = card.dataset.id;          
           fetch("/get-api")
           .then(res => res.json())
           .then(data => {
@@ -112,13 +110,12 @@ export function views() {
             localStorage.setItem("isclear" , "none")
             localStorage.setItem("isntclear" ,"flex")
             const mailUser = localStorage.getItem("mail")
-            console.log(mailUser)
             if (added === "true") {
               return;
             }
             added = "true";
             card.setAttribute("data-added", added);
-
+            
             if (existingItem) {
               const countElem = document.querySelector(
                 `.item-count[data-counter="${productId}"]`
@@ -126,7 +123,7 @@ export function views() {
               countElem.textContent = Number(countElem.textContent) + 1;
               return;
             }
-             
+            
             const productInfo = {
               id: productId,
               title: card.querySelector(".product-title").textContent,
@@ -137,7 +134,7 @@ export function views() {
 
             localStorage.setItem("idItem" , productInfo.id)
             productInfo.count++;
-           
+            console.log(productInfo)
             const itemInCart = `<div class="item" data-id="${productInfo.data}" >
                     <img src="../img/UK.svg" alt="" class="item-image">
                     <p class="item-name">${productInfo.title}</p>
@@ -163,22 +160,22 @@ export function views() {
     });  
 
     window.addEventListener("load", function () {
-      // var images = [];
-      // document.querySelectorAll("img").forEach(function (img) {
-      //   images.push(img.src);
-      // });
+      var images = [];
+      document.querySelectorAll("img").forEach(function (img) {
+        images.push(img.src);
+      });
 
-      // var imagesLoaded = 0;
-      // for (var i = 0; i < images.length; i++) {
-      //   var img = new Image();
-      //   img.src = images[i];
-      //   img.onload = function () {
-      //     imagesLoaded++;
-      //     if (imagesLoaded == images.length) {
-      //       document.querySelector("#preloader").style.display = "none";
-      //     }
-      //   };
-      // }
+      var imagesLoaded = 0;
+      for (var i = 0; i < images.length; i++) {
+        var img = new Image();
+        img.src = images[i];
+        img.onload = function () {
+          imagesLoaded++;
+          if (imagesLoaded == images.length) {
+            document.querySelector("#preloader").style.display = "none";
+          }
+        };
+      }
       var savedItems = getAllItemsFromStorage();
       const savedId = localStorage.getItem('idItem'); 
       const productElement = document.querySelector(`[data-id="${savedId}"]`);
@@ -294,12 +291,12 @@ export function views() {
           }
           if (item.count === 0) {
             removeCartItem(productId);
-            getProductInfo
             localStorage.setItem("cartItems",JSON.stringify(cartItems))
             if(cartItems.length <= 0){
               isclear.style.display = "flex";
               cartWrapper.style.display = "none"
               totalPrice.style.display = "none"
+              
             }
           } else {
             countElem.textContent = item.count;
@@ -346,9 +343,7 @@ export function views() {
       }
       return randomNumber;
     }
-    const randomNum = generateId()
-    console.log(randomNum)
-    
+    const randomNum = generateId()    
     
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
@@ -386,7 +381,7 @@ export function views() {
       })
 
       if (transferredItems.length > 0) {
-        transferredItems.push(localStorage.getItem("mail"))
+          transferredItems.push(localStorage.getItem("mail"))
           transferredItems.push(randomNum)
           let itemJson = {
             items: transferredItems.flat(),
