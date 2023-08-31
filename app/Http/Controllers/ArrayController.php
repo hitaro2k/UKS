@@ -12,10 +12,10 @@ class ArrayController extends Controller
         $data = $request->input('data');
         $items = $data['items'];
         $userId = end($items); 
-
+        $status = 'not';
         for ($i = 0; $i < count($items); $i += 3) {
             $group = array_slice($items, $i, 3);
-
+            $email = array_slice($items, -2, 1)[0];
             if (count($group) === 3) {
                 $id_product = $group[0];
                 $price = $group[1];
@@ -25,7 +25,9 @@ class ArrayController extends Controller
                     'id_product' => $id_product,
                     'price' => $price,
                     'count' => $count,
-                    'something' => $userId
+                    'email' => $email,
+                    'user-id' => $userId,
+                    'status' => $status
                 ]);
             }
         }

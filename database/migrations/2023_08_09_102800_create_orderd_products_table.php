@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('orderd_products', function (Blueprint $table) {
             $table->string('id_product', 255);
             $table->string('price', 255)->nullable();
-            $table->string('count', 255);
-            $table->string('something', 255);
+            $table->string('count', 25);
+            $table->string('email', 40);
+            $table->string('user-id', 10);
+            $table->string('status', 25);
         });
     }
 
