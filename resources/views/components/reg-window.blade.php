@@ -28,14 +28,14 @@
        </div>
        <div class="input__wrapper">
          <input type="text" name="surname" class="input" placeholder="По-батькові">
-           <x-input-error :messages="$errors->get('name')" class="mt-2" />
+           <x-input-error :messages="$errors->get('surname')" class="mt-2" />
        </div>
        <div class="input__wrapper">
          <input type="text" name="patronymic" class="input" placeholder="Прізвище">
            <x-input-error :messages="$errors->get('surname')" class="mt-2" />
         </div>
         <div class="input__wrapper">
-          <input type="text" name="company" class="input" placeholder="Назва компанія">
+          <input type="text" name="company" class="input" placeholder="Назва компанія"  >
            <x-input-error :messages="$errors->get('company')" class="mt-2" />
         </div>
         
