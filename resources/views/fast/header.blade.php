@@ -158,8 +158,8 @@
       
       <div class="popup-wrapper">
         <div class="popup-container" id="popup-container" >
-          <x-auth-window/>
-          <x-reg-window/>
+          @include('components.auth-window')
+          @include('components.reg-window')
           <x-email-reset-password/>
         </div>
       </div>

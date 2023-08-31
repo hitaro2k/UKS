@@ -1,6 +1,6 @@
 @include('fast.header')
-
-@if($product != null)
+@isset($product)
+  @if($product != null)
   <!-- если есть товар -->
   <div class="content-wrapper__product">
     <table>
