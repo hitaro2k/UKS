@@ -10,7 +10,8 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-
+use App\Models\OrderdProduct;
+use App\Models\Products;
 class ProfileController extends Controller
 {
 
@@ -43,9 +44,18 @@ class ProfileController extends Controller
     public function store(Request $request): View
     {       
         $user = Auth::user();
-        
+
+        $userProducts = OrderdProduct::where('email', $user->email)->get();
+
+        $codes = $userProducts->pluck('id_product'); 
+
+        $products = Products::whereIn('code', $codes)->get(); 
+
+
+
         return view('pages.profile.main', [
             'user' => $request->user(),
+            'products' => $products,
         ]);
     } 
     public function test(Request $request): View

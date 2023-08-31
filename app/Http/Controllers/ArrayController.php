@@ -26,7 +26,8 @@ class ArrayController extends Controller
                     'price' => $price,
                     'count' => $count,
                     'email' => $email,
-                    'user-id' => $userId
+                    'user-id' => $userId,
+                    'status' => $status
                 ]);
             }
         }
