@@ -3,32 +3,44 @@
 @if($product != null)
   <!-- если есть товар -->
   <div class="content-wrapper__product">
-      <div class="product" data-id = {{$product->code}}>
-        <p class="product-title">{{$product->name}}</p>
-        <p class="title-code">{{$product->code}}</p>
-        <p class="title-author">{{$product->maker}}</p>
-        <p class="title-count">{{$product->count}}</p>
-        <p  class="product-price__grn">{{$product->price}}</p>
-        @auth
-          <!-- эта тема открывает карзину, она будет в том случае если чел зареган, allahu akbar -->
-          <button class="product-btn" data><img data src="../img/shopping-cart.svg" alt="" class="product-image"></button>
-        @else
-          <!-- сюда добавь кнопку, которая будет открывать попап, типа чтобы чед зарегался -->
-          <button class="unloginned-btn">
-            <img class = "unloginned-img" src="../img/shopping-cart.svg" alt="">
-          </button>
-        @endauth
-      </div>
+    <table>
+      <tr>
+        <th>Представник</th>
+        <th>Назва</th>
+        <th>Код</th>
+        <th>Виробник</th>
+        <th>Кількість</th>
+        <th>Ціна</th>
+        <th></th>
+      </tr>
+      <tr class="product" data-id = {{$product->code}}>
+        <td><img src="../img/UK.svg" alt="" class="img"></td>
+        <td class="product-title" >{{$product->name}}</td>
+        <td class="title-code">{{$product->code}}</td>
+        <td class="title-author">{{$product->maker}}</td>
+        <td class="title-count">{{$product->count}}</td>
+        <td  class="product-price__grn">{{$product->price}}</td>
+        <td class = "product-btn__wrapper">
+          @auth
+            <!-- эта тема открывает карзину, она будет в том случае если чел зареган, allahu akbar -->
+            <button class="product-btn" data><img data src="../img/shopping-cart.svg" alt="" class="product-image"></button>
+          @else
+            <!-- сюда добавь кнопку, которая будет открывать попап, типа чтобы чед зарегался -->
+            <button class="unloginned-btn">
+              <img class = "unloginned-img" src="../img/shopping-cart.svg" alt="">
+            </button>
+          @endauth
+        </td>
+      </tr>
+    </table>  
 
       <div class="content-analogue">
         <h3 class="title">Аналоги</h3>
-          <p class="title-analogue">{{$product->analogue}}</p>
-        
-        </div>
-        
+        <p class="title-analogue">{{$product->analogue}}</p>
       </div>
-      
+        
   </div>
+      
 @else
   <!-- Если не существует, нужно выдать прям тут ответ, в хтмл, типа такого нету -->
 @endif

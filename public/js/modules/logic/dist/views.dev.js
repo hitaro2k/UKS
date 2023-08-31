@@ -105,6 +105,8 @@ function views() {
 
           localStorage.setItem("isclear", "none");
           localStorage.setItem("isntclear", "flex");
+          var mailUser = localStorage.getItem("mail");
+          console.log(mailUser);
 
           if (added === "true") {
             return;
@@ -189,7 +191,7 @@ function views() {
       }
 
       savedItems.forEach(function (item) {
-        var itemInCart = "<div class=\"item\" data-id=\"".concat(item.data, "\">\n          <img src=\"").concat(item.imgSrc, "\" alt=\"\" class=\"item-image\">\n          <p class=\"item-name\">").concat(item.title, "</p>\n          <p class=\"item-price\">").concat(item.price, "</p>\n          <div class=\"item__button__add-delete\">\n              <button class=\"button-primary__plus\" data-id=\"").concat(item.data, "\">+</button>\n              <p class=\"item-count\" data-counter=\"").concat(item.id, "\">").concat(item.count, "</p>\n              <button class=\"button-primary__minus\" data-id=\"").concat(item.data, "\" id=\"minus\">-</button>\n          </div>\n        </div>");
+        var itemInCart = "<div class=\"item\" data-id=\"".concat(item.data, "\">\n          <img src=\"../img/UK.svg\" alt=\"\" class=\"item-image\">\n          <p class=\"item-name\">").concat(item.title, "</p>\n          <p class=\"item-price\">").concat(item.price, "</p>\n          <div class=\"item__button__add-delete\">\n              <button class=\"button-primary__plus\" data-id=\"").concat(item.data, "\">+</button>\n              <p class=\"item-count\" data-counter=\"").concat(item.id, "\">").concat(item.count, "</p>\n              <button class=\"button-primary__minus\" data-id=\"").concat(item.data, "\" id=\"minus\">-</button>\n          </div>\n        </div>");
         cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
         cartItems.push(item);
         buttons();
@@ -343,6 +345,8 @@ function views() {
       return randomNumber;
     }
 
+    var randomNum = generateId();
+    console.log(randomNum);
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     function sendDataToServer(data) {
@@ -377,7 +381,8 @@ function views() {
       });
 
       if (transferredItems.length > 0) {
-        transferredItems.push();
+        transferredItems.push(randomNum);
+        transferredItems.push(localStorage.getItem("mail"));
         var itemJson = {
           items: transferredItems.flat()
         };

@@ -3,6 +3,9 @@
 export function panelProfile(){
     const listItem = document.querySelectorAll(".list-item")
     const spanItem = document.querySelectorAll(".span-header")
+    const userMail = document.querySelector("#user-mail").textContent
+    
+    localStorage.setItem("mail" , userMail)
 
     listItem.forEach(item =>{
         item.onmouseenter = ()=>{

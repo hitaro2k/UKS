@@ -43,7 +43,6 @@
             <!-- <li class="menu__list-item catalog" >
               <a href="#" class="menu__list-link">Каталог</a>
             </li> -->
-            
             <li class="menu__list-item">
               <a href="/client" class="menu__list-link">Кліентам</a>
             </li>
@@ -54,8 +53,6 @@
               <a href="#" class="menu__list-link">Про нас</a>
             </li> 
           
-            
-           
           </ul>
         </nav>
 
@@ -146,13 +143,13 @@
         <nav>
           <ul class="menu--burger-list">
             <li class="menu--burger-item catalog" >
-              <a class="menu--burger-item" href="#">Каталог</a>
+              <a class="menu--burger-item" href="/client">Кліентам</a>
             </li>
             <li class="menu--burger-item">
-              <a class="menu--burger-item" href="#">Кліентам</a>
+              <a class="menu--burger-item" href="{{Route('contact')}}">Контакти</a>
             </li>
             <li class="menu--burger-item">
-              <a class="menu--burger-item" href="#">Популярне</a>
+              <a class="menu--burger-item" href="#">Про нас</a>
           </li>
           </ul>
         </nav>

@@ -111,7 +111,8 @@ export function views() {
             let added = card.getAttribute("data-added");
             localStorage.setItem("isclear" , "none")
             localStorage.setItem("isntclear" ,"flex")
-           
+            const mailUser = localStorage.getItem("mail")
+            console.log(mailUser)
             if (added === "true") {
               return;
             }
@@ -188,7 +189,7 @@ export function views() {
 
       savedItems.forEach(function (item) {
         const itemInCart = `<div class="item" data-id="${item.data}">
-          <img src="${item.imgSrc}" alt="" class="item-image">
+          <img src="../img/UK.svg" alt="" class="item-image">
           <p class="item-name">${item.title}</p>
           <p class="item-price">${item.price}</p>
           <div class="item__button__add-delete">
@@ -345,9 +346,12 @@ export function views() {
       }
       return randomNumber;
     }
-
-
+    const randomNum = generateId()
+    console.log(randomNum)
+    
+    
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
     function sendDataToServer(data) {
         const url = "/process-array";
         const options = {
@@ -382,7 +386,8 @@ export function views() {
       })
 
       if (transferredItems.length > 0) {
-          transferredItems.push()
+          transferredItems.push(randomNum)
+          transferredItems.push(localStorage.getItem("mail"))
           let itemJson = {
             items: transferredItems.flat(),
           };

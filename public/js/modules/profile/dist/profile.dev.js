@@ -8,6 +8,8 @@ exports.panelProfile = panelProfile;
 function panelProfile() {
   var listItem = document.querySelectorAll(".list-item");
   var spanItem = document.querySelectorAll(".span-header");
+  var userMail = document.querySelector("#user-mail").textContent;
+  localStorage.setItem("mail", userMail);
   listItem.forEach(function (item) {
     item.onmouseenter = function () {
       item.style.color = "orange";
