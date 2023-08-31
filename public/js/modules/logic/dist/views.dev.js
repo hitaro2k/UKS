@@ -106,7 +106,6 @@ function views() {
           localStorage.setItem("isclear", "none");
           localStorage.setItem("isntclear", "flex");
           var mailUser = localStorage.getItem("mail");
-          console.log(mailUser);
 
           if (added === "true") {
             return;
@@ -131,6 +130,7 @@ function views() {
           };
           localStorage.setItem("idItem", productInfo.id);
           productInfo.count++;
+          console.log(productInfo);
           var itemInCart = "<div class=\"item\" data-id=\"".concat(productInfo.data, "\" >\n                    <img src=\"../img/UK.svg\" alt=\"\" class=\"item-image\">\n                    <p class=\"item-name\">").concat(productInfo.title, "</p>\n                    <p class=\"item-price\">").concat(productInfo.price, "</p>\n                    <div class=\"item__button__add-delete\">\n                        <button class=\"button-primary__plus\" data-id=\"").concat(productInfo.data, "\">+</button>\n                        <p class=\"item-count\" data-counter=\"").concat(productInfo.id, "\">").concat(productInfo.count, "</p>\n                        <button class=\"button-primary__minus\" data-id=\"").concat(productInfo.data, "\" id=\"minus\">-</button>\n                    </div>\n                </div>\n            ");
           cartWrapper.insertAdjacentHTML("beforeend", itemInCart);
           cartItems.push(productInfo);
@@ -143,7 +143,6 @@ function views() {
         var _card = event.target.closest(".product");
 
         var productId = _card.dataset.id;
-        console.log(_card);
         fetch("/get-api").then(function (res) {
           return res.json();
         }).then(function (data) {
@@ -167,21 +166,25 @@ function views() {
       }
     });
     window.addEventListener("load", function () {
-      // var images = [];
-      // document.querySelectorAll("img").forEach(function (img) {
-      //   images.push(img.src);
-      // });
-      // var imagesLoaded = 0;
-      // for (var i = 0; i < images.length; i++) {
-      //   var img = new Image();
-      //   img.src = images[i];
-      //   img.onload = function () {
-      //     imagesLoaded++;
-      //     if (imagesLoaded == images.length) {
-      //       document.querySelector("#preloader").style.display = "none";
-      //     }
-      //   };
-      // }
+      var images = [];
+      document.querySelectorAll("img").forEach(function (img) {
+        images.push(img.src);
+      });
+      var imagesLoaded = 0;
+
+      for (var i = 0; i < images.length; i++) {
+        var img = new Image();
+        img.src = images[i];
+
+        img.onload = function () {
+          imagesLoaded++;
+
+          if (imagesLoaded == images.length) {
+            document.querySelector("#preloader").style.display = "none";
+          }
+        };
+      }
+
       var savedItems = getAllItemsFromStorage();
       var savedId = localStorage.getItem('idItem');
       var productElement = document.querySelector("[data-id=\"".concat(savedId, "\"]"));
@@ -284,7 +287,6 @@ function views() {
 
         if (item.count === 0) {
           removeCartItem(productId);
-          getProductInfo;
           localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
           if (cartItems.length <= 0) {
@@ -346,7 +348,6 @@ function views() {
     }
 
     var randomNum = generateId();
-    console.log(randomNum);
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     function sendDataToServer(data) {
@@ -381,8 +382,8 @@ function views() {
       });
 
       if (transferredItems.length > 0) {
-        transferredItems.push(randomNum);
         transferredItems.push(localStorage.getItem("mail"));
+        transferredItems.push(randomNum);
         var itemJson = {
           items: transferredItems.flat()
         };

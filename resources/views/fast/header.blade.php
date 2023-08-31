@@ -27,11 +27,11 @@
 </head>
 
   <body>
-    <!-- <div id="preloader">
+    <div id="preloader">
       <div class="rotating-image">
         <img src="/img/UK.svg" alt="">
       </div>
-    </div> -->
+    </div>
 
     <main class="main">  
       <header class="full-screen__header__container">
@@ -134,7 +134,7 @@
 
         <div class="total-price__wrapper">
           <p class="total-price__text">0 грн</p>
-          <button type="submit" class="total-price__button-buy">Оформить заказ</button>
+          <button type="submit" class="total-price__button-buy">Оформити замовлення</button>
         </div>
       </div>
 

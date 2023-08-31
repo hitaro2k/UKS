@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="../style/dist/style.css">
 </head>
 <body>
+  <button class="close"><img src="/img/close.svg" alt="" class="close-popup" id = "close-editor"></button>
+  <div class="popup-close">
+    <div class="popup__inner">
+      <h4 class="title">Після закриття форми ваші товари зберігатимуться і ви зможете продовжити покупки</h4>
+      <div class="popup__btn">
+        <button class="close-acces">Закрити</button>
+        <button class="continue">Продовжити замовлення</button>
+      </div>
+     
+    </div>
+    
+  </div>
+
     <div class="wrapper">
     <form action="/app/server/personalData.php" method="POST" class="form" id="form">
       <div class="personal-info">
@@ -27,7 +40,7 @@
             <input placeholder="Прізвище" type="text" class="info-input" name="surname"  id="surname" value = "{{$user->surname}}"/>
           </div>
           <div class="info-input__wrapper">
-            <input name="phone" placeholder="Номер телефону" type="text" class="info-input" id="phone"  value = "{{$user->patronymic}}"/>
+            <input name="phone" placeholder="Номер телефону" type="text" class="info-input" id="phone"  value = "{{$user->phone}}"/>
           </div>
          
 
@@ -59,7 +72,7 @@
                 />
                
               </div>
-              <p class="accept-solo">Введіть 1 якщо вибераете самовивіз</p>
+              <p class="accept-solo">Введіть час, в якому вам буде зручніше приїхати</p>
             </div>
           </div>
           <input type="text" name="user-id" value="" id="unique-value" style="display: none;">
@@ -146,6 +159,7 @@
       </div>
 
     </form>
+    <button type="submit" class = "send-data">Завершити замовлення</button>
     </div>
    
 </body>
