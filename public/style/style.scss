@@ -1258,10 +1258,10 @@ li {
       align-items: center;
       overflow: hidden;
       margin-bottom: 20px;
+      
       @include breakpoint(md){
         overflow-x: scroll;
         align-items: flex-start;
-
       }
       table {
         font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;

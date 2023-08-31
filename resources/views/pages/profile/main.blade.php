@@ -93,7 +93,7 @@
             <th>Сума</th>
             <th>Дата оформлення</th>
             <th>Час доставки</th>
-            <th>Місто</th>
+            <th>ТТН</th>
             <th>Статус</th>
           </tr>
             @foreach($products as $product)
@@ -102,10 +102,10 @@
                 <td>{{$product->name}}</td>
                 <td>{{$product->code}}</td>
                 <td>{{$product->count}}</td>
-                <td>{{$product->price}}</td>
+                <td class = "price">{{$product->price}}</td>
                 <td>21.08.2023</td>
                 <td>3-14дн</td>
-                <td>г.Киев</td>
+                <td>434343е43434343</td>
                 <td>В оброботке</td>
               </tr>
             @endforeach
@@ -125,40 +125,8 @@
               <th>Місто</th>
               <th>Статус</th>
             </tr>
-
-            <tr class = "item-order">
-              <td><img src="./img/UK.svg" alt="" class="img"></td>
-              <td>Амотизатор</td>
-              <td>34ARWV32</td>
-              <td>2</td>
-              <td>200$</td>
-              <td>21.08.2023</td>
-              <td>3-14дн</td>
-              <td>г.Киев</td>
-              <td>В оброботке</td>
-            </tr>
-            <tr class = "item-order">
-              <td><img src="./img/UK.svg" alt="" class="img"></td>
-              <td>Амотизатор</td>
-              <td>34ARWV32</td>
-              <td>2</td>
-              <td>200$</td>
-              <td>21.08.2023</td>
-              <td>3-14дн</td>
-              <td>г.Киев</td>
-              <td>В оброботке</td>
-            </tr>
-            <tr class = "item-order">
-              <td><img src="./img/UK.svg" alt="" class="img"></td>
-              <td>Амотизатор</td>
-              <td>34ARWV32</td>
-              <td>2</td>
-              <td>200$</td>
-              <td>21.08.2023</td>
-              <td>3-14дн</td>
-              <td>г.Киев</td>
-              <td>В оброботке</td>
-            </tr>
+  
+            
           </table>  
       </div>
       </div>

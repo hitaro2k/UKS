@@ -46,7 +46,6 @@ function search() {
   function renderList(data) {
     searchList.innerHTML = '';
     data.forEach(function (item) {
-      console.log(item);
       var ul = document.createElement('ul');
       var liName = document.createElement("li");
       var liLink = document.createElement("a");
