@@ -48,16 +48,15 @@ class ProfileController extends Controller
         $userProducts = OrderdProduct::where('email', $user->email)->get();
 
         $OrderdProductStatus = OrderdProduct::where('status', 'in the process')->get();
-        
-        $codes = $OrderdProductStatus->pluck('id_product'); 
+
+        $codes = $OrderdProductStatus->pluck('code'); 
         
         $products = Products::whereIn('code', $codes)->get(); 
 
 
         return view('pages.profile.main', [
             'user' => $request->user(),
-            'products' => $products,
-            'count' => $userProducts->count()
+            'products' => $OrderdProductStatus
         ]);
     } 
     public function test(Request $request): View

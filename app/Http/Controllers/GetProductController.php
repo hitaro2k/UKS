@@ -15,16 +15,19 @@ class GetProductController extends Controller
         $userId = end($items); 
         $email = array_slice($items, -2, 1)[0];
 
-        for ($i = 0; $i < count($items); $i += 3) {
-            $group = array_slice($items, $i, 3);
+        for ($i = 0; $i < count($items); $i += 4) {
+            $group = array_slice($items, $i, 4);
 
-            if (count($group) === 3) {
-                $id_product = $group[1];
+            if (count($group) === 4) {
+
+                $name = $group[0];
+                $code = $group[1];
                 $price = $group[2];
                 $count = $group[3];
 
                 OrderdProduct::create([
-                    'id_product' => $id_product,
+                    'name' => $name,
+                    'code' => $code,
                     'price' => $price,
                     'count' => $count,
                     'email' => $email,

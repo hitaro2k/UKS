@@ -16,23 +16,20 @@ class PersonalDataController extends Controller
 
     OrderdProduct::where('user-id', $request->id )->update(['status' => 'in the process']);
     
-    $codes = $orderProduct->pluck('id_product'); 
+    $codes = $orderProduct->pluck('code'); 
 
     $ProductsCounts = Products::whereIn('code', $codes)->pluck('count'); 
-
 
     $OrderdCounts = $orderProduct->pluck('count'); 
 
 
-
+    $sum = [];
     foreach($ProductsCounts as $key => $count){
         $sum[] = $count - $OrderdCounts[$key];
     } 
-
     for ($i = 0; $i < count($codes); $i++) {
         $code = $codes[$i];
         $summ = $sum[$i];
-    
         Products::where('code', $code)->update(['count' => $summ]);
     }
 
