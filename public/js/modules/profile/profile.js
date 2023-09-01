@@ -41,7 +41,7 @@ export function panelProfile(){
     })
 
     const cash = document.querySelectorAll(".price")
-    fetch('/get-api')
+    fetch('/give-api')
     .then(response => response.json())
     .then(data => {
         const transformedData = data.data.map(item => ({

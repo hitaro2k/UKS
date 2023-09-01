@@ -3,7 +3,7 @@ export function search() {
   const searchInput = document.querySelector(".search-input");
   const searchList = document.querySelector(".search-stroke__list");
 
-  fetch('/get-api')
+  fetch('/give-api')
     .then(response => response.json())
     .then(data => {
     

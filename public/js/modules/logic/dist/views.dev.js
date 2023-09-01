@@ -355,7 +355,7 @@ function views() {
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     function sendDataToServer(data) {
-      var url = "/process-array";
+      var url = "/get-product";
       var options = {
         method: "POST",
         headers: {

@@ -228,7 +228,7 @@ export function views() {
           const countElem = document.querySelector(
             `.item-count[data-counter="${productId}"]`
           ); 
-          fetch("/get-api")
+          fetch("/give-api")
           .then(res => res.json())
           .then(data =>{
             const transformedData = data.data.map(item => ({
@@ -349,7 +349,7 @@ export function views() {
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     function sendDataToServer(data) {
-        const url = "/process-array";
+        const url = "/get-product";
         const options = {
           method: "POST",
           headers: {

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('count', 25);
             $table->string('email', 40);
             $table->string('user-id', 10);
-            $table->string('status', 25);
+            $table->string('status', 25)->nullable();
         });
     }
 
