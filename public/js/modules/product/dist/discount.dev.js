@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.discount = discount;
 
 function discount() {
-  fetch("/get-api").then(function (response) {
+  fetch("/give-api").then(function (response) {
     return response.json();
   }).then(function (data) {
     var transformedData = data.map(function (item) {
