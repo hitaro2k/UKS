@@ -99,13 +99,11 @@ export function forms(){
       sendAllData()
     })
 
-    // Либо так
-
 
     const uniqueValue = document.querySelector("#unique-value")
     uniqueValue.value = localStorage.getItem("id")
-    // Либо так какой-то из них будет работать чекнешь ну я тебя понял бро, ДА БРООООООООООООООООООО
 
+    
 
 
     // if (imageContainer.hasAttribute("image-add")) {

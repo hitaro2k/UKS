@@ -158,6 +158,7 @@
         </div>
         <div class="block__product-item"></div>
         <div class="block__product-price"></div>
+        <button type="submit" class = "send-data">Завершити замовлення</button>
       </div>
       <button id="submit-button" type="submit" class = "send-data">Завершити замовлення</button>
 
