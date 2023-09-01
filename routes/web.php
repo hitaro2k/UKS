@@ -27,6 +27,10 @@ Route::get('/contact', function(){return view('pages.contact');})->name('contact
 
 Route::get('/product/{id}', [ProductController::class, 'store'])->name('product');
 
+Route::post('/get-product', [GetProductController::class, 'get'])->name('get.product');
+
+Route::post('/get-personal-data', [PersonalDataController::class, 'get'])->name('presonal.data');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'store'])->name('profile');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');

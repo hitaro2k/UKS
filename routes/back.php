@@ -41,10 +41,6 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/give-api', 'ApiController')->name('get.api.all.production');
 
-Route::post('/get-product', [GetProductController::class, 'get'])->name('get.product');
-
-Route::post('/get-personal-data', [PersonalDataController::class, 'get'])->name('presonal.data');
-
 Route::middleware('auth')->group(function () {
     
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');

@@ -23,7 +23,7 @@
   </div>
 
     <div class="wrapper">
-    <form action="/app/server/personalData.php" method="POST" class="form" id="form">
+    <form action="/get-personal-data" method="POST" class="form" id="form">
       <div class="personal-info">
         <div class="personal-info__title">
           <h2 class="title">Персональнi дані</h2>
@@ -49,7 +49,7 @@
               <div class="info-input__wrapper" id="info-input__post-office">
                 <input
                   id="delivery-department"
-                  name="delivery-department" 
+                  name="department" 
                   placeholder="Номер відділу"
                   type="text"
                   class="info-input"
@@ -65,7 +65,7 @@
               >
                 <input
                  id="delivery-solo"
-                  name="delivery-solo"
+                  name="solo"
                   placeholder="Самовивіз(вулиця Симиренка, 16А, Київ, 03134)"
                   type="text"
                   class="info-input"
@@ -157,9 +157,9 @@
         <div class="block__product-item"></div>
         <div class="block__product-price"></div>
       </div>
+      <button type="submit" class = "send-data">Завершити замовлення</button>
 
     </form>
-    <button type="submit" class = "send-data">Завершити замовлення</button>
     </div>
    
 </body>

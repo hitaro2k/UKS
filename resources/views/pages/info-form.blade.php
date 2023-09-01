@@ -10,7 +10,7 @@
   <div class="wrapper">
     <img src="/app/img/UK.svg" alt="" class="logo">
     <!-- OLD form-content -->
-    <form action="/app/server/personalData.php" method="POST" class="form" id="form">
+    <form action="/get-personal-data  " method="POST" class="form" id="form">
       <div class="personal-info">
         <div class="personal-info__title">
           <h2 class="title">Персональнi дані</h2>
@@ -177,7 +177,6 @@
       <h3 class="title">Ви не вигрузили фото</h3>
     </div>
 
-    <button type="submit"  name="submit" class="send-data" >Завершити замовлення</button>
  
   </div>
  
