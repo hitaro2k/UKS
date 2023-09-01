@@ -24,6 +24,8 @@
 
     <div class="wrapper">
     <form action="/get-personal-data" method="POST" class="form" id="form">
+
+    @csrf
       <div class="personal-info">
         <div class="personal-info__title">
           <h2 class="title">Персональнi дані</h2>
