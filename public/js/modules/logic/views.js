@@ -373,7 +373,7 @@ export function views() {
       const localCartItems = JSON.parse(localStorage.getItem("cartItems"))
 
       localCartItems.forEach(product =>{
-          checkedFormItems.push([product.title , product.id, product.price, product.count]);
+          checkedFormItems.push([product.title, product.id, product.price, product.count]);
       })
 
       let transferredItems = [];
