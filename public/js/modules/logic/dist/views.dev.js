@@ -379,7 +379,7 @@ function views() {
     showForm.addEventListener("click", function () {
       var localCartItems = JSON.parse(localStorage.getItem("cartItems"));
       localCartItems.forEach(function (product) {
-        checkedFormItems.push([product.id, product.price, product.count]);
+        checkedFormItems.push([product.title, product.id, product.price, product.count]);
       });
       var transferredItems = [];
       checkedFormItems.forEach(function (item) {
@@ -394,9 +394,8 @@ function views() {
         };
         console.log(itemJson);
         sendDataToServer(itemJson);
-      }
+      } // window.location.href = "/form"
 
-      window.location.href = "/form";
     });
 
     function removeCartItem(id) {
