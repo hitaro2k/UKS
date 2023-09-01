@@ -39,29 +39,6 @@ export function panelProfile(){
            
         }
     })
-
-    const cash = document.querySelectorAll(".price")
-    fetch('/give-api')
-    .then(response => response.json())
-    .then(data => {
-        const transformedData = data.data.map(item => ({
-        exchange:item["exchange"]
-        }));
-        const transformedDataExchange = transformedData.map(item =>{
-            const arrayPrices = []
-            arrayPrices.push(item.exchange)
-            const arrayTrash = arrayPrices.shift()
-            return arrayTrash    
-        })
-        const arrayClear = transformedDataExchange.filter(str => str !== '')
-        const exchangePriceStr = arrayClear[0]
-        const exchangePrice  = Number(exchangePriceStr)
-        cash.forEach(item =>{
-            const price = item.textContent;
-            const priceNumb = parseFloat(price.replace(",", "."));
-            item.innerHTML = `${priceNumb * exchangePrice} грн`
-        })
-    })
     const logout = document.querySelector("#logout")
     logout.onclick = ()=>{
         localStorage.clear()

@@ -92,7 +92,6 @@
             <th>Кількість</th>
             <th>Сума</th>
             <th>Дата оформлення</th>
-            <th>Час доставки</th>
             <th>ТТН</th>
             <th>Статус</th>
           </tr>
@@ -103,10 +102,9 @@
                 <td>{{$product->code}}</td>
                 <td>{{$product->count}}</td>
                 <td class = "price">{{$product->price}}</td>
-                <td>21.08.2023</td>
-                <td>3-14дн</td>
-                <td>434343е43434343</td>
-                <td>В оброботке</td>
+                <td></td>
+                <td></td>
+                <td>В обробці</td>
               </tr>
             @endforeach
         </table>  

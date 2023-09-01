@@ -44,32 +44,6 @@ function panelProfile() {
       });
     };
   });
-  var cash = document.querySelectorAll(".price");
-  fetch('/get-api').then(function (response) {
-    return response.json();
-  }).then(function (data) {
-    var transformedData = data.data.map(function (item) {
-      return {
-        exchange: item["exchange"]
-      };
-    });
-    var transformedDataExchange = transformedData.map(function (item) {
-      var arrayPrices = [];
-      arrayPrices.push(item.exchange);
-      var arrayTrash = arrayPrices.shift();
-      return arrayTrash;
-    });
-    var arrayClear = transformedDataExchange.filter(function (str) {
-      return str !== '';
-    });
-    var exchangePriceStr = arrayClear[0];
-    var exchangePrice = Number(exchangePriceStr);
-    cash.forEach(function (item) {
-      var price = item.textContent;
-      var priceNumb = parseFloat(price.replace(",", "."));
-      item.innerHTML = "".concat(priceNumb * exchangePrice, " \u0433\u0440\u043D");
-    });
-  });
   var logout = document.querySelector("#logout");
 
   logout.onclick = function () {
