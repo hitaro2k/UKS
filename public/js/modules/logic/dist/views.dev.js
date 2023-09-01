@@ -143,7 +143,7 @@ function views() {
         var _card = event.target.closest(".product");
 
         var productId = _card.dataset.id;
-        fetch("/get-api").then(function (res) {
+        fetch("/give-api").then(function (res) {
           return res.json();
         }).then(function (data) {
           var transformedData = data.data.map(function (item) {
@@ -394,8 +394,9 @@ function views() {
         };
         console.log(itemJson);
         sendDataToServer(itemJson);
-      } // window.location.href = "/form"
+      }
 
+      window.location.href = "/form";
     });
 
     function removeCartItem(id) {

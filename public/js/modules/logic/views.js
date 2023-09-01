@@ -79,7 +79,7 @@ export function views() {
         if (event.target.hasAttribute("data")) {
           const card = event.target.closest(".product");
           const productId = card.dataset.id;          
-          fetch("/get-api")
+          fetch("/give-api")
           .then(res => res.json())
           .then(data => {
             const transformedData = data.data.map(item => ({
@@ -390,7 +390,7 @@ export function views() {
           console.log(itemJson)
           sendDataToServer(itemJson);
       }      
-      // window.location.href = "/form"
+      window.location.href = "/form"
     })
  
     function removeCartItem(id) {

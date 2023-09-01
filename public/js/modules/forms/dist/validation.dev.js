@@ -151,7 +151,6 @@ function validation() {
   }
 
   function checkAllFields() {
-    console.log(exam);
     var toCheckedButton = document.querySelector(".send-data");
 
     if (countTrueProperties(exam) == 1) {

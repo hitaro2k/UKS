@@ -141,7 +141,6 @@ export function validation() {
     
    
     function checkAllFields() {
-      console.log(exam)
        const toCheckedButton = document.querySelector(".send-data");
         if (countTrueProperties(exam) == 1 ){
           
