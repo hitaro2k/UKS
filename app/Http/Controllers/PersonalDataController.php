@@ -40,7 +40,8 @@ class PersonalDataController extends Controller
         'phone' => $request->phone,
         'department' => $request->department,
         'pickup' => $request->solo,
-        'user-id' => $request->id
+        'user-id' => $request->id,
+        'TTN' => null
     ]);     
 
     return redirect('profile');
