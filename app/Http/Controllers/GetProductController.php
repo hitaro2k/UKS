@@ -11,11 +11,13 @@ class GetProductController extends Controller
     {
         $data = $request->input('data');
         $items = $data['items'];
+
         $userId = end($items); 
+        $email = array_slice($items, -2, 1)[0];
 
         for ($i = 0; $i < count($items); $i += 3) {
             $group = array_slice($items, $i, 3);
-            $email = array_slice($items, -2, 1)[0];
+
             if (count($group) === 3) {
                 $id_product = $group[0];
                 $price = $group[1];
@@ -32,6 +34,6 @@ class GetProductController extends Controller
             }
         }
 
-        return response()->json(['message' => $items]);
+        // return response()->json(['message' => $items]);
     }
 }

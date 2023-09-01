@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var titleCode = document.querySelector(".title-code").textContent;
   var price = document.querySelector(".product-price__grn").textContent;
   var priceHtml = document.querySelector(".product-price__grn");
-  fetch('/get-api').then(function (response) {
+  fetch('/give-api').then(function (response) {
     return response.json();
   }).then(function (data) {
     var transformedData = data.data.map(function (item) {
