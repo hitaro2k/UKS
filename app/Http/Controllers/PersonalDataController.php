@@ -5,13 +5,21 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PersonalData;
-use App\Models\OrderProduct;
+use App\Models\OrderdProduct;
+use App\Models\Products;
 
 class PersonalDataController extends Controller
 {
    public function get(Request $request){
 
-    $orderProduct = OrderProduct::where('user-id', $requset->userID);
+    $orderProduct = OrderdProduct::where('user-id', $request->userID)->get();
+
+    try{
+        
+    }catch(Excepition $e){
+
+    }
+    
 
     $codes = $orderProduct->pluck('id_product'); 
     PersonalData::create([
@@ -22,8 +30,8 @@ class PersonalDataController extends Controller
         'department' => $request->department,
         'pickup' => $request->solo,
         'user-id' => 'lox',
-    ]);
+    ]);     
 
-    return redirect('/');
+    return redirect('/nahui');
    }
 }
