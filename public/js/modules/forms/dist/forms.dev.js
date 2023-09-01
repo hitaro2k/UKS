@@ -98,7 +98,9 @@ function forms() {
     })["catch"](function (error) {
       console.error("еррор", error);
     });
-  }); // Либо так какой-то из них будет работать чекнешь
+  });
+  var uniqueValue = document.querySelector("#unique-value");
+  uniqueValue.value = localStorage.getItem("id"); // Либо так какой-то из них будет работать чекнешь
 
   document.addEventListener("DOMContentLoaded", function () {
     var submitButton = document.getElementById("submit-button");

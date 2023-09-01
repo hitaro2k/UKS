@@ -117,6 +117,8 @@ export function forms(){
       });
     });
 
+    const uniqueValue = document.querySelector("#unique-value")
+    uniqueValue.value = localStorage.getItem("id")
     // Либо так какой-то из них будет работать чекнешь
     document.addEventListener("DOMContentLoaded", function() {
       const submitButton = document.getElementById("submit-button");
