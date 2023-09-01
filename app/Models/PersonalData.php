@@ -9,6 +9,6 @@ class PersonalData extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['name', 'surname', 'patronymic', 'phone', 'department', 'pickup'];
+    protected $fillable = ['name', 'surname', 'patronymic', 'phone', 'department', 'pickup', 'user-id'];
     
 }

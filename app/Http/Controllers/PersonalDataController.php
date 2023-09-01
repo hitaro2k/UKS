@@ -12,16 +12,30 @@ class PersonalDataController extends Controller
 {
    public function get(Request $request){
 
-    $orderProduct = OrderdProduct::where('user-id', $request->userID)->get();
+    $orderProduct = OrderdProduct::where('user-id', $request->id)->get();
 
-    try{
-        
-    }catch(Excepition $e){
-
-    }
+    OrderdProduct::where('user-id', $request->id )->update(['status' => 'in the process']);
     
-
     $codes = $orderProduct->pluck('id_product'); 
+
+    $ProductsCounts = Products::whereIn('code', $codes)->pluck('count'); 
+
+
+    $OrderdCounts = $orderProduct->pluck('count'); 
+
+
+
+    foreach($ProductsCounts as $key => $count){
+        $sum[] = $count - $OrderdCounts[$key];
+    } 
+
+    for ($i = 0; $i < count($codes); $i++) {
+        $code = $codes[$i];
+        $summ = $sum[$i];
+    
+        Products::where('code', $code)->update(['count' => $summ]);
+    }
+
     PersonalData::create([
         'name' => $request->name,
         'surname' => $request->surname,
@@ -29,9 +43,11 @@ class PersonalDataController extends Controller
         'phone' => $request->phone,
         'department' => $request->department,
         'pickup' => $request->solo,
-        'user-id' => 'lox',
+        'user-id' => $request->id
     ]);     
 
-    return redirect('/nahui');
+    return redirect('profile');
+
+
    }
 }

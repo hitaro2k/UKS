@@ -19,9 +19,9 @@ class GetProductController extends Controller
             $group = array_slice($items, $i, 3);
 
             if (count($group) === 3) {
-                $id_product = $group[0];
-                $price = $group[1];
-                $count = $group[2];
+                $id_product = $group[1];
+                $price = $group[2];
+                $count = $group[3];
 
                 OrderdProduct::create([
                     'id_product' => $id_product,

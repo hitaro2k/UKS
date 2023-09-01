@@ -23,7 +23,7 @@
   </div>
 
     <div class="wrapper">
-    <form action="/get-personal-data" method="POST" class="form" id="form">
+    <form action="/get-personal-data"  method="POST" class="form" id="form">
 
     @csrf
       <div class="personal-info">
@@ -77,7 +77,7 @@
               <p class="accept-solo">Введіть час, в якому вам буде зручніше приїхати</p>
             </div>
           </div>
-          <input type="text" name="user-id" value="" id="unique-value" style="display: none;">
+          <input type="text" name="id" value="" id="unique-value" style="display: none;">
           <div class="accept-input">
 
           </div>
@@ -159,7 +159,7 @@
         <div class="block__product-item"></div>
         <div class="block__product-price"></div>
       </div>
-      <button type="submit" class = "send-data">Завершити замовлення</button>
+      <button id="submit-button" type="submit" class = "send-data">Завершити замовлення</button>
 
     </form>
     </div>

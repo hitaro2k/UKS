@@ -39,6 +39,7 @@ Route::middleware('guest')->group(function () {
                 ->name('password.store');
 });
 
+Route::get('/get-api', 'ApiController')->name('get.api.all.production');
 Route::get('/give-api', 'ApiController')->name('get.api.all.production');
 
 Route::middleware('auth')->group(function () {
