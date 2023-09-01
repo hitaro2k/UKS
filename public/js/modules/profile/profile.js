@@ -62,7 +62,10 @@ export function panelProfile(){
             item.innerHTML = `${priceNumb * exchangePrice} грн`
         })
     })
-   
+    const logout = document.querySelector("#logout")
+    logout.onclick = ()=>{
+        localStorage.clear()
+    }
    
 }
 

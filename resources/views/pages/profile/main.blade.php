@@ -70,13 +70,13 @@
 
             <div class="button-profile">
                 @auth
-                  <form method="POST" class ="title" action="{{ route('logout') }}">
+                  <form method="POST" id = "logout" class ="title" action="{{ route('logout') }}">
                       @csrf
 
                       <x-responsive-nav-link :href="route('logout')"
                               onclick="event.preventDefault();
                                           this.closest('form').submit();">
-                          {{ __('Log Out') }}
+                          {{ __('Вийти з аккаунта') }}
                       </x-responsive-nav-link>
                   </form> 
               @endauth
@@ -98,7 +98,7 @@
           </tr>
             @foreach($products as $product)
               <tr class = "item-order">
-                <td><img src="./img/UK.svg" alt="" class="img"></td>
+                <td class = "item-wrapper"><img src="./img/UK.svg" alt="" class="img"></td>
                 <td>{{$product->name}}</td>
                 <td>{{$product->code}}</td>
                 <td>{{$product->count}}</td>

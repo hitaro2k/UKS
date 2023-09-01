@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.closeEditer = closeEditer;
+exports.abortDelete = abortDelete;
 exports.openDelete = openDelete;
 
 function closeEditer() {
@@ -11,6 +12,14 @@ function closeEditer() {
 
   closeBtn.onclick = function () {
     window.location.href = "/profile";
+  };
+}
+
+function abortDelete() {
+  var closeBtn = document.querySelector(".button-cancel");
+
+  closeBtn.onclick = function () {
+    window.location.href = "/profile/edit";
   };
 }
 
@@ -23,5 +32,6 @@ function openDelete() {
   };
 }
 
+abortDelete();
 closeEditer();
 openDelete();

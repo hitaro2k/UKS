@@ -296,7 +296,8 @@ export function views() {
               isclear.style.display = "flex";
               cartWrapper.style.display = "none"
               totalPrice.style.display = "none"
-              
+              const card = document.querySelector('.product')
+              card.removeAttribute("data-added")
             }
           } else {
             countElem.textContent = item.count;

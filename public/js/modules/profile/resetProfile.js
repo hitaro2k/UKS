@@ -6,7 +6,12 @@ export function closeEditer(){
         window.location.href = "/profile"
     }
 }
-
+export function abortDelete(){
+    const closeBtn = document.querySelector(".button-cancel")
+    closeBtn.onclick = ()=>{
+        window.location.href = "/profile/edit"
+    }
+}
 export function openDelete(){
     const delBtn = document.querySelector(".btn-del")
     const formDel = document.querySelector(".form-wrapper__delete")
@@ -16,6 +21,6 @@ export function openDelete(){
 }
 
 
-
+abortDelete()
 closeEditer()
 openDelete()

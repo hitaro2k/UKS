@@ -293,6 +293,10 @@ function views() {
             isclear.style.display = "flex";
             cartWrapper.style.display = "none";
             totalPrice.style.display = "none";
+
+            var _card2 = document.querySelector('.product');
+
+            _card2.removeAttribute("data-added");
           }
         } else {
           countElem.textContent = item.count;

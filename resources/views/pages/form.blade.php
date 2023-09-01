@@ -159,7 +159,7 @@
       </div>
 
     </form>
-    <button type="submit" class = "send-data">Завершити замовлення</button>
+    <button type="submit" class = "send-data" id="submit-button">Завершити замовлення</button>
     </div>
    
 </body>
