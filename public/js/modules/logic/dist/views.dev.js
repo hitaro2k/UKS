@@ -352,7 +352,7 @@ function views() {
     }
 
     var randomNum = generateId();
-    localStorage.setItem("item", randomNum);
+    localStorage.setItem("id", randomNum);
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     function sendDataToServer(data) {
