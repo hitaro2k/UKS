@@ -9,5 +9,5 @@ class OrderdProduct extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['name', 'code', 'price', 'count', 'email', 'user-id', 'status'];
+    protected $fillable = ['name', 'code', 'price', 'count', 'email', 'user-id', 'status', 'TTN'];
 }
