@@ -296,7 +296,8 @@ export function views() {
               isclear.style.display = "flex";
               cartWrapper.style.display = "none"
               totalPrice.style.display = "none"
-              
+              const card = document.querySelector('.product')
+              card.removeAttribute("data-added")
             }
           } else {
             countElem.textContent = item.count;
@@ -344,7 +345,7 @@ export function views() {
       return randomNumber;
     }
     const randomNum = generateId()    
-    
+    localStorage.setItem("id" , randomNum)
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     function sendDataToServer(data) {

@@ -1,8 +1,9 @@
 "use strict"
 
 export function discount(){
-    
+
     fetch("/give-api")
+
     .then(response => response.json())
     .then(data => {
         const transformedData = data.map(item => ({

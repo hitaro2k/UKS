@@ -3,7 +3,7 @@
   <!-- если есть товар -->
   <div class="content-wrapper__product">
     <table>
-      <tr>
+      <tr class = "product-header">
         <th>Представник</th>
         <th>Назва</th>
         <th>Код</th>

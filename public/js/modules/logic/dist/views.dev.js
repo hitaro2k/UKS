@@ -223,7 +223,7 @@ function views() {
         var getProductInfo = localStorage.getItem("key_" + productId);
         var productInfo = JSON.parse(getProductInfo);
         var countElem = document.querySelector(".item-count[data-counter=\"".concat(productId, "\"]"));
-        fetch("/get-api").then(function (res) {
+        fetch("/give-api").then(function (res) {
           return res.json();
         }).then(function (data) {
           var transformedData = data.data.map(function (item) {
@@ -293,6 +293,10 @@ function views() {
             isclear.style.display = "flex";
             cartWrapper.style.display = "none";
             totalPrice.style.display = "none";
+
+            var _card2 = document.querySelector('.product');
+
+            _card2.removeAttribute("data-added");
           }
         } else {
           countElem.textContent = item.count;
@@ -348,6 +352,7 @@ function views() {
     }
 
     var randomNum = generateId();
+    localStorage.setItem("id", randomNum);
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     function sendDataToServer(data) {

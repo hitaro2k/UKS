@@ -83,6 +83,42 @@ function forms() {
   });
   closeFormAcces.addEventListener("click", function () {
     sendAllData();
+  }); // Либо так
+
+  document.getElementById("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    var formData = new FormData(event.target);
+    fetch("/get-personal-data", {
+      method: "POST",
+      body: formData
+    }).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      console.log(data);
+    })["catch"](function (error) {
+      console.error("еррор", error);
+    });
+  });
+  var uniqueValue = document.querySelector("#unique-value");
+  uniqueValue.value = localStorage.getItem("id"); // Либо так какой-то из них будет работать чекнешь
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var submitButton = document.getElementById("submit-button");
+    var form = document.getElementById("form");
+    submitButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      var formData = new FormData(form);
+      fetch("/get-personal-data", {
+        method: "POST",
+        body: formData
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        console.log(data);
+      })["catch"](function (error) {
+        console.error("еррор", error);
+      });
+    });
   }); // if (imageContainer.hasAttribute("image-add")) {
   //   succesPopup.style.left = "0"+ "px"
   //   setTimeout(function(){

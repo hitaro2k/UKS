@@ -53,7 +53,7 @@ export function forms(){
     //     throw new Error
     //     });
     // });
-
+    
 
     const formProductPrice = document.querySelector(".block__product-price")
     const formProductItem = document.querySelector(".block__product-item")
@@ -98,6 +98,52 @@ export function forms(){
     closeFormAcces.addEventListener("click", function(){
       sendAllData()
     })
+
+    // Либо так
+    document.getElementById("form").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+      const formData = new FormData(event.target);
+      fetch("/get-personal-data", {
+          method: "POST",
+          body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+          
+          console.log(data);
+      })
+      .catch(error => {
+          console.error("еррор", error);
+      });
+    });
+
+    const uniqueValue = document.querySelector("#unique-value")
+    uniqueValue.value = localStorage.getItem("id")
+    // Либо так какой-то из них будет работать чекнешь
+    document.addEventListener("DOMContentLoaded", function() {
+      const submitButton = document.getElementById("submit-button");
+      const form = document.getElementById("form");
+  
+      submitButton.addEventListener("click", function(event) {
+          event.preventDefault(); 
+
+          const formData = new FormData(form);
+          
+          fetch("/get-personal-data", {
+              method: "POST",
+              body: formData
+          })
+          .then(response => response.json())
+          .then(data => {
+              console.log(data);
+          })
+          .catch(error => {
+              console.error("еррор", error);
+          });
+      });
+    });
+
+
     // if (imageContainer.hasAttribute("image-add")) {
     //   succesPopup.style.left = "0"+ "px"
     //   setTimeout(function(){

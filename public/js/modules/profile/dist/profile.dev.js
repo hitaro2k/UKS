@@ -70,6 +70,11 @@ function panelProfile() {
       item.innerHTML = "".concat(priceNumb * exchangePrice, " \u0433\u0440\u043D");
     });
   });
+  var logout = document.querySelector("#logout");
+
+  logout.onclick = function () {
+    localStorage.clear();
+  };
 }
 
 panelProfile();
