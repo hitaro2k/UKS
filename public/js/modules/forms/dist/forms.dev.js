@@ -33,7 +33,8 @@ function forms() {
     inputSurname.value = "";
     inputPhone.value = "";
     inputDelivery.value = "";
-    window.location.href = "/";
+    window.location.href = "/profile";
+    localStorage.clear();
   } // form.addEventListener('submit', function(e) {
   //     e.preventDefault();
   //     var formData = new FormData(form);
@@ -82,6 +83,9 @@ function forms() {
     popup.style.display = "none";
   });
   closeFormAcces.addEventListener("click", function () {
+    window.location.href = "/profile";
+  });
+  sendData.addEventListener("click", function () {
     sendAllData();
   });
   var uniqueValue = document.querySelector("#unique-value");

@@ -40,7 +40,7 @@
             <input type="text" name="email" value="{{ $user->email }}">
           </div>
           @if(session('error') === 'error email')
-          <div class="">гамно email</div>
+          <div class="">Невірний email</div>
           @endif
           <x-input-error class="mt-2" :messages="$errors->get('email')" />
           @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
@@ -69,7 +69,7 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class=""
+                    class="title"
                 >{{ __('Дані успіно збережені.') }}</p>
             @endif
       </div>

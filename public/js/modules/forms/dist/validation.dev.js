@@ -128,9 +128,9 @@ function validation() {
   function validateDeliverySolo() {
     var deliverySoloInput = document.getElementById("delivery-solo");
     var parentDiv = deliverySoloInput.parentElement;
-    var regex = /^[\d\s]+$/;
+    var regex = "";
 
-    if (deliverySoloInput.value.trim() === '' || !regex.test(deliverySoloInput.value)) {
+    if (deliverySoloInput.value.trim() === '') {
       parentDiv.style.border = "2px solid red";
       exam.deliverySolo = false;
     } else {

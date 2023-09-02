@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
     transformedData.forEach(function (item) {
       if (titleCode === item.id) {
         var priceD = priceNumb * exchangePrice;
-        priceHtml.innerHTML = "".concat(priceD.toFixed(2), " \u0433\u0440\u043D");
+        var priceSell = priceD * 0.05;
+        var actualPrice = priceD - priceSell;
+        priceHtml.innerHTML = "".concat(actualPrice.toFixed(2), " \u0433\u0440\u043D");
       }
     });
   });

@@ -30,8 +30,8 @@ export function forms(){
         inputSurname.value = ""
         inputPhone.value = ""
         inputDelivery.value = ""
-        window.location.href = "/"
-        
+        window.location.href = "/profile"
+        localStorage.clear()
     }
 
     // form.addEventListener('submit', function(e) {
@@ -96,10 +96,12 @@ export function forms(){
     })
 
     closeFormAcces.addEventListener("click", function(){
-      sendAllData()
+      window.location.href = "/profile"
     })
 
-
+    sendData.addEventListener("click" , function(){
+      sendAllData()
+    })
     const uniqueValue = document.querySelector("#unique-value")
     uniqueValue.value = localStorage.getItem("id")
 

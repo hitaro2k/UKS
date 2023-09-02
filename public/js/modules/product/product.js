@@ -29,7 +29,9 @@ document.addEventListener("DOMContentLoaded" , function(){
     transformedData.forEach(item =>{
     if(titleCode === item.id){
         const priceD = priceNumb * exchangePrice
-        priceHtml.innerHTML = `${priceD.toFixed(2)} грн`
+        const priceSell = priceD * 0.05;
+        const actualPrice = priceD - priceSell
+        priceHtml.innerHTML = `${actualPrice.toFixed(2)} грн`
     }
     })
   })

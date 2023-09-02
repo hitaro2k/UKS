@@ -1997,6 +1997,14 @@ li {
     width: 65%;
   }
 }
+.form-container .form-wrapper .title {
+  margin-left: 40px;
+}
+@media (max-width: 480px) {
+  .form-container .form-wrapper .title {
+    margin-left: 10px;
+  }
+}
 .form-container .close-wrapper {
   width: 100%;
   display: flex;

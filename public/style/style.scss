@@ -1884,6 +1884,7 @@ li {
       margin-left: 40px;
       margin-bottom: 50px;
       width: 100%;
+      
       @include breakpoint(xs){
         margin-left: 10px;
       }
@@ -1962,6 +1963,12 @@ li {
         width: 65%;
       }
      }
+    }
+    .title{
+      margin-left: 40px;
+      @include breakpoint(xs){
+        margin-left: 10px;
+      }
     }
   }
   

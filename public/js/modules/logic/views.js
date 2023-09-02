@@ -91,9 +91,12 @@ export function views() {
               analogue:item["analogue"],
               exchange:item["exchange"]
             }));
+           
             transformedData.forEach(product =>{        
-              if(product.count >= 1){
-                start()
+              if(product.id == productId){
+                if(product.count >= 1){
+                  start()
+                }
               }
             })
             
@@ -179,7 +182,12 @@ export function views() {
       var savedItems = getAllItemsFromStorage();
       const savedId = localStorage.getItem('idItem'); 
       const productElement = document.querySelector(`[data-id="${savedId}"]`);
-      if(productElement){
+      const productID = productElement.querySelector(".title-code").textContent
+      const key = "key_"
+      const setLocalKey = key+productID
+      const localStorageKey = localStorage.getItem(setLocalKey)
+  
+      if(localStorageKey){
         productElement.setAttribute('data-added', 'true');
       }
    
@@ -309,6 +317,7 @@ export function views() {
           }, 100);
       }
     }
+
     function getAllItemsFromStorage() {
       var items = [];
     

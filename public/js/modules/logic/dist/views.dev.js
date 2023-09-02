@@ -158,8 +158,10 @@ function views() {
             };
           });
           transformedData.forEach(function (product) {
-            if (product.count >= 1) {
-              start();
+            if (product.id == productId) {
+              if (product.count >= 1) {
+                start();
+              }
             }
           });
         });
@@ -188,8 +190,12 @@ function views() {
       var savedItems = getAllItemsFromStorage();
       var savedId = localStorage.getItem('idItem');
       var productElement = document.querySelector("[data-id=\"".concat(savedId, "\"]"));
+      var productID = productElement.querySelector(".title-code").textContent;
+      var key = "key_";
+      var setLocalKey = key + productID;
+      var localStorageKey = localStorage.getItem(setLocalKey);
 
-      if (productElement) {
+      if (localStorageKey) {
         productElement.setAttribute('data-added', 'true');
       }
 
