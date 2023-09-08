@@ -92,7 +92,7 @@ class ProfileController extends Controller
             return redirect()->back()->with('surname-status', 'error');
         }
 
-        dd('nelox');
+       
         
     }
 }
