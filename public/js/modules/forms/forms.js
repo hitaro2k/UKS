@@ -24,12 +24,6 @@ export function forms(){
     const sendData = document.querySelector(".send-data")
       
     function sendAllData(){   
-        formProductPrice.innerHTML = "";
-        inputName.value = "" 
-        inputPatronymic.value = ""
-        inputSurname.value = ""
-        inputPhone.value = ""
-        inputDelivery.value = ""
         window.location.href = "/profile"
         localStorage.clear()
     }

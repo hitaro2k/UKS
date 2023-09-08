@@ -31,6 +31,7 @@ export function formRegister(){
         popupLogin.style.display = "flex"
         popupRegister.style.display = "none"
     }
+  
 }
 formRegister()
 
@@ -47,4 +48,5 @@ function checkRegister(){
     }
 
 }
+
 checkRegister()

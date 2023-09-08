@@ -190,14 +190,17 @@ function views() {
       var savedItems = getAllItemsFromStorage();
       var savedId = localStorage.getItem('idItem');
       var productElement = document.querySelector("[data-id=\"".concat(savedId, "\"]"));
-      var productID = productElement.querySelector(".title-code").textContent;
-      var key = "key_";
-      var setLocalKey = key + productID;
-      var localStorageKey = localStorage.getItem(setLocalKey);
 
-      if (localStorageKey) {
-        productElement.setAttribute('data-added', 'true');
-      }
+      try {
+        var productID = productElement.querySelector(".title-code").textContent;
+        var key = "key_";
+        var setLocalKey = key + productID;
+        var localStorageKey = localStorage.getItem(setLocalKey);
+
+        if (localStorageKey) {
+          productElement.setAttribute('data-added', 'true');
+        }
+      } catch (_unused) {}
 
       savedItems.forEach(function (item) {
         var itemInCart = "<div class=\"item\" data-id=\"".concat(item.data, "\">\n          <img src=\"../img/UK.svg\" alt=\"\" class=\"item-image\">\n          <p class=\"item-name\">").concat(item.title, "</p>\n          <p class=\"item-price\">").concat(item.price, "</p>\n          <div class=\"item__button__add-delete\">\n              <button class=\"button-primary__plus\" data-id=\"").concat(item.data, "\">+</button>\n              <p class=\"item-count\" data-counter=\"").concat(item.id, "\">").concat(item.count, "</p>\n              <button class=\"button-primary__minus\" data-id=\"").concat(item.data, "\" id=\"minus\">-</button>\n          </div>\n        </div>");

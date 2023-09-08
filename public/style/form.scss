@@ -148,7 +148,7 @@ body{
                     .info-input{
                         outline: none;
                         border: none;
-                        font-size: 15px;
+                        font-size: 14px;
                         margin-left: 15px;
                         background-color: transparent;
                         width: 100%;
@@ -159,7 +159,16 @@ body{
                     display: flex;
                     flex-direction: column;
                     gap: 20px 0px;
+                   
                     .post-office__self{
+                        #delivery-solo{
+                            @include breakpoint(sm){
+                                font-size: 13px;
+                            }
+                            @include breakpoint(xs){
+                                font-size: 10px;
+                            }
+                        }
                         .accept-solo{
                             color: white;
                         }

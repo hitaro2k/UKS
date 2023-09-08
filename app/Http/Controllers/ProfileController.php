@@ -14,11 +14,6 @@ use App\Models\OrderdProduct;
 use App\Models\Products;
 class ProfileController extends Controller
 {
-
-    /**
-     * Display the user's profile form.
-     */
-    
      public function edit(Request $request): View
      {
          return view('pages.profile.edit', [
@@ -26,11 +21,6 @@ class ProfileController extends Controller
          ]);
      }
 
-
-    /**
-     * Display the user's profile form.
-     */
-    
     public function editL(Request $request): View
     {
         return view('profile.edit', [
@@ -38,27 +28,29 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-    * copy
-    */
     public function store(Request $request): View
     {       
         $user = Auth::user();
-
+    
         $userProducts = OrderdProduct::where('email', $user->email)->get();
-
-        $OrderdProductStatus = OrderdProduct::where('status', 'in the process')->get();
-
+    
+        $UserEmail = OrderdProduct::where('email', $user->email)->get();
+    
+        $OrderdProductStatus  = $UserEmail->filter(function ($orderdProduct) {
+            return $orderdProduct->status === 'in the process';
+        });
+    
         $codes = $OrderdProductStatus->pluck('code'); 
-        
+    
         $products = Products::whereIn('code', $codes)->get(); 
-
-
+    
         return view('pages.profile.main', [
             'user' => $request->user(),
             'products' => $OrderdProductStatus
         ]);
-    } 
+    }
+    
+
     public function test(Request $request): View
     {   
         $user = Auth::user();
@@ -68,9 +60,6 @@ class ProfileController extends Controller
         ]);
     } 
 
-    /**
-     * Update the user's profile information.
-     */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
@@ -84,9 +73,6 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    /**
-     * Delete the user's account.
-     */
     public function destroy(Request $request): RedirectResponse
     {
         $surname = $request->input('surname');

@@ -17,17 +17,6 @@
               </li>
             </ul>
           </nav>
-
-          <form action=""  class="form-footer">
-            <div class="form-footer__input-wrapper">
-              <input
-                type="email"
-                class="form-footer__input"
-                placeholder="Email"
-              />
-            </div>
-            <button type="submit" class="form-footer__submit">Відправити</button>
-          </form>
         </div>
         <div class="footer__info-block">
           <div class="footer__info-block__media">

@@ -188,7 +188,7 @@ body {
 .wrapper .form .personal-info .personal-info__client .info-input__wrapper .info-input {
   outline: none;
   border: none;
-  font-size: 15px;
+  font-size: 14px;
   margin-left: 15px;
   background-color: transparent;
   width: 100%;
@@ -198,6 +198,16 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px 0px;
+}
+@media (max-width: 576px) {
+  .wrapper .form .personal-info .personal-info__client .post-office .post-office__self #delivery-solo {
+    font-size: 13px;
+  }
+}
+@media (max-width: 480px) {
+  .wrapper .form .personal-info .personal-info__client .post-office .post-office__self #delivery-solo {
+    font-size: 10px;
+  }
 }
 .wrapper .form .personal-info .personal-info__client .post-office .post-office__self .accept-solo {
   color: white;
