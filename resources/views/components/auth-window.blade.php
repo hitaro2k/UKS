@@ -16,7 +16,7 @@
         </div>
         <x-input-error :messages="$errors->get('email')" class="mt-2" />
         <button type="submit" class="button">Авторизуватися</button>
-        <a class = "reset-pass" style="color: #d28711;">Забули пароль?</a>
+       
     </form>
     
     <div class="enaible-account">
